@@ -1,15 +1,67 @@
-* {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-    }
-
-
-html,
-body {
-    height: 100%;
-    width: 100%;
+:root {
+  --navbar-height: 70px;
+  --sidebar-width: 260px;
 }
 
-/* basic css above which set styling to default */
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+}
+
+/* Navbar */
+.navbar {
+  background-color: #f7e1d7 !important;
+  height: var(--navbar-height);
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  z-index: 1000; /* keeps navbar above sidebar */
+}
+
+/* Sidebar */
+.sideBar {
+  background-color: #dedbd2;
+  width: var(--sidebar-width);
+  height: calc(100% - var(--navbar-height));
+  position: fixed;
+  top: var(--navbar-height);
+  left: 0;
+  padding: 1rem;
+  overflow-y: auto;
+  transition: left 0.3s ease;
+}
+
+/* Sidebar hidden on small screens */
+@media (max-width: 768px) {
+  .sideBar {
+    left: -260px;
+  }
+  .sideBar.active {
+    left: 0;
+  }
+  .mainContent {
+    margin-left: 0 !important;
+  }
+}
+
+/* Main content */
+.mainContent {
+  margin-top: var(--navbar-height);
+  margin-left: var(--sidebar-width);
+  padding: 2rem;
+  background: #fafafa;
+  min-height: calc(100vh - var(--navbar-height));
+}
+
+/* Search button */
+.container-fluid form button {
+  background-color: #edafb8;
+  color: black;
+  border: none;
+}
