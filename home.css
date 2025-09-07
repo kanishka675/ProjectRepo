@@ -209,7 +209,9 @@ html, body {
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 2rem;
   margin-top: 2rem;
+  overflow: hidden; /* keep the whole grid clean */
 }
+
 
 .subject-card {
   background: white;
@@ -219,12 +221,16 @@ html, body {
   text-align: center;
   transition: all 0.3s ease;
   cursor: pointer;
+  overflow-x: hidden; /* hide any accidental horizontal overflow */
+  word-wrap: break-word; /* break long words if needed */
 }
+
 
 .subject-card:hover {
   border-color: #edafb8;
   transform: translateY(-3px);
   box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  overflow-x: visible;
 }
 
 .subject-icon {
@@ -596,4 +602,8 @@ html, body {
     flex-direction: column;
     align-items: flex-start;
   }
+}
+
+.logout {
+  margin-left: 1rem;
 }
