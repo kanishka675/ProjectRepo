@@ -111,25 +111,38 @@
                         <div class="subject-icon">🔬</div>
                         <h3>Science</h3>
                         <p id="science-description">Biology, Chemistry, Physics, Earth Science</p>
-                        <button class="subject-btn" data-subject="science">Start Quiz</button>
+                        <div class="subject-actions">
+                            <button class="subject-btn" data-subject="science">Start Quiz</button>
+                            <button class="flashcards-btn" data-subject="science">Start Flashcards</button>
+                        </div>
                     </div>
                     <div class="subject-card" data-subject="mathematics">
                         <div class="subject-icon">🔢</div>
                         <h3>Mathematics</h3>
                         <p id="math-description">Algebra, Geometry, Statistics, Problem Solving</p>
-                        <button class="subject-btn" data-subject="mathematics">Start Quiz</button>
+                        <div class="subject-actions">
+                            <button class="subject-btn" data-subject="mathematics">Start Quiz</button>
+                            <button class="flashcards-btn" data-subject="mathematics">Start Flashcards</button>
+                            <button class="shooter-btn" data-subject="mathematics">Play Math Shooter</button>
+                        </div>
                     </div>
                     <div class="subject-card" data-subject="technology">
                         <div class="subject-icon">⚙️</div>
                         <h3>Technology</h3>
                         <p id="tech-description">Programming, Computer Science, Digital Skills</p>
-                        <button class="subject-btn" data-subject="technology">Start Quiz</button>
+                        <div class="subject-actions">
+                            <button class="subject-btn" data-subject="technology">Start Quiz</button>
+                            <button class="flashcards-btn" data-subject="technology">Start Flashcards</button>
+                        </div>
                     </div>
                     <div class="subject-card" data-subject="engineering">
                         <div class="subject-icon">🏗️</div>
                         <h3>Engineering</h3>
                         <p id="eng-description">Design, Construction, Problem Solving, Innovation</p>
-                        <button class="subject-btn" data-subject="engineering">Start Quiz</button>
+                        <div class="subject-actions">
+                            <button class="subject-btn" data-subject="engineering">Start Quiz</button>
+                            <button class="flashcards-btn" data-subject="engineering">Start Flashcards</button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -195,6 +208,51 @@
                     <button id="new-subject" class="action-btn">Try Different Subject</button>
                     <button id="new-grade" class="action-btn">Choose Different Grade</button>
                 </div>
+            </div>
+
+            <!-- Flashcards Screen -->
+            <div id="flashcards-screen" class="content-section" style="display: none;">
+                <div class="quiz-header">
+                    <h2 id="flashcards-title">Grade <span id="flashcards-grade">6</span> - <span id="flashcards-subject">Science</span> Flashcards</h2>
+                    <div class="quiz-stats">
+                        <span class="stat">Card <span id="current-card">1</span> of <span id="total-cards">10</span></span>
+                    </div>
+                    <button id="back-to-subjects-from-flashcards" class="back-btn">← Back to Subjects</button>
+                </div>
+
+                <div class="flashcard-container">
+                    <div class="flashcard" id="flashcard">
+                        <div class="flashcard-inner" id="flashcard-inner">
+                            <div class="flashcard-face flashcard-front" id="flashcard-front">Loading...</div>
+                            <div class="flashcard-face flashcard-back" id="flashcard-back">Answer</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="quiz-controls">
+                    <button id="prev-card" class="quiz-btn">Prev</button>
+                    <button id="flip-card" class="quiz-btn">Flip</button>
+                    <button id="next-card" class="quiz-btn">Next</button>
+                </div>
+            </div>
+
+            <!-- Math Shooter Screen -->
+            <div id="shooter-screen" class="content-section" style="display: none;">
+                <div class="quiz-header">
+                    <h2>Grade <span id="shooter-grade">6</span> - Mathematics Shooter</h2>
+                    <div class="shooter-stats">
+                        <span class="stat">Score: <span id="shooter-score">0</span></span>
+                        <span class="stat">Lives: <span id="shooter-lives">3</span></span>
+                        <span class="stat">Solve: <span id="shooter-problem">1 + 1 = ?</span></span>
+                    </div>
+                    <button id="back-to-subjects-from-shooter" class="back-btn">← Back to Subjects</button>
+                </div>
+
+                <div class="shooter-container">
+                    <canvas id="shooter-canvas" width="900" height="500"></canvas>
+                </div>
+
+                <div class="control-hint">Use ← → or A/D to move, Space to shoot the correct answer.</div>
             </div>
         </div>
 
@@ -298,6 +356,19 @@
         let timer = null;
         let selectedAnswer = null;
         let startTime = null;
+        let currentCardIndex = 0;
+        let isCardFlipped = false;
+        // Shooter state
+        let shooterState = {
+            running: false,
+            score: 0,
+            lives: 3,
+            playerX: 450,
+            bullets: [], // {x, y, vy}
+            answers: [], // {x, y, vy, value, isCorrect}
+            problem: { a: 1, b: 1, op: '+', correct: 2 },
+            keys: {}
+        };
 
         // Initialize the application
         document.addEventListener('DOMContentLoaded', function() {
@@ -320,9 +391,29 @@
                 });
             });
 
+            // Flashcards start buttons
+            document.querySelectorAll('.flashcards-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    selectSubjectForFlashcards(this.getAttribute('data-subject'));
+                });
+            });
+
+            // Shooter start (only for mathematics)
+            document.querySelectorAll('.shooter-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    if (!currentGrade) {
+                        alert('Please select a grade first.');
+                        return;
+                    }
+                    startShooter();
+                });
+            });
+
             // Navigation buttons
             document.getElementById('back-to-grades').addEventListener('click', showWelcomeScreen);
             document.getElementById('back-to-subjects').addEventListener('click', showSubjectSelection);
+            document.getElementById('back-to-subjects-from-flashcards').addEventListener('click', showSubjectSelection);
+            document.getElementById('back-to-subjects-from-shooter').addEventListener('click', stopShooterAndBack);
             document.getElementById('retry-quiz').addEventListener('click', startQuiz);
             document.getElementById('new-subject').addEventListener('click', showSubjectSelection);
             document.getElementById('new-grade').addEventListener('click', showWelcomeScreen);
@@ -330,6 +421,23 @@
             // Quiz controls
             document.getElementById('next-question').addEventListener('click', nextQuestion);
             document.getElementById('submit-quiz').addEventListener('click', submitQuiz);
+
+            // Flashcards controls
+            document.getElementById('flip-card').addEventListener('click', flipFlashcard);
+            document.getElementById('next-card').addEventListener('click', nextCard);
+            document.getElementById('prev-card').addEventListener('click', prevCard);
+
+            // Shooter controls
+            window.addEventListener('keydown', (e) => {
+                shooterState.keys[e.key.toLowerCase()] = true;
+                if (e.code === 'Space') {
+                    e.preventDefault();
+                    shootBullet();
+                }
+            });
+            window.addEventListener('keyup', (e) => {
+                shooterState.keys[e.key.toLowerCase()] = false;
+            });
         }
 
         function selectGrade(grade) {
@@ -353,11 +461,17 @@
             document.getElementById('subject-selection').style.display = 'block';
             document.getElementById('quiz-screen').style.display = 'none';
             document.getElementById('results-screen').style.display = 'none';
+            document.getElementById('flashcards-screen').style.display = 'none';
         }
 
         function selectSubject(subject) {
             currentSubject = subject;
             startQuiz();
+        }
+
+        function selectSubjectForFlashcards(subject) {
+            currentSubject = subject;
+            startFlashcards();
         }
 
         function startQuiz() {
@@ -384,9 +498,74 @@
             document.getElementById('subject-selection').style.display = 'none';
             document.getElementById('quiz-screen').style.display = 'block';
             document.getElementById('results-screen').style.display = 'none';
+            document.getElementById('flashcards-screen').style.display = 'none';
+            document.getElementById('shooter-screen').style.display = 'none';
 
             // Load first question
             loadQuestion();
+        }
+
+        function startFlashcards() {
+            if (!currentGrade || !currentSubject || !stemQuestions[currentGrade] || !stemQuestions[currentGrade][currentSubject]) {
+                alert('Please select a valid grade and subject.');
+                return;
+            }
+
+            currentCardIndex = 0;
+            isCardFlipped = false;
+
+            document.getElementById('flashcards-grade').textContent = currentGrade;
+            document.getElementById('flashcards-subject').textContent = currentSubject.charAt(0).toUpperCase() + currentSubject.slice(1);
+            document.getElementById('total-cards').textContent = stemQuestions[currentGrade][currentSubject].length;
+
+            document.getElementById('welcome-screen').style.display = 'none';
+            document.getElementById('subject-selection').style.display = 'none';
+            document.getElementById('quiz-screen').style.display = 'none';
+            document.getElementById('results-screen').style.display = 'none';
+            document.getElementById('flashcards-screen').style.display = 'block';
+
+            renderFlashcard();
+        }
+
+        function renderFlashcard() {
+            const cards = stemQuestions[currentGrade][currentSubject];
+            const card = cards[currentCardIndex];
+
+            document.getElementById('current-card').textContent = currentCardIndex + 1;
+
+            const front = document.getElementById('flashcard-front');
+            const back = document.getElementById('flashcard-back');
+            front.textContent = card.question;
+            back.innerHTML = `<strong>Answer:</strong> ${card.options[card.correct]}<br/><em>${card.explanation || ''}</em>`;
+
+            // reset flip state
+            isCardFlipped = false;
+            document.getElementById('flashcard-inner').classList.remove('flipped');
+        }
+
+        function flipFlashcard() {
+            isCardFlipped = !isCardFlipped;
+            const inner = document.getElementById('flashcard-inner');
+            if (isCardFlipped) {
+                inner.classList.add('flipped');
+            } else {
+                inner.classList.remove('flipped');
+            }
+        }
+
+        function nextCard() {
+            const cards = stemQuestions[currentGrade][currentSubject];
+            if (currentCardIndex < cards.length - 1) {
+                currentCardIndex++;
+                renderFlashcard();
+            }
+        }
+
+        function prevCard() {
+            if (currentCardIndex > 0) {
+                currentCardIndex--;
+                renderFlashcard();
+            }
         }
 
         function loadQuestion() {
@@ -557,10 +736,206 @@
             document.getElementById('subject-selection').style.display = 'none';
             document.getElementById('quiz-screen').style.display = 'none';
             document.getElementById('results-screen').style.display = 'none';
+            document.getElementById('flashcards-screen').style.display = 'none';
+            document.getElementById('shooter-screen').style.display = 'none';
             
             // Reset state
             currentGrade = null;
             currentSubject = null;
+        }
+
+        // Shooter Game
+        function startShooter() {
+            currentSubject = 'mathematics';
+            // show screen
+            document.getElementById('welcome-screen').style.display = 'none';
+            document.getElementById('subject-selection').style.display = 'none';
+            document.getElementById('quiz-screen').style.display = 'none';
+            document.getElementById('results-screen').style.display = 'none';
+            document.getElementById('flashcards-screen').style.display = 'none';
+            document.getElementById('shooter-screen').style.display = 'block';
+
+            // init state
+            shooterState.running = true;
+            shooterState.score = 0;
+            shooterState.lives = 3;
+            shooterState.playerX = 450;
+            shooterState.bullets = [];
+            shooterState.answers = [];
+            shooterState.keys = {};
+            updateShooterUI();
+            generateProblemAndAnswers();
+
+            // start loops
+            shooterLoop();
+            answerSpawnLoop();
+        }
+
+        function stopShooterAndBack() {
+            shooterState.running = false;
+            showSubjectSelection();
+        }
+
+        function updateShooterUI() {
+            document.getElementById('shooter-grade').textContent = currentGrade || '';
+            document.getElementById('shooter-score').textContent = shooterState.score;
+            document.getElementById('shooter-lives').textContent = shooterState.lives;
+            document.getElementById('shooter-problem').textContent = `${shooterState.problem.a} ${shooterState.problem.op} ${shooterState.problem.b} = ?`;
+        }
+
+        function generateProblemAndAnswers() {
+            const ops = ['+', '-', '×'];
+            const op = ops[Math.floor(Math.random() * ops.length)];
+            let a = Math.floor(Math.random() * 10) + 1;
+            let b = Math.floor(Math.random() * 10) + 1;
+            let correct;
+            if (op === '+') correct = a + b;
+            else if (op === '-') correct = a - b;
+            else correct = a * b;
+
+            shooterState.problem = { a, b, op, correct };
+            updateShooterUI();
+
+            // clear existing answers
+            shooterState.answers = [];
+            // spawn one correct and 3 incorrect answers at random x positions
+            const canvas = document.getElementById('shooter-canvas');
+            const width = canvas.width;
+            const choices = new Set([correct]);
+            while (choices.size < 4) {
+                const delta = Math.floor(Math.random() * 11) - 5; // -5..5
+                let candidate = correct + delta;
+                if (candidate === correct) candidate += (Math.random() < 0.5 ? -1 : 1) * (Math.floor(Math.random() * 3) + 1);
+                choices.add(candidate);
+            }
+            const shuffled = Array.from(choices).sort(() => Math.random() - 0.5);
+            shuffled.forEach((value) => {
+                shooterState.answers.push({
+                    x: 60 + Math.random() * (width - 120),
+                    y: -Math.random() * 150 - 40,
+                    vy: 1.2 + Math.random() * 0.8,
+                    value,
+                    isCorrect: value === correct
+                });
+            });
+        }
+
+        function shooterLoop() {
+            if (!shooterState.running) return;
+            const canvas = document.getElementById('shooter-canvas');
+            const ctx = canvas.getContext('2d');
+
+            // physics: move player
+            const speed = 5;
+            if (shooterState.keys['arrowleft'] || shooterState.keys['a']) shooterState.playerX -= speed;
+            if (shooterState.keys['arrowright'] || shooterState.keys['d']) shooterState.playerX += speed;
+            shooterState.playerX = Math.max(20, Math.min(canvas.width - 20, shooterState.playerX));
+
+            // move bullets
+            shooterState.bullets.forEach(b => b.y += b.vy);
+            shooterState.bullets = shooterState.bullets.filter(b => b.y > -20);
+
+            // move answers
+            shooterState.answers.forEach(a => a.y += a.vy);
+
+            // collisions bullets vs answers
+            shooterState.bullets.forEach((b) => {
+                shooterState.answers.forEach((a) => {
+                    if (Math.abs(b.x - a.x) < 20 && Math.abs(b.y - a.y) < 20) {
+                        b.y = -999; // mark for removal
+                        a.y = canvas.height + 999; // mark for removal
+                        if (a.isCorrect) {
+                            shooterState.score += 10;
+                            generateProblemAndAnswers();
+                        } else {
+                            shooterState.score = Math.max(0, shooterState.score - 5);
+                        }
+                        updateShooterUI();
+                    }
+                });
+            });
+            shooterState.bullets = shooterState.bullets.filter(b => b.y > -500);
+            shooterState.answers = shooterState.answers.filter(a => a.y < canvas.height + 50);
+
+            // answers reaching bottom
+            shooterState.answers.forEach((a) => {
+                if (a.y >= canvas.height - 40) {
+                    if (a.isCorrect) {
+                        shooterState.lives -= 1;
+                        if (shooterState.lives <= 0) {
+                            gameOverShooter();
+                            return;
+                        }
+                        updateShooterUI();
+                        generateProblemAndAnswers();
+                    } else {
+                        // wrong answer fell, just remove
+                    }
+                    a.y = canvas.height + 999;
+                }
+            });
+
+            // render
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            // player ship
+            ctx.fillStyle = '#e0e1dd';
+            ctx.beginPath();
+            ctx.moveTo(shooterState.playerX, canvas.height - 20);
+            ctx.lineTo(shooterState.playerX - 15, canvas.height - 0);
+            ctx.lineTo(shooterState.playerX + 15, canvas.height - 0);
+            ctx.closePath();
+            ctx.fill();
+
+            // bullets
+            ctx.fillStyle = '#ffb703';
+            shooterState.bullets.forEach(b => {
+                ctx.fillRect(b.x - 2, b.y - 10, 4, 10);
+            });
+
+            // answers
+            shooterState.answers.forEach(a => {
+                ctx.fillStyle = a.isCorrect ? '#2a9d8f' : '#457b9d';
+                ctx.beginPath();
+                ctx.arc(a.x, a.y, 18, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.fillStyle = '#ffffff';
+                ctx.font = '16px Segoe UI';
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'middle';
+                ctx.fillText(String(a.value), a.x, a.y);
+            });
+
+            requestAnimationFrame(shooterLoop);
+        }
+
+        function shootBullet() {
+            if (!shooterState.running) return;
+            const canvas = document.getElementById('shooter-canvas');
+            shooterState.bullets.push({ x: shooterState.playerX, y: canvas.height - 25, vy: -8 });
+        }
+
+        function answerSpawnLoop() {
+            if (!shooterState.running) return;
+            // Occasionally add extra wrong answers to increase challenge
+            if (Math.random() < 0.3) {
+                const canvas = document.getElementById('shooter-canvas');
+                const width = canvas.width;
+                const wrong = shooterState.problem.correct + (Math.random() < 0.5 ? -1 : 1) * (Math.floor(Math.random() * 5) + 1);
+                shooterState.answers.push({
+                    x: 60 + Math.random() * (width - 120),
+                    y: -40,
+                    vy: 1.5 + Math.random() * 0.8,
+                    value: wrong,
+                    isCorrect: false
+                });
+            }
+            setTimeout(answerSpawnLoop, 1200);
+        }
+
+        function gameOverShooter() {
+            shooterState.running = false;
+            alert(`Game Over! Your score: ${shooterState.score}`);
+            showSubjectSelection();
         }
     </script>
 </body>
