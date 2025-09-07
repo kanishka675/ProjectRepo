@@ -1,5 +1,25 @@
 {
+  "name": "dehbfjerf",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kanishka675/ProjectRepo.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kanishka675/ProjectRepo/issues"
+  },
+  "homepage": "https://github.com/kanishka675/ProjectRepo#readme",
   "dependencies": {
-    "bootstrap": "^5.3.8"
+    "body-parser": "^2.2.0",
+    "express": "^5.1.0"
   }
 }
