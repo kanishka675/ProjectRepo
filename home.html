@@ -59,14 +59,510 @@
         </nav>
 
 
-        <div class="sideBar">Side Bar</div>
+        <div class="sideBar">
+            <h4 class="sidebar-title">Select Grade</h4>
+            <div class="grade-buttons">
+               
+                <button class="grade-btn" data-grade="6">Grade 6</button>
+                <button class="grade-btn" data-grade="7">Grade 7</button>
+                <button class="grade-btn" data-grade="8">Grade 8</button>
+                <button class="grade-btn" data-grade="9">Grade 9</button>
+                <button class="grade-btn" data-grade="10">Grade 10</button>
+                <button class="grade-btn" data-grade="11">Grade 11</button>
+                <button class="grade-btn" data-grade="12">Grade 12</button>
+            </div>
+        </div>
 
-        <div class="mainContent">Main content</div>
+        <div class="mainContent">
+            <!-- Welcome Screen -->
+            <div id="welcome-screen" class="content-section">
+                <div class="welcome-header">
+                    <h2>🎓 EduGameHub - STEM Learning</h2>
+                    <p>Select a grade from the sidebar to explore STEM subjects and take quizzes!</p>
+                </div>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <h4>🔬 Science</h4>
+                        <p>Explore biology, chemistry, physics, and earth sciences</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>🔢 Mathematics</h4>
+                        <p>Master algebra, geometry, calculus, and statistics</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>⚙️ Technology</h4>
+                        <p>Learn programming, engineering, and digital skills</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>🏗️ Engineering</h4>
+                        <p>Understand design, construction, and problem-solving</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Subject Selection Screen -->
+            <div id="subject-selection" class="content-section" style="display: none;">
+                <div class="section-header">
+                    <h2>Grade <span id="selected-grade">6</span> - Choose a Subject</h2>
+                    <button id="back-to-grades" class="back-btn">← Back to Grades</button>
+                </div>
+                <div class="subjects-grid">
+                    <div class="subject-card" data-subject="science">
+                        <div class="subject-icon">🔬</div>
+                        <h3>Science</h3>
+                        <p id="science-description">Biology, Chemistry, Physics, Earth Science</p>
+                        <button class="subject-btn" data-subject="science">Start Quiz</button>
+                    </div>
+                    <div class="subject-card" data-subject="mathematics">
+                        <div class="subject-icon">🔢</div>
+                        <h3>Mathematics</h3>
+                        <p id="math-description">Algebra, Geometry, Statistics, Problem Solving</p>
+                        <button class="subject-btn" data-subject="mathematics">Start Quiz</button>
+                    </div>
+                    <div class="subject-card" data-subject="technology">
+                        <div class="subject-icon">⚙️</div>
+                        <h3>Technology</h3>
+                        <p id="tech-description">Programming, Computer Science, Digital Skills</p>
+                        <button class="subject-btn" data-subject="technology">Start Quiz</button>
+                    </div>
+                    <div class="subject-card" data-subject="engineering">
+                        <div class="subject-icon">🏗️</div>
+                        <h3>Engineering</h3>
+                        <p id="eng-description">Design, Construction, Problem Solving, Innovation</p>
+                        <button class="subject-btn" data-subject="engineering">Start Quiz</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quiz Screen -->
+            <div id="quiz-screen" class="content-section" style="display: none;">
+                <div class="quiz-header">
+                    <h2 id="quiz-title">Grade <span id="quiz-grade">6</span> - <span id="quiz-subject">Science</span> Quiz</h2>
+                    <div class="quiz-stats">
+                        <span class="stat">Question <span id="current-q">1</span> of <span id="total-qs">10</span></span>
+                        <span class="stat">Score: <span id="score">0</span></span>
+                        <span class="stat">Time: <span id="timer">30</span>s</span>
+                    </div>
+                    <button id="back-to-subjects" class="back-btn">← Back to Subjects</button>
+                </div>
+                
+                <div class="progress-container">
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progress"></div>
+                    </div>
+                </div>
+
+                <div class="question-container">
+                    <h3 id="question-text">Loading question...</h3>
+                    <div class="options-container" id="options">
+                        <!-- Options will be dynamically generated -->
+                    </div>
+                </div>
+
+                <div class="quiz-controls">
+                    <button id="next-question" class="quiz-btn" disabled>Next Question</button>
+                    <button id="submit-quiz" class="quiz-btn" style="display: none;">Submit Quiz</button>
+                </div>
+            </div>
+
+            <!-- Results Screen -->
+            <div id="results-screen" class="content-section" style="display: none;">
+                <div class="results-header">
+                    <h2>🎉 Quiz Complete!</h2>
+                    <div class="score-display">
+                        <h3>Your Score: <span id="final-score">0</span>/<span id="max-score">10</span></h3>
+                        <div class="percentage" id="percentage">0%</div>
+                    </div>
+                </div>
+                
+                <div class="results-info">
+                    <div class="result-item">
+                        <h4>📊 Performance</h4>
+                        <p id="performance">Great job!</p>
+                    </div>
+                    <div class="result-item">
+                        <h4>⏱️ Time Taken</h4>
+                        <p id="time-taken">0 minutes</p>
+                    </div>
+                    <div class="result-item">
+                        <h4>🎯 Accuracy</h4>
+                        <p id="accuracy">0%</p>
+                    </div>
+                </div>
+
+                <div class="results-actions">
+                    <button id="retry-quiz" class="action-btn">Retry Quiz</button>
+                    <button id="new-subject" class="action-btn">Try Different Subject</button>
+                    <button id="new-grade" class="action-btn">Choose Different Grade</button>
+                </div>
+            </div>
+        </div>
 
 
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // STEM Questions Database
+        const stemQuestions = {
+            6: {
+                science: [
+                    {
+                        question: "What is the process by which plants make their own food?",
+                        options: ["Respiration", "Photosynthesis", "Digestion", "Fermentation"],
+                        correct: 1,
+                        explanation: "Photosynthesis is how plants convert sunlight into energy."
+                    },
+                    {
+                        question: "Which planet is closest to the Sun?",
+                        options: ["Venus", "Earth", "Mercury", "Mars"],
+                        correct: 2,
+                        explanation: "Mercury is the closest planet to the Sun in our solar system."
+                    },
+                    {
+                        question: "What is the chemical symbol for water?",
+                        options: ["H2O", "CO2", "NaCl", "O2"],
+                        correct: 0,
+                        explanation: "Water is made of two hydrogen atoms and one oxygen atom (H2O)."
+                    }
+                ],
+                mathematics: [
+                    {
+                        question: "What is 15 + 27?",
+                        options: ["40", "42", "41", "43"],
+                        correct: 1,
+                        explanation: "15 + 27 = 42"
+                    },
+                    {
+                        question: "What is the area of a rectangle with length 8 and width 5?",
+                        options: ["13", "26", "40", "35"],
+                        correct: 2,
+                        explanation: "Area = length × width = 8 × 5 = 40"
+                    },
+                    {
+                        question: "What is 6 × 7?",
+                        options: ["42", "36", "48", "49"],
+                        correct: 0,
+                        explanation: "6 × 7 = 42"
+                    }
+                ],
+                technology: [
+                    {
+                        question: "What does CPU stand for?",
+                        options: ["Central Processing Unit", "Computer Processing Unit", "Central Program Unit", "Computer Program Unit"],
+                        correct: 0,
+                        explanation: "CPU stands for Central Processing Unit, the brain of the computer."
+                    },
+                    {
+                        question: "What is the main purpose of RAM in a computer?",
+                        options: ["Long-term storage", "Temporary storage", "Display graphics", "Connect to internet"],
+                        correct: 1,
+                        explanation: "RAM provides temporary storage for data the computer is actively using."
+                    },
+                    {
+                        question: "What does 'www' stand for in a website address?",
+                        options: ["World Wide Web", "World Web Wide", "Wide World Web", "Web World Wide"],
+                        correct: 0,
+                        explanation: "WWW stands for World Wide Web, the global information system."
+                    }
+                ],
+                engineering: [
+                    {
+                        question: "What is the main purpose of a bridge?",
+                        options: ["To store water", "To cross obstacles", "To generate electricity", "To provide shelter"],
+                        correct: 1,
+                        explanation: "Bridges are designed to help people and vehicles cross obstacles like rivers or valleys."
+                    },
+                    {
+                        question: "What type of engineer designs buildings?",
+                        options: ["Mechanical engineer", "Civil engineer", "Electrical engineer", "Chemical engineer"],
+                        correct: 1,
+                        explanation: "Civil engineers design and construct buildings, bridges, and infrastructure."
+                    },
+                    {
+                        question: "What is the strongest shape used in construction?",
+                        options: ["Circle", "Triangle", "Square", "Rectangle"],
+                        correct: 1,
+                        explanation: "Triangles are the strongest shape because they distribute force evenly."
+                    }
+                ]
+            }
+        };
+
+        // Application State
+        let currentGrade = null;
+        let currentSubject = null;
+        let currentQuestionIndex = 0;
+        let score = 0;
+        let timeLeft = 30;
+        let timer = null;
+        let selectedAnswer = null;
+        let startTime = null;
+
+        // Initialize the application
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeEventListeners();
+        });
+
+        function initializeEventListeners() {
+            // Grade button functionality
+            const gradeButtons = document.querySelectorAll('.grade-btn');
+            gradeButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    selectGrade(parseInt(this.getAttribute('data-grade')));
+                });
+            });
+
+            // Subject selection
+            document.querySelectorAll('.subject-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    selectSubject(this.getAttribute('data-subject'));
+                });
+            });
+
+            // Navigation buttons
+            document.getElementById('back-to-grades').addEventListener('click', showWelcomeScreen);
+            document.getElementById('back-to-subjects').addEventListener('click', showSubjectSelection);
+            document.getElementById('retry-quiz').addEventListener('click', startQuiz);
+            document.getElementById('new-subject').addEventListener('click', showSubjectSelection);
+            document.getElementById('new-grade').addEventListener('click', showWelcomeScreen);
+
+            // Quiz controls
+            document.getElementById('next-question').addEventListener('click', nextQuestion);
+            document.getElementById('submit-quiz').addEventListener('click', submitQuiz);
+        }
+
+        function selectGrade(grade) {
+            // Remove selected class from all buttons
+            const gradeButtons = document.querySelectorAll('.grade-btn');
+            gradeButtons.forEach(btn => btn.classList.remove('selected'));
+            
+            // Add selected class to clicked button
+            event.target.classList.add('selected');
+            
+            currentGrade = grade;
+            showSubjectSelection();
+        }
+
+        function showSubjectSelection() {
+            // Update grade display
+            document.getElementById('selected-grade').textContent = currentGrade;
+            
+            // Show subject selection, hide others
+            document.getElementById('welcome-screen').style.display = 'none';
+            document.getElementById('subject-selection').style.display = 'block';
+            document.getElementById('quiz-screen').style.display = 'none';
+            document.getElementById('results-screen').style.display = 'none';
+        }
+
+        function selectSubject(subject) {
+            currentSubject = subject;
+            startQuiz();
+        }
+
+        function startQuiz() {
+            if (!currentGrade || !currentSubject || !stemQuestions[currentGrade] || !stemQuestions[currentGrade][currentSubject]) {
+                alert('Please select a valid grade and subject.');
+                return;
+            }
+
+            // Reset quiz state
+            currentQuestionIndex = 0;
+            score = 0;
+            timeLeft = 30;
+            selectedAnswer = null;
+            startTime = Date.now();
+
+            // Update UI
+            document.getElementById('quiz-grade').textContent = currentGrade;
+            document.getElementById('quiz-subject').textContent = currentSubject.charAt(0).toUpperCase() + currentSubject.slice(1);
+            document.getElementById('total-qs').textContent = stemQuestions[currentGrade][currentSubject].length;
+            document.getElementById('max-score').textContent = stemQuestions[currentGrade][currentSubject].length;
+            
+            // Show quiz screen, hide others
+            document.getElementById('welcome-screen').style.display = 'none';
+            document.getElementById('subject-selection').style.display = 'none';
+            document.getElementById('quiz-screen').style.display = 'block';
+            document.getElementById('results-screen').style.display = 'none';
+
+            // Load first question
+            loadQuestion();
+        }
+
+        function loadQuestion() {
+            const questions = stemQuestions[currentGrade][currentSubject];
+            const question = questions[currentQuestionIndex];
+            
+            // Update progress
+            document.getElementById('current-q').textContent = currentQuestionIndex + 1;
+            const progress = ((currentQuestionIndex + 1) / questions.length) * 100;
+            document.getElementById('progress').style.width = progress + '%';
+
+            // Update question text
+            document.getElementById('question-text').textContent = question.question;
+
+            // Clear and populate options
+            const optionsContainer = document.getElementById('options');
+            optionsContainer.innerHTML = '';
+            question.options.forEach((option, index) => {
+                const button = document.createElement('button');
+                button.className = 'option-btn';
+                button.textContent = option;
+                button.addEventListener('click', () => selectOption(index, button));
+                optionsContainer.appendChild(button);
+            });
+
+            // Reset controls
+            document.getElementById('next-question').disabled = true;
+            document.getElementById('next-question').style.display = 'inline-block';
+            document.getElementById('submit-quiz').style.display = 'none';
+            selectedAnswer = null;
+
+            // Start timer
+            startTimer();
+        }
+
+        function selectOption(optionIndex, buttonElement) {
+            // Remove previous selection
+            document.querySelectorAll('.option-btn').forEach(btn => {
+                btn.classList.remove('selected');
+            });
+
+            // Select current option
+            buttonElement.classList.add('selected');
+            selectedAnswer = optionIndex;
+
+            // Enable next button
+            document.getElementById('next-question').disabled = false;
+        }
+
+        function startTimer() {
+            timeLeft = 30;
+            document.getElementById('timer').textContent = timeLeft;
+            document.getElementById('timer').classList.remove('timer-warning');
+
+            timer = setInterval(() => {
+                timeLeft--;
+                document.getElementById('timer').textContent = timeLeft;
+
+                // Warning when time is running low
+                if (timeLeft <= 10) {
+                    document.getElementById('timer').classList.add('timer-warning');
+                }
+
+                // Time's up
+                if (timeLeft <= 0) {
+                    clearInterval(timer);
+                    timeUp();
+                }
+            }, 1000);
+        }
+
+        function timeUp() {
+            // Show correct answer
+            showCorrectAnswer();
+            
+            // Disable option selection
+            document.querySelectorAll('.option-btn').forEach(btn => {
+                btn.style.pointerEvents = 'none';
+            });
+
+            // Show next/submit button
+            const questions = stemQuestions[currentGrade][currentSubject];
+            if (currentQuestionIndex < questions.length - 1) {
+                document.getElementById('next-question').disabled = false;
+            } else {
+                document.getElementById('submit-quiz').style.display = 'inline-block';
+            }
+        }
+
+        function showCorrectAnswer() {
+            const questions = stemQuestions[currentGrade][currentSubject];
+            const question = questions[currentQuestionIndex];
+            const correctIndex = question.correct;
+
+            document.querySelectorAll('.option-btn').forEach((btn, index) => {
+                if (index === correctIndex) {
+                    btn.classList.add('correct');
+                } else if (index === selectedAnswer && selectedAnswer !== correctIndex) {
+                    btn.classList.add('incorrect');
+                }
+            });
+
+            // Update score if correct
+            if (selectedAnswer === correctIndex) {
+                score++;
+                document.getElementById('score').textContent = score;
+            }
+        }
+
+        function nextQuestion() {
+            clearInterval(timer);
+            
+            const questions = stemQuestions[currentGrade][currentSubject];
+            if (currentQuestionIndex < questions.length - 1) {
+                currentQuestionIndex++;
+                loadQuestion();
+            } else {
+                submitQuiz();
+            }
+        }
+
+        function submitQuiz() {
+            clearInterval(timer);
+            showResults();
+        }
+
+        function showResults() {
+            const questions = stemQuestions[currentGrade][currentSubject];
+            const totalQuestions = questions.length;
+            const percentage = Math.round((score / totalQuestions) * 100);
+            const timeTaken = Math.round((Date.now() - startTime) / 1000 / 60);
+
+            // Update results
+            document.getElementById('final-score').textContent = score;
+            document.getElementById('percentage').textContent = percentage + '%';
+            document.getElementById('time-taken').textContent = timeTaken + ' minutes';
+            document.getElementById('accuracy').textContent = percentage + '%';
+
+            // Performance feedback
+            let performance = '';
+            if (percentage >= 90) {
+                performance = 'Outstanding! You have excellent knowledge!';
+            } else if (percentage >= 80) {
+                performance = 'Great job! You have good knowledge!';
+            } else if (percentage >= 70) {
+                performance = 'Good work! Keep studying to improve!';
+            } else if (percentage >= 60) {
+                performance = 'Not bad! Review the topics and try again!';
+            } else {
+                performance = 'Keep studying! Practice makes perfect!';
+            }
+            document.getElementById('performance').textContent = performance;
+
+            // Show results, hide others
+            document.getElementById('welcome-screen').style.display = 'none';
+            document.getElementById('subject-selection').style.display = 'none';
+            document.getElementById('quiz-screen').style.display = 'none';
+            document.getElementById('results-screen').style.display = 'block';
+        }
+
+        function showWelcomeScreen() {
+            // Reset grade selection
+            const gradeButtons = document.querySelectorAll('.grade-btn');
+            gradeButtons.forEach(btn => btn.classList.remove('selected'));
+            
+            // Show welcome screen, hide others
+            document.getElementById('welcome-screen').style.display = 'block';
+            document.getElementById('subject-selection').style.display = 'none';
+            document.getElementById('quiz-screen').style.display = 'none';
+            document.getElementById('results-screen').style.display = 'none';
+            
+            // Reset state
+            currentGrade = null;
+            currentSubject = null;
+        }
+    </script>
 </body>
 
 </html>
