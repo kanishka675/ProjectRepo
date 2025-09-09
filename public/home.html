@@ -118,6 +118,7 @@
                         <div class="subject-actions">
                             <button class="subject-btn" data-subject="science">Start Quiz</button>
                             <button class="flashcards-btn" data-subject="science">Start Flashcards</button>
+                            <button class="modules-btn" data-subject="science">Learn Modules</button>
                         </div>
                     </div>
                     <div class="subject-card" data-subject="mathematics">
@@ -127,6 +128,7 @@
                         <div class="subject-actions">
                             <button class="subject-btn" data-subject="mathematics">Start Quiz</button>
                             <button class="flashcards-btn" data-subject="mathematics">Start Flashcards</button>
+                            <button class="modules-btn" data-subject="mathematics">Learn Modules</button>
                             <button class="shooter-btn" data-subject="mathematics">Play Math Shooter</button>
                         </div>
                     </div>
@@ -137,6 +139,7 @@
                         <div class="subject-actions">
                             <button class="subject-btn" data-subject="technology">Start Quiz</button>
                             <button class="flashcards-btn" data-subject="technology">Start Flashcards</button>
+                            <button class="modules-btn" data-subject="technology">Learn Modules</button>
                         </div>
                     </div>
                     <div class="subject-card" data-subject="engineering">
@@ -146,6 +149,7 @@
                         <div class="subject-actions">
                             <button class="subject-btn" data-subject="engineering">Start Quiz</button>
                             <button class="flashcards-btn" data-subject="engineering">Start Flashcards</button>
+                            <button class="modules-btn" data-subject="engineering">Learn Modules</button>
                         </div>
                     </div>
                 </div>
@@ -258,6 +262,52 @@
 
                 <div class="control-hint">Use ← → or A/D to move, Space to shoot the correct answer.</div>
             </div>
+
+            <!-- Learning Modules Screen -->
+            <div id="modules-screen" class="content-section" style="display: none;">
+                <div class="quiz-header">
+                    <h2>Grade <span id="modules-grade">6</span> - <span id="modules-subject">Science</span> Learning Modules</h2>
+                    <button id="back-to-subjects-from-modules" class="back-btn">← Back to Subjects</button>
+                </div>
+
+                <div class="modules-grid" id="modules-grid">
+                    <!-- Modules will be dynamically generated -->
+                </div>
+            </div>
+
+            <!-- Individual Module Screen -->
+            <div id="module-detail-screen" class="content-section" style="display: none;">
+                <div class="quiz-header">
+                    <h2 id="module-title">Module Title</h2>
+                    <div class="module-navigation">
+                        <button id="back-to-modules" class="back-btn">← Back to Modules</button>
+                        <button id="module-quiz-btn" class="quiz-btn">Take Quiz</button>
+                    </div>
+                </div>
+
+                <div class="module-content">
+                    <div class="module-intro" id="module-intro">
+                        <!-- Introduction content -->
+                    </div>
+                    
+                    <div class="module-main" id="module-main">
+                        <!-- Main content -->
+                    </div>
+
+                    <div class="module-interactive" id="module-interactive">
+                        <!-- Interactive elements -->
+                    </div>
+
+                    <div class="module-quiz" id="module-quiz" style="display: none;">
+                        <!-- Module quiz -->
+                    </div>
+                </div>
+
+                <div class="module-controls">
+                    <button id="prev-section" class="quiz-btn" style="display: none;">Previous</button>
+                    <button id="next-section" class="quiz-btn">Next</button>
+                </div>
+            </div>
         </div>
 
 
@@ -265,6 +315,162 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
     <script>
+        // Interactive Learning Modules Database
+        const learningModules = {
+            6: {
+                science: [
+                    {
+                        id: "photosynthesis",
+                        title: "🌱 Photosynthesis",
+                        description: "Learn how plants make their own food",
+                        content: {
+                            introduction: "Photosynthesis is the process by which plants convert sunlight into energy. Let's explore this amazing process!",
+                            mainContent: "Plants use their green leaves to capture sunlight. Inside the leaves are tiny structures called chloroplasts that contain chlorophyll - the green pigment that gives plants their color.",
+                            interactive: {
+                                type: "animation",
+                                elements: [
+                                    { id: "sun", label: "Sunlight", position: "top", color: "#FFD700" },
+                                    { id: "leaf", label: "Leaf", position: "center", color: "#228B22" },
+                                    { id: "oxygen", label: "Oxygen", position: "right", color: "#87CEEB" },
+                                    { id: "glucose", label: "Glucose", position: "left", color: "#DDA0DD" }
+                                ]
+                            },
+                            quiz: {
+                                question: "What do plants need for photosynthesis?",
+                                options: ["Sunlight, water, and carbon dioxide", "Only sunlight", "Only water", "Only carbon dioxide"],
+                                correct: 0,
+                                explanation: "Plants need sunlight, water, and carbon dioxide to perform photosynthesis."
+                            }
+                        }
+                    },
+                    {
+                        id: "solar-system",
+                        title: "🪐 Our Solar System",
+                        description: "Explore the planets in our solar system",
+                        content: {
+                            introduction: "Our solar system is home to 8 planets, each with unique characteristics. Let's take a journey through space!",
+                            mainContent: "The solar system formed about 4.6 billion years ago. The Sun is at the center, and all planets orbit around it. The inner planets (Mercury, Venus, Earth, Mars) are rocky, while the outer planets (Jupiter, Saturn, Uranus, Neptune) are gas giants.",
+                            interactive: {
+                                type: "planet-explorer",
+                                planets: [
+                                    { name: "Mercury", distance: 0.4, size: 0.4, color: "#8C7853", facts: ["Closest to the Sun", "No atmosphere", "Extreme temperatures"] },
+                                    { name: "Venus", distance: 0.7, size: 0.9, color: "#FFC649", facts: ["Hottest planet", "Thick atmosphere", "Retrograde rotation"] },
+                                    { name: "Earth", distance: 1.0, size: 1.0, color: "#6B93D6", facts: ["Only planet with life", "71% water", "One moon"] },
+                                    { name: "Mars", distance: 1.5, size: 0.5, color: "#CD5C5C", facts: ["Red planet", "Two moons", "Largest volcano"] }
+                                ]
+                            },
+                            quiz: {
+                                question: "Which planet is known as the Red Planet?",
+                                options: ["Venus", "Mars", "Jupiter", "Saturn"],
+                                correct: 1,
+                                explanation: "Mars is called the Red Planet because of iron oxide (rust) on its surface."
+                            }
+                        }
+                    }
+                ],
+                mathematics: [
+                    {
+                        id: "fractions",
+                        title: "🍕 Understanding Fractions",
+                        description: "Learn about parts of a whole",
+                        content: {
+                            introduction: "Fractions represent parts of a whole. Think of a pizza cut into slices - each slice is a fraction of the whole pizza!",
+                            mainContent: "A fraction has two parts: the numerator (top number) tells us how many parts we have, and the denominator (bottom number) tells us how many equal parts the whole is divided into.",
+                            interactive: {
+                                type: "fraction-visualizer",
+                                examples: [
+                                    { numerator: 1, denominator: 2, visual: "pizza-half", description: "Half a pizza" },
+                                    { numerator: 3, denominator: 4, visual: "pizza-three-quarters", description: "Three quarters of a pizza" },
+                                    { numerator: 2, denominator: 3, visual: "pizza-two-thirds", description: "Two thirds of a pizza" }
+                                ]
+                            },
+                            quiz: {
+                                question: "In the fraction 3/4, what does the 4 represent?",
+                                options: ["How many parts we have", "How many equal parts the whole is divided into", "The total number", "The remainder"],
+                                correct: 1,
+                                explanation: "The denominator (4) tells us how many equal parts the whole is divided into."
+                            }
+                        }
+                    },
+                    {
+                        id: "geometry-basics",
+                        title: "📐 Basic Shapes",
+                        description: "Explore different geometric shapes",
+                        content: {
+                            introduction: "Geometry is all around us! Let's learn about different shapes and their properties.",
+                            mainContent: "Shapes have different properties like sides, angles, and symmetry. Some shapes are 2D (flat) like circles and squares, while others are 3D (solid) like cubes and spheres.",
+                            interactive: {
+                                type: "shape-builder",
+                                shapes: [
+                                    { name: "Triangle", sides: 3, angles: 3, color: "#FF6B6B", properties: ["Three sides", "Three angles", "Sum of angles = 180°"] },
+                                    { name: "Square", sides: 4, angles: 4, color: "#4ECDC4", properties: ["Four equal sides", "Four right angles", "Two lines of symmetry"] },
+                                    { name: "Circle", sides: 0, angles: 0, color: "#45B7D1", properties: ["No sides", "No angles", "Infinite lines of symmetry"] }
+                                ]
+                            },
+                            quiz: {
+                                question: "How many sides does a triangle have?",
+                                options: ["2", "3", "4", "5"],
+                                correct: 1,
+                                explanation: "A triangle has exactly 3 sides and 3 angles."
+                            }
+                        }
+                    }
+                ],
+                technology: [
+                    {
+                        id: "computer-basics",
+                        title: "💻 Computer Components",
+                        description: "Learn about the parts of a computer",
+                        content: {
+                            introduction: "Computers are amazing machines made up of different components working together. Let's explore what's inside!",
+                            mainContent: "A computer has several important parts: the CPU (brain), RAM (memory), storage, and input/output devices. Each part has a specific job to help the computer work.",
+                            interactive: {
+                                type: "computer-builder",
+                                components: [
+                                    { name: "CPU", description: "Central Processing Unit - the brain", icon: "🧠", function: "Processes instructions" },
+                                    { name: "RAM", description: "Random Access Memory - temporary storage", icon: "💾", function: "Stores data while working" },
+                                    { name: "Storage", description: "Hard drive or SSD - permanent storage", icon: "💿", function: "Saves files permanently" },
+                                    { name: "Motherboard", description: "Main circuit board", icon: "🔌", function: "Connects all components" }
+                                ]
+                            },
+                            quiz: {
+                                question: "What does CPU stand for?",
+                                options: ["Central Processing Unit", "Computer Processing Unit", "Central Program Unit", "Computer Program Unit"],
+                                correct: 0,
+                                explanation: "CPU stands for Central Processing Unit - it's the brain of the computer."
+                            }
+                        }
+                    }
+                ],
+                engineering: [
+                    {
+                        id: "simple-machines",
+                        title: "⚙️ Simple Machines",
+                        description: "Discover the building blocks of engineering",
+                        content: {
+                            introduction: "Simple machines are the basic tools that make work easier. Engineers use these to build complex machines!",
+                            mainContent: "There are six types of simple machines: lever, wheel and axle, pulley, inclined plane, wedge, and screw. Each one helps us do work with less effort.",
+                            interactive: {
+                                type: "machine-explorer",
+                                machines: [
+                                    { name: "Lever", example: "See-saw", advantage: "Lifts heavy objects", icon: "⚖️" },
+                                    { name: "Pulley", example: "Flag pole", advantage: "Changes direction of force", icon: "🎯" },
+                                    { name: "Inclined Plane", example: "Ramp", advantage: "Moves objects up easily", icon: "📐" },
+                                    { name: "Wheel and Axle", example: "Door knob", advantage: "Rotates objects", icon: "🎡" }
+                                ]
+                            },
+                            quiz: {
+                                question: "What simple machine is a see-saw?",
+                                options: ["Pulley", "Lever", "Wedge", "Screw"],
+                                correct: 1,
+                                explanation: "A see-saw is a lever - it uses a fulcrum to lift objects."
+                            }
+                        }
+                    }
+                ]
+            }
+        };
+
         // STEM Questions Database
         const stemQuestions = {
             6: {
@@ -362,6 +568,10 @@
         let startTime = null;
         let currentCardIndex = 0;
         let isCardFlipped = false;
+        // Module state
+        let currentModule = null;
+        let currentModuleSection = 0; // 0: intro, 1: main, 2: interactive, 3: quiz
+        let moduleQuizAnswer = null;
         // Shooter state
         let shooterState = {
             running: false,
@@ -402,6 +612,13 @@
                 });
             });
 
+            // Modules start buttons
+            document.querySelectorAll('.modules-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    selectSubjectForModules(this.getAttribute('data-subject'));
+                });
+            });
+
             // Shooter start (only for mathematics)
             document.querySelectorAll('.shooter-btn').forEach(btn => {
                 btn.addEventListener('click', function() {
@@ -418,6 +635,8 @@
             document.getElementById('back-to-subjects').addEventListener('click', showSubjectSelection);
             document.getElementById('back-to-subjects-from-flashcards').addEventListener('click', showSubjectSelection);
             document.getElementById('back-to-subjects-from-shooter').addEventListener('click', stopShooterAndBack);
+            document.getElementById('back-to-subjects-from-modules').addEventListener('click', showSubjectSelection);
+            document.getElementById('back-to-modules').addEventListener('click', showModulesScreen);
             document.getElementById('retry-quiz').addEventListener('click', startQuiz);
             document.getElementById('new-subject').addEventListener('click', showSubjectSelection);
             document.getElementById('new-grade').addEventListener('click', showWelcomeScreen);
@@ -430,6 +649,11 @@
             document.getElementById('flip-card').addEventListener('click', flipFlashcard);
             document.getElementById('next-card').addEventListener('click', nextCard);
             document.getElementById('prev-card').addEventListener('click', prevCard);
+
+            // Module controls
+            document.getElementById('next-section').addEventListener('click', nextModuleSection);
+            document.getElementById('prev-section').addEventListener('click', prevModuleSection);
+            document.getElementById('module-quiz-btn').addEventListener('click', startModuleQuiz);
 
             // Shooter controls
             window.addEventListener('keydown', (e) => {
@@ -744,10 +968,367 @@
             document.getElementById('results-screen').style.display = 'none';
             document.getElementById('flashcards-screen').style.display = 'none';
             document.getElementById('shooter-screen').style.display = 'none';
+            document.getElementById('modules-screen').style.display = 'none';
+            document.getElementById('module-detail-screen').style.display = 'none';
             
             // Reset state
             currentGrade = null;
             currentSubject = null;
+        }
+
+        // Module Functions
+        function selectSubjectForModules(subject) {
+            currentSubject = subject;
+            showModulesScreen();
+        }
+
+        function showModulesScreen() {
+            if (!currentGrade || !currentSubject || !learningModules[currentGrade] || !learningModules[currentGrade][currentSubject]) {
+                alert('Please select a valid grade and subject.');
+                return;
+            }
+
+            // Update UI
+            document.getElementById('modules-grade').textContent = currentGrade;
+            document.getElementById('modules-subject').textContent = currentSubject.charAt(0).toUpperCase() + currentSubject.slice(1);
+
+            // Generate module cards
+            const modulesGrid = document.getElementById('modules-grid');
+            modulesGrid.innerHTML = '';
+
+            const modules = learningModules[currentGrade][currentSubject];
+            modules.forEach((module, index) => {
+                const moduleCard = document.createElement('div');
+                moduleCard.className = 'module-card';
+                moduleCard.innerHTML = `
+                    <div class="module-icon">${module.title.split(' ')[0]}</div>
+                    <h3>${module.title}</h3>
+                    <p>${module.description}</p>
+                    <div class="module-progress">
+                        <div class="module-progress-fill" style="width: 0%"></div>
+                    </div>
+                    <span class="module-status new">New</span>
+                `;
+                moduleCard.addEventListener('click', () => openModule(module));
+                modulesGrid.appendChild(moduleCard);
+            });
+
+            // Show modules screen, hide others
+            document.getElementById('welcome-screen').style.display = 'none';
+            document.getElementById('subject-selection').style.display = 'none';
+            document.getElementById('quiz-screen').style.display = 'none';
+            document.getElementById('results-screen').style.display = 'none';
+            document.getElementById('flashcards-screen').style.display = 'none';
+            document.getElementById('shooter-screen').style.display = 'none';
+            document.getElementById('modules-screen').style.display = 'block';
+            document.getElementById('module-detail-screen').style.display = 'none';
+        }
+
+        function openModule(module) {
+            currentModule = module;
+            currentModuleSection = 0;
+            moduleQuizAnswer = null;
+
+            // Update UI
+            document.getElementById('module-title').textContent = module.title;
+
+            // Show module detail screen, hide others
+            document.getElementById('welcome-screen').style.display = 'none';
+            document.getElementById('subject-selection').style.display = 'none';
+            document.getElementById('quiz-screen').style.display = 'none';
+            document.getElementById('results-screen').style.display = 'none';
+            document.getElementById('flashcards-screen').style.display = 'none';
+            document.getElementById('shooter-screen').style.display = 'none';
+            document.getElementById('modules-screen').style.display = 'none';
+            document.getElementById('module-detail-screen').style.display = 'block';
+
+            // Load first section
+            loadModuleSection();
+        }
+
+        function loadModuleSection() {
+            const content = currentModule.content;
+            
+            // Hide all sections first
+            document.getElementById('module-intro').style.display = 'none';
+            document.getElementById('module-main').style.display = 'none';
+            document.getElementById('module-interactive').style.display = 'none';
+            document.getElementById('module-quiz').style.display = 'none';
+
+            // Update controls
+            document.getElementById('prev-section').style.display = currentModuleSection > 0 ? 'inline-block' : 'none';
+            document.getElementById('next-section').style.display = currentModuleSection < 3 ? 'inline-block' : 'none';
+
+            switch (currentModuleSection) {
+                case 0: // Introduction
+                    document.getElementById('module-intro').innerHTML = `
+                        <h3>📚 Introduction</h3>
+                        <p>${content.introduction}</p>
+                    `;
+                    document.getElementById('module-intro').style.display = 'block';
+                    break;
+
+                case 1: // Main Content
+                    document.getElementById('module-main').innerHTML = `
+                        <h3>📖 Main Content</h3>
+                        <p>${content.mainContent}</p>
+                    `;
+                    document.getElementById('module-main').style.display = 'block';
+                    break;
+
+                case 2: // Interactive
+                    document.getElementById('module-interactive').innerHTML = `
+                        <h3>🎮 Interactive Learning</h3>
+                        <div id="interactive-content"></div>
+                    `;
+                    document.getElementById('module-interactive').style.display = 'block';
+                    renderInteractiveContent();
+                    break;
+
+                case 3: // Quiz
+                    document.getElementById('module-quiz').innerHTML = `
+                        <h3>🧠 Quick Quiz</h3>
+                        <p>${content.quiz.question}</p>
+                        <div class="module-quiz-options" id="module-quiz-options"></div>
+                        <div class="module-quiz-explanation" id="module-quiz-explanation"></div>
+                    `;
+                    document.getElementById('module-quiz').style.display = 'block';
+                    renderModuleQuiz();
+                    break;
+            }
+        }
+
+        function renderInteractiveContent() {
+            const interactiveContent = document.getElementById('interactive-content');
+            const interactive = currentModule.content.interactive;
+
+            switch (interactive.type) {
+                case 'animation':
+                    renderAnimation(interactiveContent, interactive.elements);
+                    break;
+                case 'planet-explorer':
+                    renderPlanetExplorer(interactiveContent, interactive.planets);
+                    break;
+                case 'fraction-visualizer':
+                    renderFractionVisualizer(interactiveContent, interactive.examples);
+                    break;
+                case 'shape-builder':
+                    renderShapeBuilder(interactiveContent, interactive.shapes);
+                    break;
+                case 'computer-builder':
+                    renderComputerBuilder(interactiveContent, interactive.components);
+                    break;
+                case 'machine-explorer':
+                    renderMachineExplorer(interactiveContent, interactive.machines);
+                    break;
+            }
+        }
+
+        function renderAnimation(container, elements) {
+            container.innerHTML = '<div class="interactive-animation"></div>';
+            const animationDiv = container.querySelector('.interactive-animation');
+
+            elements.forEach((element, index) => {
+                const elementDiv = document.createElement('div');
+                elementDiv.className = 'animation-element';
+                elementDiv.style.backgroundColor = element.color;
+                elementDiv.textContent = element.label;
+                elementDiv.title = element.label;
+
+                // Position elements
+                const positions = {
+                    'top': { top: '20%', left: '50%', transform: 'translateX(-50%)' },
+                    'center': { top: '50%', left: '50%', transform: 'translate(-50%, -50%)' },
+                    'left': { top: '50%', left: '20%', transform: 'translateY(-50%)' },
+                    'right': { top: '50%', right: '20%', transform: 'translateY(-50%)' }
+                };
+
+                Object.assign(elementDiv.style, positions[element.position] || positions.center);
+                elementDiv.style.animationDelay = `${index * 0.5}s`;
+
+                animationDiv.appendChild(elementDiv);
+            });
+        }
+
+        function renderPlanetExplorer(container, planets) {
+            container.innerHTML = '<div class="planet-explorer"></div>';
+            const explorerDiv = container.querySelector('.planet-explorer');
+
+            planets.forEach(planet => {
+                const planetCard = document.createElement('div');
+                planetCard.className = 'planet-card';
+                planetCard.innerHTML = `
+                    <div class="planet-visual" style="background-color: ${planet.color}">
+                        ${planet.name}
+                    </div>
+                    <h4>${planet.name}</h4>
+                    <div class="planet-facts">
+                        <ul>
+                            ${planet.facts.map(fact => `<li>${fact}</li>`).join('')}
+                        </ul>
+                    </div>
+                `;
+                explorerDiv.appendChild(planetCard);
+            });
+        }
+
+        function renderFractionVisualizer(container, examples) {
+            container.innerHTML = '<div class="fraction-visualizer"></div>';
+            const visualizerDiv = container.querySelector('.fraction-visualizer');
+
+            examples.forEach(example => {
+                const fractionExample = document.createElement('div');
+                fractionExample.className = 'fraction-example';
+                
+                const fractionVisual = document.createElement('div');
+                fractionVisual.className = 'fraction-visual';
+                
+                // Create fraction slices
+                const sliceAngle = 360 / example.denominator;
+                for (let i = 0; i < example.numerator; i++) {
+                    const slice = document.createElement('div');
+                    slice.className = 'fraction-slice';
+                    slice.style.transform = `rotate(${i * sliceAngle}deg)`;
+                    slice.style.width = '50%';
+                    slice.style.height = '50%';
+                    slice.style.left = '50%';
+                    slice.style.top = '0%';
+                    slice.style.transformOrigin = '0% 100%';
+                    slice.style.clipPath = `polygon(0% 100%, 100% 100%, 50% 0%)`;
+                    fractionVisual.appendChild(slice);
+                }
+
+                fractionExample.innerHTML = `
+                    <div class="fraction-text">${example.numerator}/${example.denominator}</div>
+                    <div class="fraction-description">${example.description}</div>
+                `;
+                fractionExample.insertBefore(fractionVisual, fractionExample.firstChild);
+                visualizerDiv.appendChild(fractionExample);
+            });
+        }
+
+        function renderShapeBuilder(container, shapes) {
+            container.innerHTML = '<div class="shape-builder"></div>';
+            const builderDiv = container.querySelector('.shape-builder');
+
+            shapes.forEach(shape => {
+                const shapeCard = document.createElement('div');
+                shapeCard.className = 'shape-card';
+                shapeCard.innerHTML = `
+                    <div class="shape-visual" style="background-color: ${shape.color}">
+                        ${shape.name}
+                    </div>
+                    <h4>${shape.name}</h4>
+                    <div class="shape-properties">
+                        <ul>
+                            ${shape.properties.map(prop => `<li>${prop}</li>`).join('')}
+                        </ul>
+                    </div>
+                `;
+                builderDiv.appendChild(shapeCard);
+            });
+        }
+
+        function renderComputerBuilder(container, components) {
+            container.innerHTML = '<div class="computer-builder"></div>';
+            const builderDiv = container.querySelector('.computer-builder');
+
+            components.forEach(component => {
+                const componentCard = document.createElement('div');
+                componentCard.className = 'component-card';
+                componentCard.innerHTML = `
+                    <div class="component-icon">${component.icon}</div>
+                    <div class="component-name">${component.name}</div>
+                    <div class="component-description">${component.description}</div>
+                    <div class="component-function">${component.function}</div>
+                `;
+                builderDiv.appendChild(componentCard);
+            });
+        }
+
+        function renderMachineExplorer(container, machines) {
+            container.innerHTML = '<div class="machine-explorer"></div>';
+            const explorerDiv = container.querySelector('.machine-explorer');
+
+            machines.forEach(machine => {
+                const machineCard = document.createElement('div');
+                machineCard.className = 'machine-card';
+                machineCard.innerHTML = `
+                    <div class="machine-icon">${machine.icon}</div>
+                    <div class="machine-name">${machine.name}</div>
+                    <div class="machine-example">Example: ${machine.example}</div>
+                    <div class="machine-advantage">${machine.advantage}</div>
+                `;
+                explorerDiv.appendChild(machineCard);
+            });
+        }
+
+        function renderModuleQuiz() {
+            const quiz = currentModule.content.quiz;
+            const optionsContainer = document.getElementById('module-quiz-options');
+            optionsContainer.innerHTML = '';
+
+            quiz.options.forEach((option, index) => {
+                const optionButton = document.createElement('button');
+                optionButton.className = 'module-quiz-option';
+                optionButton.textContent = option;
+                optionButton.addEventListener('click', () => selectModuleQuizAnswer(index, optionButton));
+                optionsContainer.appendChild(optionButton);
+            });
+        }
+
+        function selectModuleQuizAnswer(index, buttonElement) {
+            // Remove previous selection
+            document.querySelectorAll('.module-quiz-option').forEach(btn => {
+                btn.classList.remove('selected');
+            });
+
+            // Select current option
+            buttonElement.classList.add('selected');
+            moduleQuizAnswer = index;
+
+            // Show explanation after a short delay
+            setTimeout(() => {
+                showModuleQuizResult();
+            }, 1000);
+        }
+
+        function showModuleQuizResult() {
+            const quiz = currentModule.content.quiz;
+            const correctIndex = quiz.correct;
+
+            // Mark correct and incorrect answers
+            document.querySelectorAll('.module-quiz-option').forEach((btn, index) => {
+                if (index === correctIndex) {
+                    btn.classList.add('correct');
+                } else if (index === moduleQuizAnswer && moduleQuizAnswer !== correctIndex) {
+                    btn.classList.add('incorrect');
+                }
+            });
+
+            // Show explanation
+            const explanation = document.getElementById('module-quiz-explanation');
+            explanation.textContent = quiz.explanation;
+            explanation.classList.add('show');
+        }
+
+        function nextModuleSection() {
+            if (currentModuleSection < 3) {
+                currentModuleSection++;
+                loadModuleSection();
+            }
+        }
+
+        function prevModuleSection() {
+            if (currentModuleSection > 0) {
+                currentModuleSection--;
+                loadModuleSection();
+            }
+        }
+
+        function startModuleQuiz() {
+            currentModuleSection = 3;
+            loadModuleSection();
         }
 
         // Shooter Game
