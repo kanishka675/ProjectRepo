@@ -257,25 +257,39 @@ html, body {
 
 .subject-actions {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
   gap: 0.75rem;
 }
 
-.subject-btn, .flashcards-btn, .shooter-btn {
+.subject-actions:has(.shooter-btn) {
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.subject-btn, .flashcards-btn, .shooter-btn, .modules-btn {
   background: #edafb8;
   color: #2c3e50;
   border: none;
-  padding: 0.75rem 2rem;
+  padding: 0.75rem 1rem;
   border-radius: 8px;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
   width: 100%;
+  font-size: 0.9rem;
 }
 
-.subject-btn:hover, .flashcards-btn:hover, .shooter-btn:hover {
+.subject-btn:hover, .flashcards-btn:hover, .shooter-btn:hover, .modules-btn:hover {
   background: #d4a5a5;
   transform: translateY(-2px);
+}
+
+.modules-btn {
+  background: #2a9d8f;
+  color: white;
+}
+
+.modules-btn:hover {
+  background: #21867a;
 }
 
 /* Quiz Interface */
@@ -611,4 +625,565 @@ html, body {
 
 .logout {
   margin-left: 1rem;
+}
+
+/* Learning Modules Styles */
+.modules-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.module-card {
+  background: white;
+  border: 2px solid #e9ecef;
+  border-radius: 12px;
+  padding: 2rem;
+  text-align: center;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.module-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(42, 157, 143, 0.1), transparent);
+  transition: left 0.5s ease;
+}
+
+.module-card:hover::before {
+  left: 100%;
+}
+
+.module-card:hover {
+  border-color: #2a9d8f;
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(42, 157, 143, 0.2);
+}
+
+.module-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  display: block;
+}
+
+.module-card h3 {
+  color: #2c3e50;
+  margin-bottom: 1rem;
+  font-size: 1.4rem;
+}
+
+.module-card p {
+  color: #7f8c8d;
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+
+.module-progress {
+  background: #f8f9fa;
+  height: 6px;
+  border-radius: 3px;
+  overflow: hidden;
+  margin-bottom: 1rem;
+}
+
+.module-progress-fill {
+  background: linear-gradient(90deg, #2a9d8f, #21867a);
+  height: 100%;
+  width: 0%;
+  transition: width 0.3s ease;
+}
+
+.module-status {
+  display: inline-block;
+  padding: 0.3rem 0.8rem;
+  border-radius: 15px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.module-status.new {
+  background: #e3f2fd;
+  color: #1976d2;
+}
+
+.module-status.in-progress {
+  background: #fff3e0;
+  color: #f57c00;
+}
+
+.module-status.completed {
+  background: #e8f5e8;
+  color: #388e3c;
+}
+
+/* Module Detail Screen */
+.module-navigation {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.module-content {
+  margin: 2rem 0;
+}
+
+.module-intro, .module-main {
+  background: #f8f9fa;
+  padding: 2rem;
+  border-radius: 12px;
+  margin-bottom: 2rem;
+  border-left: 4px solid #2a9d8f;
+}
+
+.module-intro h3, .module-main h3 {
+  color: #2c3e50;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+}
+
+.module-intro p, .module-main p {
+  color: #5a6c7d;
+  line-height: 1.8;
+  font-size: 1.1rem;
+}
+
+.module-interactive {
+  background: white;
+  border: 2px solid #e9ecef;
+  border-radius: 12px;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  min-height: 400px;
+  position: relative;
+}
+
+/* Interactive Elements */
+.interactive-animation {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 300px;
+  position: relative;
+}
+
+.animation-element {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: bold;
+  font-size: 0.8rem;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  animation: float 3s ease-in-out infinite;
+}
+
+.animation-element:hover {
+  transform: scale(1.1);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.animation-element:nth-child(odd) {
+  animation-delay: -1.5s;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+/* Planet Explorer */
+.planet-explorer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  margin: 2rem 0;
+}
+
+.planet-card {
+  background: white;
+  border: 2px solid #e9ecef;
+  border-radius: 12px;
+  padding: 1.5rem;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 150px;
+}
+
+.planet-card:hover {
+  border-color: #2a9d8f;
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.planet-visual {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  margin: 0 auto 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+
+.planet-facts {
+  margin-top: 1rem;
+  text-align: left;
+}
+
+.planet-facts ul {
+  list-style: none;
+  padding: 0;
+}
+
+.planet-facts li {
+  padding: 0.3rem 0;
+  color: #5a6c7d;
+  font-size: 0.9rem;
+}
+
+.planet-facts li::before {
+  content: "• ";
+  color: #2a9d8f;
+  font-weight: bold;
+}
+
+/* Fraction Visualizer */
+.fraction-visualizer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+  margin: 2rem 0;
+}
+
+.fraction-example {
+  background: white;
+  border: 2px solid #e9ecef;
+  border-radius: 12px;
+  padding: 1.5rem;
+  text-align: center;
+  min-width: 200px;
+}
+
+.fraction-visual {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: #f8f9fa;
+  border: 3px solid #2a9d8f;
+  margin: 0 auto 1rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.fraction-slice {
+  position: absolute;
+  background: #2a9d8f;
+  transform-origin: center;
+}
+
+.fraction-text {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #2c3e50;
+  margin-bottom: 0.5rem;
+}
+
+.fraction-description {
+  color: #7f8c8d;
+  font-size: 0.9rem;
+}
+
+/* Shape Builder */
+.shape-builder {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: center;
+  margin: 2rem 0;
+}
+
+.shape-card {
+  background: white;
+  border: 2px solid #e9ecef;
+  border-radius: 12px;
+  padding: 1.5rem;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 180px;
+}
+
+.shape-card:hover {
+  border-color: #2a9d8f;
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.shape-visual {
+  width: 100px;
+  height: 100px;
+  margin: 0 auto 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.shape-properties {
+  margin-top: 1rem;
+  text-align: left;
+}
+
+.shape-properties ul {
+  list-style: none;
+  padding: 0;
+}
+
+.shape-properties li {
+  padding: 0.3rem 0;
+  color: #5a6c7d;
+  font-size: 0.9rem;
+}
+
+.shape-properties li::before {
+  content: "✓ ";
+  color: #2a9d8f;
+  font-weight: bold;
+}
+
+/* Computer Builder */
+.computer-builder {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+
+.component-card {
+  background: white;
+  border: 2px solid #e9ecef;
+  border-radius: 12px;
+  padding: 1.5rem;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.component-card:hover {
+  border-color: #2a9d8f;
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.component-icon {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  display: block;
+}
+
+.component-name {
+  font-weight: bold;
+  color: #2c3e50;
+  margin-bottom: 0.5rem;
+}
+
+.component-description {
+  color: #7f8c8d;
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+
+.component-function {
+  background: #f8f9fa;
+  padding: 0.5rem;
+  border-radius: 6px;
+  color: #5a6c7d;
+  font-size: 0.8rem;
+  font-style: italic;
+}
+
+/* Machine Explorer */
+.machine-explorer {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+
+.machine-card {
+  background: white;
+  border: 2px solid #e9ecef;
+  border-radius: 12px;
+  padding: 1.5rem;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.machine-card:hover {
+  border-color: #2a9d8f;
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.machine-icon {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  display: block;
+}
+
+.machine-name {
+  font-weight: bold;
+  color: #2c3e50;
+  margin-bottom: 0.5rem;
+}
+
+.machine-example {
+  color: #7f8c8d;
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+
+.machine-advantage {
+  background: #e8f5e8;
+  padding: 0.5rem;
+  border-radius: 6px;
+  color: #388e3c;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+/* Module Quiz */
+.module-quiz {
+  background: #f8f9fa;
+  padding: 2rem;
+  border-radius: 12px;
+  margin-bottom: 2rem;
+  border-left: 4px solid #2a9d8f;
+}
+
+.module-quiz h3 {
+  color: #2c3e50;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.module-quiz-options {
+  display: grid;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.module-quiz-option {
+  background: white;
+  border: 2px solid #e9ecef;
+  padding: 1rem 1.5rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: left;
+  font-size: 1rem;
+  color: #2c3e50;
+}
+
+.module-quiz-option:hover {
+  border-color: #2a9d8f;
+  background: #f7e1d7;
+  transform: translateY(-2px);
+}
+
+.module-quiz-option.selected {
+  border-color: #2a9d8f;
+  background: #2a9d8f;
+  color: white;
+  font-weight: 600;
+}
+
+.module-quiz-option.correct {
+  border-color: #28a745;
+  background: #d4edda;
+  color: #155724;
+}
+
+.module-quiz-option.incorrect {
+  border-color: #dc3545;
+  background: #f8d7da;
+  color: #721c24;
+}
+
+.module-quiz-explanation {
+  background: #e3f2fd;
+  padding: 1rem;
+  border-radius: 8px;
+  color: #1976d2;
+  font-weight: 600;
+  margin-top: 1rem;
+  display: none;
+}
+
+.module-quiz-explanation.show {
+  display: block;
+}
+
+/* Module Controls */
+.module-controls {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+}
+
+/* Responsive Design for Modules */
+@media (max-width: 768px) {
+  .modules-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .module-navigation {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .planet-explorer, .fraction-visualizer, .shape-builder {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .computer-builder, .machine-explorer {
+    grid-template-columns: 1fr;
+  }
+  
+  .module-controls {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .module-controls .quiz-btn {
+    width: 100%;
+    max-width: 300px;
+  }
 }
