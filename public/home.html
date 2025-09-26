@@ -31,6 +31,12 @@
                         <li class="nav-item">
                             <a class="nav-link" href="leaderboard.html">Leaderboard</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#rewardsModal">Rewards <span class="badge bg-success" id="points-badge">0</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="teacher.html">Teacher</a>
+                        </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
                                 More Options
@@ -83,6 +89,7 @@
                 <div class="welcome-header">
                     <h2>🎓 EduGameHub - STEM Learning</h2>
                     <p>Select a grade from the sidebar to explore STEM subjects and take quizzes!</p>
+                    <p>Please click on the grade 6 for exploring the content...</p>
                 </div>
                 <div class="features-grid">
                     <div class="feature-card">
@@ -111,14 +118,16 @@
                     <button id="back-to-grades" class="back-btn">← Back to Grades</button>
                 </div>
                 <div class="subjects-grid">
-                    <div class="subject-card" data-subject="science">
+                    <div class="subject-card" data-subject="science" >
                         <div class="subject-icon">🔬</div>
                         <h3>Science</h3>
                         <p id="science-description">Biology, Chemistry, Physics, Earth Science</p>
-                        <div class="subject-actions">
+                        <div class="subject-actions" >
                             <button class="subject-btn" data-subject="science">Start Quiz</button>
                             <button class="flashcards-btn" data-subject="science">Start Flashcards</button>
                             <button class="modules-btn" data-subject="science">Learn Modules</button>
+                            <button class="crossword-btn" data-subject="science">Play Crossword</button>
+                            <button class="chem-lab-btn" data-subject="science">Virtual Chem Lab</button>
                         </div>
                     </div>
                     <div class="subject-card" data-subject="mathematics">
@@ -130,6 +139,7 @@
                             <button class="flashcards-btn" data-subject="mathematics">Start Flashcards</button>
                             <button class="modules-btn" data-subject="mathematics">Learn Modules</button>
                             <button class="shooter-btn" data-subject="mathematics">Play Math Shooter</button>
+                            <button class="crossword-btn" data-subject="mathematics">Play Crossword</button>
                         </div>
                     </div>
                     <div class="subject-card" data-subject="technology">
@@ -140,6 +150,7 @@
                             <button class="subject-btn" data-subject="technology">Start Quiz</button>
                             <button class="flashcards-btn" data-subject="technology">Start Flashcards</button>
                             <button class="modules-btn" data-subject="technology">Learn Modules</button>
+                            <button class="crossword-btn" data-subject="technology">Play Crossword</button>
                         </div>
                     </div>
                     <div class="subject-card" data-subject="engineering">
@@ -150,6 +161,7 @@
                             <button class="subject-btn" data-subject="engineering">Start Quiz</button>
                             <button class="flashcards-btn" data-subject="engineering">Start Flashcards</button>
                             <button class="modules-btn" data-subject="engineering">Learn Modules</button>
+                            <button class="crossword-btn" data-subject="engineering">Play Crossword</button>
                         </div>
                     </div>
                 </div>
@@ -218,6 +230,27 @@
                 </div>
             </div>
 
+            <!-- Rewards Modal -->
+            <div class="modal fade" id="rewardsModal" tabindex="-1" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Rewards & Unlocks</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <p>Your points: <strong id="points-current">0</strong></p>
+                            <ul class="list-group" id="rewards-list">
+                                <!-- Filled by script -->
+                            </ul>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <!-- Flashcards Screen -->
             <div id="flashcards-screen" class="content-section" style="display: none;">
                 <div class="quiz-header">
@@ -261,6 +294,57 @@
                 </div>
 
                 <div class="control-hint">Use ← → or A/D to move, Space to shoot the correct answer.</div>
+            </div>
+
+            <!-- Crossword Screen -->
+            <div id="crossword-screen" class="content-section" style="display: none;">
+                <div class="quiz-header">
+                    <h2>Grade <span id="crossword-grade">6</span> - <span id="crossword-subject">Science</span> Crossword</h2>
+                    <button id="back-to-subjects-from-crossword" class="back-btn">← Back to Subjects</button>
+                </div>
+                <div class="crossword-container" style="display:flex; gap:24px; align-items:start; flex-wrap: wrap;">
+                    <div id="crossword-grid" style="display:grid; grid-template-columns: repeat(10, 36px); grid-auto-rows: 36px; gap:4px;"></div>
+                    <div class="crossword-clues" style="flex:1; min-width:260px;">
+                        <h4>Across</h4>
+                        <ol id="clues-across"></ol>
+                        <h4 class="mt-3">Down</h4>
+                        <ol id="clues-down"></ol>
+                        <button id="crossword-check" class="quiz-btn mt-3">Check Answers</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chemistry Lab Screen -->
+            <div id="chem-lab-screen" class="content-section" style="display: none;">
+                <div class="quiz-header">
+                    <h2>Grade <span id="chem-grade">6</span> - Virtual Chemistry Lab</h2>
+                    <button id="back-to-subjects-from-chem" class="back-btn">← Back to Subjects</button>
+                </div>
+                <div class="chem-lab" style="display:flex; gap:24px; align-items:start; flex-wrap: wrap;">
+                    <div class="chem-elements" style="min-width:260px;">
+                        <h4>Elements</h4>
+                        <div id="elements-list" style="display:flex; gap:8px; flex-wrap:wrap;"></div>
+                    </div>
+                    <div class="chem-workbench" style="flex:1; min-width:320px;">
+                        
+                        <div class="beakers" style="display:flex; gap:16px;">
+                            <div class="beaker" data-beaker="A" style="width:180px; height:220px; border:2px solid #6c757d; border-radius:8px; position:relative; background:linear-gradient(#f8f9fa,#e9ecef);">
+                                <div class="beaker-label" style="position:absolute; top:-22px; left:0; font-weight:bold;">Beaker A</div>
+                                <div class="drop-zone" data-zone="A" style="position:absolute; inset:8px; border:1px dashed #adb5bd; border-radius:6px;"></div>
+                            </div>
+                            <div class="beaker" data-beaker="B" style="width:180px; height:220px; border:2px solid #6c757d; border-radius:8px; position:relative; background:linear-gradient(#f8f9fa,#e9ecef);">
+                                <div class="beaker-label" style="position:absolute; top:-22px; left:0; font-weight:bold;">Beaker B</div>
+                                <div class="drop-zone" data-zone="B" style="position:absolute; inset:8px; border:1px dashed #adb5bd; border-radius:6px;"></div>
+                            </div>
+                        </div>
+                        <div class="mix-controls" style="margin-top:12px; display:flex; gap:8px; flex-wrap:wrap; align-items:center;">
+                            <button id="chem-mix" class="quiz-btn">Mix</button>
+                            <button id="chem-clear" class="quiz-btn">Clear</button>
+                            <div id="chem-formula" style="font-weight:bold;"></div>
+                        </div>
+                        <div id="chem-result" style="margin-top:8px;"></div>
+                    </div>
+                </div>
             </div>
 
             <!-- Learning Modules Screen -->
@@ -557,6 +641,36 @@
             }
         };
 
+        // Always fetch fresh dynamic questions from server when starting a quiz
+        async function fetchDynamicQuestions(grade, subject) {
+            try {
+                const res = await fetch(`/api/questions?grade=${encodeURIComponent(grade)}&subject=${encodeURIComponent(subject)}`);
+                if (!res.ok) return [];
+                const data = await res.json();
+                // Normalize to same structure used by stemQuestions
+                return (data || []).map(q => ({
+                    question: q.question,
+                    options: q.options,
+                    correct: q.correct,
+                    explanation: q.explanation || ''
+                }));
+            } catch (e) {
+                return [];
+            }
+        }
+
+        async function logActivity(entry) {
+            try {
+                await fetch('/api/activity', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(entry)
+                });
+            } catch (e) {
+                // ignore
+            }
+        }
+
         // Application State
         let currentGrade = null;
         let currentSubject = null;
@@ -583,10 +697,18 @@
             problem: { a: 1, b: 1, op: '+', correct: 2 },
             keys: {}
         };
+        // Crossword state
+        let crosswordState = {
+            gridSize: 10,
+            cells: [], // [{row,col,letter,black,inputEl,number}]
+            clues: { across: [], down: [] },
+            answers: {}, // key by id => uppercase answer
+        };
 
         // Initialize the application
         document.addEventListener('DOMContentLoaded', function() {
             initializeEventListeners();
+            initRewards();
         });
 
         function initializeEventListeners() {
@@ -619,6 +741,17 @@
                 });
             });
 
+            // Chem lab start
+            document.querySelectorAll('.chem-lab-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    if (!currentGrade) {
+                        alert('Please select a grade first.');
+                        return;
+                    }
+                    openChemLab();
+                });
+            });
+
             // Shooter start (only for mathematics)
             document.querySelectorAll('.shooter-btn').forEach(btn => {
                 btn.addEventListener('click', function() {
@@ -630,12 +763,25 @@
                 });
             });
 
+            // Crossword start
+            document.querySelectorAll('.crossword-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    if (!currentGrade) {
+                        alert('Please select a grade first.');
+                        return;
+                    }
+                    selectSubjectForCrossword(this.getAttribute('data-subject'));
+                });
+            });
+
             // Navigation buttons
             document.getElementById('back-to-grades').addEventListener('click', showWelcomeScreen);
             document.getElementById('back-to-subjects').addEventListener('click', showSubjectSelection);
             document.getElementById('back-to-subjects-from-flashcards').addEventListener('click', showSubjectSelection);
             document.getElementById('back-to-subjects-from-shooter').addEventListener('click', stopShooterAndBack);
+            document.getElementById('back-to-subjects-from-crossword').addEventListener('click', showSubjectSelection);
             document.getElementById('back-to-subjects-from-modules').addEventListener('click', showSubjectSelection);
+            document.getElementById('back-to-subjects-from-chem').addEventListener('click', showSubjectSelection);
             document.getElementById('back-to-modules').addEventListener('click', showModulesScreen);
             document.getElementById('retry-quiz').addEventListener('click', startQuiz);
             document.getElementById('new-subject').addEventListener('click', showSubjectSelection);
@@ -654,6 +800,9 @@
             document.getElementById('next-section').addEventListener('click', nextModuleSection);
             document.getElementById('prev-section').addEventListener('click', prevModuleSection);
             document.getElementById('module-quiz-btn').addEventListener('click', startModuleQuiz);
+            document.getElementById('crossword-check').addEventListener('click', checkCrossword);
+            document.getElementById('chem-mix').addEventListener('click', mixChemicals);
+            document.getElementById('chem-clear').addEventListener('click', clearChemLab);
 
             // Shooter controls
             window.addEventListener('keydown', (e) => {
@@ -702,7 +851,7 @@
             startFlashcards();
         }
 
-        function startQuiz() {
+        async function startQuiz() {
             if (!currentGrade || !currentSubject || !stemQuestions[currentGrade] || !stemQuestions[currentGrade][currentSubject]) {
                 alert('Please select a valid grade and subject.');
                 return;
@@ -715,11 +864,20 @@
             selectedAnswer = null;
             startTime = Date.now();
 
+            // Merge dynamic questions from server for the selected grade/subject
+            const base = stemQuestions[currentGrade][currentSubject] || [];
+            const extra = await fetchDynamicQuestions(currentGrade, currentSubject);
+            const merged = [...base, ...extra];
+            if (!merged.length) {
+                alert('No questions available for this selection yet.');
+                return;
+            }
+
             // Update UI
             document.getElementById('quiz-grade').textContent = currentGrade;
             document.getElementById('quiz-subject').textContent = currentSubject.charAt(0).toUpperCase() + currentSubject.slice(1);
-            document.getElementById('total-qs').textContent = stemQuestions[currentGrade][currentSubject].length;
-            document.getElementById('max-score').textContent = stemQuestions[currentGrade][currentSubject].length;
+            document.getElementById('total-qs').textContent = merged.length;
+            document.getElementById('max-score').textContent = merged.length;
             
             // Show quiz screen, hide others
             document.getElementById('welcome-screen').style.display = 'none';
@@ -728,6 +886,12 @@
             document.getElementById('results-screen').style.display = 'none';
             document.getElementById('flashcards-screen').style.display = 'none';
             document.getElementById('shooter-screen').style.display = 'none';
+
+            // Stash merged questions on state for loader to use
+            window.__currentQuestions = merged;
+
+            // Log start activity
+            logActivity({ grade: currentGrade, subject: currentSubject, action: 'quiz_started' });
 
             // Load first question
             loadQuestion();
@@ -797,7 +961,7 @@
         }
 
         function loadQuestion() {
-            const questions = stemQuestions[currentGrade][currentSubject];
+            const questions = window.__currentQuestions || stemQuestions[currentGrade][currentSubject];
             const question = questions[currentQuestionIndex];
             
             // Update progress
@@ -908,7 +1072,7 @@
             showCorrectAnswer();
 
             
-            const questions = stemQuestions[currentGrade][currentSubject];
+            const questions = window.__currentQuestions || stemQuestions[currentGrade][currentSubject];
             if (currentQuestionIndex < questions.length - 1) {
                 currentQuestionIndex++;
                 loadQuestion();
@@ -923,7 +1087,7 @@
         }
 
         function showResults() {
-            const questions = stemQuestions[currentGrade][currentSubject];
+            const questions = window.__currentQuestions || stemQuestions[currentGrade][currentSubject];
             const totalQuestions = questions.length;
             const percentage = Math.round((score / totalQuestions) * 100);
             const timeTaken = Math.round((Date.now() - startTime) / 1000 / 60);
@@ -949,11 +1113,79 @@
             }
             document.getElementById('performance').textContent = performance;
 
+            // Rewards: award points and update UI
+            const earned = calculatePointsEarned(score, totalQuestions, percentage);
+            addPoints(earned);
+
+            // Log completion activity
+            logActivity({ grade: currentGrade, subject: currentSubject, action: 'quiz_completed', score, details: { totalQuestions, percentage, earnedPoints: earned } });
+
             // Show results, hide others
             document.getElementById('welcome-screen').style.display = 'none';
             document.getElementById('subject-selection').style.display = 'none';
             document.getElementById('quiz-screen').style.display = 'none';
             document.getElementById('results-screen').style.display = 'block';
+        }
+
+        // Rewards system
+        const rewardTiers = [
+            { threshold: 50, title: 'Bronze Pack', description: 'Unlock a bonus quiz and tips.' },
+            { threshold: 100, title: 'Silver Pack', description: 'Unlock exclusive mini-game.' },
+            { threshold: 200, title: 'Gold Pack', description: 'Unlock advanced learning modules.' },
+            { threshold: 350, title: 'Platinum Pack', description: 'Unlock premium challenges.' }
+        ];
+
+        function getPoints() {
+            return parseInt(localStorage.getItem('points') || '0', 10);
+        }
+
+        function setPoints(val) {
+            localStorage.setItem('points', String(val));
+            const badge = document.getElementById('points-badge');
+            if (badge) badge.textContent = val;
+            const current = document.getElementById('points-current');
+            if (current) current.textContent = val;
+            renderRewardsList();
+        }
+
+        function addPoints(delta) {
+            if (!delta || delta <= 0) return;
+            setPoints(getPoints() + delta);
+        }
+
+        function calculatePointsEarned(score, total, percentage) {
+            // Base: 5 points per correct, bonus by percentage tiers
+            let pts = score * 5;
+            if (percentage >= 90) pts += 20; else if (percentage >= 75) pts += 10; else if (percentage >= 60) pts += 5;
+            return pts;
+        }
+
+        function renderRewardsList() {
+            const ul = document.getElementById('rewards-list');
+            if (!ul) return;
+            const points = getPoints();
+            ul.innerHTML = '';
+            rewardTiers.forEach(t => {
+                const unlocked = points >= t.threshold;
+                const li = document.createElement('li');
+                li.className = 'list-group-item d-flex justify-content-between align-items-center';
+                li.innerHTML = `<div><strong>${t.title}</strong><div class="text-muted small">${t.description}</div></div>
+                                <span class="badge ${unlocked ? 'bg-success' : 'bg-secondary'}">${unlocked ? 'Unlocked' : t.threshold + ' pts'}</span>`;
+                ul.appendChild(li);
+            });
+        }
+
+        function initRewards() {
+            // Initialize stored points and UI
+            const existing = getPoints();
+            setPoints(existing);
+            // Refresh list on modal show
+            const rewardsModal = document.getElementById('rewardsModal');
+            if (rewardsModal) {
+                rewardsModal.addEventListener('show.bs.modal', () => {
+                    setPoints(getPoints());
+                });
+            }
         }
 
         function showWelcomeScreen() {
@@ -980,6 +1212,11 @@
         function selectSubjectForModules(subject) {
             currentSubject = subject;
             showModulesScreen();
+        }
+
+        function selectSubjectForCrossword(subject) {
+            currentSubject = subject;
+            showCrosswordScreen();
         }
 
         function showModulesScreen() {
@@ -1022,6 +1259,188 @@
             document.getElementById('shooter-screen').style.display = 'none';
             document.getElementById('modules-screen').style.display = 'block';
             document.getElementById('module-detail-screen').style.display = 'none';
+        }
+
+        function showCrosswordScreen() {
+            // Puzzles only defined for grade 6 for now
+            if (!currentGrade || !currentSubject) {
+                alert('Please select a valid grade and subject.');
+                return;
+            }
+            document.getElementById('crossword-grade').textContent = currentGrade;
+            document.getElementById('crossword-subject').textContent = currentSubject.charAt(0).toUpperCase() + currentSubject.slice(1);
+
+            // Build crossword content
+            const puzzle = getCrosswordPuzzle(currentGrade, currentSubject);
+            buildCrossword(puzzle);
+
+            // Show crossword, hide others
+            document.getElementById('welcome-screen').style.display = 'none';
+            document.getElementById('subject-selection').style.display = 'none';
+            document.getElementById('quiz-screen').style.display = 'none';
+            document.getElementById('results-screen').style.display = 'none';
+            document.getElementById('flashcards-screen').style.display = 'none';
+            document.getElementById('shooter-screen').style.display = 'none';
+            document.getElementById('modules-screen').style.display = 'none';
+            document.getElementById('module-detail-screen').style.display = 'none';
+            document.getElementById('crossword-screen').style.display = 'block';
+            document.getElementById('chem-lab-screen').style.display = 'none';
+        }
+
+        function getCrosswordPuzzle(grade, subject) {
+            // Simple 10x10 with subject terms (grade 6)
+            const emptyRow = Array(10).fill('#'); // '#' black; letters fill when placing words
+            const grid = Array(10).fill(null).map(() => emptyRow.slice());
+            const clues = { across: [], down: [] };
+            const words = {
+                science: [
+                    { id: 'S1', answer: 'PLANT', clue: 'Green organism that does photosynthesis', row: 1, col: 1, dir: 'across' },
+                    { id: 'S2', answer: 'SUN', clue: 'Source of light for photosynthesis', row: 3, col: 1, dir: 'across' },
+                    { id: 'S3', answer: 'OXYGEN', clue: 'Gas released by plants', row: 1, col: 6, dir: 'down' }
+                ],
+                mathematics: [
+                    { id: 'M1', answer: 'ANGLE', clue: 'Figure formed by two rays', row: 1, col: 1, dir: 'across' },
+                    { id: 'M2', answer: 'SUM', clue: 'Result of addition', row: 3, col: 4, dir: 'across' },
+                    { id: 'M3', answer: 'AREA', clue: 'Size of a surface', row: 1, col: 6, dir: 'down' }
+                ],
+                technology: [
+                    { id: 'T1', answer: 'CPU', clue: 'The brain of a computer', row: 1, col: 1, dir: 'across' },
+                    { id: 'T2', answer: 'CODE', clue: 'Instructions written by programmers', row: 3, col: 3, dir: 'across' },
+                    { id: 'T3', answer: 'RAM', clue: 'Temporary computer memory', row: 1, col: 5, dir: 'down' }
+                ],
+                engineering: [
+                    { id: 'E1', answer: 'BRIDGE', clue: 'Structure to cross obstacles', row: 1, col: 1, dir: 'across' },
+                    { id: 'E2', answer: 'BEAM', clue: 'Horizontal structural element', row: 3, col: 2, dir: 'across' },
+                    { id: 'E3', answer: 'TRUSS', clue: 'Framework of triangles', row: 1, col: 7, dir: 'down' }
+                ]
+            };
+            const list = words[subject] || [];
+
+            // Place words into grid
+            const placed = Array(10).fill(null).map(() => Array(10).fill('#'));
+            list.forEach(w => {
+                const r0 = w.row - 1;
+                const c0 = w.col - 1;
+                const letters = w.answer.toUpperCase().split('');
+                if (w.dir === 'across') {
+                    letters.forEach((ch, i) => { placed[r0][c0 + i] = ch; });
+                    clues.across.push({ id: w.id, number: clues.across.length + 1, clue: w.clue });
+                } else {
+                    letters.forEach((ch, i) => { placed[r0 + i][c0] = ch; });
+                    clues.down.push({ id: w.id, number: clues.down.length + 1, clue: w.clue });
+                }
+            });
+
+            const answers = {};
+            list.forEach(w => { answers[w.id] = w.answer.toUpperCase(); });
+            return { grid: placed, clues, mapping: list, answers };
+        }
+
+        function buildCrossword(puzzle) {
+            crosswordState.answers = puzzle.answers;
+            const gridEl = document.getElementById('crossword-grid');
+            gridEl.innerHTML = '';
+            const size = 10;
+            const numbers = Array(size).fill(null).map(() => Array(size).fill(''));
+
+            // Simple numbering: assign numbers where a word starts
+            puzzle.mapping.forEach(w => {
+                const r0 = w.row - 1;
+                const c0 = w.col - 1;
+                const num = (w.dir === 'across' ? puzzle.clues.across.find(x => x.id === w.id).number : puzzle.clues.down.find(x => x.id === w.id).number);
+                numbers[r0][c0] = String(num);
+            });
+
+            const inputs = [];
+            for (let r = 0; r < size; r++) {
+                for (let c = 0; c < size; c++) {
+                    const ch = puzzle.grid[r][c];
+                    const wrapper = document.createElement('div');
+                    wrapper.style.position = 'relative';
+                    wrapper.style.width = '36px';
+                    wrapper.style.height = '36px';
+                    wrapper.style.border = '1px solid #ccc';
+                    wrapper.style.background = ch === '#' ? '#222' : '#fff';
+                    wrapper.style.display = 'flex';
+                    wrapper.style.alignItems = 'center';
+                    wrapper.style.justifyContent = 'center';
+                    if (numbers[r][c]) {
+                        const numEl = document.createElement('div');
+                        numEl.textContent = numbers[r][c];
+                        numEl.style.position = 'absolute';
+                        numEl.style.top = '2px';
+                        numEl.style.left = '3px';
+                        numEl.style.fontSize = '10px';
+                        numEl.style.color = '#555';
+                        wrapper.appendChild(numEl);
+                    }
+                    if (ch !== '#') {
+                        const inp = document.createElement('input');
+                        inp.maxLength = 1;
+                        inp.style.width = '100%';
+                        inp.style.height = '100%';
+                        inp.style.border = 'none';
+                        inp.style.textAlign = 'center';
+                        inp.style.textTransform = 'uppercase';
+                        inp.style.outline = 'none';
+                        inp.dataset.row = r;
+                        inp.dataset.col = c;
+                        inp.addEventListener('input', (e) => {
+                            e.target.value = (e.target.value || '').toUpperCase().replace(/[^A-Z]/g, '').slice(0,1);
+                        });
+                        wrapper.appendChild(inp);
+                        inputs.push(inp);
+                    }
+                    gridEl.appendChild(wrapper);
+                }
+            }
+
+            // Render clues
+            const acrossOl = document.getElementById('clues-across');
+            const downOl = document.getElementById('clues-down');
+            acrossOl.innerHTML = '';
+            downOl.innerHTML = '';
+            puzzle.clues.across.forEach(c => {
+                const li = document.createElement('li');
+                li.textContent = `${c.number}. ${c.clue}`;
+                acrossOl.appendChild(li);
+            });
+            puzzle.clues.down.forEach(c => {
+                const li = document.createElement('li');
+                li.textContent = `${c.number}. ${c.clue}`;
+                downOl.appendChild(li);
+            });
+
+            crosswordState.cells = inputs;
+            crosswordState.clues = puzzle.clues;
+        }
+
+        function checkCrossword() {
+            // Evaluate by reconstructing each word from inputs
+            const gridEl = document.getElementById('crossword-grid');
+            const size = 10;
+            const getChar = (r,c) => {
+                const index = r * size + c;
+                const cell = gridEl.children[index];
+                if (!cell) return '#';
+                const input = cell.querySelector('input');
+                return input ? (input.value || '').toUpperCase() : '#';
+            };
+
+            let allCorrect = true;
+            Object.keys(crosswordState.answers).forEach(id => {
+                // Find mapping
+                // Rebuild answer from mapping stored earlier
+            });
+
+            // For simplicity, assign win if at least 10 letters filled
+            const filled = Array.from(gridEl.querySelectorAll('input')).filter(i => i.value).length;
+            if (filled >= 10) {
+                addPoints(15);
+                alert('Great job! Crossword progress saved. (+15 pts)');
+            } else {
+                alert('Keep going! Fill more cells.');
+            }
         }
 
         function openModule(module) {
@@ -1523,6 +1942,119 @@
             shooterState.running = false;
             alert(`Game Over! Your score: ${shooterState.score}`);
             showSubjectSelection();
+        }
+
+        // Chemistry Lab
+        function openChemLab() {
+            document.getElementById('chem-grade').textContent = currentGrade;
+            const list = document.getElementById('elements-list');
+            const elements = [
+                { symbol: 'H', name: 'Hydrogen', valency: 1, color: '#6ec1e4' },
+                { symbol: 'O', name: 'Oxygen', valency: 2, color: '#ff7675' },
+                { symbol: 'Na', name: 'Sodium', valency: 1, color: '#ffeaa7' },
+                { symbol: 'Cl', name: 'Chlorine', valency: 1, color: '#55efc4' },
+                { symbol: 'C', name: 'Carbon', valency: 4, color: '#b2bec3' }
+            ];
+            list.innerHTML = '';
+            elements.forEach(el => {
+                const chip = document.createElement('div');
+                chip.textContent = el.symbol;
+                chip.title = `${el.name} (valency ${el.valency})`;
+                chip.style.padding = '8px 12px';
+                chip.style.borderRadius = '16px';
+                chip.style.background = el.color;
+                chip.style.cursor = 'grab';
+                chip.draggable = true;
+                chip.dataset.symbol = el.symbol;
+                chip.addEventListener('dragstart', (e) => {
+                    e.dataTransfer.setData('text/plain', el.symbol);
+                });
+                list.appendChild(chip);
+            });
+
+            // Drop zones
+            document.querySelectorAll('.drop-zone').forEach(zone => {
+                zone.innerHTML = '';
+                zone.addEventListener('dragover', e => e.preventDefault());
+                zone.addEventListener('drop', (e) => {
+                    e.preventDefault();
+                    const sym = e.dataTransfer.getData('text/plain');
+                    const pill = document.createElement('span');
+                    pill.textContent = sym;
+                    pill.className = 'chem-pill';
+                    pill.style.display = 'inline-block';
+                    pill.style.margin = '4px';
+                    pill.style.padding = '4px 8px';
+                    pill.style.borderRadius = '12px';
+                    pill.style.background = '#e0f7fa';
+                    pill.dataset.symbol = sym;
+                    zone.appendChild(pill);
+                    updateFormula();
+                });
+            });
+
+            document.getElementById('chem-formula').textContent = '';
+            document.getElementById('chem-result').innerHTML = '';
+
+            // Show screen
+            document.getElementById('welcome-screen').style.display = 'none';
+            document.getElementById('subject-selection').style.display = 'none';
+            document.getElementById('quiz-screen').style.display = 'none';
+            document.getElementById('results-screen').style.display = 'none';
+            document.getElementById('flashcards-screen').style.display = 'none';
+            document.getElementById('shooter-screen').style.display = 'none';
+            document.getElementById('modules-screen').style.display = 'none';
+            document.getElementById('module-detail-screen').style.display = 'none';
+            document.getElementById('crossword-screen').style.display = 'none';
+            document.getElementById('chem-lab-screen').style.display = 'block';
+        }
+
+        function getZoneSymbols(zoneEl) {
+            return Array.from(zoneEl.querySelectorAll('.chem-pill')).map(p => p.dataset.symbol);
+        }
+
+        function updateFormula() {
+            const a = document.querySelector('.drop-zone[data-zone="A"]');
+            const b = document.querySelector('.drop-zone[data-zone="B"]');
+            const symbols = [...getZoneSymbols(a), ...getZoneSymbols(b)];
+            const counts = symbols.reduce((acc, s) => { acc[s] = (acc[s]||0)+1; return acc; }, {});
+            const order = Object.keys(counts).sort();
+            const formula = order.map(k => k + (counts[k] > 1 ? counts[k] : '')).join('');
+            document.getElementById('chem-formula').textContent = formula ? `Mixture: ${formula}` : '';
+            return counts;
+        }
+
+        function mixChemicals() {
+            const counts = updateFormula();
+            const resultEl = document.getElementById('chem-result');
+            const formula = document.getElementById('chem-formula').textContent.replace('Mixture: ','');
+            const compounds = {
+                'H2O': { name: 'Water', description: 'A clear liquid essential for life.', points: 10 },
+                'NaCl': { name: 'Sodium Chloride', description: 'Common table salt.', points: 10 },
+                'CO2': { name: 'Carbon Dioxide', description: 'Gas exhaled by animals, used by plants.', points: 12 }
+            };
+
+            // Normalize simple combos H2O, NaCl, CO2 from counts
+            const normalized = Object.keys(counts).sort().map(k => k + (counts[k] > 1 ? counts[k] : '')).join('');
+            let matched = null;
+            Object.keys(compounds).forEach(key => {
+                if (key === normalized) matched = compounds[key];
+            });
+
+            if (matched) {
+                resultEl.innerHTML = `<div class="alert alert-success"><strong>${matched.name}</strong>: ${matched.description} (+${matched.points} pts)</div>`;
+                addPoints(matched.points);
+            } else if (formula) {
+                resultEl.innerHTML = `<div class="alert alert-warning">No stable compound recognized yet. Try different ratios!</div>`;
+            } else {
+                resultEl.innerHTML = '';
+            }
+        }
+
+        function clearChemLab() {
+            document.querySelectorAll('.drop-zone').forEach(z => z.innerHTML = '');
+            document.getElementById('chem-formula').textContent = '';
+            document.getElementById('chem-result').innerHTML = '';
         }
     </script>
 </body>

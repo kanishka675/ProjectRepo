@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teacher Dashboard - EduGameHub</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="home.css">
+    <style>
+        .container-max { max-width: 1000px; }
+        .card + .card { margin-top: 1rem; }
+        .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; }
+        .table-wrap { overflow-x: auto; }
+    </style>
+    </head>
+<body>
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+            <a class="navbar-brand fw-bold" href="home.html">🎓 EduGameHub</a>
+            <div class="collapse navbar-collapse">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link" href="home.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="leaderboard.html">Leaderboard</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="#">Teacher</a></li>
+                </ul>
+                <form action="login.html" class="d-flex">
+                    <button class="logout btn">Logout</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container container-max mt-4">
+        <div class="card">
+            <div class="card-header fw-bold">Add Quiz Question</div>
+            <div class="card-body">
+                <form id="question-form">
+                    <div class="row g-3">
+                        <div class="col-12 col-md-3">
+                            <label class="form-label">Grade</label>
+                            <input type="number" min="1" max="12" class="form-control" id="grade" required>
+                        </div>
+                        <div class="col-12 col-md-4">
+                            <label class="form-label">Subject</label>
+                            <select class="form-select" id="subject" required>
+                                <option value="">Select subject</option>
+                                <option value="science">Science</option>
+                                <option value="mathematics">Mathematics</option>
+                                <option value="technology">Technology</option>
+                                <option value="engineering">Engineering</option>
+                            </select>
+                        </div>
+                        <div class="col-12">
+                            <label class="form-label">Question</label>
+                            <textarea class="form-control" id="question" rows="2" required></textarea>
+                        </div>
+                        <div class="col-12">
+                            <label class="form-label">Options</label>
+                            <div id="options-wrapper">
+                                <div class="input-group mb-2">
+                                    <span class="input-group-text">A</span>
+                                    <input type="text" class="form-control option-input" required>
+                                </div>
+                                <div class="input-group mb-2">
+                                    <span class="input-group-text">B</span>
+                                    <input type="text" class="form-control option-input" required>
+                                </div>
+                            </div>
+                            <button type="button" class="btn btn-sm btn-outline-primary" id="add-option">Add Option</button>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <label class="form-label">Correct Option Index (0-based)</label>
+                            <input type="number" id="correct" min="0" class="form-control" required>
+                        </div>
+                    </div>
+                    <div class="mt-3">
+                        <button class="btn btn-success" type="submit">Save Question</button>
+                        <span id="save-status" class="ms-2"></span>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header fw-bold">Recent Student Activity</div>
+            <div class="card-body">
+                <div class="row g-3 align-items-end">
+                    <div class="col-12 col-md-3">
+                        <label class="form-label">Student Email</label>
+                        <input type="email" id="filter-student" class="form-control" placeholder="student@example.com">
+                    </div>
+                    <div class="col-12 col-md-3">
+                        <label class="form-label">Grade</label>
+                        <input type="number" min="1" max="12" id="filter-grade" class="form-control">
+                    </div>
+                    <div class="col-12 col-md-3">
+                        <label class="form-label">Subject</label>
+                        <select class="form-select" id="filter-subject">
+                            <option value="">Any</option>
+                            <option value="science">Science</option>
+                            <option value="mathematics">Mathematics</option>
+                            <option value="technology">Technology</option>
+                            <option value="engineering">Engineering</option>
+                        </select>
+                    </div>
+                    <div class="col-12 col-md-3">
+                        <button class="btn btn-primary w-100" id="apply-filters">Apply Filters</button>
+                    </div>
+                </div>
+                <div class="table-wrap mt-3">
+                    <table class="table table-striped table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Time</th>
+                                <th>Student</th>
+                                <th>Grade</th>
+                                <th>Subject</th>
+                                <th>Action</th>
+                                <th>Score</th>
+                                <th>Details</th>
+                            </tr>
+                        </thead>
+                        <tbody id="activity-body"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const optionsWrapper = document.getElementById('options-wrapper');
+        const addOptionBtn = document.getElementById('add-option');
+        addOptionBtn.addEventListener('click', () => {
+            const label = String.fromCharCode(65 + optionsWrapper.querySelectorAll('.option-input').length);
+            const group = document.createElement('div');
+            group.className = 'input-group mb-2';
+            group.innerHTML = `<span class="input-group-text">${label}</span><input type="text" class="form-control option-input" required>`;
+            optionsWrapper.appendChild(group);
+        });
+
+        document.getElementById('question-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const grade = document.getElementById('grade').value;
+            const subject = document.getElementById('subject').value;
+            const question = document.getElementById('question').value;
+            const correct = Number(document.getElementById('correct').value);
+            const options = Array.from(document.querySelectorAll('.option-input')).map(i => i.value).filter(Boolean);
+
+            const res = await fetch('/api/questions', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ grade, subject, question, options, correct })
+            });
+            const msg = document.getElementById('save-status');
+            if (res.ok) {
+                msg.textContent = 'Saved!';
+                msg.className = 'text-success';
+                (e.target).reset();
+            } else {
+                const err = await res.json().catch(() => ({ error: 'Failed' }));
+                msg.textContent = err.error || 'Failed';
+                msg.className = 'text-danger';
+            }
+        });
+
+        async function loadActivity() {
+            const params = new URLSearchParams();
+            const student = document.getElementById('filter-student').value.trim();
+            const grade = document.getElementById('filter-grade').value.trim();
+            const subject = document.getElementById('filter-subject').value;
+            if (student) params.set('student', student);
+            if (grade) params.set('grade', grade);
+            if (subject) params.set('subject', subject);
+            const res = await fetch('/api/activity?' + params.toString());
+            const data = await res.json();
+            const tbody = document.getElementById('activity-body');
+            tbody.innerHTML = '';
+            data.slice().reverse().forEach(a => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td>${new Date(a.timestamp).toLocaleString()}</td>
+                    <td>${a.student || ''}</td>
+                    <td>${a.grade ?? ''}</td>
+                    <td>${a.subject || ''}</td>
+                    <td>${a.action || ''}</td>
+                    <td>${a.score ?? ''}</td>
+                    <td class="mono">${a.details ? JSON.stringify(a.details) : ''}</td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+        document.getElementById('apply-filters').addEventListener('click', loadActivity);
+        loadActivity();
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+
+
+
