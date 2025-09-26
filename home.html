@@ -1,0 +1,2062 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>  
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduGameHub</title>
+    <link rel="stylesheet" href="home.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+
+</head>
+
+<body>
+    <div class="main">
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-lg ">
+            <div class="container-fluid">
+                <a class="navbar-brand fw-bold" href="#">🎓 EduGameHub</a>
+                <!-- Hamburger Button -->
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Navbar Links -->
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="leaderboard.html">Leaderboard</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#rewardsModal">Rewards <span class="badge bg-success" id="points-badge">0</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="teacher.html">Teacher</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                                More Options
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#">⚙️ Settings</a></li>
+                                <li><a class="dropdown-item" href="#">🏆 Points</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="#">👤 Account Info</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link disabled">Disabled</a>
+                        </li>
+                    </ul>
+
+                    <!-- Search Box -->
+                    <form class="d-flex" role="search">
+                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn" type="submit">Search</button>
+                    </form>
+
+                    <form action="login.html" class="d-flex">
+                        <button class="logout btn" >Logout</button>
+                    </form>
+                </div>
+            </div>
+        </nav>
+
+
+        <div class="sideBar">
+            <h4 class="sidebar-title">Select Grade</h4>
+            <div class="grade-buttons">
+               
+                <button class="grade-btn" data-grade="6">Grade 6</button>
+                <button class="grade-btn" data-grade="7">Grade 7</button>
+                <button class="grade-btn" data-grade="8">Grade 8</button>
+                <button class="grade-btn" data-grade="9">Grade 9</button>
+                <button class="grade-btn" data-grade="10">Grade 10</button>
+                <button class="grade-btn" data-grade="11">Grade 11</button>
+                <button class="grade-btn" data-grade="12">Grade 12</button>
+            </div>
+        </div>
+
+        <div class="mainContent">
+            <!-- Welcome Screen -->
+            <div id="welcome-screen" class="content-section">
+                <div class="welcome-header">
+                    <h2>🎓 EduGameHub - STEM Learning</h2>
+                    <p>Select a grade from the sidebar to explore STEM subjects and take quizzes!</p>
+                    <p>Please click on the grade 6 for exploring the content...</p>
+                </div>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <h4>🔬 Science</h4>
+                        <p>Explore biology, chemistry, physics, and earth sciences</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>🔢 Mathematics</h4>
+                        <p>Master algebra, geometry, calculus, and statistics</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>⚙️ Technology</h4>
+                        <p>Learn programming, engineering, and digital skills</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>🏗️ Engineering</h4>
+                        <p>Understand design, construction, and problem-solving</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Subject Selection Screen -->
+            <div id="subject-selection" class="content-section" style="display: none;">
+                <div class="section-header">
+                    <h2>Grade <span id="selected-grade">6</span> - Choose a Subject</h2>
+                    <button id="back-to-grades" class="back-btn">← Back to Grades</button>
+                </div>
+                <div class="subjects-grid">
+                    <div class="subject-card" data-subject="science">
+                        <div class="subject-icon">🔬</div>
+                        <h3>Science</h3>
+                        <p id="science-description">Biology, Chemistry, Physics, Earth Science</p>
+                        <div class="subject-actions">
+                            <button class="subject-btn" data-subject="science">Start Quiz</button>
+                            <button class="flashcards-btn" data-subject="science">Start Flashcards</button>
+                            <button class="modules-btn" data-subject="science">Learn Modules</button>
+                            <button class="crossword-btn" data-subject="science">Play Crossword</button>
+                            <button class="chem-lab-btn" data-subject="science">Virtual Chem Lab</button>
+                        </div>
+                    </div>
+                    <div class="subject-card" data-subject="mathematics">
+                        <div class="subject-icon">🔢</div>
+                        <h3>Mathematics</h3>
+                        <p id="math-description">Algebra, Geometry, Statistics, Problem Solving</p>
+                        <div class="subject-actions">
+                            <button class="subject-btn" data-subject="mathematics">Start Quiz</button>
+                            <button class="flashcards-btn" data-subject="mathematics">Start Flashcards</button>
+                            <button class="modules-btn" data-subject="mathematics">Learn Modules</button>
+                            <button class="shooter-btn" data-subject="mathematics">Play Math Shooter</button>
+                            <button class="crossword-btn" data-subject="mathematics">Play Crossword</button>
+                        </div>
+                    </div>
+                    <div class="subject-card" data-subject="technology">
+                        <div class="subject-icon">⚙️</div>
+                        <h3>Technology</h3>
+                        <p id="tech-description">Programming, Computer Science, Digital Skills</p>
+                        <div class="subject-actions">
+                            <button class="subject-btn" data-subject="technology">Start Quiz</button>
+                            <button class="flashcards-btn" data-subject="technology">Start Flashcards</button>
+                            <button class="modules-btn" data-subject="technology">Learn Modules</button>
+                            <button class="crossword-btn" data-subject="technology">Play Crossword</button>
+                        </div>
+                    </div>
+                    <div class="subject-card" data-subject="engineering">
+                        <div class="subject-icon">🏗️</div>
+                        <h3>Engineering</h3>
+                        <p id="eng-description">Design, Construction, Problem Solving, Innovation</p>
+                        <div class="subject-actions">
+                            <button class="subject-btn" data-subject="engineering">Start Quiz</button>
+                            <button class="flashcards-btn" data-subject="engineering">Start Flashcards</button>
+                            <button class="modules-btn" data-subject="engineering">Learn Modules</button>
+                            <button class="crossword-btn" data-subject="engineering">Play Crossword</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quiz Screen -->
+            <div id="quiz-screen" class="content-section" style="display: none;">
+                <div class="quiz-header">
+                    <h2 id="quiz-title">Grade <span id="quiz-grade">6</span> - <span id="quiz-subject">Science</span> Quiz</h2>
+                    <div class="quiz-stats">
+                        <span class="stat">Question <span id="current-q">1</span> of <span id="total-qs">10</span></span>
+                        <span class="stat">Score: <span id="score">0</span></span>
+                        <span class="stat">Time: <span id="timer">30</span>s</span>
+                    </div>
+                    <button id="back-to-subjects" class="back-btn">← Back to Subjects</button>
+                </div>
+                
+                <div class="progress-container">
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progress"></div>
+                    </div>
+                </div>
+
+                <div class="question-container">
+                    <h3 id="question-text">Loading question...</h3>
+                    <div class="options-container" id="options">
+                        <!-- Options will be dynamically generated -->
+                    </div>
+                </div>
+
+                <div class="quiz-controls">
+                    <button id="next-question" class="quiz-btn" disabled>Next Question</button>
+                    <button id="submit-quiz" class="quiz-btn" style="display: none;">Submit Quiz</button>
+                </div>
+            </div>
+
+            <!-- Results Screen -->
+            <div id="results-screen" class="content-section" style="display: none;">
+                <div class="results-header">
+                    <h2>🎉 Quiz Complete!</h2>
+                    <div class="score-display">
+                        <h3>Your Score: <span id="final-score">0</span>/<span id="max-score">10</span></h3>
+                        <div class="percentage" id="percentage">0%</div>
+                    </div>
+                </div>
+                
+                <div class="results-info">
+                    <div class="result-item">
+                        <h4>📊 Performance</h4>
+                        <p id="performance">Great job!</p>
+                    </div>
+                    <div class="result-item">
+                        <h4>⏱️ Time Taken</h4>
+                        <p id="time-taken">0 minutes</p>
+                    </div>
+                    <div class="result-item">
+                        <h4>🎯 Accuracy</h4>
+                        <p id="accuracy">0%</p>
+                    </div>
+                </div>
+
+                <div class="results-actions">
+                    <button id="retry-quiz" class="action-btn">Retry Quiz</button>
+                    <button id="new-subject" class="action-btn">Try Different Subject</button>
+                    <button id="new-grade" class="action-btn">Choose Different Grade</button>
+                </div>
+            </div>
+
+            <!-- Rewards Modal -->
+            <div class="modal fade" id="rewardsModal" tabindex="-1" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Rewards & Unlocks</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <p>Your points: <strong id="points-current">0</strong></p>
+                            <ul class="list-group" id="rewards-list">
+                                <!-- Filled by script -->
+                            </ul>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Flashcards Screen -->
+            <div id="flashcards-screen" class="content-section" style="display: none;">
+                <div class="quiz-header">
+                    <h2 id="flashcards-title">Grade <span id="flashcards-grade">6</span> - <span id="flashcards-subject">Science</span> Flashcards</h2>
+                    <div class="quiz-stats">
+                        <span class="stat">Card <span id="current-card">1</span> of <span id="total-cards">10</span></span>
+                    </div>
+                    <button id="back-to-subjects-from-flashcards" class="back-btn">← Back to Subjects</button>
+                </div>
+
+                <div class="flashcard-container">
+                    <div class="flashcard" id="flashcard">
+                        <div class="flashcard-inner" id="flashcard-inner">
+                            <div class="flashcard-face flashcard-front" id="flashcard-front">Loading...</div>
+                            <div class="flashcard-face flashcard-back" id="flashcard-back">Answer</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="quiz-controls">
+                    <button id="prev-card" class="quiz-btn">Prev</button>
+                    <button id="flip-card" class="quiz-btn">Flip</button>
+                    <button id="next-card" class="quiz-btn">Next</button>
+                </div>
+            </div>
+
+            <!-- Math Shooter Screen -->
+            <div id="shooter-screen" class="content-section" style="display: none;">
+                <div class="quiz-header">
+                    <h2>Grade <span id="shooter-grade">6</span> - Mathematics Shooter</h2>
+                    <div class="shooter-stats">
+                        <span class="stat">Score: <span id="shooter-score">0</span></span>
+                        <span class="stat">Lives: <span id="shooter-lives">3</span></span>
+                        <span class="stat">Solve: <span id="shooter-problem">1 + 1 = ?</span></span>
+                    </div>
+                    <button id="back-to-subjects-from-shooter" class="back-btn">← Back to Subjects</button>
+                </div>
+
+                <div class="shooter-container">
+                    <canvas id="shooter-canvas" width="900" height="500"></canvas>
+                </div>
+
+                <div class="control-hint">Use ← → or A/D to move, Space to shoot the correct answer.</div>
+            </div>
+
+            <!-- Crossword Screen -->
+            <div id="crossword-screen" class="content-section" style="display: none;">
+                <div class="quiz-header">
+                    <h2>Grade <span id="crossword-grade">6</span> - <span id="crossword-subject">Science</span> Crossword</h2>
+                    <button id="back-to-subjects-from-crossword" class="back-btn">← Back to Subjects</button>
+                </div>
+                <div class="crossword-container" style="display:flex; gap:24px; align-items:start; flex-wrap: wrap;">
+                    <div id="crossword-grid" style="display:grid; grid-template-columns: repeat(10, 36px); grid-auto-rows: 36px; gap:4px;"></div>
+                    <div class="crossword-clues" style="flex:1; min-width:260px;">
+                        <h4>Across</h4>
+                        <ol id="clues-across"></ol>
+                        <h4 class="mt-3">Down</h4>
+                        <ol id="clues-down"></ol>
+                        <button id="crossword-check" class="quiz-btn mt-3">Check Answers</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chemistry Lab Screen -->
+            <div id="chem-lab-screen" class="content-section" style="display: none;">
+                <div class="quiz-header">
+                    <h2>Grade <span id="chem-grade">6</span> - Virtual Chemistry Lab</h2>
+                    <button id="back-to-subjects-from-chem" class="back-btn">← Back to Subjects</button>
+                </div>
+                <div class="chem-lab" style="display:flex; gap:24px; align-items:start; flex-wrap: wrap;">
+                    <div class="chem-elements" style="min-width:260px;">
+                        <h4>Elements</h4>
+                        <div id="elements-list" style="display:flex; gap:8px; flex-wrap:wrap;"></div>
+                    </div>
+                    <div class="chem-workbench" style="flex:1; min-width:320px;">
+                        
+                        <div class="beakers" style="display:flex; gap:16px;">
+                            <div class="beaker" data-beaker="A" style="width:180px; height:220px; border:2px solid #6c757d; border-radius:8px; position:relative; background:linear-gradient(#f8f9fa,#e9ecef);">
+                                <div class="beaker-label" style="position:absolute; top:-22px; left:0; font-weight:bold;">Beaker A</div>
+                                <div class="drop-zone" data-zone="A" style="position:absolute; inset:8px; border:1px dashed #adb5bd; border-radius:6px;"></div>
+                            </div>
+                            <div class="beaker" data-beaker="B" style="width:180px; height:220px; border:2px solid #6c757d; border-radius:8px; position:relative; background:linear-gradient(#f8f9fa,#e9ecef);">
+                                <div class="beaker-label" style="position:absolute; top:-22px; left:0; font-weight:bold;">Beaker B</div>
+                                <div class="drop-zone" data-zone="B" style="position:absolute; inset:8px; border:1px dashed #adb5bd; border-radius:6px;"></div>
+                            </div>
+                        </div>
+                        <div class="mix-controls" style="margin-top:12px; display:flex; gap:8px; flex-wrap:wrap; align-items:center;">
+                            <button id="chem-mix" class="quiz-btn">Mix</button>
+                            <button id="chem-clear" class="quiz-btn">Clear</button>
+                            <div id="chem-formula" style="font-weight:bold;"></div>
+                        </div>
+                        <div id="chem-result" style="margin-top:8px;"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Learning Modules Screen -->
+            <div id="modules-screen" class="content-section" style="display: none;">
+                <div class="quiz-header">
+                    <h2>Grade <span id="modules-grade">6</span> - <span id="modules-subject">Science</span> Learning Modules</h2>
+                    <button id="back-to-subjects-from-modules" class="back-btn">← Back to Subjects</button>
+                </div>
+
+                <div class="modules-grid" id="modules-grid">
+                    <!-- Modules will be dynamically generated -->
+                </div>
+            </div>
+
+            <!-- Individual Module Screen -->
+            <div id="module-detail-screen" class="content-section" style="display: none;">
+                <div class="quiz-header">
+                    <h2 id="module-title">Module Title</h2>
+                    <div class="module-navigation">
+                        <button id="back-to-modules" class="back-btn">← Back to Modules</button>
+                        <button id="module-quiz-btn" class="quiz-btn">Take Quiz</button>
+                    </div>
+                </div>
+
+                <div class="module-content">
+                    <div class="module-intro" id="module-intro">
+                        <!-- Introduction content -->
+                    </div>
+                    
+                    <div class="module-main" id="module-main">
+                        <!-- Main content -->
+                    </div>
+
+                    <div class="module-interactive" id="module-interactive">
+                        <!-- Interactive elements -->
+                    </div>
+
+                    <div class="module-quiz" id="module-quiz" style="display: none;">
+                        <!-- Module quiz -->
+                    </div>
+                </div>
+
+                <div class="module-controls">
+                    <button id="prev-section" class="quiz-btn" style="display: none;">Previous</button>
+                    <button id="next-section" class="quiz-btn">Next</button>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Interactive Learning Modules Database
+        const learningModules = {
+            6: {
+                science: [
+                    {
+                        id: "photosynthesis",
+                        title: "🌱 Photosynthesis",
+                        description: "Learn how plants make their own food",
+                        content: {
+                            introduction: "Photosynthesis is the process by which plants convert sunlight into energy. Let's explore this amazing process!",
+                            mainContent: "Plants use their green leaves to capture sunlight. Inside the leaves are tiny structures called chloroplasts that contain chlorophyll - the green pigment that gives plants their color.",
+                            interactive: {
+                                type: "animation",
+                                elements: [
+                                    { id: "sun", label: "Sunlight", position: "top", color: "#FFD700" },
+                                    { id: "leaf", label: "Leaf", position: "center", color: "#228B22" },
+                                    { id: "oxygen", label: "Oxygen", position: "right", color: "#87CEEB" },
+                                    { id: "glucose", label: "Glucose", position: "left", color: "#DDA0DD" }
+                                ]
+                            },
+                            quiz: {
+                                question: "What do plants need for photosynthesis?",
+                                options: ["Sunlight, water, and carbon dioxide", "Only sunlight", "Only water", "Only carbon dioxide"],
+                                correct: 0,
+                                explanation: "Plants need sunlight, water, and carbon dioxide to perform photosynthesis."
+                            }
+                        }
+                    },
+                    {
+                        id: "solar-system",
+                        title: "🪐 Our Solar System",
+                        description: "Explore the planets in our solar system",
+                        content: {
+                            introduction: "Our solar system is home to 8 planets, each with unique characteristics. Let's take a journey through space!",
+                            mainContent: "The solar system formed about 4.6 billion years ago. The Sun is at the center, and all planets orbit around it. The inner planets (Mercury, Venus, Earth, Mars) are rocky, while the outer planets (Jupiter, Saturn, Uranus, Neptune) are gas giants.",
+                            interactive: {
+                                type: "planet-explorer",
+                                planets: [
+                                    { name: "Mercury", distance: 0.4, size: 0.4, color: "#8C7853", facts: ["Closest to the Sun", "No atmosphere", "Extreme temperatures"] },
+                                    { name: "Venus", distance: 0.7, size: 0.9, color: "#FFC649", facts: ["Hottest planet", "Thick atmosphere", "Retrograde rotation"] },
+                                    { name: "Earth", distance: 1.0, size: 1.0, color: "#6B93D6", facts: ["Only planet with life", "71% water", "One moon"] },
+                                    { name: "Mars", distance: 1.5, size: 0.5, color: "#CD5C5C", facts: ["Red planet", "Two moons", "Largest volcano"] }
+                                ]
+                            },
+                            quiz: {
+                                question: "Which planet is known as the Red Planet?",
+                                options: ["Venus", "Mars", "Jupiter", "Saturn"],
+                                correct: 1,
+                                explanation: "Mars is called the Red Planet because of iron oxide (rust) on its surface."
+                            }
+                        }
+                    }
+                ],
+                mathematics: [
+                    {
+                        id: "fractions",
+                        title: "🍕 Understanding Fractions",
+                        description: "Learn about parts of a whole",
+                        content: {
+                            introduction: "Fractions represent parts of a whole. Think of a pizza cut into slices - each slice is a fraction of the whole pizza!",
+                            mainContent: "A fraction has two parts: the numerator (top number) tells us how many parts we have, and the denominator (bottom number) tells us how many equal parts the whole is divided into.",
+                            interactive: {
+                                type: "fraction-visualizer",
+                                examples: [
+                                    { numerator: 1, denominator: 2, visual: "pizza-half", description: "Half a pizza" },
+                                    { numerator: 3, denominator: 4, visual: "pizza-three-quarters", description: "Three quarters of a pizza" },
+                                    { numerator: 2, denominator: 3, visual: "pizza-two-thirds", description: "Two thirds of a pizza" }
+                                ]
+                            },
+                            quiz: {
+                                question: "In the fraction 3/4, what does the 4 represent?",
+                                options: ["How many parts we have", "How many equal parts the whole is divided into", "The total number", "The remainder"],
+                                correct: 1,
+                                explanation: "The denominator (4) tells us how many equal parts the whole is divided into."
+                            }
+                        }
+                    },
+                    {
+                        id: "geometry-basics",
+                        title: "📐 Basic Shapes",
+                        description: "Explore different geometric shapes",
+                        content: {
+                            introduction: "Geometry is all around us! Let's learn about different shapes and their properties.",
+                            mainContent: "Shapes have different properties like sides, angles, and symmetry. Some shapes are 2D (flat) like circles and squares, while others are 3D (solid) like cubes and spheres.",
+                            interactive: {
+                                type: "shape-builder",
+                                shapes: [
+                                    { name: "Triangle", sides: 3, angles: 3, color: "#FF6B6B", properties: ["Three sides", "Three angles", "Sum of angles = 180°"] },
+                                    { name: "Square", sides: 4, angles: 4, color: "#4ECDC4", properties: ["Four equal sides", "Four right angles", "Two lines of symmetry"] },
+                                    { name: "Circle", sides: 0, angles: 0, color: "#45B7D1", properties: ["No sides", "No angles", "Infinite lines of symmetry"] }
+                                ]
+                            },
+                            quiz: {
+                                question: "How many sides does a triangle have?",
+                                options: ["2", "3", "4", "5"],
+                                correct: 1,
+                                explanation: "A triangle has exactly 3 sides and 3 angles."
+                            }
+                        }
+                    }
+                ],
+                technology: [
+                    {
+                        id: "computer-basics",
+                        title: "💻 Computer Components",
+                        description: "Learn about the parts of a computer",
+                        content: {
+                            introduction: "Computers are amazing machines made up of different components working together. Let's explore what's inside!",
+                            mainContent: "A computer has several important parts: the CPU (brain), RAM (memory), storage, and input/output devices. Each part has a specific job to help the computer work.",
+                            interactive: {
+                                type: "computer-builder",
+                                components: [
+                                    { name: "CPU", description: "Central Processing Unit - the brain", icon: "🧠", function: "Processes instructions" },
+                                    { name: "RAM", description: "Random Access Memory - temporary storage", icon: "💾", function: "Stores data while working" },
+                                    { name: "Storage", description: "Hard drive or SSD - permanent storage", icon: "💿", function: "Saves files permanently" },
+                                    { name: "Motherboard", description: "Main circuit board", icon: "🔌", function: "Connects all components" }
+                                ]
+                            },
+                            quiz: {
+                                question: "What does CPU stand for?",
+                                options: ["Central Processing Unit", "Computer Processing Unit", "Central Program Unit", "Computer Program Unit"],
+                                correct: 0,
+                                explanation: "CPU stands for Central Processing Unit - it's the brain of the computer."
+                            }
+                        }
+                    }
+                ],
+                engineering: [
+                    {
+                        id: "simple-machines",
+                        title: "⚙️ Simple Machines",
+                        description: "Discover the building blocks of engineering",
+                        content: {
+                            introduction: "Simple machines are the basic tools that make work easier. Engineers use these to build complex machines!",
+                            mainContent: "There are six types of simple machines: lever, wheel and axle, pulley, inclined plane, wedge, and screw. Each one helps us do work with less effort.",
+                            interactive: {
+                                type: "machine-explorer",
+                                machines: [
+                                    { name: "Lever", example: "See-saw", advantage: "Lifts heavy objects", icon: "⚖️" },
+                                    { name: "Pulley", example: "Flag pole", advantage: "Changes direction of force", icon: "🎯" },
+                                    { name: "Inclined Plane", example: "Ramp", advantage: "Moves objects up easily", icon: "📐" },
+                                    { name: "Wheel and Axle", example: "Door knob", advantage: "Rotates objects", icon: "🎡" }
+                                ]
+                            },
+                            quiz: {
+                                question: "What simple machine is a see-saw?",
+                                options: ["Pulley", "Lever", "Wedge", "Screw"],
+                                correct: 1,
+                                explanation: "A see-saw is a lever - it uses a fulcrum to lift objects."
+                            }
+                        }
+                    }
+                ]
+            }
+        };
+
+        // STEM Questions Database
+        const stemQuestions = {
+            6: {
+                science: [
+                    {
+                        question: "What is the process by which plants make their own food?",
+                        options: ["Respiration", "Photosynthesis", "Digestion", "Fermentation"],
+                        correct: 1,
+                        explanation: "Photosynthesis is how plants convert sunlight into energy."
+                    },
+                    {
+                        question: "Which planet is closest to the Sun?",
+                        options: ["Venus", "Earth", "Mercury", "Mars"],
+                        correct: 2,
+                        explanation: "Mercury is the closest planet to the Sun in our solar system."
+                    },
+                    {
+                        question: "What is the chemical symbol for water?",
+                        options: ["H2O", "CO2", "NaCl", "O2"],
+                        correct: 0,
+                        explanation: "Water is made of two hydrogen atoms and one oxygen atom (H2O)."
+                    }
+                ],
+                mathematics: [
+                    {
+                        question: "What is 15 + 27?",
+                        options: ["40", "42", "41", "43"],
+                        correct: 1,
+                        explanation: "15 + 27 = 42"
+                    },
+                    {
+                        question: "What is the area of a rectangle with length 8 and width 5?",
+                        options: ["13", "26", "40", "35"],
+                        correct: 2,
+                        explanation: "Area = length × width = 8 × 5 = 40"
+                    },
+                    {
+                        question: "What is 6 × 7?",
+                        options: ["42", "36", "48", "49"],
+                        correct: 0,
+                        explanation: "6 × 7 = 42"
+                    }
+                ],
+                technology: [
+                    {
+                        question: "What does CPU stand for?",
+                        options: ["Central Processing Unit", "Computer Processing Unit", "Central Program Unit", "Computer Program Unit"],
+                        correct: 0,
+                        explanation: "CPU stands for Central Processing Unit, the brain of the computer."
+                    },
+                    {
+                        question: "What is the main purpose of RAM in a computer?",
+                        options: ["Long-term storage", "Temporary storage", "Display graphics", "Connect to internet"],
+                        correct: 1,
+                        explanation: "RAM provides temporary storage for data the computer is actively using."
+                    },
+                    {
+                        question: "What does 'www' stand for in a website address?",
+                        options: ["World Wide Web", "World Web Wide", "Wide World Web", "Web World Wide"],
+                        correct: 0,
+                        explanation: "WWW stands for World Wide Web, the global information system."
+                    }
+                ],
+                engineering: [
+                    {
+                        question: "What is the main purpose of a bridge?",
+                        options: ["To store water", "To cross obstacles", "To generate electricity", "To provide shelter"],
+                        correct: 1,
+                        explanation: "Bridges are designed to help people and vehicles cross obstacles like rivers or valleys."
+                    },
+                    {
+                        question: "What type of engineer designs buildings?",
+                        options: ["Mechanical engineer", "Civil engineer", "Electrical engineer", "Chemical engineer"],
+                        correct: 1,
+                        explanation: "Civil engineers design and construct buildings, bridges, and infrastructure."
+                    },
+                    {
+                        question: "What is the strongest shape used in construction?",
+                        options: ["Circle", "Triangle", "Square", "Rectangle"],
+                        correct: 1,
+                        explanation: "Triangles are the strongest shape because they distribute force evenly."
+                    }
+                ]
+            }
+        };
+
+        // Always fetch fresh dynamic questions from server when starting a quiz
+        async function fetchDynamicQuestions(grade, subject) {
+            try {
+                const res = await fetch(`/api/questions?grade=${encodeURIComponent(grade)}&subject=${encodeURIComponent(subject)}`);
+                if (!res.ok) return [];
+                const data = await res.json();
+                // Normalize to same structure used by stemQuestions
+                return (data || []).map(q => ({
+                    question: q.question,
+                    options: q.options,
+                    correct: q.correct,
+                    explanation: q.explanation || ''
+                }));
+            } catch (e) {
+                return [];
+            }
+        }
+
+        async function logActivity(entry) {
+            try {
+                await fetch('/api/activity', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(entry)
+                });
+            } catch (e) {
+                // ignore
+            }
+        }
+
+        // Application State
+        let currentGrade = null;
+        let currentSubject = null;
+        let currentQuestionIndex = 0;
+        let score = 0;
+        let timeLeft = 30;
+        let timer = null;
+        let selectedAnswer = null;
+        let startTime = null;
+        let currentCardIndex = 0;
+        let isCardFlipped = false;
+        // Module state
+        let currentModule = null;
+        let currentModuleSection = 0; // 0: intro, 1: main, 2: interactive, 3: quiz
+        let moduleQuizAnswer = null;
+        // Shooter state
+        let shooterState = {
+            running: false,
+            score: 0,
+            lives: 3,
+            playerX: 450,
+            bullets: [], // {x, y, vy}
+            answers: [], // {x, y, vy, value, isCorrect}
+            problem: { a: 1, b: 1, op: '+', correct: 2 },
+            keys: {}
+        };
+        // Crossword state
+        let crosswordState = {
+            gridSize: 10,
+            cells: [], // [{row,col,letter,black,inputEl,number}]
+            clues: { across: [], down: [] },
+            answers: {}, // key by id => uppercase answer
+        };
+
+        // Initialize the application
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeEventListeners();
+            initRewards();
+        });
+
+        function initializeEventListeners() {
+            // Grade button functionality
+            const gradeButtons = document.querySelectorAll('.grade-btn');
+            gradeButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    selectGrade(parseInt(this.getAttribute('data-grade')));
+                });
+            });
+
+            // Subject selection
+            document.querySelectorAll('.subject-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    selectSubject(this.getAttribute('data-subject'));
+                });
+            });
+
+            // Flashcards start buttons
+            document.querySelectorAll('.flashcards-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    selectSubjectForFlashcards(this.getAttribute('data-subject'));
+                });
+            });
+
+            // Modules start buttons
+            document.querySelectorAll('.modules-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    selectSubjectForModules(this.getAttribute('data-subject'));
+                });
+            });
+
+            // Chem lab start
+            document.querySelectorAll('.chem-lab-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    if (!currentGrade) {
+                        alert('Please select a grade first.');
+                        return;
+                    }
+                    openChemLab();
+                });
+            });
+
+            // Shooter start (only for mathematics)
+            document.querySelectorAll('.shooter-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    if (!currentGrade) {
+                        alert('Please select a grade first.');
+                        return;
+                    }
+                    startShooter();
+                });
+            });
+
+            // Crossword start
+            document.querySelectorAll('.crossword-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    if (!currentGrade) {
+                        alert('Please select a grade first.');
+                        return;
+                    }
+                    selectSubjectForCrossword(this.getAttribute('data-subject'));
+                });
+            });
+
+            // Navigation buttons
+            document.getElementById('back-to-grades').addEventListener('click', showWelcomeScreen);
+            document.getElementById('back-to-subjects').addEventListener('click', showSubjectSelection);
+            document.getElementById('back-to-subjects-from-flashcards').addEventListener('click', showSubjectSelection);
+            document.getElementById('back-to-subjects-from-shooter').addEventListener('click', stopShooterAndBack);
+            document.getElementById('back-to-subjects-from-crossword').addEventListener('click', showSubjectSelection);
+            document.getElementById('back-to-subjects-from-modules').addEventListener('click', showSubjectSelection);
+            document.getElementById('back-to-subjects-from-chem').addEventListener('click', showSubjectSelection);
+            document.getElementById('back-to-modules').addEventListener('click', showModulesScreen);
+            document.getElementById('retry-quiz').addEventListener('click', startQuiz);
+            document.getElementById('new-subject').addEventListener('click', showSubjectSelection);
+            document.getElementById('new-grade').addEventListener('click', showWelcomeScreen);
+
+            // Quiz controls
+            document.getElementById('next-question').addEventListener('click', nextQuestion);
+            document.getElementById('submit-quiz').addEventListener('click', submitQuiz);
+
+            // Flashcards controls
+            document.getElementById('flip-card').addEventListener('click', flipFlashcard);
+            document.getElementById('next-card').addEventListener('click', nextCard);
+            document.getElementById('prev-card').addEventListener('click', prevCard);
+
+            // Module controls
+            document.getElementById('next-section').addEventListener('click', nextModuleSection);
+            document.getElementById('prev-section').addEventListener('click', prevModuleSection);
+            document.getElementById('module-quiz-btn').addEventListener('click', startModuleQuiz);
+            document.getElementById('crossword-check').addEventListener('click', checkCrossword);
+            document.getElementById('chem-mix').addEventListener('click', mixChemicals);
+            document.getElementById('chem-clear').addEventListener('click', clearChemLab);
+
+            // Shooter controls
+            window.addEventListener('keydown', (e) => {
+                shooterState.keys[e.key.toLowerCase()] = true;
+                if (e.code === 'Space') {
+                    e.preventDefault();
+                    shootBullet();
+                }
+            });
+            window.addEventListener('keyup', (e) => {
+                shooterState.keys[e.key.toLowerCase()] = false;
+            });
+        }
+
+        function selectGrade(grade) {
+            // Remove selected class from all buttons
+            const gradeButtons = document.querySelectorAll('.grade-btn');
+            gradeButtons.forEach(btn => btn.classList.remove('selected'));
+            
+            // Add selected class to clicked button
+            event.target.classList.add('selected');
+            
+            currentGrade = grade;
+            showSubjectSelection();
+        }
+
+        function showSubjectSelection() {
+            // Update grade display
+            document.getElementById('selected-grade').textContent = currentGrade;
+            
+            // Show subject selection, hide others
+            document.getElementById('welcome-screen').style.display = 'none';
+            document.getElementById('subject-selection').style.display = 'block';
+            document.getElementById('quiz-screen').style.display = 'none';
+            document.getElementById('results-screen').style.display = 'none';
+            document.getElementById('flashcards-screen').style.display = 'none';
+        }
+
+        function selectSubject(subject) {
+            currentSubject = subject;
+            startQuiz();
+        }
+
+        function selectSubjectForFlashcards(subject) {
+            currentSubject = subject;
+            startFlashcards();
+        }
+
+        async function startQuiz() {
+            if (!currentGrade || !currentSubject || !stemQuestions[currentGrade] || !stemQuestions[currentGrade][currentSubject]) {
+                alert('Please select a valid grade and subject.');
+                return;
+            }
+
+            // Reset quiz state
+            currentQuestionIndex = 0;
+            score = 0;
+            timeLeft = 30;
+            selectedAnswer = null;
+            startTime = Date.now();
+
+            // Merge dynamic questions from server for the selected grade/subject
+            const base = stemQuestions[currentGrade][currentSubject] || [];
+            const extra = await fetchDynamicQuestions(currentGrade, currentSubject);
+            const merged = [...base, ...extra];
+            if (!merged.length) {
+                alert('No questions available for this selection yet.');
+                return;
+            }
+
+            // Update UI
+            document.getElementById('quiz-grade').textContent = currentGrade;
+            document.getElementById('quiz-subject').textContent = currentSubject.charAt(0).toUpperCase() + currentSubject.slice(1);
+            document.getElementById('total-qs').textContent = merged.length;
+            document.getElementById('max-score').textContent = merged.length;
+            
+            // Show quiz screen, hide others
+            document.getElementById('welcome-screen').style.display = 'none';
+            document.getElementById('subject-selection').style.display = 'none';
+            document.getElementById('quiz-screen').style.display = 'block';
+            document.getElementById('results-screen').style.display = 'none';
+            document.getElementById('flashcards-screen').style.display = 'none';
+            document.getElementById('shooter-screen').style.display = 'none';
+
+            // Stash merged questions on state for loader to use
+            window.__currentQuestions = merged;
+
+            // Log start activity
+            logActivity({ grade: currentGrade, subject: currentSubject, action: 'quiz_started' });
+
+            // Load first question
+            loadQuestion();
+        }
+
+        function startFlashcards() {
+            if (!currentGrade || !currentSubject || !stemQuestions[currentGrade] || !stemQuestions[currentGrade][currentSubject]) {
+                alert('Please select a valid grade and subject.');
+                return;
+            }
+
+            currentCardIndex = 0;
+            isCardFlipped = false;
+
+            document.getElementById('flashcards-grade').textContent = currentGrade;
+            document.getElementById('flashcards-subject').textContent = currentSubject.charAt(0).toUpperCase() + currentSubject.slice(1);
+            document.getElementById('total-cards').textContent = stemQuestions[currentGrade][currentSubject].length;
+
+            document.getElementById('welcome-screen').style.display = 'none';
+            document.getElementById('subject-selection').style.display = 'none';
+            document.getElementById('quiz-screen').style.display = 'none';
+            document.getElementById('results-screen').style.display = 'none';
+            document.getElementById('flashcards-screen').style.display = 'block';
+
+            renderFlashcard();
+        }
+
+        function renderFlashcard() {
+            const cards = stemQuestions[currentGrade][currentSubject];
+            const card = cards[currentCardIndex];
+
+            document.getElementById('current-card').textContent = currentCardIndex + 1;
+
+            const front = document.getElementById('flashcard-front');
+            const back = document.getElementById('flashcard-back');
+            front.textContent = card.question;
+            back.innerHTML = `<strong>Answer:</strong> ${card.options[card.correct]}<br/><em>${card.explanation || ''}</em>`;
+
+            // reset flip state
+            isCardFlipped = false;
+            document.getElementById('flashcard-inner').classList.remove('flipped');
+        }
+
+        function flipFlashcard() {
+            isCardFlipped = !isCardFlipped;
+            const inner = document.getElementById('flashcard-inner');
+            if (isCardFlipped) {
+                inner.classList.add('flipped');
+            } else {
+                inner.classList.remove('flipped');
+            }
+        }
+
+        function nextCard() {
+            const cards = stemQuestions[currentGrade][currentSubject];
+            if (currentCardIndex < cards.length - 1) {
+                currentCardIndex++;
+                renderFlashcard();
+            }
+        }
+
+        function prevCard() {
+            if (currentCardIndex > 0) {
+                currentCardIndex--;
+                renderFlashcard();
+            }
+        }
+
+        function loadQuestion() {
+            const questions = window.__currentQuestions || stemQuestions[currentGrade][currentSubject];
+            const question = questions[currentQuestionIndex];
+            
+            // Update progress
+            document.getElementById('current-q').textContent = currentQuestionIndex + 1;
+            const progress = ((currentQuestionIndex + 1) / questions.length) * 100;
+            document.getElementById('progress').style.width = progress + '%';
+
+            // Update question text
+            document.getElementById('question-text').textContent = question.question;
+
+            // Clear and populate options
+            const optionsContainer = document.getElementById('options');
+            optionsContainer.innerHTML = '';
+            question.options.forEach((option, index) => {
+                const button = document.createElement('button');
+                button.className = 'option-btn';
+                button.textContent = option;
+                button.addEventListener('click', () => selectOption(index, button));
+                optionsContainer.appendChild(button);
+            });
+
+            // Reset controls
+            document.getElementById('next-question').disabled = true;
+            document.getElementById('next-question').style.display = 'inline-block';
+            document.getElementById('submit-quiz').style.display = 'none';
+            selectedAnswer = null;
+
+            // Start timer
+            startTimer();
+        }
+
+        function selectOption(optionIndex, buttonElement) {
+            // Remove previous selection
+            document.querySelectorAll('.option-btn').forEach(btn => {
+                btn.classList.remove('selected');
+            });
+
+            // Select current option
+            buttonElement.classList.add('selected');
+            selectedAnswer = optionIndex;
+
+            // Enable next button
+            document.getElementById('next-question').disabled = false;
+        }
+
+        function startTimer() {
+            timeLeft = 30;
+            document.getElementById('timer').textContent = timeLeft;
+            document.getElementById('timer').classList.remove('timer-warning');
+
+            timer = setInterval(() => {
+                timeLeft--;
+                document.getElementById('timer').textContent = timeLeft;
+
+                // Warning when time is running low
+                if (timeLeft <= 10) {
+                    document.getElementById('timer').classList.add('timer-warning');
+                }
+
+                // Time's up
+                if (timeLeft <= 0) {
+                    clearInterval(timer);
+                    timeUp();
+                }
+            }, 1000);
+        }
+
+        function timeUp() {
+            // Show correct answer
+            showCorrectAnswer();
+            
+            // Disable option selection
+            document.querySelectorAll('.option-btn').forEach(btn => {
+                btn.style.pointerEvents = 'none';
+            });
+
+            // Show next/submit button
+            const questions = stemQuestions[currentGrade][currentSubject];
+            if (currentQuestionIndex < questions.length - 1) {
+                document.getElementById('next-question').disabled = false;
+            } else {
+                document.getElementById('submit-quiz').style.display = 'inline-block';
+            }
+        }
+
+        function showCorrectAnswer() {
+            const questions = stemQuestions[currentGrade][currentSubject];
+            const question = questions[currentQuestionIndex];
+            const correctIndex = question.correct;
+
+            document.querySelectorAll('.option-btn').forEach((btn, index) => {
+                if (index === correctIndex) {
+                    btn.classList.add('correct');
+                } else if (index === selectedAnswer && selectedAnswer !== correctIndex) {
+                    btn.classList.add('incorrect');
+                }
+            });
+
+            // Update score if correct
+            if (selectedAnswer === correctIndex) {
+                score++;
+                document.getElementById('score').textContent = score;
+            }
+        }
+
+        function nextQuestion() {
+            clearInterval(timer);
+            showCorrectAnswer();
+
+            
+            const questions = window.__currentQuestions || stemQuestions[currentGrade][currentSubject];
+            if (currentQuestionIndex < questions.length - 1) {
+                currentQuestionIndex++;
+                loadQuestion();
+            } else {
+                submitQuiz();
+            }
+        }
+
+        function submitQuiz() {
+            clearInterval(timer);
+            showResults();
+        }
+
+        function showResults() {
+            const questions = window.__currentQuestions || stemQuestions[currentGrade][currentSubject];
+            const totalQuestions = questions.length;
+            const percentage = Math.round((score / totalQuestions) * 100);
+            const timeTaken = Math.round((Date.now() - startTime) / 1000 / 60);
+
+            // Update results
+            document.getElementById('final-score').textContent = score;
+            document.getElementById('percentage').textContent = percentage + '%';
+            document.getElementById('time-taken').textContent = timeTaken + ' minutes';
+            document.getElementById('accuracy').textContent = percentage + '%';
+
+            // Performance feedback
+            let performance = '';
+            if (percentage >= 90) {
+                performance = 'Outstanding! You have excellent knowledge!';
+            } else if (percentage >= 80) {
+                performance = 'Great job! You have good knowledge!';
+            } else if (percentage >= 70) {
+                performance = 'Good work! Keep studying to improve!';
+            } else if (percentage >= 60) {
+                performance = 'Not bad! Review the topics and try again!';
+            } else {
+                performance = 'Keep studying! Practice makes perfect!';
+            }
+            document.getElementById('performance').textContent = performance;
+
+            // Rewards: award points and update UI
+            const earned = calculatePointsEarned(score, totalQuestions, percentage);
+            addPoints(earned);
+
+            // Log completion activity
+            logActivity({ grade: currentGrade, subject: currentSubject, action: 'quiz_completed', score, details: { totalQuestions, percentage, earnedPoints: earned } });
+
+            // Show results, hide others
+            document.getElementById('welcome-screen').style.display = 'none';
+            document.getElementById('subject-selection').style.display = 'none';
+            document.getElementById('quiz-screen').style.display = 'none';
+            document.getElementById('results-screen').style.display = 'block';
+        }
+
+        // Rewards system
+        const rewardTiers = [
+            { threshold: 50, title: 'Bronze Pack', description: 'Unlock a bonus quiz and tips.' },
+            { threshold: 100, title: 'Silver Pack', description: 'Unlock exclusive mini-game.' },
+            { threshold: 200, title: 'Gold Pack', description: 'Unlock advanced learning modules.' },
+            { threshold: 350, title: 'Platinum Pack', description: 'Unlock premium challenges.' }
+        ];
+
+        function getPoints() {
+            return parseInt(localStorage.getItem('points') || '0', 10);
+        }
+
+        function setPoints(val) {
+            localStorage.setItem('points', String(val));
+            const badge = document.getElementById('points-badge');
+            if (badge) badge.textContent = val;
+            const current = document.getElementById('points-current');
+            if (current) current.textContent = val;
+            renderRewardsList();
+        }
+
+        function addPoints(delta) {
+            if (!delta || delta <= 0) return;
+            setPoints(getPoints() + delta);
+        }
+
+        function calculatePointsEarned(score, total, percentage) {
+            // Base: 5 points per correct, bonus by percentage tiers
+            let pts = score * 5;
+            if (percentage >= 90) pts += 20; else if (percentage >= 75) pts += 10; else if (percentage >= 60) pts += 5;
+            return pts;
+        }
+
+        function renderRewardsList() {
+            const ul = document.getElementById('rewards-list');
+            if (!ul) return;
+            const points = getPoints();
+            ul.innerHTML = '';
+            rewardTiers.forEach(t => {
+                const unlocked = points >= t.threshold;
+                const li = document.createElement('li');
+                li.className = 'list-group-item d-flex justify-content-between align-items-center';
+                li.innerHTML = `<div><strong>${t.title}</strong><div class="text-muted small">${t.description}</div></div>
+                                <span class="badge ${unlocked ? 'bg-success' : 'bg-secondary'}">${unlocked ? 'Unlocked' : t.threshold + ' pts'}</span>`;
+                ul.appendChild(li);
+            });
+        }
+
+        function initRewards() {
+            // Initialize stored points and UI
+            const existing = getPoints();
+            setPoints(existing);
+            // Refresh list on modal show
+            const rewardsModal = document.getElementById('rewardsModal');
+            if (rewardsModal) {
+                rewardsModal.addEventListener('show.bs.modal', () => {
+                    setPoints(getPoints());
+                });
+            }
+        }
+
+        function showWelcomeScreen() {
+            // Reset grade selection
+            const gradeButtons = document.querySelectorAll('.grade-btn');
+            gradeButtons.forEach(btn => btn.classList.remove('selected'));
+            
+            // Show welcome screen, hide others
+            document.getElementById('welcome-screen').style.display = 'block';
+            document.getElementById('subject-selection').style.display = 'none';
+            document.getElementById('quiz-screen').style.display = 'none';
+            document.getElementById('results-screen').style.display = 'none';
+            document.getElementById('flashcards-screen').style.display = 'none';
+            document.getElementById('shooter-screen').style.display = 'none';
+            document.getElementById('modules-screen').style.display = 'none';
+            document.getElementById('module-detail-screen').style.display = 'none';
+            
+            // Reset state
+            currentGrade = null;
+            currentSubject = null;
+        }
+
+        // Module Functions
+        function selectSubjectForModules(subject) {
+            currentSubject = subject;
+            showModulesScreen();
+        }
+
+        function selectSubjectForCrossword(subject) {
+            currentSubject = subject;
+            showCrosswordScreen();
+        }
+
+        function showModulesScreen() {
+            if (!currentGrade || !currentSubject || !learningModules[currentGrade] || !learningModules[currentGrade][currentSubject]) {
+                alert('Please select a valid grade and subject.');
+                return;
+            }
+
+            // Update UI
+            document.getElementById('modules-grade').textContent = currentGrade;
+            document.getElementById('modules-subject').textContent = currentSubject.charAt(0).toUpperCase() + currentSubject.slice(1);
+
+            // Generate module cards
+            const modulesGrid = document.getElementById('modules-grid');
+            modulesGrid.innerHTML = '';
+
+            const modules = learningModules[currentGrade][currentSubject];
+            modules.forEach((module, index) => {
+                const moduleCard = document.createElement('div');
+                moduleCard.className = 'module-card';
+                moduleCard.innerHTML = `
+                    <div class="module-icon">${module.title.split(' ')[0]}</div>
+                    <h3>${module.title}</h3>
+                    <p>${module.description}</p>
+                    <div class="module-progress">
+                        <div class="module-progress-fill" style="width: 0%"></div>
+                    </div>
+                    <span class="module-status new">New</span>
+                `;
+                moduleCard.addEventListener('click', () => openModule(module));
+                modulesGrid.appendChild(moduleCard);
+            });
+
+            // Show modules screen, hide others
+            document.getElementById('welcome-screen').style.display = 'none';
+            document.getElementById('subject-selection').style.display = 'none';
+            document.getElementById('quiz-screen').style.display = 'none';
+            document.getElementById('results-screen').style.display = 'none';
+            document.getElementById('flashcards-screen').style.display = 'none';
+            document.getElementById('shooter-screen').style.display = 'none';
+            document.getElementById('modules-screen').style.display = 'block';
+            document.getElementById('module-detail-screen').style.display = 'none';
+        }
+
+        function showCrosswordScreen() {
+            // Puzzles only defined for grade 6 for now
+            if (!currentGrade || !currentSubject) {
+                alert('Please select a valid grade and subject.');
+                return;
+            }
+            document.getElementById('crossword-grade').textContent = currentGrade;
+            document.getElementById('crossword-subject').textContent = currentSubject.charAt(0).toUpperCase() + currentSubject.slice(1);
+
+            // Build crossword content
+            const puzzle = getCrosswordPuzzle(currentGrade, currentSubject);
+            buildCrossword(puzzle);
+
+            // Show crossword, hide others
+            document.getElementById('welcome-screen').style.display = 'none';
+            document.getElementById('subject-selection').style.display = 'none';
+            document.getElementById('quiz-screen').style.display = 'none';
+            document.getElementById('results-screen').style.display = 'none';
+            document.getElementById('flashcards-screen').style.display = 'none';
+            document.getElementById('shooter-screen').style.display = 'none';
+            document.getElementById('modules-screen').style.display = 'none';
+            document.getElementById('module-detail-screen').style.display = 'none';
+            document.getElementById('crossword-screen').style.display = 'block';
+            document.getElementById('chem-lab-screen').style.display = 'none';
+        }
+
+        function getCrosswordPuzzle(grade, subject) {
+            // Simple 10x10 with subject terms (grade 6)
+            const emptyRow = Array(10).fill('#'); // '#' black; letters fill when placing words
+            const grid = Array(10).fill(null).map(() => emptyRow.slice());
+            const clues = { across: [], down: [] };
+            const words = {
+                science: [
+                    { id: 'S1', answer: 'PLANT', clue: 'Green organism that does photosynthesis', row: 1, col: 1, dir: 'across' },
+                    { id: 'S2', answer: 'SUN', clue: 'Source of light for photosynthesis', row: 3, col: 1, dir: 'across' },
+                    { id: 'S3', answer: 'OXYGEN', clue: 'Gas released by plants', row: 1, col: 6, dir: 'down' }
+                ],
+                mathematics: [
+                    { id: 'M1', answer: 'ANGLE', clue: 'Figure formed by two rays', row: 1, col: 1, dir: 'across' },
+                    { id: 'M2', answer: 'SUM', clue: 'Result of addition', row: 3, col: 4, dir: 'across' },
+                    { id: 'M3', answer: 'AREA', clue: 'Size of a surface', row: 1, col: 6, dir: 'down' }
+                ],
+                technology: [
+                    { id: 'T1', answer: 'CPU', clue: 'The brain of a computer', row: 1, col: 1, dir: 'across' },
+                    { id: 'T2', answer: 'CODE', clue: 'Instructions written by programmers', row: 3, col: 3, dir: 'across' },
+                    { id: 'T3', answer: 'RAM', clue: 'Temporary computer memory', row: 1, col: 5, dir: 'down' }
+                ],
+                engineering: [
+                    { id: 'E1', answer: 'BRIDGE', clue: 'Structure to cross obstacles', row: 1, col: 1, dir: 'across' },
+                    { id: 'E2', answer: 'BEAM', clue: 'Horizontal structural element', row: 3, col: 2, dir: 'across' },
+                    { id: 'E3', answer: 'TRUSS', clue: 'Framework of triangles', row: 1, col: 7, dir: 'down' }
+                ]
+            };
+            const list = words[subject] || [];
+
+            // Place words into grid
+            const placed = Array(10).fill(null).map(() => Array(10).fill('#'));
+            list.forEach(w => {
+                const r0 = w.row - 1;
+                const c0 = w.col - 1;
+                const letters = w.answer.toUpperCase().split('');
+                if (w.dir === 'across') {
+                    letters.forEach((ch, i) => { placed[r0][c0 + i] = ch; });
+                    clues.across.push({ id: w.id, number: clues.across.length + 1, clue: w.clue });
+                } else {
+                    letters.forEach((ch, i) => { placed[r0 + i][c0] = ch; });
+                    clues.down.push({ id: w.id, number: clues.down.length + 1, clue: w.clue });
+                }
+            });
+
+            const answers = {};
+            list.forEach(w => { answers[w.id] = w.answer.toUpperCase(); });
+            return { grid: placed, clues, mapping: list, answers };
+        }
+
+        function buildCrossword(puzzle) {
+            crosswordState.answers = puzzle.answers;
+            const gridEl = document.getElementById('crossword-grid');
+            gridEl.innerHTML = '';
+            const size = 10;
+            const numbers = Array(size).fill(null).map(() => Array(size).fill(''));
+
+            // Simple numbering: assign numbers where a word starts
+            puzzle.mapping.forEach(w => {
+                const r0 = w.row - 1;
+                const c0 = w.col - 1;
+                const num = (w.dir === 'across' ? puzzle.clues.across.find(x => x.id === w.id).number : puzzle.clues.down.find(x => x.id === w.id).number);
+                numbers[r0][c0] = String(num);
+            });
+
+            const inputs = [];
+            for (let r = 0; r < size; r++) {
+                for (let c = 0; c < size; c++) {
+                    const ch = puzzle.grid[r][c];
+                    const wrapper = document.createElement('div');
+                    wrapper.style.position = 'relative';
+                    wrapper.style.width = '36px';
+                    wrapper.style.height = '36px';
+                    wrapper.style.border = '1px solid #ccc';
+                    wrapper.style.background = ch === '#' ? '#222' : '#fff';
+                    wrapper.style.display = 'flex';
+                    wrapper.style.alignItems = 'center';
+                    wrapper.style.justifyContent = 'center';
+                    if (numbers[r][c]) {
+                        const numEl = document.createElement('div');
+                        numEl.textContent = numbers[r][c];
+                        numEl.style.position = 'absolute';
+                        numEl.style.top = '2px';
+                        numEl.style.left = '3px';
+                        numEl.style.fontSize = '10px';
+                        numEl.style.color = '#555';
+                        wrapper.appendChild(numEl);
+                    }
+                    if (ch !== '#') {
+                        const inp = document.createElement('input');
+                        inp.maxLength = 1;
+                        inp.style.width = '100%';
+                        inp.style.height = '100%';
+                        inp.style.border = 'none';
+                        inp.style.textAlign = 'center';
+                        inp.style.textTransform = 'uppercase';
+                        inp.style.outline = 'none';
+                        inp.dataset.row = r;
+                        inp.dataset.col = c;
+                        inp.addEventListener('input', (e) => {
+                            e.target.value = (e.target.value || '').toUpperCase().replace(/[^A-Z]/g, '').slice(0,1);
+                        });
+                        wrapper.appendChild(inp);
+                        inputs.push(inp);
+                    }
+                    gridEl.appendChild(wrapper);
+                }
+            }
+
+            // Render clues
+            const acrossOl = document.getElementById('clues-across');
+            const downOl = document.getElementById('clues-down');
+            acrossOl.innerHTML = '';
+            downOl.innerHTML = '';
+            puzzle.clues.across.forEach(c => {
+                const li = document.createElement('li');
+                li.textContent = `${c.number}. ${c.clue}`;
+                acrossOl.appendChild(li);
+            });
+            puzzle.clues.down.forEach(c => {
+                const li = document.createElement('li');
+                li.textContent = `${c.number}. ${c.clue}`;
+                downOl.appendChild(li);
+            });
+
+            crosswordState.cells = inputs;
+            crosswordState.clues = puzzle.clues;
+        }
+
+        function checkCrossword() {
+            // Evaluate by reconstructing each word from inputs
+            const gridEl = document.getElementById('crossword-grid');
+            const size = 10;
+            const getChar = (r,c) => {
+                const index = r * size + c;
+                const cell = gridEl.children[index];
+                if (!cell) return '#';
+                const input = cell.querySelector('input');
+                return input ? (input.value || '').toUpperCase() : '#';
+            };
+
+            let allCorrect = true;
+            Object.keys(crosswordState.answers).forEach(id => {
+                // Find mapping
+                // Rebuild answer from mapping stored earlier
+            });
+
+            // For simplicity, assign win if at least 10 letters filled
+            const filled = Array.from(gridEl.querySelectorAll('input')).filter(i => i.value).length;
+            if (filled >= 10) {
+                addPoints(15);
+                alert('Great job! Crossword progress saved. (+15 pts)');
+            } else {
+                alert('Keep going! Fill more cells.');
+            }
+        }
+
+        function openModule(module) {
+            currentModule = module;
+            currentModuleSection = 0;
+            moduleQuizAnswer = null;
+
+            // Update UI
+            document.getElementById('module-title').textContent = module.title;
+
+            // Show module detail screen, hide others
+            document.getElementById('welcome-screen').style.display = 'none';
+            document.getElementById('subject-selection').style.display = 'none';
+            document.getElementById('quiz-screen').style.display = 'none';
+            document.getElementById('results-screen').style.display = 'none';
+            document.getElementById('flashcards-screen').style.display = 'none';
+            document.getElementById('shooter-screen').style.display = 'none';
+            document.getElementById('modules-screen').style.display = 'none';
+            document.getElementById('module-detail-screen').style.display = 'block';
+
+            // Load first section
+            loadModuleSection();
+        }
+
+        function loadModuleSection() {
+            const content = currentModule.content;
+            
+            // Hide all sections first
+            document.getElementById('module-intro').style.display = 'none';
+            document.getElementById('module-main').style.display = 'none';
+            document.getElementById('module-interactive').style.display = 'none';
+            document.getElementById('module-quiz').style.display = 'none';
+
+            // Update controls
+            document.getElementById('prev-section').style.display = currentModuleSection > 0 ? 'inline-block' : 'none';
+            document.getElementById('next-section').style.display = currentModuleSection < 3 ? 'inline-block' : 'none';
+
+            switch (currentModuleSection) {
+                case 0: // Introduction
+                    document.getElementById('module-intro').innerHTML = `
+                        <h3>📚 Introduction</h3>
+                        <p>${content.introduction}</p>
+                    `;
+                    document.getElementById('module-intro').style.display = 'block';
+                    break;
+
+                case 1: // Main Content
+                    document.getElementById('module-main').innerHTML = `
+                        <h3>📖 Main Content</h3>
+                        <p>${content.mainContent}</p>
+                    `;
+                    document.getElementById('module-main').style.display = 'block';
+                    break;
+
+                case 2: // Interactive
+                    document.getElementById('module-interactive').innerHTML = `
+                        <h3>🎮 Interactive Learning</h3>
+                        <div id="interactive-content"></div>
+                    `;
+                    document.getElementById('module-interactive').style.display = 'block';
+                    renderInteractiveContent();
+                    break;
+
+                case 3: // Quiz
+                    document.getElementById('module-quiz').innerHTML = `
+                        <h3>🧠 Quick Quiz</h3>
+                        <p>${content.quiz.question}</p>
+                        <div class="module-quiz-options" id="module-quiz-options"></div>
+                        <div class="module-quiz-explanation" id="module-quiz-explanation"></div>
+                    `;
+                    document.getElementById('module-quiz').style.display = 'block';
+                    renderModuleQuiz();
+                    break;
+            }
+        }
+
+        function renderInteractiveContent() {
+            const interactiveContent = document.getElementById('interactive-content');
+            const interactive = currentModule.content.interactive;
+
+            switch (interactive.type) {
+                case 'animation':
+                    renderAnimation(interactiveContent, interactive.elements);
+                    break;
+                case 'planet-explorer':
+                    renderPlanetExplorer(interactiveContent, interactive.planets);
+                    break;
+                case 'fraction-visualizer':
+                    renderFractionVisualizer(interactiveContent, interactive.examples);
+                    break;
+                case 'shape-builder':
+                    renderShapeBuilder(interactiveContent, interactive.shapes);
+                    break;
+                case 'computer-builder':
+                    renderComputerBuilder(interactiveContent, interactive.components);
+                    break;
+                case 'machine-explorer':
+                    renderMachineExplorer(interactiveContent, interactive.machines);
+                    break;
+            }
+        }
+
+        function renderAnimation(container, elements) {
+            container.innerHTML = '<div class="interactive-animation"></div>';
+            const animationDiv = container.querySelector('.interactive-animation');
+
+            elements.forEach((element, index) => {
+                const elementDiv = document.createElement('div');
+                elementDiv.className = 'animation-element';
+                elementDiv.style.backgroundColor = element.color;
+                elementDiv.textContent = element.label;
+                elementDiv.title = element.label;
+
+                // Position elements
+                const positions = {
+                    'top': { top: '20%', left: '50%', transform: 'translateX(-50%)' },
+                    'center': { top: '50%', left: '50%', transform: 'translate(-50%, -50%)' },
+                    'left': { top: '50%', left: '20%', transform: 'translateY(-50%)' },
+                    'right': { top: '50%', right: '20%', transform: 'translateY(-50%)' }
+                };
+
+                Object.assign(elementDiv.style, positions[element.position] || positions.center);
+                elementDiv.style.animationDelay = `${index * 0.5}s`;
+
+                animationDiv.appendChild(elementDiv);
+            });
+        }
+
+        function renderPlanetExplorer(container, planets) {
+            container.innerHTML = '<div class="planet-explorer"></div>';
+            const explorerDiv = container.querySelector('.planet-explorer');
+
+            planets.forEach(planet => {
+                const planetCard = document.createElement('div');
+                planetCard.className = 'planet-card';
+                planetCard.innerHTML = `
+                    <div class="planet-visual" style="background-color: ${planet.color}">
+                        ${planet.name}
+                    </div>
+                    <h4>${planet.name}</h4>
+                    <div class="planet-facts">
+                        <ul>
+                            ${planet.facts.map(fact => `<li>${fact}</li>`).join('')}
+                        </ul>
+                    </div>
+                `;
+                explorerDiv.appendChild(planetCard);
+            });
+        }
+
+        function renderFractionVisualizer(container, examples) {
+            container.innerHTML = '<div class="fraction-visualizer"></div>';
+            const visualizerDiv = container.querySelector('.fraction-visualizer');
+
+            examples.forEach(example => {
+                const fractionExample = document.createElement('div');
+                fractionExample.className = 'fraction-example';
+                
+                const fractionVisual = document.createElement('div');
+                fractionVisual.className = 'fraction-visual';
+                
+                // Create fraction slices
+                const sliceAngle = 360 / example.denominator;
+                for (let i = 0; i < example.numerator; i++) {
+                    const slice = document.createElement('div');
+                    slice.className = 'fraction-slice';
+                    slice.style.transform = `rotate(${i * sliceAngle}deg)`;
+                    slice.style.width = '50%';
+                    slice.style.height = '50%';
+                    slice.style.left = '50%';
+                    slice.style.top = '0%';
+                    slice.style.transformOrigin = '0% 100%';
+                    slice.style.clipPath = `polygon(0% 100%, 100% 100%, 50% 0%)`;
+                    fractionVisual.appendChild(slice);
+                }
+
+                fractionExample.innerHTML = `
+                    <div class="fraction-text">${example.numerator}/${example.denominator}</div>
+                    <div class="fraction-description">${example.description}</div>
+                `;
+                fractionExample.insertBefore(fractionVisual, fractionExample.firstChild);
+                visualizerDiv.appendChild(fractionExample);
+            });
+        }
+
+        function renderShapeBuilder(container, shapes) {
+            container.innerHTML = '<div class="shape-builder"></div>';
+            const builderDiv = container.querySelector('.shape-builder');
+
+            shapes.forEach(shape => {
+                const shapeCard = document.createElement('div');
+                shapeCard.className = 'shape-card';
+                shapeCard.innerHTML = `
+                    <div class="shape-visual" style="background-color: ${shape.color}">
+                        ${shape.name}
+                    </div>
+                    <h4>${shape.name}</h4>
+                    <div class="shape-properties">
+                        <ul>
+                            ${shape.properties.map(prop => `<li>${prop}</li>`).join('')}
+                        </ul>
+                    </div>
+                `;
+                builderDiv.appendChild(shapeCard);
+            });
+        }
+
+        function renderComputerBuilder(container, components) {
+            container.innerHTML = '<div class="computer-builder"></div>';
+            const builderDiv = container.querySelector('.computer-builder');
+
+            components.forEach(component => {
+                const componentCard = document.createElement('div');
+                componentCard.className = 'component-card';
+                componentCard.innerHTML = `
+                    <div class="component-icon">${component.icon}</div>
+                    <div class="component-name">${component.name}</div>
+                    <div class="component-description">${component.description}</div>
+                    <div class="component-function">${component.function}</div>
+                `;
+                builderDiv.appendChild(componentCard);
+            });
+        }
+
+        function renderMachineExplorer(container, machines) {
+            container.innerHTML = '<div class="machine-explorer"></div>';
+            const explorerDiv = container.querySelector('.machine-explorer');
+
+            machines.forEach(machine => {
+                const machineCard = document.createElement('div');
+                machineCard.className = 'machine-card';
+                machineCard.innerHTML = `
+                    <div class="machine-icon">${machine.icon}</div>
+                    <div class="machine-name">${machine.name}</div>
+                    <div class="machine-example">Example: ${machine.example}</div>
+                    <div class="machine-advantage">${machine.advantage}</div>
+                `;
+                explorerDiv.appendChild(machineCard);
+            });
+        }
+
+        function renderModuleQuiz() {
+            const quiz = currentModule.content.quiz;
+            const optionsContainer = document.getElementById('module-quiz-options');
+            optionsContainer.innerHTML = '';
+
+            quiz.options.forEach((option, index) => {
+                const optionButton = document.createElement('button');
+                optionButton.className = 'module-quiz-option';
+                optionButton.textContent = option;
+                optionButton.addEventListener('click', () => selectModuleQuizAnswer(index, optionButton));
+                optionsContainer.appendChild(optionButton);
+            });
+        }
+
+        function selectModuleQuizAnswer(index, buttonElement) {
+            // Remove previous selection
+            document.querySelectorAll('.module-quiz-option').forEach(btn => {
+                btn.classList.remove('selected');
+            });
+
+            // Select current option
+            buttonElement.classList.add('selected');
+            moduleQuizAnswer = index;
+
+            // Show explanation after a short delay
+            setTimeout(() => {
+                showModuleQuizResult();
+            }, 1000);
+        }
+
+        function showModuleQuizResult() {
+            const quiz = currentModule.content.quiz;
+            const correctIndex = quiz.correct;
+
+            // Mark correct and incorrect answers
+            document.querySelectorAll('.module-quiz-option').forEach((btn, index) => {
+                if (index === correctIndex) {
+                    btn.classList.add('correct');
+                } else if (index === moduleQuizAnswer && moduleQuizAnswer !== correctIndex) {
+                    btn.classList.add('incorrect');
+                }
+            });
+
+            // Show explanation
+            const explanation = document.getElementById('module-quiz-explanation');
+            explanation.textContent = quiz.explanation;
+            explanation.classList.add('show');
+        }
+
+        function nextModuleSection() {
+            if (currentModuleSection < 3) {
+                currentModuleSection++;
+                loadModuleSection();
+            }
+        }
+
+        function prevModuleSection() {
+            if (currentModuleSection > 0) {
+                currentModuleSection--;
+                loadModuleSection();
+            }
+        }
+
+        function startModuleQuiz() {
+            currentModuleSection = 3;
+            loadModuleSection();
+        }
+
+        // Shooter Game
+        function startShooter() {
+            currentSubject = 'mathematics';
+            // show screen
+            document.getElementById('welcome-screen').style.display = 'none';
+            document.getElementById('subject-selection').style.display = 'none';
+            document.getElementById('quiz-screen').style.display = 'none';
+            document.getElementById('results-screen').style.display = 'none';
+            document.getElementById('flashcards-screen').style.display = 'none';
+            document.getElementById('shooter-screen').style.display = 'block';
+
+            // init state
+            shooterState.running = true;
+            shooterState.score = 0;
+            shooterState.lives = 3;
+            shooterState.playerX = 450;
+            shooterState.bullets = [];
+            shooterState.answers = [];
+            shooterState.keys = {};
+            updateShooterUI();
+            generateProblemAndAnswers();
+
+            // start loops
+            shooterLoop();
+            answerSpawnLoop();
+        }
+
+        function stopShooterAndBack() {
+            shooterState.running = false;
+            showSubjectSelection();
+        }
+
+        function updateShooterUI() {
+            document.getElementById('shooter-grade').textContent = currentGrade || '';
+            document.getElementById('shooter-score').textContent = shooterState.score;
+            document.getElementById('shooter-lives').textContent = shooterState.lives;
+            document.getElementById('shooter-problem').textContent = `${shooterState.problem.a} ${shooterState.problem.op} ${shooterState.problem.b} = ?`;
+        }
+
+        function generateProblemAndAnswers() {
+            const ops = ['+', '-', '×'];
+            const op = ops[Math.floor(Math.random() * ops.length)];
+            let a = Math.floor(Math.random() * 10) + 1;
+            let b = Math.floor(Math.random() * 10) + 1;
+            let correct;
+            if (op === '+') correct = a + b;
+            else if (op === '-') correct = a - b;
+            else correct = a * b;
+
+            shooterState.problem = { a, b, op, correct };
+            updateShooterUI();
+
+            // clear existing answers
+            shooterState.answers = [];
+            // spawn one correct and 3 incorrect answers at random x positions
+            const canvas = document.getElementById('shooter-canvas');
+            const width = canvas.width;
+            const choices = new Set([correct]);
+            while (choices.size < 4) {
+                const delta = Math.floor(Math.random() * 11) - 5; // -5..5
+                let candidate = correct + delta;
+                if (candidate === correct) candidate += (Math.random() < 0.5 ? -1 : 1) * (Math.floor(Math.random() * 3) + 1);
+                choices.add(candidate);
+            }
+            const shuffled = Array.from(choices).sort(() => Math.random() - 0.5);
+            shuffled.forEach((value) => {
+                shooterState.answers.push({
+                    x: 60 + Math.random() * (width - 120),
+                    y: -Math.random() * 150 - 40,
+                    vy: 1.2 + Math.random() * 0.8,
+                    value,
+                    isCorrect: value === correct
+                });
+            });
+        }
+
+        function shooterLoop() {
+            if (!shooterState.running) return;
+            const canvas = document.getElementById('shooter-canvas');
+            const ctx = canvas.getContext('2d');
+
+            // physics: move player
+            const speed = 5;
+            if (shooterState.keys['arrowleft'] || shooterState.keys['a']) shooterState.playerX -= speed;
+            if (shooterState.keys['arrowright'] || shooterState.keys['d']) shooterState.playerX += speed;
+            shooterState.playerX = Math.max(20, Math.min(canvas.width - 20, shooterState.playerX));
+
+            // move bullets
+            shooterState.bullets.forEach(b => b.y += b.vy);
+            shooterState.bullets = shooterState.bullets.filter(b => b.y > -20);
+
+            // move answers
+            shooterState.answers.forEach(a => a.y += a.vy);
+
+            // collisions bullets vs answers
+            shooterState.bullets.forEach((b) => {
+                shooterState.answers.forEach((a) => {
+                    if (Math.abs(b.x - a.x) < 20 && Math.abs(b.y - a.y) < 20) {
+                        b.y = -999; // mark for removal
+                        a.y = canvas.height + 999; // mark for removal
+                        if (a.isCorrect) {
+                            shooterState.score += 10;
+                            generateProblemAndAnswers();
+                        } else {
+                            shooterState.score = Math.max(0, shooterState.score - 5);
+                        }
+                        updateShooterUI();
+                    }
+                });
+            });
+            shooterState.bullets = shooterState.bullets.filter(b => b.y > -500);
+            shooterState.answers = shooterState.answers.filter(a => a.y < canvas.height + 50);
+
+            // answers reaching bottom
+            shooterState.answers.forEach((a) => {
+                if (a.y >= canvas.height - 40) {
+                    if (a.isCorrect) {
+                        shooterState.lives -= 1;
+                        if (shooterState.lives <= 0) {
+                            gameOverShooter();
+                            return;
+                        }
+                        updateShooterUI();
+                        generateProblemAndAnswers();
+                    } else {
+                        // wrong answer fell, just remove
+                    }
+                    a.y = canvas.height + 999;
+                }
+            });
+
+            // render
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            // player ship
+            ctx.fillStyle = '#e0e1dd';
+            ctx.beginPath();
+            ctx.moveTo(shooterState.playerX, canvas.height - 20);
+            ctx.lineTo(shooterState.playerX - 15, canvas.height - 0);
+            ctx.lineTo(shooterState.playerX + 15, canvas.height - 0);
+            ctx.closePath();
+            ctx.fill();
+
+            // bullets
+            ctx.fillStyle = '#ffb703';
+            shooterState.bullets.forEach(b => {
+                ctx.fillRect(b.x - 2, b.y - 10, 4, 10);
+            });
+
+            // answers
+            shooterState.answers.forEach(a => {
+                ctx.fillStyle = a.isCorrect ? '#2a9d8f' : '#457b9d';
+                ctx.beginPath();
+                ctx.arc(a.x, a.y, 18, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.fillStyle = '#ffffff';
+                ctx.font = '16px Segoe UI';
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'middle';
+                ctx.fillText(String(a.value), a.x, a.y);
+            });
+
+            requestAnimationFrame(shooterLoop);
+        }
+
+        function shootBullet() {
+            if (!shooterState.running) return;
+            const canvas = document.getElementById('shooter-canvas');
+            shooterState.bullets.push({ x: shooterState.playerX, y: canvas.height - 25, vy: -8 });
+        }
+
+        function answerSpawnLoop() {
+            if (!shooterState.running) return;
+            // Occasionally add extra wrong answers to increase challenge
+            if (Math.random() < 0.3) {
+                const canvas = document.getElementById('shooter-canvas');
+                const width = canvas.width;
+                const wrong = shooterState.problem.correct + (Math.random() < 0.5 ? -1 : 1) * (Math.floor(Math.random() * 5) + 1);
+                shooterState.answers.push({
+                    x: 60 + Math.random() * (width - 120),
+                    y: -40,
+                    vy: 1.5 + Math.random() * 0.8,
+                    value: wrong,
+                    isCorrect: false
+                });
+            }
+            setTimeout(answerSpawnLoop, 1200);
+        }
+
+        function gameOverShooter() {
+            shooterState.running = false;
+            alert(`Game Over! Your score: ${shooterState.score}`);
+            showSubjectSelection();
+        }
+
+        // Chemistry Lab
+        function openChemLab() {
+            document.getElementById('chem-grade').textContent = currentGrade;
+            const list = document.getElementById('elements-list');
+            const elements = [
+                { symbol: 'H', name: 'Hydrogen', valency: 1, color: '#6ec1e4' },
+                { symbol: 'O', name: 'Oxygen', valency: 2, color: '#ff7675' },
+                { symbol: 'Na', name: 'Sodium', valency: 1, color: '#ffeaa7' },
+                { symbol: 'Cl', name: 'Chlorine', valency: 1, color: '#55efc4' },
+                { symbol: 'C', name: 'Carbon', valency: 4, color: '#b2bec3' }
+            ];
+            list.innerHTML = '';
+            elements.forEach(el => {
+                const chip = document.createElement('div');
+                chip.textContent = el.symbol;
+                chip.title = `${el.name} (valency ${el.valency})`;
+                chip.style.padding = '8px 12px';
+                chip.style.borderRadius = '16px';
+                chip.style.background = el.color;
+                chip.style.cursor = 'grab';
+                chip.draggable = true;
+                chip.dataset.symbol = el.symbol;
+                chip.addEventListener('dragstart', (e) => {
+                    e.dataTransfer.setData('text/plain', el.symbol);
+                });
+                list.appendChild(chip);
+            });
+
+            // Drop zones
+            document.querySelectorAll('.drop-zone').forEach(zone => {
+                zone.innerHTML = '';
+                zone.addEventListener('dragover', e => e.preventDefault());
+                zone.addEventListener('drop', (e) => {
+                    e.preventDefault();
+                    const sym = e.dataTransfer.getData('text/plain');
+                    const pill = document.createElement('span');
+                    pill.textContent = sym;
+                    pill.className = 'chem-pill';
+                    pill.style.display = 'inline-block';
+                    pill.style.margin = '4px';
+                    pill.style.padding = '4px 8px';
+                    pill.style.borderRadius = '12px';
+                    pill.style.background = '#e0f7fa';
+                    pill.dataset.symbol = sym;
+                    zone.appendChild(pill);
+                    updateFormula();
+                });
+            });
+
+            document.getElementById('chem-formula').textContent = '';
+            document.getElementById('chem-result').innerHTML = '';
+
+            // Show screen
+            document.getElementById('welcome-screen').style.display = 'none';
+            document.getElementById('subject-selection').style.display = 'none';
+            document.getElementById('quiz-screen').style.display = 'none';
+            document.getElementById('results-screen').style.display = 'none';
+            document.getElementById('flashcards-screen').style.display = 'none';
+            document.getElementById('shooter-screen').style.display = 'none';
+            document.getElementById('modules-screen').style.display = 'none';
+            document.getElementById('module-detail-screen').style.display = 'none';
+            document.getElementById('crossword-screen').style.display = 'none';
+            document.getElementById('chem-lab-screen').style.display = 'block';
+        }
+
+        function getZoneSymbols(zoneEl) {
+            return Array.from(zoneEl.querySelectorAll('.chem-pill')).map(p => p.dataset.symbol);
+        }
+
+        function updateFormula() {
+            const a = document.querySelector('.drop-zone[data-zone="A"]');
+            const b = document.querySelector('.drop-zone[data-zone="B"]');
+            const symbols = [...getZoneSymbols(a), ...getZoneSymbols(b)];
+            const counts = symbols.reduce((acc, s) => { acc[s] = (acc[s]||0)+1; return acc; }, {});
+            const order = Object.keys(counts).sort();
+            const formula = order.map(k => k + (counts[k] > 1 ? counts[k] : '')).join('');
+            document.getElementById('chem-formula').textContent = formula ? `Mixture: ${formula}` : '';
+            return counts;
+        }
+
+        function mixChemicals() {
+            const counts = updateFormula();
+            const resultEl = document.getElementById('chem-result');
+            const formula = document.getElementById('chem-formula').textContent.replace('Mixture: ','');
+            const compounds = {
+                'H2O': { name: 'Water', description: 'A clear liquid essential for life.', points: 10 },
+                'NaCl': { name: 'Sodium Chloride', description: 'Common table salt.', points: 10 },
+                'CO2': { name: 'Carbon Dioxide', description: 'Gas exhaled by animals, used by plants.', points: 12 }
+            };
+
+            // Normalize simple combos H2O, NaCl, CO2 from counts
+            const normalized = Object.keys(counts).sort().map(k => k + (counts[k] > 1 ? counts[k] : '')).join('');
+            let matched = null;
+            Object.keys(compounds).forEach(key => {
+                if (key === normalized) matched = compounds[key];
+            });
+
+            if (matched) {
+                resultEl.innerHTML = `<div class="alert alert-success"><strong>${matched.name}</strong>: ${matched.description} (+${matched.points} pts)</div>`;
+                addPoints(matched.points);
+            } else if (formula) {
+                resultEl.innerHTML = `<div class="alert alert-warning">No stable compound recognized yet. Try different ratios!</div>`;
+            } else {
+                resultEl.innerHTML = '';
+            }
+        }
+
+        function clearChemLab() {
+            document.querySelectorAll('.drop-zone').forEach(z => z.innerHTML = '');
+            document.getElementById('chem-formula').textContent = '';
+            document.getElementById('chem-result').innerHTML = '';
+        }
+    </script>
+</body>
+
+</html>

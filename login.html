@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduGameHub</title>
+    <link rel="stylesheet" href="login.css">
+</head>
+<body>
+    <div class="authContainer">
+        <div class="logo">🎓</div>
+        <div class="title">EduGameHub</div>
+        <div class="motive">Level up your learning adventure!</div>
+
+        <div class="tabs">
+            <button class="tab active" onclick="showForm('login')">Login</button>
+            <button class="tab" onclick="showForm('signup')">Sign Up</button>
+        </div>
+
+        <form action="/login" method="POST" id="loginForm" class="form active">
+            <div class="form-group">
+                <label for="loginEmail">Email</label>
+                <input type="email" name="email" id="loginEmail" placeholder="Enter your email">
+            </div>
+            <div class="form-group">
+                <label for="loginPassword">Password</label>
+                <input type="password" name="password" id="loginPassword" placeholder="Enter your password">
+            </div>
+            <button type="submit" class="btn">Sign Up</button>
+        </form>
+
+        <form action="/signup" method="POST" id="signupForm" class="form">
+            <div class="form-group">
+                <label for="name">Full Name</label>
+                <input type="text" name="signupName" id="name" placeholder="Entar yout full name">
+            </div>
+            <div class="form-group">
+                <label for="signupEmail">Email</label>
+                <input type="email" name="email" id="signupEmail" placeholder="Enter your email">
+            </div>
+            <div class="form-group">
+                <label for="signupPassword">Password</label>
+                <input type="password" name="password" id="signupPassword" placeholder="Enter your password">
+            </div>
+            <button type="submit" class="btn">Sign In</button>
+        </form>
+
+        
+    </div>
+
+    <script>
+    function showForm(type) {
+      // Tabs
+      document.querySelectorAll(".tab").forEach(tab => tab.classList.remove("active"));
+      if (type === "login") {
+        document.querySelector(".tab:nth-child(1)").classList.add("active");
+      } else {
+        document.querySelector(".tab:nth-child(2)").classList.add("active");
+      }
+
+      // Forms
+      document.querySelectorAll(".form").forEach(f => f.classList.remove("active"));
+      document.getElementById(type + "Form").classList.add("active");
+    }
+  </script>
+</body>
+</html>
