@@ -265,6 +265,17 @@ html, body {
   grid-template-columns: 1fr 1fr 1fr 1fr;
 }
 
+/* Expand grid when new actions are present */
+.subject-actions:has(.crossword-btn),
+.subject-actions:has(.chem-lab-btn) {
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.subject-actions:has(.shooter-btn):has(.crossword-btn),
+.subject-actions:has(.shooter-btn):has(.chem-lab-btn) {
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+}
+
 .subject-btn, .flashcards-btn, .shooter-btn, .modules-btn {
   background: #edafb8;
   color: #2c3e50;
@@ -290,6 +301,42 @@ html, body {
 
 .modules-btn:hover {
   background: #21867a;
+}
+
+/* Crossword button styling */
+.crossword-btn {
+  background: linear-gradient(135deg, #6a5acd, #7b68ee);
+  color: #ffffff;
+  border: none;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  box-shadow: 0 6px 14px rgba(106, 90, 205, 0.25);
+}
+
+.crossword-btn:hover {
+  background: linear-gradient(135deg, #5b4fd3, #6d5ef0);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 18px rgba(106, 90, 205, 0.35);
+}
+
+/* Virtual Chem Lab button styling */
+.chem-lab-btn {
+  background: linear-gradient(135deg, #20bf55, #01baef);
+  color: #ffffff;
+  border: none;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  box-shadow: 0 6px 14px rgba(1, 186, 239, 0.25);
+}
+
+.chem-lab-btn:hover {
+  background: linear-gradient(135deg, #1aa34a, #01a6d5);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 18px rgba(1, 166, 213, 0.35);
 }
 
 /* Quiz Interface */
