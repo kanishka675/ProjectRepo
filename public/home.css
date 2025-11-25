@@ -11,7 +11,8 @@
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
-html, body {
+html,
+body {
   height: 100%;
   width: 100%;
 }
@@ -21,10 +22,11 @@ html, body {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;   /* make navbar span full width */
+  width: 100%;
+  /* make navbar span full width */
   background-color: #f7e1d7 !important;
   height: var(--navbar-height);
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   z-index: 1000;
 }
 
@@ -47,9 +49,11 @@ html, body {
   .sideBar {
     left: -260px;
   }
+
   .sideBar.active {
     left: 0;
   }
+
   .mainContent {
     margin-left: 0 !important;
   }
@@ -106,12 +110,12 @@ html, body {
   background-color: #edafb8;
   color: #2c3e50;
   transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .grade-btn:active {
   transform: translateY(0);
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .grade-btn.selected {
@@ -126,7 +130,7 @@ html, body {
   background: white;
   border-radius: 12px;
   padding: 2rem;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   margin-bottom: 2rem;
   min-height: 500px;
 }
@@ -214,7 +218,8 @@ html, body {
   grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
   gap: 2rem;
   margin-top: 2rem;
-  overflow: hidden; /* keep the whole grid clean */
+  overflow: hidden;
+  /* keep the whole grid clean */
 }
 
 
@@ -226,15 +231,17 @@ html, body {
   text-align: center;
   transition: all 0.3s ease;
   cursor: pointer;
-  overflow-x: hidden; /* hide any accidental horizontal overflow */
-  word-wrap: break-word; /* break long words if needed */
+  overflow-x: hidden;
+  /* hide any accidental horizontal overflow */
+  word-wrap: break-word;
+  /* break long words if needed */
 }
 
 
 .subject-card:hover {
   border-color: #edafb8;
   transform: translateY(-3px);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
   overflow-x: visible;
 }
 
@@ -276,7 +283,10 @@ html, body {
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
 }
 
-.subject-btn, .flashcards-btn, .shooter-btn, .modules-btn {
+.subject-btn,
+.flashcards-btn,
+.shooter-btn,
+.modules-btn {
   background: #edafb8;
   color: #2c3e50;
   border: none;
@@ -289,7 +299,10 @@ html, body {
   font-size: 0.9rem;
 }
 
-.subject-btn:hover, .flashcards-btn:hover, .shooter-btn:hover, .modules-btn:hover {
+.subject-btn:hover,
+.flashcards-btn:hover,
+.shooter-btn:hover,
+.modules-btn:hover {
   background: #d4a5a5;
   transform: translateY(-2px);
 }
@@ -626,9 +639,17 @@ html, body {
 }
 
 @keyframes pulse {
-  0% { opacity: 1; }
-  50% { opacity: 0.5; }
-  100% { opacity: 1; }
+  0% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.5;
+  }
+
+  100% {
+    opacity: 1;
+  }
 }
 
 /* Responsive Design */
@@ -636,34 +657,35 @@ html, body {
   .features-grid {
     grid-template-columns: 1fr;
   }
-  
+
   .subjects-grid {
     grid-template-columns: 1fr;
   }
-  
+
   .quiz-stats {
     gap: 1rem;
   }
-  
+
   .stat {
     padding: 0.4rem 0.8rem;
     font-size: 0.9rem;
   }
-  
+
   .results-info {
     grid-template-columns: 1fr;
   }
-  
+
   .results-actions {
     flex-direction: column;
     align-items: center;
   }
-  
-  .action-btn, .quiz-btn {
+
+  .action-btn,
+  .quiz-btn {
     width: 100%;
     max-width: 300px;
   }
-  
+
   .section-header {
     flex-direction: column;
     align-items: flex-start;
@@ -783,7 +805,8 @@ html, body {
   margin: 2rem 0;
 }
 
-.module-intro, .module-main {
+.module-intro,
+.module-main {
   background: #f8f9fa;
   padding: 2rem;
   border-radius: 12px;
@@ -791,13 +814,15 @@ html, body {
   border-left: 4px solid #2a9d8f;
 }
 
-.module-intro h3, .module-main h3 {
+.module-intro h3,
+.module-main h3 {
   color: #2c3e50;
   margin-bottom: 1rem;
   font-size: 1.5rem;
 }
 
-.module-intro p, .module-main p {
+.module-intro p,
+.module-main p {
   color: #5a6c7d;
   line-height: 1.8;
   font-size: 1.1rem;
@@ -841,7 +866,7 @@ html, body {
 
 .animation-element:hover {
   transform: scale(1.1);
-  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
 
 .animation-element:nth-child(odd) {
@@ -849,8 +874,15 @@ html, body {
 }
 
 @keyframes float {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-10px); }
+
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
 }
 
 /* Planet Explorer */
@@ -876,7 +908,7 @@ html, body {
 .planet-card:hover {
   border-color: #2a9d8f;
   transform: translateY(-3px);
-  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
 .planet-visual {
@@ -984,7 +1016,7 @@ html, body {
 .shape-card:hover {
   border-color: #2a9d8f;
   transform: translateY(-3px);
-  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
 .shape-visual {
@@ -1042,7 +1074,7 @@ html, body {
 .component-card:hover {
   border-color: #2a9d8f;
   transform: translateY(-3px);
-  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
 .component-icon {
@@ -1093,7 +1125,7 @@ html, body {
 .machine-card:hover {
   border-color: #2a9d8f;
   transform: translateY(-3px);
-  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
 .machine-icon {
@@ -1209,26 +1241,29 @@ html, body {
   .modules-grid {
     grid-template-columns: 1fr;
   }
-  
+
   .module-navigation {
     flex-direction: column;
     align-items: stretch;
   }
-  
-  .planet-explorer, .fraction-visualizer, .shape-builder {
+
+  .planet-explorer,
+  .fraction-visualizer,
+  .shape-builder {
     flex-direction: column;
     align-items: center;
   }
-  
-  .computer-builder, .machine-explorer {
+
+  .computer-builder,
+  .machine-explorer {
     grid-template-columns: 1fr;
   }
-  
+
   .module-controls {
     flex-direction: column;
     align-items: center;
   }
-  
+
   .module-controls .quiz-btn {
     width: 100%;
     max-width: 300px;

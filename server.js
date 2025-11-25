@@ -11,6 +11,7 @@ app.use(bodyParser.json());
 app.use(express.static('public')); // serves login.html etc.
 
 const usersFile = path.join(__dirname, 'users.json');
+const teachersFile = path.join(__dirname, 'teachers.json');
 
 // Load users from JSON
 function loadUsers() {
@@ -26,7 +27,20 @@ function saveUsers(users) {
   fs.writeFileSync(usersFile, JSON.stringify(users, null, 2));
 }
 
-// 🔐 LOGIN endpoint
+// Load teachers from JSON
+function loadTeachers() {
+  if (!fs.existsSync(teachersFile)) {
+    // Create default teacher account
+    const defaultTeachers = [
+      { name: 'Demo Teacher', email: 'teacher@edu.com', password: 'teacher123' }
+    ];
+    fs.writeFileSync(teachersFile, JSON.stringify(defaultTeachers, null, 2));
+  }
+  const data = fs.readFileSync(teachersFile);
+  return JSON.parse(data);
+}
+
+// 🔐 STUDENT LOGIN endpoint
 app.post('/login', (req, res) => {
   const { email, password } = req.body;
   const users = loadUsers();
@@ -38,6 +52,21 @@ app.post('/login', (req, res) => {
     res.redirect('/home.html');
   } else {
     res.status(401).send('Invalid credentials. <a href="/login.html">Try again</a>');
+  }
+});
+
+// 👨‍🏫 TEACHER LOGIN endpoint
+app.post('/teacher-login', (req, res) => {
+  const { email, password } = req.body;
+  const teachers = loadTeachers();
+
+  const teacher = teachers.find(t => t.email === email && t.password === password);
+
+  if (teacher) {
+    // Redirect to teacher dashboard if successful
+    res.redirect('/teacher.html');
+  } else {
+    res.status(401).send('Invalid teacher credentials. <a href="/login.html">Try again</a>');
   }
 });
 

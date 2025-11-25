@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>  
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EduGameHub</title>
     <link rel="stylesheet" href="home.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 
 </head>
 
@@ -32,7 +33,8 @@
                             <a class="nav-link" href="leaderboard.html">Leaderboard</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#rewardsModal">Rewards <span class="badge bg-success" id="points-badge">0</span></a>
+                            <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#rewardsModal">Rewards
+                                <span class="badge bg-success" id="points-badge">0</span></a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="teacher.html">Teacher</a>
@@ -62,7 +64,7 @@
                     </form>
 
                     <form action="login.html" class="d-flex">
-                        <button class="logout btn" >Logout</button>
+                        <button class="logout btn">Logout</button>
                     </form>
                 </div>
             </div>
@@ -72,7 +74,7 @@
         <div class="sideBar">
             <h4 class="sidebar-title">Select Grade</h4>
             <div class="grade-buttons">
-               
+
                 <button class="grade-btn" data-grade="6">Grade 6</button>
                 <button class="grade-btn" data-grade="7">Grade 7</button>
                 <button class="grade-btn" data-grade="8">Grade 8</button>
@@ -87,9 +89,10 @@
             <!-- Welcome Screen -->
             <div id="welcome-screen" class="content-section">
                 <div class="welcome-header">
+
                     <h2>🎓 EduGameHub - STEM Learning</h2>
                     <p>Select a grade from the sidebar to explore STEM subjects and take quizzes!</p>
-                    <p>Please click on the grade 6 for exploring the content...</p>
+
                 </div>
                 <div class="features-grid">
                     <div class="feature-card">
@@ -118,11 +121,11 @@
                     <button id="back-to-grades" class="back-btn">← Back to Grades</button>
                 </div>
                 <div class="subjects-grid">
-                    <div class="subject-card" data-subject="science" >
+                    <div class="subject-card" data-subject="science">
                         <div class="subject-icon">🔬</div>
                         <h3>Science</h3>
                         <p id="science-description">Biology, Chemistry, Physics, Earth Science</p>
-                        <div class="subject-actions" >
+                        <div class="subject-actions">
                             <button class="subject-btn" data-subject="science">Start Quiz</button>
                             <button class="flashcards-btn" data-subject="science">Start Flashcards</button>
                             <button class="modules-btn" data-subject="science">Learn Modules</button>
@@ -170,15 +173,17 @@
             <!-- Quiz Screen -->
             <div id="quiz-screen" class="content-section" style="display: none;">
                 <div class="quiz-header">
-                    <h2 id="quiz-title">Grade <span id="quiz-grade">6</span> - <span id="quiz-subject">Science</span> Quiz</h2>
+                    <h2 id="quiz-title">Grade <span id="quiz-grade">6</span> - <span id="quiz-subject">Science</span>
+                        Quiz</h2>
                     <div class="quiz-stats">
-                        <span class="stat">Question <span id="current-q">1</span> of <span id="total-qs">10</span></span>
+                        <span class="stat">Question <span id="current-q">1</span> of <span
+                                id="total-qs">10</span></span>
                         <span class="stat">Score: <span id="score">0</span></span>
                         <span class="stat">Time: <span id="timer">30</span>s</span>
                     </div>
                     <button id="back-to-subjects" class="back-btn">← Back to Subjects</button>
                 </div>
-                
+
                 <div class="progress-container">
                     <div class="progress-bar">
                         <div class="progress-fill" id="progress"></div>
@@ -207,7 +212,7 @@
                         <div class="percentage" id="percentage">0%</div>
                     </div>
                 </div>
-                
+
                 <div class="results-info">
                     <div class="result-item">
                         <h4>📊 Performance</h4>
@@ -254,9 +259,11 @@
             <!-- Flashcards Screen -->
             <div id="flashcards-screen" class="content-section" style="display: none;">
                 <div class="quiz-header">
-                    <h2 id="flashcards-title">Grade <span id="flashcards-grade">6</span> - <span id="flashcards-subject">Science</span> Flashcards</h2>
+                    <h2 id="flashcards-title">Grade <span id="flashcards-grade">6</span> - <span
+                            id="flashcards-subject">Science</span> Flashcards</h2>
                     <div class="quiz-stats">
-                        <span class="stat">Card <span id="current-card">1</span> of <span id="total-cards">10</span></span>
+                        <span class="stat">Card <span id="current-card">1</span> of <span
+                                id="total-cards">10</span></span>
                     </div>
                     <button id="back-to-subjects-from-flashcards" class="back-btn">← Back to Subjects</button>
                 </div>
@@ -299,11 +306,14 @@
             <!-- Crossword Screen -->
             <div id="crossword-screen" class="content-section" style="display: none;">
                 <div class="quiz-header">
-                    <h2>Grade <span id="crossword-grade">6</span> - <span id="crossword-subject">Science</span> Crossword</h2>
+                    <h2>Grade <span id="crossword-grade">6</span> - <span id="crossword-subject">Science</span>
+                        Crossword</h2>
                     <button id="back-to-subjects-from-crossword" class="back-btn">← Back to Subjects</button>
                 </div>
                 <div class="crossword-container" style="display:flex; gap:24px; align-items:start; flex-wrap: wrap;">
-                    <div id="crossword-grid" style="display:grid; grid-template-columns: repeat(10, 36px); grid-auto-rows: 36px; gap:4px;"></div>
+                    <div id="crossword-grid"
+                        style="display:grid; grid-template-columns: repeat(10, 36px); grid-auto-rows: 36px; gap:4px;">
+                    </div>
                     <div class="crossword-clues" style="flex:1; min-width:260px;">
                         <h4>Across</h4>
                         <ol id="clues-across"></ol>
@@ -326,18 +336,27 @@
                         <div id="elements-list" style="display:flex; gap:8px; flex-wrap:wrap;"></div>
                     </div>
                     <div class="chem-workbench" style="flex:1; min-width:320px;">
-                        
+
                         <div class="beakers" style="display:flex; gap:16px;">
-                            <div class="beaker" data-beaker="A" style="width:180px; height:220px; border:2px solid #6c757d; border-radius:8px; position:relative; background:linear-gradient(#f8f9fa,#e9ecef);">
-                                <div class="beaker-label" style="position:absolute; top:-22px; left:0; font-weight:bold;">Beaker A</div>
-                                <div class="drop-zone" data-zone="A" style="position:absolute; inset:8px; border:1px dashed #adb5bd; border-radius:6px;"></div>
+                            <div class="beaker" data-beaker="A"
+                                style="width:180px; height:220px; border:2px solid #6c757d; border-radius:8px; position:relative; background:linear-gradient(#f8f9fa,#e9ecef);">
+                                <div class="beaker-label"
+                                    style="position:absolute; top:-22px; left:0; font-weight:bold;">Beaker A</div>
+                                <div class="drop-zone" data-zone="A"
+                                    style="position:absolute; inset:8px; border:1px dashed #adb5bd; border-radius:6px;">
+                                </div>
                             </div>
-                            <div class="beaker" data-beaker="B" style="width:180px; height:220px; border:2px solid #6c757d; border-radius:8px; position:relative; background:linear-gradient(#f8f9fa,#e9ecef);">
-                                <div class="beaker-label" style="position:absolute; top:-22px; left:0; font-weight:bold;">Beaker B</div>
-                                <div class="drop-zone" data-zone="B" style="position:absolute; inset:8px; border:1px dashed #adb5bd; border-radius:6px;"></div>
+                            <div class="beaker" data-beaker="B"
+                                style="width:180px; height:220px; border:2px solid #6c757d; border-radius:8px; position:relative; background:linear-gradient(#f8f9fa,#e9ecef);">
+                                <div class="beaker-label"
+                                    style="position:absolute; top:-22px; left:0; font-weight:bold;">Beaker B</div>
+                                <div class="drop-zone" data-zone="B"
+                                    style="position:absolute; inset:8px; border:1px dashed #adb5bd; border-radius:6px;">
+                                </div>
                             </div>
                         </div>
-                        <div class="mix-controls" style="margin-top:12px; display:flex; gap:8px; flex-wrap:wrap; align-items:center;">
+                        <div class="mix-controls"
+                            style="margin-top:12px; display:flex; gap:8px; flex-wrap:wrap; align-items:center;">
                             <button id="chem-mix" class="quiz-btn">Mix</button>
                             <button id="chem-clear" class="quiz-btn">Clear</button>
                             <div id="chem-formula" style="font-weight:bold;"></div>
@@ -350,7 +369,8 @@
             <!-- Learning Modules Screen -->
             <div id="modules-screen" class="content-section" style="display: none;">
                 <div class="quiz-header">
-                    <h2>Grade <span id="modules-grade">6</span> - <span id="modules-subject">Science</span> Learning Modules</h2>
+                    <h2>Grade <span id="modules-grade">6</span> - <span id="modules-subject">Science</span> Learning
+                        Modules</h2>
                     <button id="back-to-subjects-from-modules" class="back-btn">← Back to Subjects</button>
                 </div>
 
@@ -373,7 +393,7 @@
                     <div class="module-intro" id="module-intro">
                         <!-- Introduction content -->
                     </div>
-                    
+
                     <div class="module-main" id="module-main">
                         <!-- Main content -->
                     </div>
@@ -450,7 +470,9 @@
                                 explanation: "Mars is called the Red Planet because of iron oxide (rust) on its surface."
                             }
                         }
-                    }
+                    },
+                    { id: "states-of-matter", title: "🧊 States of Matter", description: "Solid, liquid, and gas", content: { introduction: "Matter exists in different states based on temperature!", mainContent: "Solids have fixed shape/volume. Liquids have fixed volume but flow. Gases expand to fill containers. Heating makes particles move faster and change state!", interactive: { type: "state-changer", examples: [] }, quiz: { question: "What happens to water at 100°C?", options: ["Freezes", "Stays liquid", "Turns to steam", "Disappears"], correct: 2, explanation: "At 100°C, water boils into steam (gas state)." } } },
+                    { id: "water-cycle", title: "🌊 Water Cycle", description: "How water moves through Earth", content: { introduction: "Water constantly cycles through Earth's systems!", mainContent: "Evaporation (sun heats water) → Condensation (vapor makes clouds) → Precipitation (rain/snow falls) → Collection (water gathers).", interactive: { type: "cycle-animation", stages: [] }, quiz: { question: "What is water turning to vapor called?", options: ["Condensation", "Precipitation", "Evaporation", "Collection"], correct: 2, explanation: "Evaporation changes water from liquid to gas." } } }
                 ],
                 mathematics: [
                     {
@@ -498,7 +520,9 @@
                                 explanation: "A triangle has exactly 3 sides and 3 angles."
                             }
                         }
-                    }
+                    },
+                    { id: "decimals", title: "🔢 Decimals", description: "Numbers with decimal points", content: { introduction: "Decimals represent parts of a whole!", mainContent: "Place value: tenths (0.1), hundredths (0.01), thousandths (0.001). Line up decimal points when adding!", interactive: { type: "decimal-grid", examples: [] }, quiz: { question: "What is 0.5 + 0.3?", options: ["0.2", "0.8", "0.53", "0.35"], correct: 1, explanation: "0.5 + 0.3 = 0.8 (5 tenths + 3 tenths = 8 tenths)" } } },
+                    { id: "perimeter-area", title: "📏 Perimeter & Area", description: "Measuring shapes", content: { introduction: "Perimeter is distance around, area is space inside!", mainContent: "Rectangle: Perimeter = 2(l+w), Area = l×w. Square: P = 4s, A = s².", interactive: { type: "shape-measurer", shapes: [] }, quiz: { question: "Area of rectangle 5×3?", options: ["8", "15", "16", "25"], correct: 1, explanation: "Area = length × width = 5 × 3 = 15" } } }
                 ],
                 technology: [
                     {
@@ -524,7 +548,9 @@
                                 explanation: "CPU stands for Central Processing Unit - it's the brain of the computer."
                             }
                         }
-                    }
+                    },
+                    { id: "digital-citizenship", title: "👥 Digital Citizenship", description: "Being responsible online", content: { introduction: "Learn to be a good digital citizen!", mainContent: "Respect others, protect privacy, verify info, be kind online.", interactive: { type: "scenario-trainer", scenarios: [] }, quiz: { question: "What should you do before sharing?", options: ["Share immediately", "Think if kind and true", "Tell everyone", "Copy others"], correct: 1, explanation: "Always think before sharing." } } },
+                    { id: "computer-safety", title: "🔒 Computer Safety", description: "Staying safe with technology", content: { introduction: "Keep yourself and computer safe!", mainContent: "Strong passwords, don't click suspicious links, ask adults before downloading.", interactive: { type: "safety-tips", tips: [] }, quiz: { question: "What makes a good password?", options: ["Your name", "12345", "Mix letters/numbers/symbols", "password"], correct: 2, explanation: "Mix letters, numbers, symbols." } } }
                 ],
                 engineering: [
                     {
@@ -550,8 +576,46 @@
                                 explanation: "A see-saw is a lever - it uses a fulcrum to lift objects."
                             }
                         }
-                    }
+                    },
+                    { id: "gears-pulleys", title: "⚙️ Gears & Pulleys", description: "Machines that multiply force", content: { introduction: "Gears and pulleys help lift heavy things!", mainContent: "Gears transfer motion, pulleys provide mechanical advantage.", interactive: { type: "gear-simulator", gears: [] }, quiz: { question: "What do pulleys help us do?", options: ["Make heavier", "Lift easier", "Make noise", "Create electricity"], correct: 1, explanation: "Pulleys provide mechanical advantage." } } },
+                    { id: "bicycle-mechanics", title: "🚲 Bicycle Mechanics", description: "How bicycles work", content: { introduction: "Bicycles use simple machines!", mainContent: "Bikes use wheels, gears, levers, chains to transfer force.", interactive: { type: "bike-builder", parts: [] }, quiz: { question: "What simple machine are bike pedals?", options: ["Pulley", "Lever", "Wedge", "Screw"], correct: 1, explanation: "Pedals are levers." } } }
                 ]
+            },
+            7: {
+                science: [{ id: "cell-structure", title: "🔬 Cell Structure", description: "Building blocks of life", content: { introduction: "Cells are the basic units!", mainContent: "Nucleus controls, mitochondria produce energy.", interactive: { type: "cell-explorer", organelles: [] }, quiz: { question: "Powerhouse of cell?", options: ["Nucleus", "Mitochondria", "Membrane", "Ribosome"], correct: 1, explanation: "Mitochondria produce energy." } } }, { id: "ecosystems", title: "🌿 Ecosystems", description: "Living things interact", content: { introduction: "Ecosystems are communities!", mainContent: "Producers make food, consumers eat, decomposers break down.", interactive: { type: "food-web", organisms: [] }, quiz: { question: "What do producers do?", options: ["Eat plants", "Make food", "Decompose", "Hunt"], correct: 1, explanation: "Producers make their own food." } } }, { id: "matter-energy", title: "⚡ Matter & Energy", description: "Energy transformations", content: { introduction: "Energy changes form!", mainContent: "Energy can't be created/destroyed, only transformed.", interactive: { type: "energy-transformer", examples: [] }, quiz: { question: "What happens in transformations?", options: ["Destroyed", "Changes form", "Disappears", "Multiplies"], correct: 1, explanation: "Energy changes form." } } }],
+                mathematics: [{ id: "integers", title: "➕➖ Integers", description: "Positive and negative", content: { introduction: "Integers include positive, negative, zero!", mainContent: "Add/subtract integers.", interactive: { type: "number-line", examples: [] }, quiz: { question: "-8 + 5?", options: ["-13", "-3", "3", "13"], correct: 1, explanation: "Subtract, use larger sign." } } }, { id: "ratios-proportions", title: "📊 Ratios & Proportions", description: "Comparing quantities", content: { introduction: "Ratios compare quantities!", mainContent: "Ratio 3:4 means 3 for every 4. Proportions are equal ratios.", interactive: { type: "ratio-visualizer", examples: [] }, quiz: { question: "If ratio 2:3, first=4, second=?", options: ["5", "6", "7", "8"], correct: 1, explanation: "2:3 = 4:6" } } }, { id: "percent", title: "% Percentages", description: "Out of 100", content: { introduction: "Percent means per hundred!", mainContent: "50% = 50/100 = 0.5.", interactive: { type: "percent-calculator", problems: [] }, quiz: { question: "25% of 80?", options: ["15", "20", "25", "30"], correct: 1, explanation: "0.25 × 80 = 20" } } }],
+                technology: [{ id: "internet-basics", title: "🌐 Internet Basics", description: "How Internet works", content: { introduction: "Internet connects billions!", mainContent: "Data in packets through routers.", interactive: { type: "network-simulator", components: [] }, quiz: { question: "DNS stands for?", options: ["Domain Name System", "Digital Network Service", "Data Network Server", "Domain Name Service"], correct: 0, explanation: "DNS translates names to IPs." } } }, { id: "spreadsheets", title: "📊 Spreadsheets", description: "Organizing data", content: { introduction: "Spreadsheets organize data!", mainContent: "Rows/columns, formulas like =SUM(), =AVERAGE().", interactive: { type: "spreadsheet-sim", examples: [] }, quiz: { question: "What does =SUM(A1:A5) do?", options: ["Delete", "Add A1-A5", "Multiply", "Sort"], correct: 1, explanation: "SUM adds range." } } }, { id: "data-viz", title: "📈 Data Visualization", description: "Charts and graphs", content: { introduction: "Pictures make data clear!", mainContent: "Bar charts compare, line graphs show trends, pie charts show parts.", interactive: { type: "chart-creator", data: [] }, quiz: { question: "Show data over time?", options: ["Pie", "Bar", "Line", "Table"], correct: 2, explanation: "Line graphs show trends." } } }],
+                engineering: [{ id: "bridges", title: "🌉 Bridge Design", description: "Structures connect", content: { introduction: "Bridges cross obstacles!", mainContent: "Types: beam, arch, suspension, truss.", interactive: { type: "bridge-builder", types: [] }, quiz: { question: "Best for long spans?", options: ["Beam", "Arch", "Suspension", "Truss"], correct: 2, explanation: "Suspension for long distances." } } }, { id: "levers-daily", title: "🏗️ Levers Daily", description: "Levers around us", content: { introduction: "Levers everywhere!", mainContent: "3 classes based on fulcrum: scissors, wheelbarrow, tweezers.", interactive: { type: "lever-identifier", tools: [] }, quiz: { question: "Seesaw lever class?", options: ["First", "Second", "Third", "Not lever"], correct: 0, explanation: "First class - fulcrum in middle." } } }, { id: "mech-advantage", title: "💪 Mechanical Advantage", description: "Making work easier", content: { introduction: "MA multiplies force!", mainContent: "MA = Output/Input force. MA>1 = less force needed.", interactive: { type: "ma-calculator", machines: [] }, quiz: { question: "MA is 4 means?", options: ["4x more force", "Lift 4x weight", "4x faster", "No advantage"], correct: 1, explanation: "Lift 4x the weight." } } }]
+            },
+            8: {
+                science: [{ id: "force-motion", title: "⚡ Force & Motion", description: "Newton's laws", content: { introduction: "Newton's laws!", mainContent: "F=ma, action-reaction.", interactive: { type: "physics-simulator", laws: [] }, quiz: { question: "Newton's 3rd Law?", options: ["Equal/opposite reaction", "F=ma", "Inertia", "Gravity"], correct: 0, explanation: "Action=reaction." } } }, { id: "waves-sound", title: "🎵 Waves & Sound", description: "Wave motion", content: { introduction: "Waves transfer energy!", mainContent: "Frequency, wavelength, amplitude. Sound waves need medium.", interactive: { type: "wave-simulator", waves: [] }, quiz: { question: "Sound travel in vacuum?", options: ["Yes", "No", "Sometimes", "Depends"], correct: 1, explanation: "Sound needs medium." } } }, { id: "light-optics", title: "🔦 Light & Optics", description: "How light behaves", content: { introduction: "Light reflects and refracts!", mainContent: "Reflection, refraction, lenses, mirrors.", interactive: { type: "light-ray", demo: [] }, quiz: { question: "Light bends in water?", options: ["Reflection", "Refraction", "Absorption", "Emission"], correct: 1, explanation: "Refraction bends light." } } }],
+                mathematics: [{ id: "linear-equations", title: "📈 Linear Equations", description: "Graphing", content: { introduction: "Lines!", mainContent: "y=mx+b.", interactive: { type: "graph-plotter", equations: [] }, quiz: { question: "Slope in y=3x+5?", options: ["3", "5", "8", "x"], correct: 0, explanation: "Slope=3." } } }, { id: "pythagorean", title: "🔺 Pythagorean Theorem", description: "Right triangles", content: { introduction: "a²+b²=c²!", mainContent: "For right triangles: leg² + leg² = hypotenuse².", interactive: { type: "triangle-builder", demo: [] }, quiz: { question: "3²+4²=?", options: ["5", "25", "7", "12"], correct: 1, explanation: "9+16=25, c=5." } } }, { id: "systems-equations", title: "⚖️ Systems of Equations", description: "Multiple equations", content: { introduction: "Solve two equations together!", mainContent: "Substitution or elimination method.", interactive: { type: "system-solver", problems: [] }, quiz: { question: "How many solutions for parallel lines?", options: ["0", "1", "2", "Infinite"], correct: 0, explanation: "Parallel never meet." } } }],
+                technology: [{ id: "programming-basics", title: "💾 Programming", description: "Code!", content: { introduction: "Instructions to computers!", mainContent: "Variables, loops, conditions.", interactive: { type: "code-builder", concepts: [] }, quiz: { question: "Repeats code?", options: ["Variables", "Loops", "Conditions", "Functions"], correct: 1, explanation: "Loops repeat." } } }, { id: "boolean-logic", title: "🔲 Boolean Logic", description: "True/False logic", content: { introduction: "Binary logic!", mainContent: "AND, OR, NOT gates. TRUE=1, FALSE=0.", interactive: { type: "logic-simulator", gates: [] }, quiz: { question: "TRUE AND FALSE?", options: ["TRUE", "FALSE", "ERROR", "MAYBE"], correct: 1, explanation: "Both must be TRUE for AND." } } }, { id: "logic-gates", title: "🚪 Logic Gates", description: "Digital circuits", content: { introduction: "Building blocks of computers!", mainContent: "AND, OR, NOT, NAND, NOR, XOR gates.", interactive: { type: "gate-builder", circuits: [] }, quiz: { question: "Output of NOT gate with 1?", options: ["0", "1", "ERROR", "2"], correct: 0, explanation: "NOT inverts." } } }],
+                engineering: [{ id: "circuits", title: "⚡ Circuits", description: "Electricity flows", content: { introduction: "Electricity powers world!", mainContent: "Series and parallel circuits.", interactive: { type: "circuit-builder", components: [] }, quiz: { question: "One bulb fails in series?", options: ["All out", "Others on", "Overheats", "Nothing"], correct: 0, explanation: "One path." } } }, { id: "wind-power", title: "💨 Wind Power", description: "Harnessing wind", content: { introduction: "Wind creates electricity!", mainContent: "Turbines convert kinetic to electrical energy.", interactive: { type: "wind-simulator", turbines: [] }, quiz: { question: "Wind turbines convert?", options: ["Light to heat", "Wind to electricity", "Water to power", "Solar to wind"], correct: 1, explanation: "Kinetic to electrical." } } }, { id: "hydraulics", title: "💧 Hydraulics", description: "Power from fluids", content: { introduction: "Liquids transmit force!", mainContent: "Pascal's principle: pressure in closed system.", interactive: { type: "hydraulic-press", demo: [] }, quiz: { question: "Hydraulics use?", options: ["Air", "Liquid", "Vacuum", "Solid"], correct: 1, explanation: "Liquids transmit pressure." } } }]
+            },
+            9: {
+                science: [{ id: "genetics", title: "🧬 Genetics", description: "Heredity", content: { introduction: "Traits passed down!", mainContent: "DNA, genes, Punnett squares.", interactive: { type: "punnett-square", traits: [] }, quiz: { question: "Bb × Bb?", options: ["All brown", "All blue", "75% brown", "50-50"], correct: 2, explanation: "3 brown, 1 blue." } } }, { id: "acids-bases", title: "⚗️ Acids & Bases", description: "pH scale", content: { introduction: "Acids sour, bases bitter!", mainContent: "pH<7 acid, pH=7 neutral, pH>7 base.", interactive: { type: "ph-tester", substances: [] }, quiz: { question: "Lemon juice pH?", options: ["2 (acid)", "7 (neutral)", "10 (base)", "14 (base)"], correct: 0, explanation: "Lemon is acidic." } } }, { id: "ecology", title: "🌍 Ecology", description: "Environment interactions", content: { introduction: "Organisms and environment!", mainContent: "Food webs, energy pyramids, biomes.", interactive: { type: "biome-explorer", biomes: [] }, quiz: { question: "Energy pyramid base?", options: ["Producers", "Herbivores", "Carnivores", "Decomposers"], correct: 0, explanation: "Producers at bottom." } } }],
+                mathematics: [{ id: "quadratics", title: "📊 Quadratics", description: "Parabolas", content: { introduction: "U-shaped curves!", mainContent: "ax²+bx+c=0.", interactive: { type: "quadratic-solver", problems: [] }, quiz: { question: "Quadratic graph shape?", options: ["Line", "Parabola", "Circle", "Hyperbola"], correct: 1, explanation: "U-shaped parabola." } } }, { id: "functions", title: "📊 Functions", description: "Input-output", content: { introduction: "Maps inputs to outputs!", mainContent: "f(x) notation, domain, range.", interactive: { type: "function-machine", examples: [] }, quiz: { question: "f(x)=2x+1, f(3)=?", options: ["5", "6", "7", "8"], correct: 2, explanation: "2(3)+1=7." } } }, { id: "polynomials", title: "📨 Polynomials", description: "Multiple terms", content: { introduction: "Sums of terms!", mainContent: "Add, subtract, multiply polynomials.", interactive: { type: "poly-calculator", operations: [] }, quiz: { question: "(x+2)(x+3)=?", options: ["x²+5", "x²+5x+6", "x²+6", "2x+5"], correct: 1, explanation: "FOIL method." } } }],
+                technology: [{ id: "web-dev", title: "🌐 Web Development", description: "Build websites", content: { introduction: "HTML, CSS, JavaScript!", mainContent: "HTML structures, CSS styles, JS interacts.", interactive: { type: "web-builder", technologies: [] }, quiz: { question: "Which adds interactivity?", options: ["HTML", "CSS", "JavaScript", "Python"], correct: 2, explanation: "JS adds behavior." } } }, { id: "js-functions", title: "🔃 JavaScript Functions", description: "Reusable code", content: { introduction: "Functions do tasks!", mainContent: "function name(params) { code }.", interactive: { type: "js-playground", examples: [] }, quiz: { question: "Why use functions?", options: ["Slower code", "Reuse code", "More errors", "Harder"], correct: 1, explanation: "Functions enable reuse." } } }, { id: "dom-manipulation", title: "🎯 DOM Manipulation", description: "Change web pages", content: { introduction: "Modify HTML dynamically!", mainContent: "getElementById, innerHTML, addEventListener.", interactive: { type: "dom-editor", demo: [] }, quiz: { question: "Get element by ID?", options: ["getElement", "getElementById", "findElement", "selectId"], correct: 1, explanation: "document.getElementById()." } } }],
+                engineering: [{ id: "renewable", title: "♻️ Renewable Energy", description: "Clean energy", content: { introduction: "Won't run out!", mainContent: "Solar, wind, hydro clean.", interactive: { type: "energy-comparison", sources: [] }, quiz: { question: "Which renewable?", options: ["Coal", "Gas", "Solar", "Nuclear"], correct: 2, explanation: "Solar renewable." } } }, { id: "materials-science", title: "🧪 Materials Science", description: "Properties of materials", content: { introduction: "Study material properties!", mainContent: "Strength, hardness, conductivity, malleability.", interactive: { type: "material-tester", samples: [] }, quiz: { question: "Copper property?", options: ["Insulator", "Conductor", "Brittle", "Weak"], correct: 1, explanation: "Copper conducts electricity." } } }, { id: "strength-testing", title: "💪 Strength Testing", description: "Testing material limits", content: { introduction: "How much can it handle?", mainContent: "Tensile, compression, shear, torsion tests.", interactive: { type: "strength-tester", materials: [] }, quiz: { question: "Tensile test measures?", options: ["Compression", "Stretching", "Twisting", "Bending"], correct: 1, explanation: "Tensile = pulling/stretching." } } }]
+            },
+            10: {
+                science: [{ id: "evolution", title: "🦖 Evolution", description: "Species change", content: { introduction: "Evolution diversity!", mainContent: "Natural selection drives evolution.", interactive: { type: "evolution-simulator", concepts: [] }, quiz: { question: "What provides variation?", options: ["Diet", "Exercise", "Mutations", "Learning"], correct: 2, explanation: "Mutations vary." } } }, { id: "nuclear-chem", title: "☢️ Nuclear Chemistry", description: "Atoms and radioactivity", content: { introduction: "Nuclear reactions!", mainContent: "Fission splits, fusion combines. Radioactive decay.", interactive: { type: "nuclear-sim", reactions: [] }, quiz: { question: "Fusion or fission in Sun?", options: ["Fission", "Fusion", "Both", "Neither"], correct: 1, explanation: "Sun fuses hydrogen." } } }, { id: "em-spectrum", title: "🌈 EM Spectrum", description: "Electromagnetic waves", content: { introduction: "Light is waves!", mainContent: "Radio, micro, IR, visible, UV, X-ray, gamma.", interactive: { type: "spectrum-explorer", waves: [] }, quiz: { question: "Highest energy?", options: ["Radio", "Visible", "UV", "Gamma"], correct: 3, explanation: "Gamma highest energy." } } }],
+                mathematics: [{ id: "trigonometry", title: "📐 Trigonometry", description: "Triangles", content: { introduction: "Angles and sides!", mainContent: "SOH-CAH-TOA.", interactive: { type: "trig-calculator", ratios: [] }, quiz: { question: "TOA is?", options: ["sin", "cos", "tan=opp/adj", "tan=adj/opp"], correct: 2, explanation: "TOA: Tan=Opp/Adj." } } }, { id: "exponential", title: "📈 Exponential Functions", description: "Growth and decay", content: { introduction: "Rapid growth/decay!", mainContent: "f(x)=a·bˣ. Population, compound interest.", interactive: { type: "exp-grapher", functions: [] }, quiz: { question: "2³=?", options: ["6", "8", "9", "16"], correct: 1, explanation: "2³=2×2×2=8." } } }, { id: "logarithms", title: "📊 Logarithms", description: "Inverse of exponential", content: { introduction: "Undo exponentials!", mainContent: "logᵇ(x)=y means bʸ=x.", interactive: { type: "log-calculator", problems: [] }, quiz: { question: "log₁₀(100)=?", options: ["1", "2", "10", "100"], correct: 1, explanation: "10²=100." } } }],
+                technology: [{ id: "data-structures", title: "📦 Data Structures", description: "Organizing data", content: { introduction: "Organize info!", mainContent: "Arrays, stacks, queues, trees.", interactive: { type: "structure-visualizer", structures: [] }, quiz: { question: "LIFO structure?", options: ["Array", "Queue", "Stack", "Tree"], correct: 2, explanation: "Stack: Last-In-First-Out." } } }, { id: "oop", title: "🎯 OOP", description: "Object-oriented programming", content: { introduction: "Objects and classes!", mainContent: "Encapsulation, inheritance, polymorphism.", interactive: { type: "oop-demo", examples: [] }, quiz: { question: "Inherit from parent?", options: ["Encapsulation", "Inheritance", "Polymorphism", "Abstraction"], correct: 1, explanation: "Inheritance from parent." } } }, { id: "apis", title: "🔌 APIs", description: "Application interfaces", content: { introduction: "Programs communicate!", mainContent: "REST APIs, GET/POST requests, JSON.", interactive: { type: "api-tester", endpoints: [] }, quiz: { question: "GET request does?", options: ["Create", "Retrieve", "Update", "Delete"], correct: 1, explanation: "GET retrieves data." } } }],
+                engineering: [{ id: "robotics", title: "🤖 Robotics", description: "Autonomous machines", content: { introduction: "Mechanics and programming!", mainContent: "Sensors, controllers, actuators.", interactive: { type: "robot-builder", components: [] }, quiz: { question: "Detects obstacles?", options: ["Actuator", "Sensor", "Controller", "Motor"], correct: 1, explanation: "Sensors detect." } } }, { id: "3d-printing", title: "🖨️ 3D Printing", description: "Additive manufacturing", content: { introduction: "Build layer by layer!", mainContent: "FDM, SLA, SLS technologies. Design to reality.", interactive: { type: "3d-printer-sim", models: [] }, quiz: { question: "3D printing is?", options: ["Subtractive", "Additive", "Formative", "Destructive"], correct: 1, explanation: "Adds material layer-by-layer." } } }, { id: "cad-design", title: "✏️ CAD Design", description: "Computer-aided design", content: { introduction: "Design on computers!", mainContent: "3D modeling, parametric design, simulations.", interactive: { type: "cad-editor", tools: [] }, quiz: { question: "CAD used for?", options: ["Gaming", "Design", "Email", "Video"], correct: 1, explanation: "CAD for design." } } }]
+            },
+            11: {
+                science: [{ id: "organic-chem", title: "⚗️ Organic Chemistry", description: "Carbon compounds", content: { introduction: "Organic studies carbon!", mainContent: "Carbon forms 4 bonds.", interactive: { type: "molecule-builder", categories: [] }, quiz: { question: "Carbon bonds?", options: ["2", "3", "4", "5"], correct: 2, explanation: "Carbon forms 4." } } }, { id: "stoichiometry", title: "⚖️ Stoichiometry", description: "Chemical calculations", content: { introduction: "Counting atoms!", mainContent: "Moles, balanced equations, limiting reactants.", interactive: { type: "stoich-calculator", reactions: [] }, quiz: { question: "Mole unit for?", options: ["Mass", "Volume", "Amount", "Temperature"], correct: 2, explanation: "Mole measures amount." } } }, { id: "wave-particle", title: "⚛️ Wave-Particle", description: "Quantum duality", content: { introduction: "Light is both!", mainContent: "Photons show wave and particle properties.", interactive: { type: "quantum-demo", experiments: [] }, quiz: { question: "Light behaves as?", options: ["Only wave", "Only particle", "Both", "Neither"], correct: 2, explanation: "Wave-particle duality." } } }],
+                mathematics: [{ id: "calculus", title: "∫ Calculus", description: "Rates and areas", content: { introduction: "Math of change!", mainContent: "Derivatives, integrals.", interactive: { type: "calculus-visualizer", operations: [] }, quiz: { question: "Derivative of x²?", options: ["x", "2x", "x²/2", "2"], correct: 1, explanation: "d/dx(x²)=2x." } } }, { id: "limits", title: "∞ Limits", description: "Approaching values", content: { introduction: "What value approaches!", mainContent: "lim as x→a. Foundation of calculus.", interactive: { type: "limit-visualizer", functions: [] }, quiz: { question: "lim(x→∞) 1/x=?", options: ["0", "1", "∞", "Undefined"], correct: 0, explanation: "Approaches 0." } } }, { id: "derivatives-app", title: "📉 Derivatives Applications", description: "Real-world calculus", content: { introduction: "Calculus in action!", mainContent: "Optimization, related rates, motion.", interactive: { type: "derivative-app", scenarios: [] }, quiz: { question: "derivative gives?", options: ["Area", "Rate of change", "Volume", "Angle"], correct: 1, explanation: "Derivatives = rates." } } }],
+                technology: [{ id: "ml-intro", title: "🧠 Machine Learning", description: "Teaching computers", content: { introduction: "ML learns from data!", mainContent: "Supervised, unsupervised, reinforcement.", interactive: { type: "ml-explorer", types: [] }, quiz: { question: "Labeled data?", options: ["Supervised", "Unsupervised", "Reinforcement", "Transfer"], correct: 0, explanation: "Supervised uses labels." } } }, { id: "neural-networks", title: "🧸 Neural Networks", description: "Brain-inspired AI", content: { introduction: "Mimics neurons!", mainContent: "Layers, weights, activation functions, backprop.", interactive: { type: "nn-builder", layers: [] }, quiz: { question: "NN inspired by?", options: ["Computers", "Brain", "Physics", "Math"], correct: 1, explanation: "Brain-inspired." } } }, { id: "deep-learning", title: "🔍 Deep Learning", description: "Advanced ML", content: { introduction: "Deep neural networks!", mainContent: "CNNs for images, RNNs for sequences.", interactive: { type: "dl-demo", applications: [] }, quiz: { question: "CNN good for?", options: ["Text", "Images", "Sound", "All"], correct: 1, explanation: "CNNs excel at images." } } }],
+                engineering: [{ id: "aerospace", title: "✈️ Aerospace", description: "Flight and space", content: { introduction: "Aircraft and spacecraft!", mainContent: "4 forces: lift, weight, thrust, drag.", interactive: { type: "flight-simulator", concepts: [] }, quiz: { question: "Creates lift?", options: ["Weight", "Thrust", "Bernoulli", "Gravity"], correct: 2, explanation: "Bernoulli creates lift." } } }, { id: "control-systems", title: "🎮 Control Systems", description: "Automation and feedback", content: { introduction: "Control processes!", mainContent: "Open-loop, closed-loop, PID controllers.", interactive: { type: "control-demo", systems: [] }, quiz: { question: "Closed-loop uses?", options: ["No feedback", "Feedback", "Manual", "Random"], correct: 1, explanation: "Closed-loop has feedback." } } }, { id: "feedback-loops", title: "🔁 Feedback Loops", description: "Self-regulating systems", content: { introduction: "Output affects input!", mainContent: "Positive and negative feedback in nature/engineering.", interactive: { type: "feedback-sim", examples: [] }, quiz: { question: "Thermostat uses?", options: ["Positive feedback", "Negative feedback", "No feedback", "Both"], correct: 1, explanation: "Negative stabilizes." } } }]
+            },
+            12: {
+                science: [{ id: "quantum", title: "⚛️ Quantum Physics", description: "Physics of small", content: { introduction: "Quantum amazing!", mainContent: "Wave-particle duality, uncertainty.", interactive: { type: "quantum-explorer", principles: [] }, quiz: { question: "Wave-particle duality?", options: ["Waves are particles", "Light is both", "Only waves", "Only particles"], correct: 1, explanation: "Light has both." } } }, { id: "relativity", title: "🌌 Relativity", description: "Einstein's theories", content: { introduction: "Space and time!", mainContent: "Special relativity: E=mc². General: gravity curves spacetime.", interactive: { type: "relativity-sim", concepts: [] }, quiz: { question: "E=mc² means?", options: ["Energy=mass", "Energy=mass×speed²", "E=momentum", "Error"], correct: 1, explanation: "Energy-mass equivalence." } } }, { id: "molecular-bio", title: "🧬 Molecular Biology", description: "Life at molecular level", content: { introduction: "DNA to proteins!", mainContent: "Transcription, translation, protein synthesis.", interactive: { type: "protein-builder", process: [] }, quiz: { question: "DNA to RNA?", options: ["Translation", "Transcription", "Replication", "Evolution"], correct: 1, explanation: "Transcription makes RNA." } } }],
+                mathematics: [{ id: "adv-calculus", title: "∫∫ Advanced Calculus", description: "Multivariable", content: { introduction: "Multiple variables!", mainContent: "Partial derivatives, multiple integrals.", interactive: { type: "multivariable-calc", topics: [] }, quiz: { question: "∂f/∂x is?", options: ["Total derivative", "Partial derivative", "Integral", "Limit"], correct: 1, explanation: "Partial wrt x." } } }, { id: "integration", title: "∫ Integration Techniques", description: "Advanced integration", content: { introduction: "Find areas!", mainContent: "Substitution, parts, partial fractions, trig.", interactive: { type: "integration-solver", methods: [] }, quiz: { question: "∫x dx=?", options: ["x", "x²", "x²/2", "2x"], correct: 2, explanation: "Power rule: x²/2." } } }, { id: "diff-equations", title: "📈 Differential Equations", description: "Equations with derivatives", content: { introduction: "Rates and change!", mainContent: "Separable, linear, systems. Models growth/decay.", interactive: { type: "de-solver", equations: [] }, quiz: { question: "DE involves?", options: ["Derivatives", "Only algebra", "Geometry", "Statistics"], correct: 0, explanation: "DEs have derivatives." } } }],
+                technology: [{ id: "cloud", title: "☁️ Cloud Computing", description: "Computing as service", content: { introduction: "Cloud delivers online!", mainContent: "IaaS, PaaS, SaaS models.", interactive: { type: "cloud-models", services: [] }, quiz: { question: "Ready apps?", options: ["IaaS", "PaaS", "SaaS", "FaaS"], correct: 2, explanation: "SaaS provides apps." } } }, { id: "blockchain", title: "🔗 Blockchain", description: "Distributed ledger", content: { introduction: "Decentralized records!", mainContent: "Blocks, hash, consensus, cryptocurrency.", interactive: { type: "blockchain-demo", blocks: [] }, quiz: { question: "Blockchain is?", options: ["Centralized", "Decentralized", "Single server", "Temporary"], correct: 1, explanation: "Distributed, decentralized." } } }, { id: "cryptography", title: "🔐 Cryptography", description: "Secure communication", content: { introduction: "Secret messages!", mainContent: "Encryption, decryption, public/private keys.", interactive: { type: "crypto-tool", algorithms: [] }, quiz: { question: "Public key for?", options: ["Encrypt", "Decrypt", "Both", "Neither"], correct: 0, explanation: "Public encrypts, private decrypts." } } }],
+                engineering: [{ id: "nanotech", title: "🔬 Nanotechnology", description: "Atomic scale", content: { introduction: "Nanoscale!", mainContent: "Unique properties at nanoscale.", interactive: { type: "nano-explorer", applications: [] }, quiz: { question: "Nanometers in meter?", options: ["1,000", "1,000,000", "1,000,000,000", "1,000,000,000,000"], correct: 2, explanation: "Billion nanometers." } } }, { id: "quantum-computing", title: "⚛️ Quantum Computing", description: "Qubits and superposition", content: { introduction: "Beyond binary!", mainContent: "Qubits, superposition, entanglement, quantum gates.", interactive: { type: "qubit-sim", gates: [] }, quiz: { question: "Qubit can be?", options: ["Only 0", "Only 1", "0 and 1 simultaneously", "Neither"], correct: 2, explanation: "Superposition: both states." } } }, { id: "superconductors", title: "⚡ Superconductors", description: "Zero resistance", content: { introduction: "Perfect conductors!", mainContent: "Zero electrical resistance at low temperatures. Mag levitation.", interactive: { type: "supercon-demo", materials: [] }, quiz: { question: "Superconductor has?", options: ["High resistance", "Zero resistance", "Variable", "Infinite"], correct: 1, explanation: "Zero electrical resistance." } } }]
             }
         };
 
@@ -639,6 +703,139 @@
                     }
                 ]
             }
+            ,
+            7: {
+                science: [
+                    { question: "What is the powerhouse of the cell?", options: ["Nucleus", "Mitochondria", "Cell Membrane", "Ribosome"], correct: 1, explanation: "Mitochondria produce energy (ATP) for the cell." },
+                    { question: "What do producers do in an ecosystem?", options: ["Eat plants", "Make their own food", "Decompose matter", "Hunt prey"], correct: 1, explanation: "Producers (plants) make food through photosynthesis." },
+                    { question: "What happens to energy in transformations?", options: ["It's destroyed", "It changes form", "It disappears", "It multiplies"], correct: 1, explanation: "Energy changes form but total energy stays constant." }
+                ],
+                mathematics: [
+                    { question: "What is -8 + 5?", options: ["-13", "-3", "3", "13"], correct: 1, explanation: "When adding integers with different signs, subtract and use the sign of the larger number." },
+                    { question: "If the ratio is 2:3 and the first number is 4, what's the second?", options: ["5", "6", "7", "8"], correct: 1, explanation: "2:3 = 4:x, so x = 6" },
+                    { question: "What is 25% of 80?", options: ["15", "20", "25", "30"], correct: 1, explanation: "25% = 0.25, so 0.25 � 80 = 20" }
+                ],
+                technology: [
+                    { question: "What does DNS stand for?", options: ["Domain Name System", "Digital Network Service", "Data Network Server", "Domain Name Service"], correct: 0, explanation: "DNS translates domain names to IP addresses." },
+                    { question: "What does =SUM(A1:A5) do in a spreadsheet?", options: ["Deletes cells", "Adds cells A1 through A5", "Multiplies", "Sorts data"], correct: 1, explanation: "SUM function adds all numbers in the range." },
+                    { question: "Which graph shows data over time best?", options: ["Pie chart", "Bar chart", "Line graph", "Table"], correct: 2, explanation: "Line graphs excel at showing trends over time." }
+                ],
+                engineering: [
+                    { question: "Which bridge type is best for long spans?", options: ["Beam", "Arch", "Suspension", "Truss"], correct: 2, explanation: "Suspension bridges are ideal for long distances." },
+                    { question: "What class lever is a seesaw?", options: ["First class", "Second class", "Third class", "Not a lever"], correct: 0, explanation: "Seesaw is first class - fulcrum in the middle." },
+                    { question: "If MA (Mechanical Advantage) is 4, what does it mean?", options: ["Use 4x more force", "Lift 4x the weight with same force", "Move 4x faster", "No advantage"], correct: 1, explanation: "MA of 4 means you can lift 4 times the weight." }
+                ]
+            },
+            8: {
+                science: [
+                    { question: "What is Newton's 3rd Law?", options: ["Equal and opposite reaction", "F=ma", "Inertia", "Gravity"], correct: 0, explanation: "For every action, there's an equal and opposite reaction." },
+                    { question: "Can sound travel in a vacuum?", options: ["Yes", "No", "Sometimes", "Depends on frequency"], correct: 1, explanation: "Sound needs a medium (air, water, solid) to travel." },
+                    { question: "What happens when light bends in water?", options: ["Reflection", "Refraction", "Absorption", "Emission"], correct: 1, explanation: "Refraction is the bending of light when it enters a different medium." }
+                ],
+                mathematics: [
+                    { question: "What is the slope in y = 3x + 5?", options: ["3", "5", "8", "x"], correct: 0, explanation: "In y=mx+b form, m is the slope, which is 3." },
+                    { question: "What is 3� + 4�?", options: ["5", "25", "7", "12"], correct: 1, explanation: "9 + 16 = 25. Using Pythagorean theorem, c = 5." },
+                    { question: "How many solutions for parallel lines?", options: ["0", "1", "2", "Infinite"], correct: 0, explanation: "Parallel lines never meet, so 0 solutions." }
+                ],
+                technology: [
+                    { question: "What repeats code in programming?", options: ["Variables", "Loops", "Conditions", "Functions"], correct: 1, explanation: "Loops repeat code multiple times." },
+                    { question: "What is TRUE AND FALSE?", options: ["TRUE", "FALSE", "ERROR", "MAYBE"], correct: 1, explanation: "Both must be TRUE for AND operation; result is FALSE." },
+                    { question: "What is the output of NOT gate with input 1?", options: ["0", "1", "ERROR", "2"], correct: 0, explanation: "NOT gate inverts the input, so 1 becomes 0." }
+                ],
+                engineering: [
+                    { question: "What happens if one bulb fails in a series circuit?", options: ["All go out", "Others stay on", "Circuit overheats", "Nothing happens"], correct: 0, explanation: "In series circuits, there's only one path, so all bulbs go out." },
+                    { question: "What do wind turbines convert?", options: ["Light to heat", "Wind to electricity", "Water to power", "Solar to wind"], correct: 1, explanation: "Wind turbines convert kinetic energy from wind to electrical energy." },
+                    { question: "What do hydraulics use to transmit force?", options: ["Air", "Liquid", "Vacuum", "Solid"], correct: 1, explanation: "Hydraulics use liquids to transmit pressure and force." }
+                ]
+            },
+            9: {
+                science: [
+                    { question: "In genetics, what does Bb � Bb offspring ratio look like?", options: ["All brown", "All blue", "75% brown, 25% blue", "50-50"], correct: 2, explanation: "Using Punnett square: 3 brown (BB, Bb, Bb) and 1 blue (bb)." },
+                    { question: "What is the pH of lemon juice?", options: ["2 (acid)", "7 (neutral)", "10 (base)", "14 (base)"], correct: 0, explanation: "Lemon juice is acidic with pH around 2." },
+                    { question: "What is at the base of an energy pyramid?", options: ["Producers", "Herbivores", "Carnivores", "Decomposers"], correct: 0, explanation: "Producers (plants) are at the bottom of the energy pyramid." }
+                ],
+                mathematics: [
+                    { question: "What shape does a quadratic equation graph form?", options: ["Line", "Parabola", "Circle", "Hyperbola"], correct: 1, explanation: "Quadratic equations form U-shaped parabolas." },
+                    { question: "If f(x) = 2x + 1, what is f(3)?", options: ["5", "6", "7", "8"], correct: 2, explanation: "f(3) = 2(3) + 1 = 6 + 1 = 7" },
+                    { question: "What is (x+2)(x+3)?", options: ["x�+5", "x�+5x+6", "x�+6", "2x+5"], correct: 1, explanation: "Using FOIL method: x� + 3x + 2x + 6 = x� + 5x + 6" }
+                ],
+                technology: [
+                    { question: "Which language adds interactivity to websites?", options: ["HTML", "CSS", "JavaScript", "Python"], correct: 2, explanation: "JavaScript adds behavior and interactivity to web pages." },
+                    { question: "Why use functions in programming?", options: ["Slower code", "Reuse code", "More errors", "Harder to read"], correct: 1, explanation: "Functions enable code reuse and better organization." },
+                    { question: "How do you get an element by ID in JavaScript?", options: ["getElement", "getElementById", "find Element", "selectId"], correct: 1, explanation: "Use document.getElementById() to select elements by ID." }
+                ],
+                engineering: [
+                    { question: "Which energy source is renewable?", options: ["Coal", "Natural Gas", "Solar", "Nuclear"], correct: 2, explanation: "Solar energy is renewable and won't run out." },
+                    { question: "What is copper's main property for electrical use?", options: ["Insulator", "Conductor", "Brittle", "Weak"], correct: 1, explanation: "Copper is an excellent conductor of electricity." },
+                    { question: "What does a tensile test measure?", options: ["Compression", "Stretching/pulling", "Twisting", "Bending"], correct: 1, explanation: "Tensile tests measure how materials respond to pulling forces." }
+                ]
+            },
+            10: {
+                science: [
+                    { question: "What provides genetic variation in evolution?", options: ["Diet", "Exercise", "Mutations", "Learning"], correct: 2, explanation: "Mutations in DNA provide the variation needed for evolution." },
+                    { question: "Does the Sun use fusion or fission?", options: ["Fission", "Fusion", "Both", "Neither"], correct: 1, explanation: "The Sun fuses hydrogen atoms to create energy." },
+                    { question: "Which has the highest energy in EM spectrum?", options: ["Radio waves", "Visible light", "UV rays", "Gamma rays"], correct: 3, explanation: "Gamma rays have the highest energy and frequency." }
+                ],
+                mathematics: [
+                    { question: "In trigonometry, what does TOA represent?", options: ["sin = opp/hyp", "cos = adj/hyp", "tan = opp/adj", "tan = adj/opp"], correct: 2, explanation: "TOA stands for Tangent = Opposite / Adjacent" },
+                    { question: "What is 2�?", options: ["6", "8", "9", "16"], correct: 1, explanation: "2� = 2 � 2 � 2 = 8" },
+                    { question: "What is log10(100)?", options: ["1", "2", "10", "100"], correct: 1, explanation: "log10(100) = 2 because 10� = 100" }
+                ],
+                technology: [
+                    { question: "Which data structure is LIFO (Last-In-First-Out)?", options: ["Array", "Queue", "Stack", "Tree"], correct: 2, explanation: "Stack uses LIFO: last item added is first removed." },
+                    { question: "What OOP principle allows inheriting from parent class?", options: ["Encapsulation", "Inheritance", "Polymorphism", "Abstraction"], correct: 1, explanation: "Inheritance allows child classes to inherit from parents." },
+                    { question: "What does a GET request do in APIs?", options: ["Create data", "Retrieve data", "Update data", "Delete data"], correct: 1, explanation: "GET requests retrieve/fetch data from a server." }
+                ],
+                engineering: [
+                    { question: "What detects obstacles in robotics?", options: ["Actuator", "Sensor", "Controller", "Motor"], correct: 1, explanation: "Sensors detect environmental conditions like obstacles." },
+                    { question: "What type of manufacturing is 3D printing?", options: ["Subtractive", "Additive", "Formative", "Destructive"], correct: 1, explanation: "3D printing is additive - builds layer by layer." },
+                    { question: "What is CAD primarily used for?", options: ["Gaming", "Design", "Email", "Video editing"], correct: 1, explanation: "CAD (Computer-Aided Design) is used for design work." }
+                ]
+            },
+            11: {
+                science: [
+                    { question: "How many bonds does carbon form?", options: ["2", "3", "4", "5"], correct: 2, explanation: "Carbon always forms 4 covalent bonds." },
+                    { question: "What is the mole unit used for?", options: ["Mass", "Volume", "Amount of substance", "Temperature"], correct: 2, explanation: "Mole measures the amount of substance (6.02�10�� particles)." },
+                    { question: "How does light behave?", options: ["Only as a wave", "Only as a particle", "Both wave and particle", "Neither"], correct: 2, explanation: "Light exhibits wave-particle duality." }
+                ],
+                mathematics: [
+                    { question: "What is the derivative of x�?", options: ["x", "2x", "x�/2", "2"], correct: 1, explanation: "Using power rule: d/dx(x�) = 2x" },
+                    { question: "What is the limit as x?8 of 1/x?", options: ["0", "1", "8", "Undefined"], correct: 0, explanation: "As x gets infinitely large, 1/x approaches 0." },
+                    { question: "What does a derivative give you?", options: ["Area under curve", "Rate of change", "Volume", "Angle measure"], correct: 1, explanation: "Derivatives represent rates of change/slopes." }
+                ],
+                technology: [
+                    { question: "Which ML type uses labeled data?", options: ["Supervised learning", "Unsupervised learning", "Reinforcement learning", "Transfer learning"], correct: 0, explanation: "Supervised learning uses labeled training data." },
+                    { question: "What are neural networks inspired by?", options: ["Computers", "Human brain", "Physics", "Mathematics"], correct: 1, explanation: "Neural networks mimic the structure of biological neurons." },
+                    { question: "What are CNNs particularly good for?", options: ["Text processing", "Image recognition", "Sound analysis", "All equally"], correct: 1, explanation: "CNNs (Convolutional Neural Networks) excel at image tasks." }
+                ],
+                engineering: [
+                    { question: "What creates lift in aircraft according to physics?", options: ["Weight", "Thrust", "Bernoulli's principle", "Gravity"], correct: 2, explanation: "Bernoulli's principle explains how wings create lift." },
+                    { question: "What type of feedback does a closed-loop control system use?", options: ["No feedback", "Feedback", "Manual control", "Random signals"], correct: 1, explanation: "Closed-loop systems use feedback to adjust output." },
+                    { question: "What type of feedback does a thermostat use?", options: ["Positive feedback", "Negative feedback", "No feedback", "Both types"], correct: 1, explanation: "Thermostats use negative feedback to stabilize temperature." }
+                ]
+            },
+            12: {
+                science: [
+                    { question: "What does wave-particle duality describe?", options: ["Waves are particles", "Light exhibits both wave and particle properties", "Only waves exist", "Only particles exist"], correct: 1, explanation: "Light and matter exhibit both wave and particle characteristics." },
+                    { question: "What does E=mc� mean?", options: ["Energy equals mass", "Energy equals mass times speed of light squared", "Energy equals momentum", "It's an error"], correct: 1, explanation: "Einstein's equation shows energy-mass equivalence." },
+                    { question: "What is the process of DNA to RNA called?", options: ["Translation", "Transcription", "Replication", "Evolution"], correct: 1, explanation: "Transcription converts DNA information to RNA." }
+                ],
+                mathematics: [
+                    { question: "What is ?f/?x called?", options: ["Total derivative", "Partial derivative", "Integral", "Limit"], correct: 1, explanation: "?f/?x is the partial derivative with respect to x." },
+                    { question: "What is the integral ?x dx?", options: ["x", "x�", "x�/2 + C", "2x"], correct: 2, explanation: "Using power rule for integration: x�/2 + C" },
+                    { question: "What do differential equations involve?", options: ["Derivatives", "Only algebra", "Only geometry", "Only statistics"], correct: 0, explanation: "Differential equations contain derivatives of functions." }
+                ],
+                technology: [
+                    { question: "Which cloud model provides ready-to-use applications?", options: ["IaaS", "PaaS", "SaaS", "FaaS"], correct: 2, explanation: "SaaS (Software as a Service) provides ready applications." },
+                    { question: "Is blockchain centralized or decentralized?", options: ["Centralized", "Decentralized", "Single server", "Temporary storage"], correct: 1, explanation: "Blockchain is distributed and decentralized." },
+                    { question: "What is a public key used for in cryptography?", options: ["Encrypt messages", "Decrypt messages", "Both encrypt and decrypt", "Neither"], correct: 0, explanation: "Public key encrypts; private key decrypts." }
+                ],
+                engineering: [
+                    { question: "How many nanometers are in a meter?", options: ["1,000", "1,000,000", "1,000,000,000", "1,000,000,000,000"], correct: 2, explanation: "There are one billion (10?) nanometers in a meter." },
+                    { question: "What can a qubit be in quantum computing?", options: ["Only 0", "Only 1", "0 and 1 simultaneously (superposition)", "Neither 0 nor 1"], correct: 2, explanation: "Qubits can exist in superposition of both 0 and 1." },
+                    { question: "What resistance do superconductors have?", options: ["High resistance", "Zero resistance", "Variable resistance", "Infinite resistance"], correct: 1, explanation: "Superconductors have zero electrical resistance at low temperatures." }
+                ]
+            }
         };
 
         // Always fetch fresh dynamic questions from server when starting a quiz
@@ -706,7 +903,7 @@
         };
 
         // Initialize the application
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             initializeEventListeners();
             initRewards();
         });
@@ -715,35 +912,35 @@
             // Grade button functionality
             const gradeButtons = document.querySelectorAll('.grade-btn');
             gradeButtons.forEach(button => {
-                button.addEventListener('click', function() {
+                button.addEventListener('click', function () {
                     selectGrade(parseInt(this.getAttribute('data-grade')));
                 });
             });
 
             // Subject selection
             document.querySelectorAll('.subject-btn').forEach(btn => {
-                btn.addEventListener('click', function() {
+                btn.addEventListener('click', function () {
                     selectSubject(this.getAttribute('data-subject'));
                 });
             });
 
             // Flashcards start buttons
             document.querySelectorAll('.flashcards-btn').forEach(btn => {
-                btn.addEventListener('click', function() {
+                btn.addEventListener('click', function () {
                     selectSubjectForFlashcards(this.getAttribute('data-subject'));
                 });
             });
 
             // Modules start buttons
             document.querySelectorAll('.modules-btn').forEach(btn => {
-                btn.addEventListener('click', function() {
+                btn.addEventListener('click', function () {
                     selectSubjectForModules(this.getAttribute('data-subject'));
                 });
             });
 
             // Chem lab start
             document.querySelectorAll('.chem-lab-btn').forEach(btn => {
-                btn.addEventListener('click', function() {
+                btn.addEventListener('click', function () {
                     if (!currentGrade) {
                         alert('Please select a grade first.');
                         return;
@@ -754,7 +951,7 @@
 
             // Shooter start (only for mathematics)
             document.querySelectorAll('.shooter-btn').forEach(btn => {
-                btn.addEventListener('click', function() {
+                btn.addEventListener('click', function () {
                     if (!currentGrade) {
                         alert('Please select a grade first.');
                         return;
@@ -765,7 +962,7 @@
 
             // Crossword start
             document.querySelectorAll('.crossword-btn').forEach(btn => {
-                btn.addEventListener('click', function() {
+                btn.addEventListener('click', function () {
                     if (!currentGrade) {
                         alert('Please select a grade first.');
                         return;
@@ -821,10 +1018,10 @@
             // Remove selected class from all buttons
             const gradeButtons = document.querySelectorAll('.grade-btn');
             gradeButtons.forEach(btn => btn.classList.remove('selected'));
-            
+
             // Add selected class to clicked button
             event.target.classList.add('selected');
-            
+
             currentGrade = grade;
             showSubjectSelection();
         }
@@ -832,7 +1029,7 @@
         function showSubjectSelection() {
             // Update grade display
             document.getElementById('selected-grade').textContent = currentGrade;
-            
+
             // Show subject selection, hide others
             document.getElementById('welcome-screen').style.display = 'none';
             document.getElementById('subject-selection').style.display = 'block';
@@ -878,7 +1075,7 @@
             document.getElementById('quiz-subject').textContent = currentSubject.charAt(0).toUpperCase() + currentSubject.slice(1);
             document.getElementById('total-qs').textContent = merged.length;
             document.getElementById('max-score').textContent = merged.length;
-            
+
             // Show quiz screen, hide others
             document.getElementById('welcome-screen').style.display = 'none';
             document.getElementById('subject-selection').style.display = 'none';
@@ -963,7 +1160,7 @@
         function loadQuestion() {
             const questions = window.__currentQuestions || stemQuestions[currentGrade][currentSubject];
             const question = questions[currentQuestionIndex];
-            
+
             // Update progress
             document.getElementById('current-q').textContent = currentQuestionIndex + 1;
             const progress = ((currentQuestionIndex + 1) / questions.length) * 100;
@@ -1032,7 +1229,7 @@
         function timeUp() {
             // Show correct answer
             showCorrectAnswer();
-            
+
             // Disable option selection
             document.querySelectorAll('.option-btn').forEach(btn => {
                 btn.style.pointerEvents = 'none';
@@ -1071,7 +1268,7 @@
             clearInterval(timer);
             showCorrectAnswer();
 
-            
+
             const questions = window.__currentQuestions || stemQuestions[currentGrade][currentSubject];
             if (currentQuestionIndex < questions.length - 1) {
                 currentQuestionIndex++;
@@ -1192,7 +1389,7 @@
             // Reset grade selection
             const gradeButtons = document.querySelectorAll('.grade-btn');
             gradeButtons.forEach(btn => btn.classList.remove('selected'));
-            
+
             // Show welcome screen, hide others
             document.getElementById('welcome-screen').style.display = 'block';
             document.getElementById('subject-selection').style.display = 'none';
@@ -1202,7 +1399,7 @@
             document.getElementById('shooter-screen').style.display = 'none';
             document.getElementById('modules-screen').style.display = 'none';
             document.getElementById('module-detail-screen').style.display = 'none';
-            
+
             // Reset state
             currentGrade = null;
             currentSubject = null;
@@ -1386,7 +1583,7 @@
                         inp.dataset.row = r;
                         inp.dataset.col = c;
                         inp.addEventListener('input', (e) => {
-                            e.target.value = (e.target.value || '').toUpperCase().replace(/[^A-Z]/g, '').slice(0,1);
+                            e.target.value = (e.target.value || '').toUpperCase().replace(/[^A-Z]/g, '').slice(0, 1);
                         });
                         wrapper.appendChild(inp);
                         inputs.push(inp);
@@ -1419,7 +1616,7 @@
             // Evaluate by reconstructing each word from inputs
             const gridEl = document.getElementById('crossword-grid');
             const size = 10;
-            const getChar = (r,c) => {
+            const getChar = (r, c) => {
                 const index = r * size + c;
                 const cell = gridEl.children[index];
                 if (!cell) return '#';
@@ -1467,7 +1664,7 @@
 
         function loadModuleSection() {
             const content = currentModule.content;
-            
+
             // Hide all sections first
             document.getElementById('module-intro').style.display = 'none';
             document.getElementById('module-main').style.display = 'none';
@@ -1598,10 +1795,10 @@
             examples.forEach(example => {
                 const fractionExample = document.createElement('div');
                 fractionExample.className = 'fraction-example';
-                
+
                 const fractionVisual = document.createElement('div');
                 fractionVisual.className = 'fraction-visual';
-                
+
                 // Create fraction slices
                 const sliceAngle = 360 / example.denominator;
                 for (let i = 0; i < example.numerator; i++) {
@@ -2017,7 +2214,7 @@
             const a = document.querySelector('.drop-zone[data-zone="A"]');
             const b = document.querySelector('.drop-zone[data-zone="B"]');
             const symbols = [...getZoneSymbols(a), ...getZoneSymbols(b)];
-            const counts = symbols.reduce((acc, s) => { acc[s] = (acc[s]||0)+1; return acc; }, {});
+            const counts = symbols.reduce((acc, s) => { acc[s] = (acc[s] || 0) + 1; return acc; }, {});
             const order = Object.keys(counts).sort();
             const formula = order.map(k => k + (counts[k] > 1 ? counts[k] : '')).join('');
             document.getElementById('chem-formula').textContent = formula ? `Mixture: ${formula}` : '';
@@ -2027,7 +2224,7 @@
         function mixChemicals() {
             const counts = updateFormula();
             const resultEl = document.getElementById('chem-result');
-            const formula = document.getElementById('chem-formula').textContent.replace('Mixture: ','');
+            const formula = document.getElementById('chem-formula').textContent.replace('Mixture: ', '');
             const compounds = {
                 'H2O': { name: 'Water', description: 'A clear liquid essential for life.', points: 10 },
                 'NaCl': { name: 'Sodium Chloride', description: 'Common table salt.', points: 10 },
@@ -2061,1656 +2258,1665 @@
     <script>
         // Injected content for Grades 7-12
         const additionalContent = {
-    "7": {
-        "science": [
-            {
-                "question": "What is the basic unit of life?",
-                "options": [
-                    "Atom",
-                    "Cell",
-                    "Molecule",
-                    "Organ"
+            "7": {
+                "science": [
+                    {
+                        "question": "What is the basic unit of life?",
+                        "options": [
+                            "Atom",
+                            "Cell",
+                            "Molecule",
+                            "Organ"
+                        ],
+                        "correct": 1,
+                        "explanation": "The cell is the smallest unit of life that can function independently."
+                    },
+                    {
+                        "question": "What type of rock is formed from cooled lava or magma?",
+                        "options": [
+                            "Sedimentary",
+                            "Igneous",
+                            "Metamorphic",
+                            "Limestone"
+                        ],
+                        "correct": 1,
+                        "explanation": "Igneous rocks are formed when molten rock (magma or lava) cools and solidifies."
+                    },
+                    {
+                        "question": "Which organelle is responsible for photosynthesis?",
+                        "options": [
+                            "Mitochondria",
+                            "Nucleus",
+                            "Chloroplast",
+                            "Ribosome"
+                        ],
+                        "correct": 2,
+                        "explanation": "Chloroplasts contain chlorophyll and are where photosynthesis occurs."
+                    },
+                    {
+                        "question": "What is the pH of a neutral solution?",
+                        "options": [
+                            "0",
+                            "7",
+                            "14",
+                            "1"
+                        ],
+                        "correct": 1,
+                        "explanation": "A pH of 7 is neutral, below 7 is acidic, and above 7 is basic."
+                    },
+                    {
+                        "question": "What force pulls objects toward the center of Earth?",
+                        "options": [
+                            "Friction",
+                            "Magnetism",
+                            "Gravity",
+                            "Tension"
+                        ],
+                        "correct": 2,
+                        "explanation": "Gravity is the force that attracts objects with mass toward each other."
+                    },
+                    {
+                        "question": "What gas do plants absorb from the atmosphere?",
+                        "options": [
+                            "Oxygen",
+                            "Nitrogen",
+                            "Carbon Dioxide",
+                            "Hydrogen"
+                        ],
+                        "correct": 2,
+                        "explanation": "Plants absorb carbon dioxide for photosynthesis."
+                    }
                 ],
-                "correct": 1,
-                "explanation": "The cell is the smallest unit of life that can function independently."
+                "mathematics": [
+                    {
+                        "question": "What is -8 + 15?",
+                        "options": [
+                            "7",
+                            "-7",
+                            "23",
+                            "-23"
+                        ],
+                        "correct": 0,
+                        "explanation": "-8 + 15 = 7"
+                    },
+                    {
+                        "question": "Solve for x: 2x + 5 = 13",
+                        "options": [
+                            "4",
+                            "8",
+                            "9",
+                            "6"
+                        ],
+                        "correct": 0,
+                        "explanation": "2x = 13 - 5 = 8, so x = 4"
+                    },
+                    {
+                        "question": "What is 25% of 80?",
+                        "options": [
+                            "20",
+                            "15",
+                            "25",
+                            "30"
+                        ],
+                        "correct": 0,
+                        "explanation": "25% of 80 = 0.25 × 80 = 20"
+                    },
+                    {
+                        "question": "What is the sum of angles in a triangle?",
+                        "options": [
+                            "90°",
+                            "180°",
+                            "270°",
+                            "360°"
+                        ],
+                        "correct": 1,
+                        "explanation": "The sum of all interior angles in a triangle is always 180°."
+                    },
+                    {
+                        "question": "What is the value of 3²?",
+                        "options": [
+                            "6",
+                            "9",
+                            "12",
+                            "27"
+                        ],
+                        "correct": 1,
+                        "explanation": "3² = 3 × 3 = 9"
+                    },
+                    {
+                        "question": "Simplify: 4(x + 2)",
+                        "options": [
+                            "4x + 2",
+                            "4x + 6",
+                            "4x + 8",
+                            "x + 8"
+                        ],
+                        "correct": 2,
+                        "explanation": "Distribute the 4: 4 * x + 4 * 2 = 4x + 8"
+                    }
+                ],
+                "technology": [
+                    {
+                        "question": "What does HTML stand for?",
+                        "options": [
+                            "Hyper Text Markup Language",
+                            "High Tech Modern Language",
+                            "Home Tool Markup Language",
+                            "Hyperlinks and Text Markup Language"
+                        ],
+                        "correct": 0,
+                        "explanation": "HTML stands for Hyper Text Markup Language."
+                    },
+                    {
+                        "question": "Which of these is a programming language?",
+                        "options": [
+                            "HTML",
+                            "CSS",
+                            "Python",
+                            "SQL"
+                        ],
+                        "correct": 2,
+                        "explanation": "Python is a general-purpose programming language."
+                    },
+                    {
+                        "question": "What is the main function of an operating system?",
+                        "options": [
+                            "Browse the internet",
+                            "Manage hardware and software",
+                            "Create documents",
+                            "Play games"
+                        ],
+                        "correct": 1,
+                        "explanation": "An OS manages computer hardware and software resources."
+                    },
+                    {
+                        "question": "What does the 'if' statement do?",
+                        "options": [
+                            "Repeats code",
+                            "Makes decisions",
+                            "Stores data",
+                            "Prints output"
+                        ],
+                        "correct": 1,
+                        "explanation": "The 'if' statement allows programs to make decisions based on conditions."
+                    },
+                    {
+                        "question": "Which device is used for input?",
+                        "options": [
+                            "Monitor",
+                            "Printer",
+                            "Keyboard",
+                            "Speaker"
+                        ],
+                        "correct": 2,
+                        "explanation": "A keyboard is an input device."
+                    },
+                    {
+                        "question": "What is a URL?",
+                        "options": [
+                            "Universal Resource Locator",
+                            "Uniform Resource Locator",
+                            "United Resource Link",
+                            "Uniform Reference Link"
+                        ],
+                        "correct": 1,
+                        "explanation": "URL stands for Uniform Resource Locator, the address of a web page."
+                    }
+                ],
+                "engineering": [
+                    {
+                        "question": "What is a fulcrum?",
+                        "options": [
+                            "The load",
+                            "The effort",
+                            "The pivot point",
+                            "The force"
+                        ],
+                        "correct": 2,
+                        "explanation": "The fulcrum is the fixed point around which a lever rotates."
+                    },
+                    {
+                        "question": "Which material is the best conductor?",
+                        "options": [
+                            "Plastic",
+                            "Wood",
+                            "Copper",
+                            "Glass"
+                        ],
+                        "correct": 2,
+                        "explanation": "Copper is an excellent conductor of electricity."
+                    },
+                    {
+                        "question": "What does a gear do?",
+                        "options": [
+                            "Stores energy",
+                            "Transfers motion",
+                            "Generates heat",
+                            "Absorbs shock"
+                        ],
+                        "correct": 1,
+                        "explanation": "Gears transfer rotational motion and can change speed or torque."
+                    },
+                    {
+                        "question": "Purpose of insulation?",
+                        "options": [
+                            "Decoration",
+                            "Reduce heat transfer",
+                            "Increase strength",
+                            "Add weight"
+                        ],
+                        "correct": 1,
+                        "explanation": "Insulation reduces heat transfer."
+                    },
+                    {
+                        "question": "A screwdriver is which simple machine?",
+                        "options": [
+                            "Lever",
+                            "Pulley",
+                            "Wheel and axle",
+                            "Inclined plane"
+                        ],
+                        "correct": 2,
+                        "explanation": "A screwdriver is a wheel and axle."
+                    },
+                    {
+                        "question": "What is tension?",
+                        "options": [
+                            "Pushing force",
+                            "Pulling force",
+                            "Twisting force",
+                            "Bending force"
+                        ],
+                        "correct": 1,
+                        "explanation": "Tension is a pulling force transmitted axially by a string, cable, or chain."
+                    }
+                ]
             },
-            {
-                "question": "What type of rock is formed from cooled lava or magma?",
-                "options": [
-                    "Sedimentary",
-                    "Igneous",
-                    "Metamorphic",
-                    "Limestone"
+            "8": {
+                "science": [
+                    {
+                        "question": "Liquid to gas change is called?",
+                        "options": [
+                            "Condensation",
+                            "Evaporation",
+                            "Sublimation",
+                            "Freezing"
+                        ],
+                        "correct": 1,
+                        "explanation": "Evaporation is the process of turning from liquid into vapor."
+                    },
+                    {
+                        "question": "Newton's First Law states objects at rest:",
+                        "options": [
+                            "Move",
+                            "Stay at rest",
+                            "Accelerate",
+                            "Decelerate"
+                        ],
+                        "correct": 1,
+                        "explanation": "Objects at rest stay at rest unless acted upon by a force."
+                    },
+                    {
+                        "question": "Formula for carbon dioxide?",
+                        "options": [
+                            "CO",
+                            "CO2",
+                            "C2O",
+                            "O2C"
+                        ],
+                        "correct": 1,
+                        "explanation": "CO2 is one carbon and two oxygens."
+                    },
+                    {
+                        "question": "Which blood cells fight infection?",
+                        "options": [
+                            "Red",
+                            "White",
+                            "Platelets",
+                            "Plasma"
+                        ],
+                        "correct": 1,
+                        "explanation": "White blood cells are part of the immune system."
+                    },
+                    {
+                        "question": "Energy stored in food?",
+                        "options": [
+                            "Kinetic",
+                            "Chemical",
+                            "Nuclear",
+                            "Thermal"
+                        ],
+                        "correct": 1,
+                        "explanation": "Food contains chemical energy."
+                    },
+                    {
+                        "question": "Powerhouse of the cell?",
+                        "options": [
+                            "Nucleus",
+                            "Ribosome",
+                            "Mitochondria",
+                            "Golgi"
+                        ],
+                        "correct": 2,
+                        "explanation": "Mitochondria generate most of the cell's supply of adenosine triphosphate (ATP)."
+                    }
                 ],
-                "correct": 1,
-                "explanation": "Igneous rocks are formed when molten rock (magma or lava) cools and solidifies."
+                "mathematics": [
+                    {
+                        "question": "Solve: 3x - 7 = 2x + 5",
+                        "options": [
+                            "12",
+                            "2",
+                            "-2",
+                            "8"
+                        ],
+                        "correct": 0,
+                        "explanation": "3x - 2x = 5 + 7 => x = 12"
+                    },
+                    {
+                        "question": "Slope of line through (2,3) and (4,7)?",
+                        "options": [
+                            "1",
+                            "2",
+                            "3",
+                            "4"
+                        ],
+                        "correct": 1,
+                        "explanation": "(7-3)/(4-2) = 4/2 = 2"
+                    },
+                    {
+                        "question": "Area of circle radius 5?",
+                        "options": [
+                            "15.7",
+                            "31.4",
+                            "78.5",
+                            "157"
+                        ],
+                        "correct": 2,
+                        "explanation": "pi * r^2 = 3.14 * 25 = 78.5"
+                    },
+                    {
+                        "question": "Value of √64?",
+                        "options": [
+                            "6",
+                            "7",
+                            "8",
+                            "9"
+                        ],
+                        "correct": 2,
+                        "explanation": "8 * 8 = 64"
+                    },
+                    {
+                        "question": "Probability of even number on die?",
+                        "options": [
+                            "1/6",
+                            "1/3",
+                            "1/2",
+                            "2/3"
+                        ],
+                        "correct": 2,
+                        "explanation": "2, 4, 6 are even. 3/6 = 1/2"
+                    },
+                    {
+                        "question": "2 to the power of 4?",
+                        "options": [
+                            "8",
+                            "12",
+                            "16",
+                            "20"
+                        ],
+                        "correct": 2,
+                        "explanation": "2*2*2*2 = 16"
+                    }
+                ],
+                "technology": [
+                    {
+                        "question": "What is an algorithm?",
+                        "options": [
+                            "Language",
+                            "Step-by-step procedure",
+                            "Computer",
+                            "App"
+                        ],
+                        "correct": 1,
+                        "explanation": "An algorithm is a set of instructions to solve a problem."
+                    },
+                    {
+                        "question": "What does a 'for loop' do?",
+                        "options": [
+                            "Decides",
+                            "Repeats code",
+                            "Stores",
+                            "Defines"
+                        ],
+                        "correct": 1,
+                        "explanation": "Repeats a block of code a specific number of times."
+                    },
+                    {
+                        "question": "LIFO data structure?",
+                        "options": [
+                            "Queue",
+                            "Stack",
+                            "Array",
+                            "Tree"
+                        ],
+                        "correct": 1,
+                        "explanation": "Stack is Last In First Out."
+                    },
+                    {
+                        "question": "Binary code is?",
+                        "options": [
+                            "Letters",
+                            "0-9",
+                            "0s and 1s",
+                            "Symbols"
+                        ],
+                        "correct": 2,
+                        "explanation": "Binary uses 0 and 1."
+                    },
+                    {
+                        "question": "CSS stands for?",
+                        "options": [
+                            "Computer Style",
+                            "Cascading Style Sheets",
+                            "Creative Style",
+                            "Code Style"
+                        ],
+                        "correct": 1,
+                        "explanation": "Cascading Style Sheets."
+                    },
+                    {
+                        "question": "Variable purpose?",
+                        "options": [
+                            "Delete",
+                            "Store data",
+                            "Print",
+                            "End"
+                        ],
+                        "correct": 1,
+                        "explanation": "Variables store data values."
+                    }
+                ],
+                "engineering": [
+                    {
+                        "question": "Ohm's Law?",
+                        "options": [
+                            "V=IR",
+                            "F=ma",
+                            "E=mc2",
+                            "P=VI"
+                        ],
+                        "correct": 0,
+                        "explanation": "Voltage = Current * Resistance"
+                    },
+                    {
+                        "question": "Bridge with cables from towers?",
+                        "options": [
+                            "Beam",
+                            "Arch",
+                            "Suspension",
+                            "Truss"
+                        ],
+                        "correct": 2,
+                        "explanation": "Suspension bridge."
+                    },
+                    {
+                        "question": "Resistance to scratching?",
+                        "options": [
+                            "Elasticity",
+                            "Hardness",
+                            "Ductility",
+                            "Density"
+                        ],
+                        "correct": 1,
+                        "explanation": "Hardness measures resistance to deformation/scratching."
+                    },
+                    {
+                        "question": "Resistor function?",
+                        "options": [
+                            "Store",
+                            "Reduce current",
+                            "Increase voltage",
+                            "Generate"
+                        ],
+                        "correct": 1,
+                        "explanation": "Resistors limit current flow."
+                    },
+                    {
+                        "question": "Mechanical advantage?",
+                        "options": [
+                            "Speed",
+                            "Output/Input Force",
+                            "Weight",
+                            "Cost"
+                        ],
+                        "correct": 1,
+                        "explanation": "Ratio of output force to input force."
+                    },
+                    {
+                        "question": "Return to shape property?",
+                        "options": [
+                            "Plasticity",
+                            "Elasticity",
+                            "Brittleness",
+                            "Malleability"
+                        ],
+                        "correct": 1,
+                        "explanation": "Elasticity."
+                    }
+                ]
             },
-            {
-                "question": "Which organelle is responsible for photosynthesis?",
-                "options": [
-                    "Mitochondria",
-                    "Nucleus",
-                    "Chloroplast",
-                    "Ribosome"
+            "9": {
+                "science": [
+                    {
+                        "question": "Atomic number equals number of?",
+                        "options": [
+                            "Neutrons",
+                            "Protons",
+                            "Electrons",
+                            "Isotopes"
+                        ],
+                        "correct": 1,
+                        "explanation": "Atomic number is the number of protons."
+                    },
+                    {
+                        "question": "Speed of light?",
+                        "options": [
+                            "300,000 km/s",
+                            "150,000 km/s",
+                            "3,000 km/s",
+                            "Sound speed"
+                        ],
+                        "correct": 0,
+                        "explanation": "Approximately 300,000 km/s in vacuum."
+                    },
+                    {
+                        "question": "DNA shape?",
+                        "options": [
+                            "Single helix",
+                            "Double helix",
+                            "Circle",
+                            "Sheet"
+                        ],
+                        "correct": 1,
+                        "explanation": "DNA is a double helix."
+                    },
+                    {
+                        "question": "Kinetic energy formula?",
+                        "options": [
+                            "mv",
+                            "1/2 mv^2",
+                            "mgh",
+                            "ma"
+                        ],
+                        "correct": 1,
+                        "explanation": "KE = 1/2 * mass * velocity squared."
+                    },
+                    {
+                        "question": "Most abundant gas in air?",
+                        "options": [
+                            "Oxygen",
+                            "Nitrogen",
+                            "CO2",
+                            "Argon"
+                        ],
+                        "correct": 1,
+                        "explanation": "Nitrogen makes up about 78% of Earth's atmosphere."
+                    },
+                    {
+                        "question": "Unit of force?",
+                        "options": [
+                            "Joule",
+                            "Watt",
+                            "Newton",
+                            "Pascal"
+                        ],
+                        "correct": 2,
+                        "explanation": "Force is measured in Newtons."
+                    }
                 ],
-                "correct": 2,
-                "explanation": "Chloroplasts contain chlorophyll and are where photosynthesis occurs."
+                "mathematics": [
+                    {
+                        "question": "Solve x^2 - 5x + 6 = 0",
+                        "options": [
+                            "2, 3",
+                            "1, 6",
+                            "-2, -3",
+                            "0, 5"
+                        ],
+                        "correct": 0,
+                        "explanation": "(x-2)(x-3)=0"
+                    },
+                    {
+                        "question": "Sin(30 degrees)?",
+                        "options": [
+                            "0",
+                            "0.5",
+                            "1",
+                            "0.866"
+                        ],
+                        "correct": 1,
+                        "explanation": "Sine of 30 degrees is 0.5."
+                    },
+                    {
+                        "question": "Pythagorean theorem?",
+                        "options": [
+                            "a+b=c",
+                            "a^2+b^2=c^2",
+                            "ab=c",
+                            "a/b=c"
+                        ],
+                        "correct": 1,
+                        "explanation": "For right triangles: a^2 + b^2 = c^2."
+                    },
+                    {
+                        "question": "Slope of vertical line?",
+                        "options": [
+                            "0",
+                            "1",
+                            "Undefined",
+                            "Infinite"
+                        ],
+                        "correct": 2,
+                        "explanation": "Vertical lines have undefined slope (division by zero)."
+                    },
+                    {
+                        "question": "Factor x^2 - 9",
+                        "options": [
+                            "(x-3)(x-3)",
+                            "(x+3)(x+3)",
+                            "(x-3)(x+3)",
+                            "x(x-9)"
+                        ],
+                        "correct": 2,
+                        "explanation": "Difference of squares."
+                    },
+                    {
+                        "question": "Volume of cube side 3?",
+                        "options": [
+                            "9",
+                            "18",
+                            "27",
+                            "81"
+                        ],
+                        "correct": 2,
+                        "explanation": "3^3 = 27."
+                    }
+                ],
+                "technology": [
+                    {
+                        "question": "What is a database?",
+                        "options": [
+                            "Screen",
+                            "Collection of data",
+                            "Network",
+                            "Printer"
+                        ],
+                        "correct": 1,
+                        "explanation": "Organized collection of data."
+                    },
+                    {
+                        "question": "SQL stands for?",
+                        "options": [
+                            "Structured Query Language",
+                            "Simple Question List",
+                            "System Quality Level",
+                            "Standard Quick Link"
+                        ],
+                        "correct": 0,
+                        "explanation": "Structured Query Language."
+                    },
+                    {
+                        "question": "Boolean values?",
+                        "options": [
+                            "1, 2, 3",
+                            "True, False",
+                            "A, B, C",
+                            "Yes, No, Maybe"
+                        ],
+                        "correct": 1,
+                        "explanation": "True and False."
+                    },
+                    {
+                        "question": "What is IP address?",
+                        "options": [
+                            "Internet Protocol",
+                            "Internal Post",
+                            "Input Process",
+                            "Image Pixel"
+                        ],
+                        "correct": 0,
+                        "explanation": "Internet Protocol address."
+                    },
+                    {
+                        "question": "RAM stands for?",
+                        "options": [
+                            "Read Access Memory",
+                            "Random Access Memory",
+                            "Run All Memory",
+                            "Real Application Memory"
+                        ],
+                        "correct": 1,
+                        "explanation": "Random Access Memory."
+                    },
+                    {
+                        "question": "Open source means?",
+                        "options": [
+                            "Free cost",
+                            "Code is public",
+                            "No password",
+                            "Broken"
+                        ],
+                        "correct": 1,
+                        "explanation": "Source code is available for modification."
+                    }
+                ],
+                "engineering": [
+                    {
+                        "question": "Unit of power?",
+                        "options": [
+                            "Joule",
+                            "Watt",
+                            "Newton",
+                            "Volt"
+                        ],
+                        "correct": 1,
+                        "explanation": "Power is measured in Watts."
+                    },
+                    {
+                        "question": "What is torque?",
+                        "options": [
+                            "Speed",
+                            "Rotational force",
+                            "Mass",
+                            "Energy"
+                        ],
+                        "correct": 1,
+                        "explanation": "Torque is a twisting force."
+                    },
+                    {
+                        "question": "Aerodynamics studies?",
+                        "options": [
+                            "Water flow",
+                            "Air movement",
+                            "Earthquakes",
+                            "Sound"
+                        ],
+                        "correct": 1,
+                        "explanation": "Study of how air moves around objects."
+                    },
+                    {
+                        "question": "What is a semiconductor?",
+                        "options": [
+                            "Insulator",
+                            "Conductor",
+                            "In between",
+                            "Magnet"
+                        ],
+                        "correct": 2,
+                        "explanation": "Conductivity between conductor and insulator (e.g., Silicon)."
+                    },
+                    {
+                        "question": "Hydraulics use?",
+                        "options": [
+                            "Air",
+                            "Liquid",
+                            "Magnets",
+                            "Gears"
+                        ],
+                        "correct": 1,
+                        "explanation": "Use liquids to transmit power."
+                    },
+                    {
+                        "question": "CAD stands for?",
+                        "options": [
+                            "Computer Aided Design",
+                            "Control All Data",
+                            "Create And Draw",
+                            "Computer Art Desk"
+                        ],
+                        "correct": 0,
+                        "explanation": "Computer Aided Design."
+                    }
+                ]
             },
-            {
-                "question": "What is the pH of a neutral solution?",
-                "options": [
-                    "0",
-                    "7",
-                    "14",
-                    "1"
+            "10": {
+                "science": [
+                    {
+                        "question": "Molar mass of H2O?",
+                        "options": [
+                            "10",
+                            "16",
+                            "18",
+                            "20"
+                        ],
+                        "correct": 2,
+                        "explanation": "H(1)*2 + O(16) = 18 g/mol."
+                    },
+                    {
+                        "question": "Newton's Second Law?",
+                        "options": [
+                            "F=ma",
+                            "E=mc2",
+                            "v=d/t",
+                            "p=mv"
+                        ],
+                        "correct": 0,
+                        "explanation": "Force equals mass times acceleration."
+                    },
+                    {
+                        "question": "Mitosis results in?",
+                        "options": [
+                            "2 identical cells",
+                            "4 different cells",
+                            "1 cell",
+                            "Dead cells"
+                        ],
+                        "correct": 0,
+                        "explanation": "Two genetically identical daughter cells."
+                    },
+                    {
+                        "question": "Acid pH range?",
+                        "options": [
+                            "0-7",
+                            "7",
+                            "7-14",
+                            "14"
+                        ],
+                        "correct": 0,
+                        "explanation": "Acids have pH less than 7."
+                    },
+                    {
+                        "question": "Isotope difference?",
+                        "options": [
+                            "Protons",
+                            "Neutrons",
+                            "Electrons",
+                            "Charge"
+                        ],
+                        "correct": 1,
+                        "explanation": "Isotopes have different numbers of neutrons."
+                    },
+                    {
+                        "question": "First element?",
+                        "options": [
+                            "Helium",
+                            "Hydrogen",
+                            "Lithium",
+                            "Carbon"
+                        ],
+                        "correct": 1,
+                        "explanation": "Hydrogen is element #1."
+                    }
                 ],
-                "correct": 1,
-                "explanation": "A pH of 7 is neutral, below 7 is acidic, and above 7 is basic."
+                "mathematics": [
+                    {
+                        "question": "Derivative of x^2?",
+                        "options": [
+                            "x",
+                            "2x",
+                            "x^2",
+                            "2"
+                        ],
+                        "correct": 1,
+                        "explanation": "Power rule: nx^(n-1)."
+                    },
+                    {
+                        "question": "Log base 10 of 100?",
+                        "options": [
+                            "1",
+                            "2",
+                            "10",
+                            "100"
+                        ],
+                        "correct": 1,
+                        "explanation": "10^2 = 100."
+                    },
+                    {
+                        "question": "Quadratic formula?",
+                        "options": [
+                            "-b±√(b²-4ac)/2a",
+                            "b±√(b²-4ac)/2a",
+                            "-b±√(b²+4ac)/2a",
+                            "b/2a"
+                        ],
+                        "correct": 0,
+                        "explanation": "x = (-b ± √(b² - 4ac)) / 2a"
+                    },
+                    {
+                        "question": "Cos(0)?",
+                        "options": [
+                            "0",
+                            "1",
+                            "-1",
+                            "0.5"
+                        ],
+                        "correct": 1,
+                        "explanation": "Cosine of 0 radians is 1."
+                    },
+                    {
+                        "question": "Sum of infinite geometric series r=0.5, a=1?",
+                        "options": [
+                            "1",
+                            "2",
+                            "1.5",
+                            "Infinite"
+                        ],
+                        "correct": 1,
+                        "explanation": "S = a/(1-r) = 1/(1-0.5) = 2."
+                    },
+                    {
+                        "question": "Distance formula?",
+                        "options": [
+                            "√(x2-x1)²+(y2-y1)²",
+                            "(x2-x1)+(y2-y1)",
+                            "y2-y1/x2-x1",
+                            "Midpoint"
+                        ],
+                        "correct": 0,
+                        "explanation": "Derived from Pythagorean theorem."
+                    }
+                ],
+                "technology": [
+                    {
+                        "question": "Encryption purpose?",
+                        "options": [
+                            "Speed",
+                            "Security",
+                            "Storage",
+                            "Display"
+                        ],
+                        "correct": 1,
+                        "explanation": "Protects information by encoding it."
+                    },
+                    {
+                        "question": "HTTP vs HTTPS?",
+                        "options": [
+                            "Speed",
+                            "Secure",
+                            "Newer",
+                            "Color"
+                        ],
+                        "correct": 1,
+                        "explanation": "S stands for Secure (encrypted)."
+                    },
+                    {
+                        "question": "Cloud computing?",
+                        "options": [
+                            "Weather",
+                            "Internet services",
+                            "Local storage",
+                            "Screens"
+                        ],
+                        "correct": 1,
+                        "explanation": "Delivery of computing services over the internet."
+                    },
+                    {
+                        "question": "API stands for?",
+                        "options": [
+                            "App Program Interface",
+                            "Application Programming Interface",
+                            "All People Internet",
+                            "Auto Process Input"
+                        ],
+                        "correct": 1,
+                        "explanation": "Application Programming Interface."
+                    },
+                    {
+                        "question": "Malware is?",
+                        "options": [
+                            "Hardware",
+                            "Bad software",
+                            "Network",
+                            "User"
+                        ],
+                        "correct": 1,
+                        "explanation": "Malicious software."
+                    },
+                    {
+                        "question": "Git is for?",
+                        "options": [
+                            "Version control",
+                            "Chat",
+                            "Drawing",
+                            "Music"
+                        ],
+                        "correct": 0,
+                        "explanation": "Version control system."
+                    }
+                ],
+                "engineering": [
+                    {
+                        "question": "Thermodynamics 1st law?",
+                        "options": [
+                            "Entropy",
+                            "Energy conservation",
+                            "Absolute zero",
+                            "Gravity"
+                        ],
+                        "correct": 1,
+                        "explanation": "Energy cannot be created or destroyed."
+                    },
+                    {
+                        "question": "Stress vs Strain?",
+                        "options": [
+                            "Same",
+                            "Force vs Deformation",
+                            "Heat vs Cold",
+                            "Speed vs Time"
+                        ],
+                        "correct": 1,
+                        "explanation": "Stress is force/area, Strain is deformation."
+                    },
+                    {
+                        "question": "AC vs DC?",
+                        "options": [
+                            "Air/Direct",
+                            "Alternating/Direct Current",
+                            "Amp/Degree",
+                            "After/During"
+                        ],
+                        "correct": 1,
+                        "explanation": "Alternating Current vs Direct Current."
+                    },
+                    {
+                        "question": "Turbine function?",
+                        "options": [
+                            "Burn fuel",
+                            "Extract energy from fluid",
+                            "Pump water",
+                            "Heat air"
+                        ],
+                        "correct": 1,
+                        "explanation": "Converts fluid energy to mechanical energy."
+                    },
+                    {
+                        "question": "Alloy example?",
+                        "options": [
+                            "Gold",
+                            "Iron",
+                            "Steel",
+                            "Oxygen"
+                        ],
+                        "correct": 2,
+                        "explanation": "Steel is an alloy of iron and carbon."
+                    },
+                    {
+                        "question": "Bernoulli's principle?",
+                        "options": [
+                            "Fluid speed/pressure",
+                            "Gravity",
+                            "Heat",
+                            "Light"
+                        ],
+                        "correct": 0,
+                        "explanation": "Faster fluid means lower pressure."
+                    }
+                ]
             },
-            {
-                "question": "What force pulls objects toward the center of Earth?",
-                "options": [
-                    "Friction",
-                    "Magnetism",
-                    "Gravity",
-                    "Tension"
+            "11": {
+                "science": [
+                    {
+                        "question": "Cellular respiration product?",
+                        "options": [
+                            "O2",
+                            "ATP",
+                            "Glucose",
+                            "Light"
+                        ],
+                        "correct": 1,
+                        "explanation": "Produces ATP energy."
+                    },
+                    {
+                        "question": "Quantum mechanics deals with?",
+                        "options": [
+                            "Planets",
+                            "Subatomic particles",
+                            "Animals",
+                            "Rocks"
+                        ],
+                        "correct": 1,
+                        "explanation": "Physics of very small particles."
+                    },
+                    {
+                        "question": "Avogadro's number?",
+                        "options": [
+                            "6.02x10^23",
+                            "3.14",
+                            "9.8",
+                            "100"
+                        ],
+                        "correct": 0,
+                        "explanation": "Particles in a mole."
+                    },
+                    {
+                        "question": "Electronegativity?",
+                        "options": [
+                            "Attract electrons",
+                            "Repel protons",
+                            "Conductivity",
+                            "Mass"
+                        ],
+                        "correct": 0,
+                        "explanation": "Tendency to attract shared electrons."
+                    },
+                    {
+                        "question": "Vector quantity?",
+                        "options": [
+                            "Mass",
+                            "Speed",
+                            "Velocity",
+                            "Temperature"
+                        ],
+                        "correct": 2,
+                        "explanation": "Velocity has magnitude and direction."
+                    },
+                    {
+                        "question": "Enzyme function?",
+                        "options": [
+                            "Slow reaction",
+                            "Catalyst",
+                            "Fuel",
+                            "Structure"
+                        ],
+                        "correct": 1,
+                        "explanation": "Biological catalyst speeds up reactions."
+                    }
                 ],
-                "correct": 2,
-                "explanation": "Gravity is the force that attracts objects with mass toward each other."
+                "mathematics": [
+                    {
+                        "question": "Integral of 2x?",
+                        "options": [
+                            "2",
+                            "x^2",
+                            "2x^2",
+                            "x"
+                        ],
+                        "correct": 1,
+                        "explanation": "x^2 + C."
+                    },
+                    {
+                        "question": "i squared?",
+                        "options": [
+                            "1",
+                            "-1",
+                            "0",
+                            "i"
+                        ],
+                        "correct": 1,
+                        "explanation": "i is sqrt(-1), so i^2 = -1."
+                    },
+                    {
+                        "question": "Unit circle radius?",
+                        "options": [
+                            "1",
+                            "2",
+                            "pi",
+                            "0"
+                        ],
+                        "correct": 0,
+                        "explanation": "Radius is 1."
+                    },
+                    {
+                        "question": "Matrix determinant ad-bc?",
+                        "options": [
+                            "2x2",
+                            "3x3",
+                            "1x1",
+                            "4x4"
+                        ],
+                        "correct": 0,
+                        "explanation": "For a 2x2 matrix."
+                    },
+                    {
+                        "question": "Limit 1/x as x->infinity?",
+                        "options": [
+                            "1",
+                            "0",
+                            "Infinity",
+                            "Undefined"
+                        ],
+                        "correct": 1,
+                        "explanation": "Approaches 0."
+                    },
+                    {
+                        "question": "Permutation vs Combination?",
+                        "options": [
+                            "Order matters",
+                            "Same",
+                            "Grouping",
+                            "Adding"
+                        ],
+                        "correct": 0,
+                        "explanation": "Order matters in permutations."
+                    }
+                ],
+                "technology": [
+                    {
+                        "question": "TCP/IP?",
+                        "options": [
+                            "Communication protocol",
+                            "Computer part",
+                            "Software",
+                            "Company"
+                        ],
+                        "correct": 0,
+                        "explanation": "Transmission Control Protocol/Internet Protocol."
+                    },
+                    {
+                        "question": "Machine Learning?",
+                        "options": [
+                            "Robots walking",
+                            "Systems learning from data",
+                            "Manufacturing",
+                            "Typing"
+                        ],
+                        "correct": 1,
+                        "explanation": "Algorithms that improve through experience."
+                    },
+                    {
+                        "question": "Big O notation?",
+                        "options": [
+                            "Size",
+                            "Algorithm complexity",
+                            "Disk space",
+                            "Screen res"
+                        ],
+                        "correct": 1,
+                        "explanation": "Describes performance/complexity."
+                    },
+                    {
+                        "question": "Virtual Machine?",
+                        "options": [
+                            "Fake computer",
+                            "Emulated system",
+                            "Game",
+                            "Dream"
+                        ],
+                        "correct": 1,
+                        "explanation": "Software emulation of a computer system."
+                    },
+                    {
+                        "question": "Blockchain?",
+                        "options": [
+                            "Cube",
+                            "Decentralized ledger",
+                            "Toy",
+                            "Wall"
+                        ],
+                        "correct": 1,
+                        "explanation": "Distributed database maintaining a list of records."
+                    },
+                    {
+                        "question": "Compiler?",
+                        "options": [
+                            "Editor",
+                            "Translator code->machine",
+                            "Player",
+                            "Organizer"
+                        ],
+                        "correct": 1,
+                        "explanation": "Translates source code to machine code."
+                    }
+                ],
+                "engineering": [
+                    {
+                        "question": "Moment of inertia?",
+                        "options": [
+                            "Time",
+                            "Resistance to rotation",
+                            "Speed",
+                            "Weight"
+                        ],
+                        "correct": 1,
+                        "explanation": "Rotational analog of mass."
+                    },
+                    {
+                        "question": "Op-Amp?",
+                        "options": [
+                            "Operational Amplifier",
+                            "Open Amp",
+                            "Optical Amp",
+                            "Option Amp"
+                        ],
+                        "correct": 0,
+                        "explanation": "High-gain electronic voltage amplifier."
+                    },
+                    {
+                        "question": "Carnot efficiency?",
+                        "options": [
+                            "Max theoretical",
+                            "Min",
+                            "Average",
+                            "Zero"
+                        ],
+                        "correct": 0,
+                        "explanation": "Maximum theoretical efficiency of heat engine."
+                    },
+                    {
+                        "question": "Young's Modulus?",
+                        "options": [
+                            "Age",
+                            "Stiffness",
+                            "Weight",
+                            "Color"
+                        ],
+                        "correct": 1,
+                        "explanation": "Measure of stiffness of a solid material."
+                    },
+                    {
+                        "question": "PID Controller?",
+                        "options": [
+                            "Proportional Integral Derivative",
+                            "Personal ID",
+                            "Process In Data",
+                            "Power In Device"
+                        ],
+                        "correct": 0,
+                        "explanation": "Control loop feedback mechanism."
+                    },
+                    {
+                        "question": "Fluid dynamics viscosity?",
+                        "options": [
+                            "Thickness/Resistance",
+                            "Color",
+                            "Taste",
+                            "Volume"
+                        ],
+                        "correct": 0,
+                        "explanation": "Resistance to flow."
+                    }
+                ]
             },
-            {
-                "question": "What gas do plants absorb from the atmosphere?",
-                "options": [
-                    "Oxygen",
-                    "Nitrogen",
-                    "Carbon Dioxide",
-                    "Hydrogen"
+            "12": {
+                "science": [
+                    {
+                        "question": "Gibbs free energy equation?",
+                        "options": [
+                            "G=H-TS",
+                            "E=mc2",
+                            "F=ma",
+                            "PV=nRT"
+                        ],
+                        "correct": 0,
+                        "explanation": "Delta G = Delta H - T Delta S."
+                    },
+                    {
+                        "question": "Heisenberg Uncertainty?",
+                        "options": [
+                            "Position/Momentum",
+                            "Time/Space",
+                            "Mass/Energy",
+                            "Speed/Force"
+                        ],
+                        "correct": 0,
+                        "explanation": "Cannot know position and momentum simultaneously."
+                    },
+                    {
+                        "question": "Protein synthesis step 1?",
+                        "options": [
+                            "Translation",
+                            "Transcription",
+                            "Replication",
+                            "Mitosis"
+                        ],
+                        "correct": 1,
+                        "explanation": "Transcription of DNA to mRNA."
+                    },
+                    {
+                        "question": "Entropy is measure of?",
+                        "options": [
+                            "Heat",
+                            "Disorder",
+                            "Energy",
+                            "Work"
+                        ],
+                        "correct": 1,
+                        "explanation": "Measure of disorder or randomness."
+                    },
+                    {
+                        "question": "Special Relativity?",
+                        "options": [
+                            "Gravity",
+                            "Time dilation/Length contraction",
+                            "Magnets",
+                            "Chemicals"
+                        ],
+                        "correct": 1,
+                        "explanation": "Physics at high speeds."
+                    },
+                    {
+                        "question": "Standard Model?",
+                        "options": [
+                            "Cars",
+                            "Particle physics",
+                            "Building",
+                            "Fashion"
+                        ],
+                        "correct": 1,
+                        "explanation": "Theory classifying subatomic particles."
+                    }
                 ],
-                "correct": 2,
-                "explanation": "Plants absorb carbon dioxide for photosynthesis."
+                "mathematics": [
+                    {
+                        "question": "Laplace transform of 1?",
+                        "options": [
+                            "s",
+                            "1/s",
+                            "e^s",
+                            "0"
+                        ],
+                        "correct": 1,
+                        "explanation": "1/s."
+                    },
+                    {
+                        "question": "Eigenvalue equation?",
+                        "options": [
+                            "Ax=lx",
+                            "Ax=b",
+                            "y=mx+b",
+                            "a^2+b^2"
+                        ],
+                        "correct": 0,
+                        "explanation": "A vector x is an eigenvector if Ax is a scalar multiple of x."
+                    },
+                    {
+                        "question": "Taylor series for e^x?",
+                        "options": [
+                            "1+x+x^2/2!...",
+                            "x-x^3/3!...",
+                            "1-x...",
+                            "x"
+                        ],
+                        "correct": 0,
+                        "explanation": "Sum of x^n/n!."
+                    },
+                    {
+                        "question": "Partial derivative?",
+                        "options": [
+                            "Part of whole",
+                            "Derivative wrt one variable",
+                            "Half derivative",
+                            "Wrong"
+                        ],
+                        "correct": 1,
+                        "explanation": "Derivative with respect to one variable holding others constant."
+                    },
+                    {
+                        "question": "Complex conjugate of a+bi?",
+                        "options": [
+                            "a-bi",
+                            "-a-bi",
+                            "b+ai",
+                            "a+bi"
+                        ],
+                        "correct": 0,
+                        "explanation": "Change sign of imaginary part."
+                    },
+                    {
+                        "question": "Differential equation order?",
+                        "options": [
+                            "Highest derivative",
+                            "Number of terms",
+                            "Degree",
+                            "Variables"
+                        ],
+                        "correct": 0,
+                        "explanation": "Order of the highest derivative present."
+                    }
+                ],
+                "technology": [
+                    {
+                        "question": "Halting Problem?",
+                        "options": [
+                            "Computer stop",
+                            "Undecidable",
+                            "Easy",
+                            "Hardware"
+                        ],
+                        "correct": 1,
+                        "explanation": "Proven undecidable by Turing."
+                    },
+                    {
+                        "question": "CAP Theorem?",
+                        "options": [
+                            "Hat",
+                            "Consistency, Availability, Partition",
+                            "Computer App Program",
+                            "Control All Parts"
+                        ],
+                        "correct": 1,
+                        "explanation": "Distributed systems trade-offs."
+                    },
+                    {
+                        "question": "Quantum Computing unit?",
+                        "options": [
+                            "Bit",
+                            "Qubit",
+                            "Byte",
+                            "Pixel"
+                        ],
+                        "correct": 1,
+                        "explanation": "Quantum bit."
+                    },
+                    {
+                        "question": "Neural Network layers?",
+                        "options": [
+                            "Input, Hidden, Output",
+                            "Top, Bottom",
+                            "Left, Right",
+                            "One"
+                        ],
+                        "correct": 0,
+                        "explanation": "Structure of deep learning models."
+                    },
+                    {
+                        "question": "Docker?",
+                        "options": [
+                            "Pants",
+                            "Containerization",
+                            "Ship",
+                            "Doctor"
+                        ],
+                        "correct": 1,
+                        "explanation": "Platform for OS-level virtualization."
+                    },
+                    {
+                        "question": "RESTful API constraint?",
+                        "options": [
+                            "Stateless",
+                            "Stateful",
+                            "Fast",
+                            "Slow"
+                        ],
+                        "correct": 0,
+                        "explanation": "Server does not store client context."
+                    }
+                ],
+                "engineering": [
+                    {
+                        "question": "Reynolds number?",
+                        "options": [
+                            "Laminar vs Turbulent",
+                            "Speed",
+                            "Heat",
+                            "Stress"
+                        ],
+                        "correct": 0,
+                        "explanation": "Predicts flow patterns."
+                    },
+                    {
+                        "question": "Fourier Transform?",
+                        "options": [
+                            "Time to Frequency domain",
+                            "Heat",
+                            "Stress",
+                            "Motion"
+                        ],
+                        "correct": 0,
+                        "explanation": "Decomposes function into frequencies."
+                    },
+                    {
+                        "question": "FEA?",
+                        "options": [
+                            "Finite Element Analysis",
+                            "Fast Eng App",
+                            "Force Energy Area",
+                            "Fluid Eq"
+                        ],
+                        "correct": 0,
+                        "explanation": "Simulation of physical phenomenon."
+                    },
+                    {
+                        "question": "Control System Stability?",
+                        "options": [
+                            "Poles in LHP",
+                            "RHP",
+                            "Zero",
+                            "Infinite"
+                        ],
+                        "correct": 0,
+                        "explanation": "Poles must be in Left Half Plane."
+                    },
+                    {
+                        "question": "Maxwell's Equations?",
+                        "options": [
+                            "Electromagnetism",
+                            "Gravity",
+                            "Fluid",
+                            "Heat"
+                        ],
+                        "correct": 0,
+                        "explanation": "Set of equations describing electromagnetism."
+                    },
+                    {
+                        "question": "Strain Gauge?",
+                        "options": [
+                            "Measures deformation",
+                            "Temperature",
+                            "Pressure",
+                            "Light"
+                        ],
+                        "correct": 0,
+                        "explanation": "Sensor to measure strain."
+                    }
+                ]
             }
-        ],
-        "mathematics": [
-            {
-                "question": "What is -8 + 15?",
-                "options": [
-                    "7",
-                    "-7",
-                    "23",
-                    "-23"
-                ],
-                "correct": 0,
-                "explanation": "-8 + 15 = 7"
-            },
-            {
-                "question": "Solve for x: 2x + 5 = 13",
-                "options": [
-                    "4",
-                    "8",
-                    "9",
-                    "6"
-                ],
-                "correct": 0,
-                "explanation": "2x = 13 - 5 = 8, so x = 4"
-            },
-            {
-                "question": "What is 25% of 80?",
-                "options": [
-                    "20",
-                    "15",
-                    "25",
-                    "30"
-                ],
-                "correct": 0,
-                "explanation": "25% of 80 = 0.25 × 80 = 20"
-            },
-            {
-                "question": "What is the sum of angles in a triangle?",
-                "options": [
-                    "90°",
-                    "180°",
-                    "270°",
-                    "360°"
-                ],
-                "correct": 1,
-                "explanation": "The sum of all interior angles in a triangle is always 180°."
-            },
-            {
-                "question": "What is the value of 3²?",
-                "options": [
-                    "6",
-                    "9",
-                    "12",
-                    "27"
-                ],
-                "correct": 1,
-                "explanation": "3² = 3 × 3 = 9"
-            },
-            {
-                "question": "Simplify: 4(x + 2)",
-                "options": [
-                    "4x + 2",
-                    "4x + 6",
-                    "4x + 8",
-                    "x + 8"
-                ],
-                "correct": 2,
-                "explanation": "Distribute the 4: 4 * x + 4 * 2 = 4x + 8"
-            }
-        ],
-        "technology": [
-            {
-                "question": "What does HTML stand for?",
-                "options": [
-                    "Hyper Text Markup Language",
-                    "High Tech Modern Language",
-                    "Home Tool Markup Language",
-                    "Hyperlinks and Text Markup Language"
-                ],
-                "correct": 0,
-                "explanation": "HTML stands for Hyper Text Markup Language."
-            },
-            {
-                "question": "Which of these is a programming language?",
-                "options": [
-                    "HTML",
-                    "CSS",
-                    "Python",
-                    "SQL"
-                ],
-                "correct": 2,
-                "explanation": "Python is a general-purpose programming language."
-            },
-            {
-                "question": "What is the main function of an operating system?",
-                "options": [
-                    "Browse the internet",
-                    "Manage hardware and software",
-                    "Create documents",
-                    "Play games"
-                ],
-                "correct": 1,
-                "explanation": "An OS manages computer hardware and software resources."
-            },
-            {
-                "question": "What does the 'if' statement do?",
-                "options": [
-                    "Repeats code",
-                    "Makes decisions",
-                    "Stores data",
-                    "Prints output"
-                ],
-                "correct": 1,
-                "explanation": "The 'if' statement allows programs to make decisions based on conditions."
-            },
-            {
-                "question": "Which device is used for input?",
-                "options": [
-                    "Monitor",
-                    "Printer",
-                    "Keyboard",
-                    "Speaker"
-                ],
-                "correct": 2,
-                "explanation": "A keyboard is an input device."
-            },
-            {
-                "question": "What is a URL?",
-                "options": [
-                    "Universal Resource Locator",
-                    "Uniform Resource Locator",
-                    "United Resource Link",
-                    "Uniform Reference Link"
-                ],
-                "correct": 1,
-                "explanation": "URL stands for Uniform Resource Locator, the address of a web page."
-            }
-        ],
-        "engineering": [
-            {
-                "question": "What is a fulcrum?",
-                "options": [
-                    "The load",
-                    "The effort",
-                    "The pivot point",
-                    "The force"
-                ],
-                "correct": 2,
-                "explanation": "The fulcrum is the fixed point around which a lever rotates."
-            },
-            {
-                "question": "Which material is the best conductor?",
-                "options": [
-                    "Plastic",
-                    "Wood",
-                    "Copper",
-                    "Glass"
-                ],
-                "correct": 2,
-                "explanation": "Copper is an excellent conductor of electricity."
-            },
-            {
-                "question": "What does a gear do?",
-                "options": [
-                    "Stores energy",
-                    "Transfers motion",
-                    "Generates heat",
-                    "Absorbs shock"
-                ],
-                "correct": 1,
-                "explanation": "Gears transfer rotational motion and can change speed or torque."
-            },
-            {
-                "question": "Purpose of insulation?",
-                "options": [
-                    "Decoration",
-                    "Reduce heat transfer",
-                    "Increase strength",
-                    "Add weight"
-                ],
-                "correct": 1,
-                "explanation": "Insulation reduces heat transfer."
-            },
-            {
-                "question": "A screwdriver is which simple machine?",
-                "options": [
-                    "Lever",
-                    "Pulley",
-                    "Wheel and axle",
-                    "Inclined plane"
-                ],
-                "correct": 2,
-                "explanation": "A screwdriver is a wheel and axle."
-            },
-            {
-                "question": "What is tension?",
-                "options": [
-                    "Pushing force",
-                    "Pulling force",
-                    "Twisting force",
-                    "Bending force"
-                ],
-                "correct": 1,
-                "explanation": "Tension is a pulling force transmitted axially by a string, cable, or chain."
-            }
-        ]
-    },
-    "8": {
-        "science": [
-            {
-                "question": "Liquid to gas change is called?",
-                "options": [
-                    "Condensation",
-                    "Evaporation",
-                    "Sublimation",
-                    "Freezing"
-                ],
-                "correct": 1,
-                "explanation": "Evaporation is the process of turning from liquid into vapor."
-            },
-            {
-                "question": "Newton's First Law states objects at rest:",
-                "options": [
-                    "Move",
-                    "Stay at rest",
-                    "Accelerate",
-                    "Decelerate"
-                ],
-                "correct": 1,
-                "explanation": "Objects at rest stay at rest unless acted upon by a force."
-            },
-            {
-                "question": "Formula for carbon dioxide?",
-                "options": [
-                    "CO",
-                    "CO2",
-                    "C2O",
-                    "O2C"
-                ],
-                "correct": 1,
-                "explanation": "CO2 is one carbon and two oxygens."
-            },
-            {
-                "question": "Which blood cells fight infection?",
-                "options": [
-                    "Red",
-                    "White",
-                    "Platelets",
-                    "Plasma"
-                ],
-                "correct": 1,
-                "explanation": "White blood cells are part of the immune system."
-            },
-            {
-                "question": "Energy stored in food?",
-                "options": [
-                    "Kinetic",
-                    "Chemical",
-                    "Nuclear",
-                    "Thermal"
-                ],
-                "correct": 1,
-                "explanation": "Food contains chemical energy."
-            },
-            {
-                "question": "Powerhouse of the cell?",
-                "options": [
-                    "Nucleus",
-                    "Ribosome",
-                    "Mitochondria",
-                    "Golgi"
-                ],
-                "correct": 2,
-                "explanation": "Mitochondria generate most of the cell's supply of adenosine triphosphate (ATP)."
-            }
-        ],
-        "mathematics": [
-            {
-                "question": "Solve: 3x - 7 = 2x + 5",
-                "options": [
-                    "12",
-                    "2",
-                    "-2",
-                    "8"
-                ],
-                "correct": 0,
-                "explanation": "3x - 2x = 5 + 7 => x = 12"
-            },
-            {
-                "question": "Slope of line through (2,3) and (4,7)?",
-                "options": [
-                    "1",
-                    "2",
-                    "3",
-                    "4"
-                ],
-                "correct": 1,
-                "explanation": "(7-3)/(4-2) = 4/2 = 2"
-            },
-            {
-                "question": "Area of circle radius 5?",
-                "options": [
-                    "15.7",
-                    "31.4",
-                    "78.5",
-                    "157"
-                ],
-                "correct": 2,
-                "explanation": "pi * r^2 = 3.14 * 25 = 78.5"
-            },
-            {
-                "question": "Value of √64?",
-                "options": [
-                    "6",
-                    "7",
-                    "8",
-                    "9"
-                ],
-                "correct": 2,
-                "explanation": "8 * 8 = 64"
-            },
-            {
-                "question": "Probability of even number on die?",
-                "options": [
-                    "1/6",
-                    "1/3",
-                    "1/2",
-                    "2/3"
-                ],
-                "correct": 2,
-                "explanation": "2, 4, 6 are even. 3/6 = 1/2"
-            },
-            {
-                "question": "2 to the power of 4?",
-                "options": [
-                    "8",
-                    "12",
-                    "16",
-                    "20"
-                ],
-                "correct": 2,
-                "explanation": "2*2*2*2 = 16"
-            }
-        ],
-        "technology": [
-            {
-                "question": "What is an algorithm?",
-                "options": [
-                    "Language",
-                    "Step-by-step procedure",
-                    "Computer",
-                    "App"
-                ],
-                "correct": 1,
-                "explanation": "An algorithm is a set of instructions to solve a problem."
-            },
-            {
-                "question": "What does a 'for loop' do?",
-                "options": [
-                    "Decides",
-                    "Repeats code",
-                    "Stores",
-                    "Defines"
-                ],
-                "correct": 1,
-                "explanation": "Repeats a block of code a specific number of times."
-            },
-            {
-                "question": "LIFO data structure?",
-                "options": [
-                    "Queue",
-                    "Stack",
-                    "Array",
-                    "Tree"
-                ],
-                "correct": 1,
-                "explanation": "Stack is Last In First Out."
-            },
-            {
-                "question": "Binary code is?",
-                "options": [
-                    "Letters",
-                    "0-9",
-                    "0s and 1s",
-                    "Symbols"
-                ],
-                "correct": 2,
-                "explanation": "Binary uses 0 and 1."
-            },
-            {
-                "question": "CSS stands for?",
-                "options": [
-                    "Computer Style",
-                    "Cascading Style Sheets",
-                    "Creative Style",
-                    "Code Style"
-                ],
-                "correct": 1,
-                "explanation": "Cascading Style Sheets."
-            },
-            {
-                "question": "Variable purpose?",
-                "options": [
-                    "Delete",
-                    "Store data",
-                    "Print",
-                    "End"
-                ],
-                "correct": 1,
-                "explanation": "Variables store data values."
-            }
-        ],
-        "engineering": [
-            {
-                "question": "Ohm's Law?",
-                "options": [
-                    "V=IR",
-                    "F=ma",
-                    "E=mc2",
-                    "P=VI"
-                ],
-                "correct": 0,
-                "explanation": "Voltage = Current * Resistance"
-            },
-            {
-                "question": "Bridge with cables from towers?",
-                "options": [
-                    "Beam",
-                    "Arch",
-                    "Suspension",
-                    "Truss"
-                ],
-                "correct": 2,
-                "explanation": "Suspension bridge."
-            },
-            {
-                "question": "Resistance to scratching?",
-                "options": [
-                    "Elasticity",
-                    "Hardness",
-                    "Ductility",
-                    "Density"
-                ],
-                "correct": 1,
-                "explanation": "Hardness measures resistance to deformation/scratching."
-            },
-            {
-                "question": "Resistor function?",
-                "options": [
-                    "Store",
-                    "Reduce current",
-                    "Increase voltage",
-                    "Generate"
-                ],
-                "correct": 1,
-                "explanation": "Resistors limit current flow."
-            },
-            {
-                "question": "Mechanical advantage?",
-                "options": [
-                    "Speed",
-                    "Output/Input Force",
-                    "Weight",
-                    "Cost"
-                ],
-                "correct": 1,
-                "explanation": "Ratio of output force to input force."
-            },
-            {
-                "question": "Return to shape property?",
-                "options": [
-                    "Plasticity",
-                    "Elasticity",
-                    "Brittleness",
-                    "Malleability"
-                ],
-                "correct": 1,
-                "explanation": "Elasticity."
-            }
-        ]
-    },
-    "9": {
-        "science": [
-            {
-                "question": "Atomic number equals number of?",
-                "options": [
-                    "Neutrons",
-                    "Protons",
-                    "Electrons",
-                    "Isotopes"
-                ],
-                "correct": 1,
-                "explanation": "Atomic number is the number of protons."
-            },
-            {
-                "question": "Speed of light?",
-                "options": [
-                    "300,000 km/s",
-                    "150,000 km/s",
-                    "3,000 km/s",
-                    "Sound speed"
-                ],
-                "correct": 0,
-                "explanation": "Approximately 300,000 km/s in vacuum."
-            },
-            {
-                "question": "DNA shape?",
-                "options": [
-                    "Single helix",
-                    "Double helix",
-                    "Circle",
-                    "Sheet"
-                ],
-                "correct": 1,
-                "explanation": "DNA is a double helix."
-            },
-            {
-                "question": "Kinetic energy formula?",
-                "options": [
-                    "mv",
-                    "1/2 mv^2",
-                    "mgh",
-                    "ma"
-                ],
-                "correct": 1,
-                "explanation": "KE = 1/2 * mass * velocity squared."
-            },
-            {
-                "question": "Most abundant gas in air?",
-                "options": [
-                    "Oxygen",
-                    "Nitrogen",
-                    "CO2",
-                    "Argon"
-                ],
-                "correct": 1,
-                "explanation": "Nitrogen makes up about 78% of Earth's atmosphere."
-            },
-            {
-                "question": "Unit of force?",
-                "options": [
-                    "Joule",
-                    "Watt",
-                    "Newton",
-                    "Pascal"
-                ],
-                "correct": 2,
-                "explanation": "Force is measured in Newtons."
-            }
-        ],
-        "mathematics": [
-            {
-                "question": "Solve x^2 - 5x + 6 = 0",
-                "options": [
-                    "2, 3",
-                    "1, 6",
-                    "-2, -3",
-                    "0, 5"
-                ],
-                "correct": 0,
-                "explanation": "(x-2)(x-3)=0"
-            },
-            {
-                "question": "Sin(30 degrees)?",
-                "options": [
-                    "0",
-                    "0.5",
-                    "1",
-                    "0.866"
-                ],
-                "correct": 1,
-                "explanation": "Sine of 30 degrees is 0.5."
-            },
-            {
-                "question": "Pythagorean theorem?",
-                "options": [
-                    "a+b=c",
-                    "a^2+b^2=c^2",
-                    "ab=c",
-                    "a/b=c"
-                ],
-                "correct": 1,
-                "explanation": "For right triangles: a^2 + b^2 = c^2."
-            },
-            {
-                "question": "Slope of vertical line?",
-                "options": [
-                    "0",
-                    "1",
-                    "Undefined",
-                    "Infinite"
-                ],
-                "correct": 2,
-                "explanation": "Vertical lines have undefined slope (division by zero)."
-            },
-            {
-                "question": "Factor x^2 - 9",
-                "options": [
-                    "(x-3)(x-3)",
-                    "(x+3)(x+3)",
-                    "(x-3)(x+3)",
-                    "x(x-9)"
-                ],
-                "correct": 2,
-                "explanation": "Difference of squares."
-            },
-            {
-                "question": "Volume of cube side 3?",
-                "options": [
-                    "9",
-                    "18",
-                    "27",
-                    "81"
-                ],
-                "correct": 2,
-                "explanation": "3^3 = 27."
-            }
-        ],
-        "technology": [
-            {
-                "question": "What is a database?",
-                "options": [
-                    "Screen",
-                    "Collection of data",
-                    "Network",
-                    "Printer"
-                ],
-                "correct": 1,
-                "explanation": "Organized collection of data."
-            },
-            {
-                "question": "SQL stands for?",
-                "options": [
-                    "Structured Query Language",
-                    "Simple Question List",
-                    "System Quality Level",
-                    "Standard Quick Link"
-                ],
-                "correct": 0,
-                "explanation": "Structured Query Language."
-            },
-            {
-                "question": "Boolean values?",
-                "options": [
-                    "1, 2, 3",
-                    "True, False",
-                    "A, B, C",
-                    "Yes, No, Maybe"
-                ],
-                "correct": 1,
-                "explanation": "True and False."
-            },
-            {
-                "question": "What is IP address?",
-                "options": [
-                    "Internet Protocol",
-                    "Internal Post",
-                    "Input Process",
-                    "Image Pixel"
-                ],
-                "correct": 0,
-                "explanation": "Internet Protocol address."
-            },
-            {
-                "question": "RAM stands for?",
-                "options": [
-                    "Read Access Memory",
-                    "Random Access Memory",
-                    "Run All Memory",
-                    "Real Application Memory"
-                ],
-                "correct": 1,
-                "explanation": "Random Access Memory."
-            },
-            {
-                "question": "Open source means?",
-                "options": [
-                    "Free cost",
-                    "Code is public",
-                    "No password",
-                    "Broken"
-                ],
-                "correct": 1,
-                "explanation": "Source code is available for modification."
-            }
-        ],
-        "engineering": [
-            {
-                "question": "Unit of power?",
-                "options": [
-                    "Joule",
-                    "Watt",
-                    "Newton",
-                    "Volt"
-                ],
-                "correct": 1,
-                "explanation": "Power is measured in Watts."
-            },
-            {
-                "question": "What is torque?",
-                "options": [
-                    "Speed",
-                    "Rotational force",
-                    "Mass",
-                    "Energy"
-                ],
-                "correct": 1,
-                "explanation": "Torque is a twisting force."
-            },
-            {
-                "question": "Aerodynamics studies?",
-                "options": [
-                    "Water flow",
-                    "Air movement",
-                    "Earthquakes",
-                    "Sound"
-                ],
-                "correct": 1,
-                "explanation": "Study of how air moves around objects."
-            },
-            {
-                "question": "What is a semiconductor?",
-                "options": [
-                    "Insulator",
-                    "Conductor",
-                    "In between",
-                    "Magnet"
-                ],
-                "correct": 2,
-                "explanation": "Conductivity between conductor and insulator (e.g., Silicon)."
-            },
-            {
-                "question": "Hydraulics use?",
-                "options": [
-                    "Air",
-                    "Liquid",
-                    "Magnets",
-                    "Gears"
-                ],
-                "correct": 1,
-                "explanation": "Use liquids to transmit power."
-            },
-            {
-                "question": "CAD stands for?",
-                "options": [
-                    "Computer Aided Design",
-                    "Control All Data",
-                    "Create And Draw",
-                    "Computer Art Desk"
-                ],
-                "correct": 0,
-                "explanation": "Computer Aided Design."
-            }
-        ]
-    },
-    "10": {
-        "science": [
-            {
-                "question": "Molar mass of H2O?",
-                "options": [
-                    "10",
-                    "16",
-                    "18",
-                    "20"
-                ],
-                "correct": 2,
-                "explanation": "H(1)*2 + O(16) = 18 g/mol."
-            },
-            {
-                "question": "Newton's Second Law?",
-                "options": [
-                    "F=ma",
-                    "E=mc2",
-                    "v=d/t",
-                    "p=mv"
-                ],
-                "correct": 0,
-                "explanation": "Force equals mass times acceleration."
-            },
-            {
-                "question": "Mitosis results in?",
-                "options": [
-                    "2 identical cells",
-                    "4 different cells",
-                    "1 cell",
-                    "Dead cells"
-                ],
-                "correct": 0,
-                "explanation": "Two genetically identical daughter cells."
-            },
-            {
-                "question": "Acid pH range?",
-                "options": [
-                    "0-7",
-                    "7",
-                    "7-14",
-                    "14"
-                ],
-                "correct": 0,
-                "explanation": "Acids have pH less than 7."
-            },
-            {
-                "question": "Isotope difference?",
-                "options": [
-                    "Protons",
-                    "Neutrons",
-                    "Electrons",
-                    "Charge"
-                ],
-                "correct": 1,
-                "explanation": "Isotopes have different numbers of neutrons."
-            },
-            {
-                "question": "First element?",
-                "options": [
-                    "Helium",
-                    "Hydrogen",
-                    "Lithium",
-                    "Carbon"
-                ],
-                "correct": 1,
-                "explanation": "Hydrogen is element #1."
-            }
-        ],
-        "mathematics": [
-            {
-                "question": "Derivative of x^2?",
-                "options": [
-                    "x",
-                    "2x",
-                    "x^2",
-                    "2"
-                ],
-                "correct": 1,
-                "explanation": "Power rule: nx^(n-1)."
-            },
-            {
-                "question": "Log base 10 of 100?",
-                "options": [
-                    "1",
-                    "2",
-                    "10",
-                    "100"
-                ],
-                "correct": 1,
-                "explanation": "10^2 = 100."
-            },
-            {
-                "question": "Quadratic formula?",
-                "options": [
-                    "-b±√(b²-4ac)/2a",
-                    "b±√(b²-4ac)/2a",
-                    "-b±√(b²+4ac)/2a",
-                    "b/2a"
-                ],
-                "correct": 0,
-                "explanation": "x = (-b ± √(b² - 4ac)) / 2a"
-            },
-            {
-                "question": "Cos(0)?",
-                "options": [
-                    "0",
-                    "1",
-                    "-1",
-                    "0.5"
-                ],
-                "correct": 1,
-                "explanation": "Cosine of 0 radians is 1."
-            },
-            {
-                "question": "Sum of infinite geometric series r=0.5, a=1?",
-                "options": [
-                    "1",
-                    "2",
-                    "1.5",
-                    "Infinite"
-                ],
-                "correct": 1,
-                "explanation": "S = a/(1-r) = 1/(1-0.5) = 2."
-            },
-            {
-                "question": "Distance formula?",
-                "options": [
-                    "√(x2-x1)²+(y2-y1)²",
-                    "(x2-x1)+(y2-y1)",
-                    "y2-y1/x2-x1",
-                    "Midpoint"
-                ],
-                "correct": 0,
-                "explanation": "Derived from Pythagorean theorem."
-            }
-        ],
-        "technology": [
-            {
-                "question": "Encryption purpose?",
-                "options": [
-                    "Speed",
-                    "Security",
-                    "Storage",
-                    "Display"
-                ],
-                "correct": 1,
-                "explanation": "Protects information by encoding it."
-            },
-            {
-                "question": "HTTP vs HTTPS?",
-                "options": [
-                    "Speed",
-                    "Secure",
-                    "Newer",
-                    "Color"
-                ],
-                "correct": 1,
-                "explanation": "S stands for Secure (encrypted)."
-            },
-            {
-                "question": "Cloud computing?",
-                "options": [
-                    "Weather",
-                    "Internet services",
-                    "Local storage",
-                    "Screens"
-                ],
-                "correct": 1,
-                "explanation": "Delivery of computing services over the internet."
-            },
-            {
-                "question": "API stands for?",
-                "options": [
-                    "App Program Interface",
-                    "Application Programming Interface",
-                    "All People Internet",
-                    "Auto Process Input"
-                ],
-                "correct": 1,
-                "explanation": "Application Programming Interface."
-            },
-            {
-                "question": "Malware is?",
-                "options": [
-                    "Hardware",
-                    "Bad software",
-                    "Network",
-                    "User"
-                ],
-                "correct": 1,
-                "explanation": "Malicious software."
-            },
-            {
-                "question": "Git is for?",
-                "options": [
-                    "Version control",
-                    "Chat",
-                    "Drawing",
-                    "Music"
-                ],
-                "correct": 0,
-                "explanation": "Version control system."
-            }
-        ],
-        "engineering": [
-            {
-                "question": "Thermodynamics 1st law?",
-                "options": [
-                    "Entropy",
-                    "Energy conservation",
-                    "Absolute zero",
-                    "Gravity"
-                ],
-                "correct": 1,
-                "explanation": "Energy cannot be created or destroyed."
-            },
-            {
-                "question": "Stress vs Strain?",
-                "options": [
-                    "Same",
-                    "Force vs Deformation",
-                    "Heat vs Cold",
-                    "Speed vs Time"
-                ],
-                "correct": 1,
-                "explanation": "Stress is force/area, Strain is deformation."
-            },
-            {
-                "question": "AC vs DC?",
-                "options": [
-                    "Air/Direct",
-                    "Alternating/Direct Current",
-                    "Amp/Degree",
-                    "After/During"
-                ],
-                "correct": 1,
-                "explanation": "Alternating Current vs Direct Current."
-            },
-            {
-                "question": "Turbine function?",
-                "options": [
-                    "Burn fuel",
-                    "Extract energy from fluid",
-                    "Pump water",
-                    "Heat air"
-                ],
-                "correct": 1,
-                "explanation": "Converts fluid energy to mechanical energy."
-            },
-            {
-                "question": "Alloy example?",
-                "options": [
-                    "Gold",
-                    "Iron",
-                    "Steel",
-                    "Oxygen"
-                ],
-                "correct": 2,
-                "explanation": "Steel is an alloy of iron and carbon."
-            },
-            {
-                "question": "Bernoulli's principle?",
-                "options": [
-                    "Fluid speed/pressure",
-                    "Gravity",
-                    "Heat",
-                    "Light"
-                ],
-                "correct": 0,
-                "explanation": "Faster fluid means lower pressure."
-            }
-        ]
-    },
-    "11": {
-        "science": [
-            {
-                "question": "Cellular respiration product?",
-                "options": [
-                    "O2",
-                    "ATP",
-                    "Glucose",
-                    "Light"
-                ],
-                "correct": 1,
-                "explanation": "Produces ATP energy."
-            },
-            {
-                "question": "Quantum mechanics deals with?",
-                "options": [
-                    "Planets",
-                    "Subatomic particles",
-                    "Animals",
-                    "Rocks"
-                ],
-                "correct": 1,
-                "explanation": "Physics of very small particles."
-            },
-            {
-                "question": "Avogadro's number?",
-                "options": [
-                    "6.02x10^23",
-                    "3.14",
-                    "9.8",
-                    "100"
-                ],
-                "correct": 0,
-                "explanation": "Particles in a mole."
-            },
-            {
-                "question": "Electronegativity?",
-                "options": [
-                    "Attract electrons",
-                    "Repel protons",
-                    "Conductivity",
-                    "Mass"
-                ],
-                "correct": 0,
-                "explanation": "Tendency to attract shared electrons."
-            },
-            {
-                "question": "Vector quantity?",
-                "options": [
-                    "Mass",
-                    "Speed",
-                    "Velocity",
-                    "Temperature"
-                ],
-                "correct": 2,
-                "explanation": "Velocity has magnitude and direction."
-            },
-            {
-                "question": "Enzyme function?",
-                "options": [
-                    "Slow reaction",
-                    "Catalyst",
-                    "Fuel",
-                    "Structure"
-                ],
-                "correct": 1,
-                "explanation": "Biological catalyst speeds up reactions."
-            }
-        ],
-        "mathematics": [
-            {
-                "question": "Integral of 2x?",
-                "options": [
-                    "2",
-                    "x^2",
-                    "2x^2",
-                    "x"
-                ],
-                "correct": 1,
-                "explanation": "x^2 + C."
-            },
-            {
-                "question": "i squared?",
-                "options": [
-                    "1",
-                    "-1",
-                    "0",
-                    "i"
-                ],
-                "correct": 1,
-                "explanation": "i is sqrt(-1), so i^2 = -1."
-            },
-            {
-                "question": "Unit circle radius?",
-                "options": [
-                    "1",
-                    "2",
-                    "pi",
-                    "0"
-                ],
-                "correct": 0,
-                "explanation": "Radius is 1."
-            },
-            {
-                "question": "Matrix determinant ad-bc?",
-                "options": [
-                    "2x2",
-                    "3x3",
-                    "1x1",
-                    "4x4"
-                ],
-                "correct": 0,
-                "explanation": "For a 2x2 matrix."
-            },
-            {
-                "question": "Limit 1/x as x->infinity?",
-                "options": [
-                    "1",
-                    "0",
-                    "Infinity",
-                    "Undefined"
-                ],
-                "correct": 1,
-                "explanation": "Approaches 0."
-            },
-            {
-                "question": "Permutation vs Combination?",
-                "options": [
-                    "Order matters",
-                    "Same",
-                    "Grouping",
-                    "Adding"
-                ],
-                "correct": 0,
-                "explanation": "Order matters in permutations."
-            }
-        ],
-        "technology": [
-            {
-                "question": "TCP/IP?",
-                "options": [
-                    "Communication protocol",
-                    "Computer part",
-                    "Software",
-                    "Company"
-                ],
-                "correct": 0,
-                "explanation": "Transmission Control Protocol/Internet Protocol."
-            },
-            {
-                "question": "Machine Learning?",
-                "options": [
-                    "Robots walking",
-                    "Systems learning from data",
-                    "Manufacturing",
-                    "Typing"
-                ],
-                "correct": 1,
-                "explanation": "Algorithms that improve through experience."
-            },
-            {
-                "question": "Big O notation?",
-                "options": [
-                    "Size",
-                    "Algorithm complexity",
-                    "Disk space",
-                    "Screen res"
-                ],
-                "correct": 1,
-                "explanation": "Describes performance/complexity."
-            },
-            {
-                "question": "Virtual Machine?",
-                "options": [
-                    "Fake computer",
-                    "Emulated system",
-                    "Game",
-                    "Dream"
-                ],
-                "correct": 1,
-                "explanation": "Software emulation of a computer system."
-            },
-            {
-                "question": "Blockchain?",
-                "options": [
-                    "Cube",
-                    "Decentralized ledger",
-                    "Toy",
-                    "Wall"
-                ],
-                "correct": 1,
-                "explanation": "Distributed database maintaining a list of records."
-            },
-            {
-                "question": "Compiler?",
-                "options": [
-                    "Editor",
-                    "Translator code->machine",
-                    "Player",
-                    "Organizer"
-                ],
-                "correct": 1,
-                "explanation": "Translates source code to machine code."
-            }
-        ],
-        "engineering": [
-            {
-                "question": "Moment of inertia?",
-                "options": [
-                    "Time",
-                    "Resistance to rotation",
-                    "Speed",
-                    "Weight"
-                ],
-                "correct": 1,
-                "explanation": "Rotational analog of mass."
-            },
-            {
-                "question": "Op-Amp?",
-                "options": [
-                    "Operational Amplifier",
-                    "Open Amp",
-                    "Optical Amp",
-                    "Option Amp"
-                ],
-                "correct": 0,
-                "explanation": "High-gain electronic voltage amplifier."
-            },
-            {
-                "question": "Carnot efficiency?",
-                "options": [
-                    "Max theoretical",
-                    "Min",
-                    "Average",
-                    "Zero"
-                ],
-                "correct": 0,
-                "explanation": "Maximum theoretical efficiency of heat engine."
-            },
-            {
-                "question": "Young's Modulus?",
-                "options": [
-                    "Age",
-                    "Stiffness",
-                    "Weight",
-                    "Color"
-                ],
-                "correct": 1,
-                "explanation": "Measure of stiffness of a solid material."
-            },
-            {
-                "question": "PID Controller?",
-                "options": [
-                    "Proportional Integral Derivative",
-                    "Personal ID",
-                    "Process In Data",
-                    "Power In Device"
-                ],
-                "correct": 0,
-                "explanation": "Control loop feedback mechanism."
-            },
-            {
-                "question": "Fluid dynamics viscosity?",
-                "options": [
-                    "Thickness/Resistance",
-                    "Color",
-                    "Taste",
-                    "Volume"
-                ],
-                "correct": 0,
-                "explanation": "Resistance to flow."
-            }
-        ]
-    },
-    "12": {
-        "science": [
-            {
-                "question": "Gibbs free energy equation?",
-                "options": [
-                    "G=H-TS",
-                    "E=mc2",
-                    "F=ma",
-                    "PV=nRT"
-                ],
-                "correct": 0,
-                "explanation": "Delta G = Delta H - T Delta S."
-            },
-            {
-                "question": "Heisenberg Uncertainty?",
-                "options": [
-                    "Position/Momentum",
-                    "Time/Space",
-                    "Mass/Energy",
-                    "Speed/Force"
-                ],
-                "correct": 0,
-                "explanation": "Cannot know position and momentum simultaneously."
-            },
-            {
-                "question": "Protein synthesis step 1?",
-                "options": [
-                    "Translation",
-                    "Transcription",
-                    "Replication",
-                    "Mitosis"
-                ],
-                "correct": 1,
-                "explanation": "Transcription of DNA to mRNA."
-            },
-            {
-                "question": "Entropy is measure of?",
-                "options": [
-                    "Heat",
-                    "Disorder",
-                    "Energy",
-                    "Work"
-                ],
-                "correct": 1,
-                "explanation": "Measure of disorder or randomness."
-            },
-            {
-                "question": "Special Relativity?",
-                "options": [
-                    "Gravity",
-                    "Time dilation/Length contraction",
-                    "Magnets",
-                    "Chemicals"
-                ],
-                "correct": 1,
-                "explanation": "Physics at high speeds."
-            },
-            {
-                "question": "Standard Model?",
-                "options": [
-                    "Cars",
-                    "Particle physics",
-                    "Building",
-                    "Fashion"
-                ],
-                "correct": 1,
-                "explanation": "Theory classifying subatomic particles."
-            }
-        ],
-        "mathematics": [
-            {
-                "question": "Laplace transform of 1?",
-                "options": [
-                    "s",
-                    "1/s",
-                    "e^s",
-                    "0"
-                ],
-                "correct": 1,
-                "explanation": "1/s."
-            },
-            {
-                "question": "Eigenvalue equation?",
-                "options": [
-                    "Ax=lx",
-                    "Ax=b",
-                    "y=mx+b",
-                    "a^2+b^2"
-                ],
-                "correct": 0,
-                "explanation": "A vector x is an eigenvector if Ax is a scalar multiple of x."
-            },
-            {
-                "question": "Taylor series for e^x?",
-                "options": [
-                    "1+x+x^2/2!...",
-                    "x-x^3/3!...",
-                    "1-x...",
-                    "x"
-                ],
-                "correct": 0,
-                "explanation": "Sum of x^n/n!."
-            },
-            {
-                "question": "Partial derivative?",
-                "options": [
-                    "Part of whole",
-                    "Derivative wrt one variable",
-                    "Half derivative",
-                    "Wrong"
-                ],
-                "correct": 1,
-                "explanation": "Derivative with respect to one variable holding others constant."
-            },
-            {
-                "question": "Complex conjugate of a+bi?",
-                "options": [
-                    "a-bi",
-                    "-a-bi",
-                    "b+ai",
-                    "a+bi"
-                ],
-                "correct": 0,
-                "explanation": "Change sign of imaginary part."
-            },
-            {
-                "question": "Differential equation order?",
-                "options": [
-                    "Highest derivative",
-                    "Number of terms",
-                    "Degree",
-                    "Variables"
-                ],
-                "correct": 0,
-                "explanation": "Order of the highest derivative present."
-            }
-        ],
-        "technology": [
-            {
-                "question": "Halting Problem?",
-                "options": [
-                    "Computer stop",
-                    "Undecidable",
-                    "Easy",
-                    "Hardware"
-                ],
-                "correct": 1,
-                "explanation": "Proven undecidable by Turing."
-            },
-            {
-                "question": "CAP Theorem?",
-                "options": [
-                    "Hat",
-                    "Consistency, Availability, Partition",
-                    "Computer App Program",
-                    "Control All Parts"
-                ],
-                "correct": 1,
-                "explanation": "Distributed systems trade-offs."
-            },
-            {
-                "question": "Quantum Computing unit?",
-                "options": [
-                    "Bit",
-                    "Qubit",
-                    "Byte",
-                    "Pixel"
-                ],
-                "correct": 1,
-                "explanation": "Quantum bit."
-            },
-            {
-                "question": "Neural Network layers?",
-                "options": [
-                    "Input, Hidden, Output",
-                    "Top, Bottom",
-                    "Left, Right",
-                    "One"
-                ],
-                "correct": 0,
-                "explanation": "Structure of deep learning models."
-            },
-            {
-                "question": "Docker?",
-                "options": [
-                    "Pants",
-                    "Containerization",
-                    "Ship",
-                    "Doctor"
-                ],
-                "correct": 1,
-                "explanation": "Platform for OS-level virtualization."
-            },
-            {
-                "question": "RESTful API constraint?",
-                "options": [
-                    "Stateless",
-                    "Stateful",
-                    "Fast",
-                    "Slow"
-                ],
-                "correct": 0,
-                "explanation": "Server does not store client context."
-            }
-        ],
-        "engineering": [
-            {
-                "question": "Reynolds number?",
-                "options": [
-                    "Laminar vs Turbulent",
-                    "Speed",
-                    "Heat",
-                    "Stress"
-                ],
-                "correct": 0,
-                "explanation": "Predicts flow patterns."
-            },
-            {
-                "question": "Fourier Transform?",
-                "options": [
-                    "Time to Frequency domain",
-                    "Heat",
-                    "Stress",
-                    "Motion"
-                ],
-                "correct": 0,
-                "explanation": "Decomposes function into frequencies."
-            },
-            {
-                "question": "FEA?",
-                "options": [
-                    "Finite Element Analysis",
-                    "Fast Eng App",
-                    "Force Energy Area",
-                    "Fluid Eq"
-                ],
-                "correct": 0,
-                "explanation": "Simulation of physical phenomenon."
-            },
-            {
-                "question": "Control System Stability?",
-                "options": [
-                    "Poles in LHP",
-                    "RHP",
-                    "Zero",
-                    "Infinite"
-                ],
-                "correct": 0,
-                "explanation": "Poles must be in Left Half Plane."
-            },
-            {
-                "question": "Maxwell's Equations?",
-                "options": [
-                    "Electromagnetism",
-                    "Gravity",
-                    "Fluid",
-                    "Heat"
-                ],
-                "correct": 0,
-                "explanation": "Set of equations describing electromagnetism."
-            },
-            {
-                "question": "Strain Gauge?",
-                "options": [
-                    "Measures deformation",
-                    "Temperature",
-                    "Pressure",
-                    "Light"
-                ],
-                "correct": 0,
-                "explanation": "Sensor to measure strain."
-            }
-        ]
-    }
-};
-        
+        };
+
         // Merge into stemQuestions
         Object.assign(stemQuestions, additionalContent);
         console.log("Grades 7-12 content loaded successfully");
     </script>
+    <!-- Interactive Framework Scripts -->
+    <script src="canvas-utils.js"></script>
+    <script src="interactive-framework.js"></script>
+    <script src="interactives/graph-plotter.js"></script>
+    <script src="interactives/cell-explorer.js"></script>
+    <script src="interactives/circuit-simulator.js"></script>
+
+    <script src="translations.js"></script>
+    <script src="home-translations.js"></script>
 </body>
 
 </html>

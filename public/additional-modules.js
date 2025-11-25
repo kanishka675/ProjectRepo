@@ -1,0 +1,46 @@
+// Additional Learning Modules - Phase 1 Enhancement
+// This file contains 2 additional modules per subject for grades 6-12
+
+const additionalModules = {
+    6: {
+        science: [
+            { id: "states-of-matter", title: "🧊 States of Matter", description: "Solid, liquid, and gas", content: { introduction: "Matter exists in different states based on temperature!", mainContent: "Solids have fixed shape/volume. Liquids have fixed volume but take container shape. Gases expand to fill their container.", interactive: { type: "state-changer", examples: [] }, quiz: { question: "What happens to water at 100°C?", options: ["Freezes", "Stays same", "Turns to steam", "Disappears"], correct: 2, explanation: "At 100°C, water boils into steam (gas state)." } } },
+            { id: "water-cycle", title: "🌊 Water Cycle", description: "How water moves through Earth", content: { introduction: "Water constantly cycles through Earth's systems!", mainContent: "Evaporation → Condensation → Precipitation → Collection.", interactive: { type: "cycle-animation", stages: [] }, quiz: { question: "What is water turning to vapor called?", options: ["Condensation", "Precipitation", "Evaporation", "Collection"], correct: 2, explanation: "Evaporation changes water from liquid to gas." } } }
+        ],
+        mathematics: [
+            { id: "decimals", title: "🔢 Decimals", description: "Numbers with decimal points", content: { introduction: "Decimals represent parts of a whole, just like fractions!", mainContent: "Place value: tenths, hundredths, thousandths. Adding decimals: line up the decimal points!", interactive: { type: "decimal-grid", examples: [] }, quiz: { question: "What is 0.5 + 0.3?", options: ["0.2", "0.8", "0.53", "0.35"], correct: 1, explanation: "0.5 + 0.3 = 0.8 (5 tenths + 3 tenths = 8 tenths)" } } },
+            { id: "perimeter-area", title: "📏 Perimeter & Area", description: "Measuring shapes", content: { introduction: "Perimeter is distance around, area is space inside!", mainContent: "Rectangle: Perimeter = 2(l+w), Area = l×w. Square: P = 4s, A = s².", interactive: { type: "shape-measurer", shapes: [] }, quiz: { question: "Area of rectangle 5×3?", options: ["8", "15", "16", "25"], correct: 1, explanation: "Area = length × width = 5 × 3 = 15" } } }
+        ],
+        technology: [
+            { id: "digital-citizenship", title: "👥 Digital Citizenship", description: "Being responsible online", content: { introduction: "Learn how to be a good digital citizen!", mainContent: "Respect others, protect privacy, verify info, be kind online. Think before you post!", interactive: { type: "scenario-trainer", scenarios: [] }, quiz: { question: "What should you do before sharing a post?", options: ["Share immediately", "Think if it's kind and true", "Tell everyone", "Copy others"], correct: 1, explanation: "Always think before sharing - be kind and verify truth." } } },
+            { id: "computer-safety", title: "🔒 Computer Safety", description: "Staying safe with technology", content: { introduction: "Keep yourself and your computer safe!", mainContent: "Use strong passwords, don't click strange links, ask adults before downloading, log out when done.", interactive: { type: "safety-quiz", tips: [] }, quiz: { question: "What makes a good password?", options: ["Your name", "12345", "Mix of letters/numbers/symbols", "password"], correct: 2, explanation: "Good passwords mix letters, numbers, and symbols." } } }
+        ],
+        engineering: [
+            { id: "gears-pulleys", title: "⚙️ Gears & Pulleys", description: "Machines that multiply force", content: { introduction: "Gears and pulleys help us lift heavy things!", mainContent: "Gears transfer motion between parts. Pulleys change direction of force and provide mechanical advantage.", interactive: { type: "gear-simulator", gears: [] }, quiz: { question: "What do pulleys help us do?", options: ["Make things heavier", "Lift heavy objects easier", "Make noise", "Create electricity"], correct: 1, explanation: "Pulleys provide mechanical advantage for lifting." } } },
+            { id: "bicycle-mechanics", title: "🚲 Bicycle Mechanics", description: "How bicycles work", content: { introduction: "Bicycles use simple machines to move!", mainContent: "Bikes use wheels, gears, levers (brakes), and chains. Pedaling transfers force through gears to wheels.", interactive: { type: "bike-builder", parts: [] }, quiz: { question: "What simple machine are bike pedals?", options: ["Pulley", "Lever", "Wedge", "Screw"], correct: 1, explanation: "Bike pedals are levers that rotate the crank." } } }
+        ]
+    },
+    7: {
+        science: [
+            { id: "ecosystems", title: "🌿 Ecosystems", description: "Living things and their environments", content: { introduction: "Ecosystems are communities of organisms interacting!", mainContent: "Producers make food, consumers eat others, decomposers break down dead matter. Energy flows through food chains.", interactive: { type: "food-web", organisms: [] }, quiz: { question: "What do producers do?", options: ["Eat plants", "Make their own food", "Decompose matter", "Hunt prey"], correct: 1, explanation: "Producers (plants) make food through photosynthesis." } } },
+            { id: "matter-energy", title: "⚡ Matter & Energy", description: "Forms and transformations", content: { introduction: "Energy changes forms but is never destroyed!", mainContent: "Law of Conservation: matter and energy can't be created or destroyed, only transformed. Examples: chemical → thermal, electric → light.", interactive: { type: "energy-transformer", examples: [] }, quiz: { question: "What happens to energy in transformations?", options: ["It's destroyed", "It changes form", "It disappears", "It multiplies"], correct: 1, explanation: "Energy changes form but total energy stays constant." } } }
+        ],
+        mathematics: [
+            { id: "ratios-proportions", title: "📊 Ratios & Proportions", description: "Comparing quantities", content: { introduction: "Ratios compare two quantities!", mainContent: "Ratio 3:4 means 3 of one for every 4 of another. Proportions are equal ratios: 3/4 = 6/8.", interactive: { type: "ratio-visualizer", examples: [] }, quiz: { question: "If ratio is 2:3 and first is 4, what's second?", options: ["5", "6", "7", "8"], correct: 1, explanation: "2:3 = 4:x → x = 6" } } },
+            { id: "percent", title: "% Percentages", description: "Out of 100", content: { introduction: "Percent means 'per hundred' - parts out of 100!", mainContent: "50% = 50/100 = 0.5. To find percent: (part/whole) × 100.", interactive: { type: "percent-calculator", problems: [] }, quiz: { question: "What is 25% of 80?", options: ["15", "20", "25", "30"], correct: 1, explanation: "25% = 0.25, so 0.25 × 80 = 20" } } }
+        ],
+        technology: [
+            { id: "spreadsheets", title: "📊 Spreadsheets", description: "Organizing data in tables", content: { introduction: "Spreadsheets help organize and calculate data!", mainContent: "Made of rows/columns forming cells. Use formulas like =SUM(), =AVERAGE(). Great for budgets, grades, data analysis.", interactive: { type: "spreadsheet-sim", examples: [] }, quiz: { question: "What does =SUM(A1:A5) do?", options: ["Deletes cells", "Adds cells A1 through A5", "Multiplies", "Sorts data"], correct: 1, explanation: "SUM adds all numbers in the range." } } },
+            { id: "data-visualization", title: "📈 Data Visualization", description: "Making charts and graphs", content: { introduction: "Pictures make data easier to understand!", mainContent: "Bar charts compare categories. Line graphs show trends over time. Pie charts show parts of a whole.", interactive: { type: "chart-creator", data: [] }, quiz: { question: "Which graph shows data over time best?", options: ["Pie chart", "Bar chart", "Line graph", "Table"], correct: 2, explanation: "Line graphs excel at showing trends over time." } } }
+        ],
+        engineering: [
+            { id: "levers-daily", title: "🏗️ Levers in Daily Life", description: "Levers all around us", content: { introduction: "Levers are everywhere in daily life!", mainContent: "Three classes of levers based on fulcrum position. Examples: scissors, wheelbarrow, tweezers, bottle opener.", interactive: { type: "lever-identifier", tools: [] }, quiz: { question: "What class lever is a seesaw?", options: ["First class", "Second class", "Third class", "Not a lever"], correct: 0, explanation: "Seesaw is first class - fulcrum in middle." } } },
+            { id: "mechanical-advantage", title: "💪 Mechanical Advantage", description: "Making work easier", content: { introduction: "Mechanical advantage multiplies force!", mainContent: "MA = Output force / Input force. MA > 1 means less force needed. Trade-off: move further distance.", interactive: { type: "ma-calculator", machines: [] }, quiz: { question: "If MA is 4, what does it mean?", options: ["Use 4x more force", "Lift 4x the weight with same force", "Move 4x faster", "No advantage"], correct: 1, explanation: "MA of 4 means you can lift 4x the weight." } } }
+        ]
+    }
+};
+
+// Export for use in home.html
+if (typeof module !== 'undefined' && module.exports) {
+    module.exports = additionalModules;
+}

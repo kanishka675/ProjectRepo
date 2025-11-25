@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Demos - EduGameHub</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            color: white;
+            margin-bottom: 10px;
+            font-size: 36px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .subtitle {
+            text-align: center;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 40px;
+            font-size: 18px;
+        }
+
+        .demo-card {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .demo-card h2 {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 24px;
+        }
+
+        .demo-card p {
+            color: #666;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .demo-container {
+            margin-top: 20px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+
+        .back-button {
+            display: inline-block;
+            padding: 12px 24px;
+            background: white;
+            color: #667eea;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s;
+        }
+
+        .back-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 4px 12px;
+            background: #4CAF50;
+            color: white;
+            border-radius: 20px;
+            font-size: 12px;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <a href="home.html" class="back-button">← Back to EduGameHub</a>
+
+        <h1>🎮 Interactive Learning Demos</h1>
+        <p class="subtitle">Phase 2: Interactive Visualizations Showcase</p>
+
+        <!-- Graph Plotter Demo -->
+        <div class="demo-card">
+            <h2>📈 Graph Plotter <span class="badge">Math</span></h2>
+            <p>
+                <strong>Subject:</strong> Mathematics (Grade 8+)<br>
+                <strong>Topic:</strong> Linear Equations<br>
+                <strong>Description:</strong> Visualize linear equations in slope-intercept form (y = mx + b).
+                Adjust the slope and y-intercept using sliders to see how the line changes in real-time.
+            </p>
+            <div class="demo-container" id="graph-demo"></div>
+        </div>
+
+        <!-- Cell Explorer Demo -->
+        <div class="demo-card">
+            <h2>🔬 Cell Explorer <span class="badge">Science</span></h2>
+            <p>
+                <strong>Subject:</strong> Science (Grade 6-7)<br>
+                <strong>Topic:</strong> Cell Structure<br>
+                <strong>Description:</strong> Explore an animal cell! Click on different organelles to learn about their
+                functions.
+                Hover over organelles to see quick descriptions.
+            </p>
+            <div class="demo-container" id="cell-demo"></div>
+        </div>
+
+        <!-- Circuit Simulator Demo -->
+        <div class="demo-card">
+            <h2>⚡ Circuit Simulator <span class="badge">Engineering</span></h2>
+            <p>
+                <strong>Subject:</strong> Engineering (Grade 8)<br>
+                <strong>Topic:</strong> Electrical Circuits<br>
+                <strong>Description:</strong> Build series and parallel circuits! Adjust voltage and number of bulbs.
+                Click "Animate Current" to see electricity flow through the circuit.
+            </p>
+            <div class="demo-container" id="circuit-demo"></div>
+        </div>
+
+        <div style="text-align:center; margin-top:40px; color:white;">
+            <p style="font-size:14px; opacity:0.9;">
+                ✨ More interactives coming soon! These are working demonstrations of the Phase 2 framework.
+            </p>
+            <p style="font-size:12px; opacity:0.7; margin-top:10px;">
+                Built with HTML5 Canvas • No External Dependencies • Fully Interactive
+            </p>
+        </div>
+    </div>
+
+    <!-- Interactive Framework Scripts -->
+    <script src="canvas-utils.js"></script>
+    <script src="interactive-framework.js"></script>
+    <script src="interactives/graph-plotter.js"></script>
+    <script src="interactives/cell-explorer.js"></script>
+    <script src="interactives/circuit-simulator.js"></script>
+
+    <script>
+        // Initialize demonstrations
+        window.addEventListener('load', () => {
+            // Graph Plotter
+            const graphContainer = document.getElementById('graph-demo');
+            const graphPlotter = new GraphPlotter(graphContainer, {
+                width: 600,
+                height: 400
+            });
+            graphPlotter.init();
+
+            // Cell Explorer
+            const cellContainer = document.getElementById('cell-demo');
+            const cellExplorer = new CellExplorer(cellContainer, {
+                width: 600,
+                height: 400
+            });
+            cellExplorer.init();
+
+            // Circuit Simulator
+            const circuitContainer = document.getElementById('circuit-demo');
+            const circuitSim = new CircuitSimulator(circuitContainer, {
+                width: 600,
+                height: 400
+            });
+            circuitSim.init();
+
+            console.log('All interactive demos loaded successfully!');
+        });
+    </script>
+</body>
+
+</html>

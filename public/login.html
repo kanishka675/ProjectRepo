@@ -1,67 +1,214 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EduGameHub</title>
     <link rel="stylesheet" href="login.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .language-selector {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+        }
+
+        .language-btn {
+            background: #fff;
+            border: 1px solid #ddd;
+            padding: 8px 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: 0.3s;
+        }
+
+        .language-btn:hover {
+            background: #f5f5f5;
+        }
+
+        .language-dropdown {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            margin-top: 5px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            display: none;
+            min-width: 150px;
+            z-index: 1000;
+        }
+
+        .language-dropdown.show {
+            display: block;
+        }
+
+        .language-option {
+            padding: 10px 16px;
+            cursor: pointer;
+            transition: 0.2s;
+            text-decoration: none;
+            color: #333;
+            display: block;
+        }
+
+        .language-option:hover {
+            background: #f5f5f5;
+        }
+    </style>
 </head>
+
 <body>
+    <!-- Language Selector -->
+    <div class="language-selector">
+        <button class="language-btn" onclick="toggleLanguageDropdown()">
+            <i class="fas fa-globe"></i> <span id="current-lang">English</span>
+        </button>
+        <div class="language-dropdown" id="language-dropdown">
+            <a class="language-option" onclick="changeLanguage('en')">🇺🇸 English</a>
+            <a class="language-option" onclick="changeLanguage('hi')">🇮🇳 हिन्दी</a>
+            <a class="language-option" onclick="changeLanguage('or')">🇮🇳 ଓଡ଼ିଆ</a>
+        </div>
+    </div>
+
     <div class="authContainer">
         <div class="logo">🎓</div>
-        <div class="title">EduGameHub</div>
-        <div class="motive">Level up your learning adventure!</div>
+        <div class="title" id="login-title">EduGameHub</div>
+        <div class="motive" id="login-motive">Level up your learning adventure!</div>
 
         <div class="tabs">
-            <button class="tab active" onclick="showForm('login')">Login</button>
-            <button class="tab" onclick="showForm('signup')">Sign Up</button>
+            <button class="tab active" onclick="showForm('login')" id="login-tab">Student Login</button>
+            <button class="tab" onclick="showForm('teacher')" id="teacher-tab">Teacher Login</button>
+            <button class="tab" onclick="showForm('signup')" id="signup-tab">Sign Up</button>
         </div>
 
         <form action="/login" method="POST" id="loginForm" class="form active">
             <div class="form-group">
-                <label for="loginEmail">Email</label>
+                <label for="loginEmail" id="email-label-login">Email</label>
                 <input type="email" name="email" id="loginEmail" placeholder="Enter your email">
             </div>
             <div class="form-group">
-                <label for="loginPassword">Password</label>
+                <label for="loginPassword" id="password-label-login">Password</label>
                 <input type="password" name="password" id="loginPassword" placeholder="Enter your password">
             </div>
-            <button type="submit" class="btn">Sign Up</button>
+            <button type="submit" class="btn" id="login-btn">Login</button>
+        </form>
+
+        <form action="/teacher-login" method="POST" id="teacherForm" class="form">
+            <div class="form-group">
+                <label for="teacherEmail" id="email-label-teacher">Teacher Email</label>
+                <input type="email" name="email" id="teacherEmail" placeholder="Enter your teacher email">
+            </div>
+            <div class="form-group">
+                <label for="teacherPassword" id="password-label-teacher">Password</label>
+                <input type="password" name="password" id="teacherPassword" placeholder="Enter your password">
+            </div>
+            <button type="submit" class="btn" id="teacher-btn">Teacher Login</button>
+            <p style="margin-top: 10px; font-size: 0.9rem; color: #666; text-align: center;">
+                <i class="fas fa-info-circle"></i> Teachers will be redirected to the teacher dashboard
+            </p>
         </form>
 
         <form action="/signup" method="POST" id="signupForm" class="form">
             <div class="form-group">
-                <label for="name">Full Name</label>
-                <input type="text" name="signupName" id="name" placeholder="Entar yout full name">
+                <label for="name" id="name-label">Full Name</label>
+                <input type="text" name="signupName" id="name" placeholder="Enter your full name">
             </div>
             <div class="form-group">
-                <label for="signupEmail">Email</label>
+                <label for="signupEmail" id="email-label-signup">Email</label>
                 <input type="email" name="email" id="signupEmail" placeholder="Enter your email">
             </div>
             <div class="form-group">
-                <label for="signupPassword">Password</label>
+                <label for="signupPassword" id="password-label-signup">Password</label>
                 <input type="password" name="password" id="signupPassword" placeholder="Enter your password">
             </div>
-            <button type="submit" class="btn">Sign In</button>
+            <button type="submit" class="btn" id="signup-btn">Sign Up</button>
         </form>
 
-        
+
     </div>
 
+    <script src="translations.js"></script>
     <script>
-    function showForm(type) {
-      // Tabs
-      document.querySelectorAll(".tab").forEach(tab => tab.classList.remove("active"));
-      if (type === "login") {
-        document.querySelector(".tab:nth-child(1)").classList.add("active");
-      } else {
-        document.querySelector(".tab:nth-child(2)").classList.add("active");
-      }
+        function showForm(type) {
+            // Tabs
+            document.querySelectorAll(".tab").forEach(tab => tab.classList.remove("active"));
+            if (type === "login") {
+                document.querySelector(".tab:nth-child(1)").classList.add("active");
+            } else if (type === "teacher") {
+                document.querySelector(".tab:nth-child(2)").classList.add("active");
+            } else if (type === "signup") {
+                document.querySelector(".tab:nth-child(3)").classList.add("active");
+            }
 
-      // Forms
-      document.querySelectorAll(".form").forEach(f => f.classList.remove("active"));
-      document.getElementById(type + "Form").classList.add("active");
-    }
-  </script>
+            // Forms
+            document.querySelectorAll(".form").forEach(f => f.classList.remove("active"));
+            document.getElementById(type + "Form").classList.add("active");
+        }
+
+        function toggleLanguageDropdown() {
+            const dropdown = document.getElementById('language-dropdown');
+            dropdown.classList.toggle('show');
+        }
+
+        // Close dropdown when clicking outside
+        window.onclick = function (event) {
+            if (!event.target.matches('.language-btn') && !event.target.closest('.language-btn')) {
+                const dropdown = document.getElementById('language-dropdown');
+                if (dropdown.classList.contains('show')) {
+                    dropdown.classList.remove('show');
+                }
+            }
+        }
+
+        function changeLanguage(lang) {
+            setLanguage(lang);
+            updateLoginLanguage();
+            toggleLanguageDropdown();
+        }
+
+        function updateLoginLanguage() {
+            const lang = getCurrentLanguage();
+            const langNames = { en: 'English', hi: 'हिन्दी', or: 'ଓଡ଼ିଆ' };
+
+            // Update language selector
+            document.getElementById('current-lang').textContent = langNames[lang];
+
+            // Update page title
+            document.title = t('loginTitle');
+
+            // Update UI elements
+            document.getElementById('login-title').textContent = t('loginTitle');
+            document.getElementById('login-motive').textContent = t('loginMotive');
+            document.getElementById('login-tab').textContent = t('loginTab') || 'Student Login';
+            document.getElementById('teacher-tab').textContent = t('teacherTab') || 'Teacher Login';
+            document.getElementById('signup-tab').textContent = t('signupTab');
+
+            // Update login form
+            document.getElementById('email-label-login').textContent = t('emailLabel');
+            document.getElementById('password-label-login').textContent = t('passwordLabel');
+            document.getElementById('loginEmail').placeholder = t('emailPlaceholder');
+            document.getElementById('loginPassword').placeholder = t('passwordPlaceholder');
+            document.getElementById('login-btn').textContent = t('loginButton');
+
+            // Update signup form
+            document.getElementById('name-label').textContent = t('fullNameLabel');
+            document.getElementById('email-label-signup').textContent = t('emailLabel');
+            document.getElementById('password-label-signup').textContent = t('passwordLabel');
+            document.getElementById('name').placeholder = t('fullNamePlaceholder');
+            document.getElementById('signupEmail').placeholder = t('emailPlaceholder');
+            document.getElementById('signupPassword').placeholder = t('passwordPlaceholder');
+            document.getElementById('signup-btn').textContent = t('signupButton');
+        }
+
+        // Initialize language on page load
+        document.addEventListener('DOMContentLoaded', function () {
+            updateLoginLanguage();
+        });
+    </script>
 </body>
+
 </html>
