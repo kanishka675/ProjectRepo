@@ -20,6 +20,7 @@
   "homepage": "https://github.com/kanishka675/ProjectRepo#readme",
   "dependencies": {
     "body-parser": "^2.2.0",
-    "express": "^5.1.0"
+    "express": "^5.1.0",
+    "express-session": "^1.18.2"
   }
 }

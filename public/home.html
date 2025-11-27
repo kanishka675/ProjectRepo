@@ -36,8 +36,13 @@
                             <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#rewardsModal">Rewards
                                 <span class="badge bg-success" id="points-badge">0</span></a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item" id="teacher-nav-item">
                             <a class="nav-link" href="teacher.html">Teacher</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="interactive-demos.html">
+                                Coming Soon <span class="badge bg-warning text-dark">New</span>
+                            </a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
@@ -131,6 +136,7 @@
                             <button class="modules-btn" data-subject="science">Learn Modules</button>
                             <button class="crossword-btn" data-subject="science">Play Crossword</button>
                             <button class="chem-lab-btn" data-subject="science">Virtual Chem Lab</button>
+                            <button class="video-btn" data-subject="science">📺 Watch Videos</button>
                         </div>
                     </div>
                     <div class="subject-card" data-subject="mathematics">
@@ -143,6 +149,7 @@
                             <button class="modules-btn" data-subject="mathematics">Learn Modules</button>
                             <button class="shooter-btn" data-subject="mathematics">Play Math Shooter</button>
                             <button class="crossword-btn" data-subject="mathematics">Play Crossword</button>
+                            <button class="video-btn" data-subject="mathematics">📺 Watch Videos</button>
                         </div>
                     </div>
                     <div class="subject-card" data-subject="technology">
@@ -154,6 +161,7 @@
                             <button class="flashcards-btn" data-subject="technology">Start Flashcards</button>
                             <button class="modules-btn" data-subject="technology">Learn Modules</button>
                             <button class="crossword-btn" data-subject="technology">Play Crossword</button>
+                            <button class="video-btn" data-subject="technology">📺 Watch Videos</button>
                         </div>
                     </div>
                     <div class="subject-card" data-subject="engineering">
@@ -165,6 +173,7 @@
                             <button class="flashcards-btn" data-subject="engineering">Start Flashcards</button>
                             <button class="modules-btn" data-subject="engineering">Learn Modules</button>
                             <button class="crossword-btn" data-subject="engineering">Play Crossword</button>
+                            <button class="video-btn" data-subject="engineering">📺 Watch Videos</button>
                         </div>
                     </div>
                 </div>
@@ -3917,6 +3926,295 @@
 
     <script src="translations.js"></script>
     <script src="home-translations.js"></script>
+
+    <!-- YouTube Videos Modal -->
+    <div class="modal fade" id="youtubeModal" tabindex="-1" aria-labelledby="youtubeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="youtubeModalLabel">📺 Educational Videos</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div id="youtube-videos-content"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Educational YouTube Videos Data - Grade-Specific Content
+        const gradeSpecificVideos = {
+            6: {
+                science: [
+                    { title: "What is Science? - For Kids", id: "QVq5htPY_BA", description: "Introduction to science" },
+                    { title: "The Water Cycle", id: "al-do-HGuIk", description: "Learn about water cycle" },
+                    { title: "States of Matter", id: "cQjNj_z8xiw", description: "Solid, liquid, and gas" },
+                    { title: "Plant Parts", id: "X6TLFZUC9gI", description: "Learn about plants" }
+                ],
+                mathematics: [
+                    { title: "Fractions Introduction", id: "M44FkZDoclU", description: "Understanding fractions" },
+                    { title: "Decimals Basics", id: "9frz4ODJUc0", description: "Learn about decimals" },
+                    { title: "Geometry for Kids", id: "DUGkQMLowXA", description: "Basic shapes" },
+                    { title: "Introduction to Ratios", id: "xA435umOQuw", description: "Understanding ratios" }
+                ],
+                technology: [
+                    { title: "What is a Computer?", id: "Cu3R5it4cQs", description: "Computer basics" },
+                    { title: "Internet Safety", id: "aO858HyFbKI", description: "Stay safe online" },
+                    { title: "Coding for Kids", id: "Ok6LbV6bqaE", description: "Intro to coding" },
+                    { title: "How Apps Work", id: "3gMOYZoMtEs", description: "Understanding apps" }
+                ],
+                engineering: [
+                    { title: "What is Engineering?", id: "bipTWWHya8A", description: "Engineering basics" },
+                    { title: "Simple Machines", id: "jAPxALm9fZA", description: "Levers and pulleys" },
+                    { title: "Building Bridges", id: "oVOnRPefcno", description: "How bridges work" },
+                    { title: "Famous Inventions", id: "5zo-ca2DGDs", description: "Cool inventions" }
+                ]
+            },
+            7: {
+                science: [
+                    { title: "Cell Structure", id: "URUJD5NEXC8", description: "Introduction to cells" },
+                    { title: "Chemical Reactions", id: "Lvbm8horG1U", description: "Understanding reactions" },
+                    { title: "Forces and Motion", id: "hWg6QPutUas", description: "Newton's laws" },
+                    { title: "The Solar System", id: "libKVRa01L8", description: "Planets and space" }
+                ],
+                mathematics: [
+                    { title: "Integers", id: "AF31lWJJSgg", description: "Working with integers" },
+                    { title: "Algebraic Expressions", id: "xFP41SGNaXA", description: "Intro to algebra" },
+                    { title: "Percentages", id: "7pDi3_TBCKA", description: "Understanding percentages" },
+                    { title: "Area and Perimeter", id: "82PYTmwa5sg", description: "Calculating area" }
+                ],
+                technology: [
+                    { title: "HTML Basics", id: "mU6anWqZJcc", description: "Building web pages" },
+                    { title: "Digital Citizenship", id: "toK_BAYnjoU", description: "Being responsible online" },
+                    { title: "Scratch Programming", id: "m2Ux2PnJe6E", description: "Visual programming" },
+                    { title: "Binary Numbers", id: "LpuPe81bc2w", description: "How computers count" }
+                ],
+                engineering: [
+                    { title: "Engineering Fields", id: "pQgxiQAMTTo", description: "Types of engineering" },
+                    { title: "Structural Engineering", id: "oqpp8L4J4ek", description: "Building structures" },
+                    { title: "Robot Design", id: "NRj6gzah7JA", description: "Intro to robotics" },
+                    { title: "Environmental Engineering", id: "uHUO6PrsOzg", description: "Protecting Earth" }
+                ]
+            },
+            8: {
+                science: [
+                    { title: "Chemistry Intro", id: "t8x3wdXZGEY", description: "Chemical principles" },
+                    { title: "Photosynthesis", id: "CL9A8YhwUps", description: "How plants make food" },
+                    { title: "Energy and Work", id: "zaceSCDATjg", description: "Physics of energy" },
+                    { title: "Ecosystems", id: "KQF9WdZrH_c", description: "Understanding ecosystems" }
+                ],
+                mathematics: [
+                    { title: "Linear Equations", id: "Ft2_QtXAnh8", description: "Solving equations" },
+                    { title: "Pythagorean Theorem", id: "d8EA5TxGzcY", description: "Right triangles" },
+                    { title: "Functions", id: "7JZ0IfCQ488", description: "Intro to functions" },
+                    { title: "Probability", id: "uzkc-qNVoOk", description: "Chance and likelihood" }
+                ],
+                technology: [
+                    { title: "JavaScript Basics", id: "W6NZfCO5SIk", description: "Programming fundamentals" },
+                    { title: "How Computers Work", id: "tpIctyqH29Q", description: "CS basics" },
+                    { title: "Databases", id: "FR4QIeZaPeM", description: "Storing data" },
+                    { title: "Cybersecurity", id: "sdpxddDzXfE", description: "Staying secure" }
+                ],
+                engineering: [
+                    { title: "Mechanical Engineering", id: "csqee7qLobk", description: "Machines" },
+                    { title: "Electrical Circuits", id: "YX7J7ppcma0", description: "Understanding electricity" },
+                    { title: "3D Printing", id: "Vx0Z6LplaMU", description: "CAD and manufacturing" },
+                    { title: "Renewable Energy", id: "1kUE0BZtTRc", description: "Clean energy" }
+                ]
+            },
+            9: {
+                science: [
+                    { title: "Atomic Structure", id: "1xSQlwWGT8M", description: "Inside the atom" },
+                    { title: "DNA and Genetics", id: "zwibgNGe4aY", description: "Heredity" },
+                    { title: "Newton's Laws", id: "kKKM8Y-u7ds", description: "Classical mechanics" },
+                    { title: "Climate Science", id: "EtW2rrLHs08", description: "Climate change" }
+                ],
+                mathematics: [
+                    { title: "Quadratic Equations", id: "i7idZfS8t8w", description: "Solving quadratics" },
+                    { title: "Trigonometry", id: "yBw67Fb31Cs", description: "Sin, cos, tan" },
+                    { title: "Systems of Equations", id: "oKqtgz2eo-Y", description: "Multiple equations" },
+                    { title: "Polynomials", id: "nPPNgin7W7Y", description: "Polynomial functions" }
+                ],
+                technology: [
+                    { title: "Python Programming", id: "kqtD5dpn9C8", description: "Learn Python" },
+                    { title: "Algorithms", id: "6hfOvs8pY1k", description: "Problem solving" },
+                    { title: "Web Development", id: "pEfrdAtAmqk", description: "Building websites" },
+                    { title: "Cloud Computing", id: "M988_fsOSWo", description: "The cloud" }
+                ],
+                engineering: [
+                    { title: "Aerospace Engineering", id: "UvtYn2j78gw", description: "Flight and space" },
+                    { title: "Thermodynamics", id: "NyOYW07-L5g", description: "Heat and energy" },
+                    { title: "Materials Science", id: "NOK1nMiiTWU", description: "Material properties" },
+                    { title: "Automation", id: "UR0hOmjaHp0", description: "Control systems" }
+                ]
+            },
+            10: {
+                science: [
+                    { title: "Chemical Bonding", id: "5gEWOh630b8", description: "Ionic and covalent" },
+                    { title: "Evolution", id: "GcjgWov7mTM", description: "Natural selection" },
+                    { title: "Electromagnetic Waves", id: "cfXzwh3KadE", description: "Light and radiation" },
+                    { title: "Plate Tectonics", id: "zbtAXW-2nz0", description: "Moving continents" }
+                ],
+                mathematics: [
+                    { title: "Calculus Introduction", id: "WUvTyaaNkzM", description: "Limits and derivatives" },
+                    { title: "Logarithms", id: "-Rvg7Gin80E", description: "Understanding logs" },
+                    { title: "Vectors", id: "fNk_zzaMoSs", description: "Vector math" },
+                    { title: "Statistics", id: "xxpc-HPKN28", description: "Data analysis" }
+                ],
+                technology: [
+                    { title: "Data Structures", id: "RBSGKlAvoiM", description: "Organizing data" },
+                    { title: "OOP", id: "pTB0EiLXUC8", description: "Object-oriented programming" },
+                    { title: "SQL Databases", id: "ztHopE5Wnpc", description: "Database design" },
+                    { title: "Networks", id: "cNwEVYkx2Kk", description: "How networks work" }
+                ],
+                engineering: [
+                    { title: "Fluid Mechanics", id: "qysJsCGD_M0", description: "Flow and pressure" },
+                    { title: "Semiconductor Physics", id: "33vbFFFn04k", description: "Electronics" },
+                    { title: "Design Process", id: "W-eqjMc1Efs", description: "Engineering design" },
+                    { title: "Sustainable Engineering", id: "XpBmePf1xkU", description: "Green engineering" }
+                ]
+            },
+            11: {
+                science: [
+                    { title: "Organic Chemistry", id: "soIba7r34ZM", description: "Carbon compounds" },
+                    { title: "Quantum Mechanics", id: "7kb1VT0J3DE", description: "Quantum physics" },
+                    { title: "Molecular Biology", id: "D3fOXt4MrOM", description: "DNA and proteins" },
+                    { title: "Thermochemistry", id: "NzB2YwNndZw", description: "Energy in reactions" }
+                ],
+                mathematics: [
+                    { title: "Derivatives & Integrals", id: "WsQQvHm4lSw", description: "Calculus" },
+                    { title: "Matrices", id: "0oGJTQCy4cQ", description: "Matrix operations" },
+                    { title: "Complex Numbers", id: "T647CGsuOVU", description: "Imaginary numbers" },
+                    { title: "Differential Equations", id: "6o7b9yyhH7k", description: "Rate of change" }
+                ],
+                technology: [
+                    { title: "Machine Learning", id: "ukzFI9rgwfU", description: "AI fundamentals" },
+                    { title: "Software Engineering", id: "O753uuutqH8", description: "Building software" },
+                    { title: "Computer Architecture", id: "zLP_X4wyHbY", description: "How CPUs work" },
+                    { title: "Mobile Apps", id: "fis26HvvDII", description: "App development" }
+                ],
+                engineering: [
+                    { title: "Advanced Mechanics", id: "5S0qkTMCsw8", description: "Statics and dynamics" },
+                    { title: "Signal Processing", id: "spUNpyF58BY", description: "Signals" },
+                    { title: "Nanotechnology", id: "DAOFpgocfrg", description: "Nanoscale engineering" },
+                    { title: "Biomedical Engineering", id: "KQm-gfobUm8", description: "Medicine + engineering" }
+                ]
+            },
+            12: {
+                science: [
+                    { title: "Advanced Quantum Physics", id: "Usu9xZfabPM", description: "Wave-particle duality" },
+                    { title: "Biochemistry", id: "CHJsaq2lNjU", description: "Chemistry of life" },
+                    { title: "Astrophysics", id: "TCrRs_OBN0E", description: "Stars and galaxies" },
+                    { title: "Environmental Science", id: "kB0JA7jsqMw", description: "Global systems" }
+                ],
+                mathematics: [
+                    { title: "Multivariable Calculus", id: "TrcCbdWwCBc", description: "3D calculus" },
+                    { title: "Linear Algebra", id: "kjBOesZCoqc", description: "Vectors and spaces" },
+                    { title: "Probability Theory", id: "3v9w79NhsfI", description: "Advanced probability" },
+                    { title: "Number Theory", id: "vVD42dGwGwc", description: "Properties of numbers" }
+                ],
+                technology: [
+                    { title: "Artificial Intelligence", id: "kWmX3pd1f10", description: "Deep learning" },
+                    { title: "Blockchain", id: "SSo_EIwHSd4", description: "Distributed systems" },
+                    { title: "Quantum Computing", id: "JhHMJCUmq28", description: "Future of computing" },
+                    { title: "Advanced Algorithms", id: "6hfOvs8pY1k", description: "Complex algorithms" }
+                ],
+                engineering: [
+                    { title: "Engineering Physics", id: "NHRoJdRKR0g", description: "Applied physics" },
+                    { title: "Control Systems", id: "UR0hOmjaHp0", description: "Feedback and stability" },
+                    { title: "Advanced Robotics", id: "VM2AUU9jmNg", description: "Autonomous systems" },
+                    { title: "Energy Systems", id: "1kUE0BZtTRc", description: "Power generation" }
+                ]
+            }
+        };
+
+        // Handle Watch Videos button clicks
+        document.addEventListener('DOMContentLoaded', function () {
+            const videoButtons = document.querySelectorAll('.video-btn');
+
+            videoButtons.forEach(button => {
+                button.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const subject = this.getAttribute('data-subject');
+                    const gradeElement = document.getElementById('selected-grade');
+                    const currentGrade = gradeElement ? parseInt(gradeElement.textContent) : 6;
+                    showYouTubeVideos(subject, currentGrade);
+                });
+            });
+        });
+
+        function showYouTubeVideos(subject, grade) {
+            const modal = new bootstrap.Modal(document.getElementById('youtubeModal'));
+            const content = document.getElementById('youtube-videos-content');
+
+            // Get videos for the specific grade and subject
+            const videos = (gradeSpecificVideos[grade] && gradeSpecificVideos[grade][subject]) || [];
+
+            const subjectTitles = {
+                science: '🔬 Science',
+                mathematics: '🔢 Mathematics',
+                technology: '⚙️ Technology',
+                engineering: '🏗️ Engineering'
+            };
+
+            let html = `
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h4 class="mb-0">Grade ${grade} - ${subjectTitles[subject]} Videos</h4>
+            <span class="badge bg-primary">${videos.length} videos</span>
+        </div>
+        <div class="row g-4">
+    `;
+
+            videos.forEach(video => {
+                html += `
+            <div class="col-md-6">
+                <div class="card h-100 shadow-sm">
+                    <div class="ratio ratio-16x9">
+                        <iframe 
+                            src="https://www.youtube.com/embed/${video.id}" 
+                            title="${video.title}"
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">${video.title}</h5>
+                        <p class="card-text text-muted">${video.description}</p>
+                    </div>
+                </div>
+            </div>
+        `;
+            });
+
+            html += `
+        </div>
+        <div class="alert alert-info mt-4" role="alert">
+            <strong>💡 Tip:</strong> These videos are curated for Grade ${grade} students. Watch them to supplement your learning!
+        </div>
+    `;
+
+            content.innerHTML = html;
+            modal.show();
+        }
+    </script>
+
+    <script>
+        // Hide Teacher link for students
+        fetch('/api/user-info')
+            .then(res => res.json())
+            .then(user => {
+                if (user.type === 'student') {
+                    const teacherLink = document.getElementById('teacher-nav-item');
+                    if (teacherLink) {
+                        teacherLink.style.display = 'none';
+                    }
+                }
+            })
+            .catch(err => console.log('Not logged in'));
+    </script>
+
 </body>
 
 </html>
