@@ -1,0 +1,27 @@
+{
+  "name": "EduGameHub - Educational Platform",
+  "short_name": "EduGameHub",
+  "description": "Interactive educational platform for students and teachers",
+  "start_url": "/login.html",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#4A90E2",
+  "orientation": "any",
+  "icons": [
+    {
+      "src": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192'%3E%3Crect fill='%234A90E2' width='192' height='192' rx='40'/%3E%3Ctext x='96' y='140' font-size='120' text-anchor='middle' fill='white' font-family='Arial, sans-serif' font-weight='bold'%3E📚%3C/text%3E%3C/svg%3E",
+      "sizes": "192x192",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Crect fill='%234A90E2' width='512' height='512' rx='100'/%3E%3Ctext x='256' y='380' font-size='320' text-anchor='middle' fill='white' font-family='Arial, sans-serif' font-weight='bold'%3E📚%3C/text%3E%3C/svg%3E",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["education", "productivity"],
+  "scope": "/",
+  "prefer_related_applications": false
+}
