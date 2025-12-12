@@ -1720,40 +1720,412 @@
                         <div class="module-quiz-explanation" id="module-quiz-explanation"></div>
                     `;
                     document.getElementById('module-quiz').style.display = 'block';
+
+                    // Render module quiz options
                     renderModuleQuiz();
                     break;
             }
         }
 
         function renderInteractiveContent() {
-            const interactiveContent = document.getElementById('interactive-content');
-            const interactive = currentModule.content.interactive;
+            if (!currentModule || !currentModule.content || !currentModule.content.interactive) {
+                document.getElementById('interactive-content').innerHTML = '<p>No interactive content available.</p>';
+                return;
+            }
 
-            switch (interactive.type) {
+            const container = document.getElementById('interactive-content');
+            const interactive = currentModule.content.interactive;
+            const type = interactive.type;
+
+            // Route to appropriate renderer based on type
+            switch (type) {
                 case 'animation':
-                    renderAnimation(interactiveContent, interactive.elements);
+                    if (interactive.elements && interactive.elements.length > 0) {
+                        renderAnimation(container, interactive.elements);
+                    } else {
+                        container.innerHTML = '<p class="text-muted">Interactive animation coming soon!</p>';
+                    }
                     break;
+
                 case 'planet-explorer':
-                    renderPlanetExplorer(interactiveContent, interactive.planets);
+                    if (interactive.planets && interactive.planets.length > 0) {
+                        renderPlanetExplorer(container, interactive.planets);
+                    } else {
+                        container.innerHTML = '<p class="text-muted">Planet explorer coming soon!</p>';
+                    }
                     break;
+
                 case 'fraction-visualizer':
-                    renderFractionVisualizer(interactiveContent, interactive.examples);
+                    if (interactive.examples && interactive.examples.length > 0) {
+                        renderFractionVisualizer(container, interactive.examples);
+                    } else {
+                        container.innerHTML = '<p class="text-muted">Fraction visualizer coming soon!</p>';
+                    }
                     break;
+
                 case 'shape-builder':
-                    renderShapeBuilder(interactiveContent, interactive.shapes);
+                    if (interactive.shapes && interactive.shapes.length > 0) {
+                        renderShapeBuilder(container, interactive.shapes);
+                    } else {
+                        container.innerHTML = '<p class="text-muted">Shape builder coming soon!</p>';
+                    }
                     break;
+
                 case 'computer-builder':
-                    renderComputerBuilder(interactiveContent, interactive.components);
+                    if (interactive.components && interactive.components.length > 0) {
+                        renderComputerBuilder(container, interactive.components);
+                    } else {
+                        container.innerHTML = '<p class="text-muted">Computer builder coming soon!</p>';
+                    }
                     break;
+
                 case 'machine-explorer':
-                    renderMachineExplorer(interactiveContent, interactive.machines);
+                    if (interactive.machines && interactive.machines.length > 0) {
+                        renderMachineExplorer(container, interactive.machines);
+                    } else {
+                        container.innerHTML = '<p class="text-muted">Machine explorer coming soon!</p>';
+                    }
                     break;
+
+                // Enhanced interactive visualizations
+                case 'state-changer':
+                    container.innerHTML = `
+                        <div style="text-align:center; padding:20px;">
+                            <h5>🧊💧💨 States of Matter</h5>
+                            <div style="display:flex; justify-content:space-around; margin:20px 0;">
+                                <div style="flex:1; padding:15px; background:#e3f2fd; border-radius:8px; margin:0 5px;">
+                                    <div style="font-size:35px;">🧊</div>
+                                    <strong>SOLID</strong>
+                                    <p style="font-size:11px; margin:5px 0;">Fixed shape & volume</p>
+                                </div>
+                                <div style="flex:1; padding:15px; background:#fff3e0; border-radius:8px; margin:0 5px;">
+                                    <div style="font-size:35px;">💧</div>
+                                    <strong>LIQUID</strong>
+                                    <p style="font-size:11px; margin:5px 0;">Fixed volume, flows</p>
+                                </div>
+                                <div style="flex:1; padding:15px; background:#fce4ec; border-radius:8px; margin:0 5px;">
+                                    <div style="font-size:35px;">💨</div>
+                                    <strong>GAS</strong>
+                                    <p style="font-size:11px; margin:5px 0;">Fills container</p>
+                                </div>
+                            </div>
+                            <p class="text-muted">⬆️ Heat transforms: Solid → Liquid → Gas</p>
+                        </div>
+                    `;
+                    break;
+
+                case 'cycle-animation':
+                    container.innerHTML = `
+                        <div style="text-align:center; padding:20px;">
+                            <h5>🌊 Water Cycle</h5>
+                            <div style="position:relative; height:250px; background:linear-gradient(180deg, #87CEEB 0%, #E0F6FF 50%, #90EE90 100%); border-radius:10px; padding:15px;">
+                                <div style="position:absolute; top:5px; right:15px; font-size:45px;">☀️</div>
+                                <div style="position:absolute; top:30px; left:50%; transform:translateX(-50%); font-size:30px;">☁️ ☁️</div>
+                                <div style="position:absolute; top:100px; left:50%; transform:translateX(-50%); font-size:22px;">💧💧💧</div>
+                                <div style="position:absolute; bottom:15px; left:25px; font-size:35px;">🌊</div>
+                                <div style="position:absolute; bottom:15px; right:25px; font-size:35px;">🏔️</div>
+                            </div>
+                            <div style="margin-top:15px; display:flex; justify-content:space-around; font-size:11px;">
+                                <span>☀️ Evaporation</span>
+                                <span>☁️ Condensation</span>
+                                <span>💧 Precipitation</span>
+                                <span>🌊 Collection</span>
+                            </div>
+                        </div>
+                    `;
+                    break;
+
+                case 'decimal-grid':
+                    container.innerHTML = `
+                        <div style="text-align:center; padding:20px;">
+                            <h5>🔢 Decimal Place Values</h5>
+                            <div style="display:flex; justify-content:center; gap:3px; margin:20px 0; font-size:20px; font-family:monospace;">
+                                <div style="padding:12px; background:#e1f5fe; border:2px solid #0277bd; border-radius:6px;">1</div>
+                                <div style="padding:12px; background:#e8f5e9; border:2px solid #2e7d32; border-radius:6px;">2</div>
+                                <div style="padding:12px; font-size:25px;">.</div>
+                                <div style="padding:12px; background:#fce4ec; border:2px solid #c2185b; border-radius:6px;">3</div>
+                                <div style="padding:12px; background:#f3e5f5; border:2px solid #7b1fa2; border-radius:6px;">4</div>
+                            </div>
+                            <div style="display:flex; justify-content:center; gap:3px; font-size:10px;">
+                                <div style="width:45px;">Tens (10)</div>
+                                <div style="width:45px;">Ones (1)</div>
+                                <div style="width:18px;"></div>
+                                <div style="width:45px;">Tenths (0.1)</div>
+                                <div style="width:60px;">Hundredths (0.01)</div>
+                            </div>
+                            <p style="margin-top:15px; font-size:16px;"><strong>12.34</strong> = 12 + 0.3 + 0.04</p>
+                        </div>
+                    `;
+                    break;
+
+                case 'shape-measurer':
+                    container.innerHTML = `
+                        <div style="text-align:center; padding:20px;">
+                            <h5>📏 Measuring Shapes</h5>
+                            <div style="display:grid; grid-template-columns:1fr 1fr; gap:20px; margin:20px 0;">
+                                <div style="padding:15px; background:#e8f5e9; border-radius:8px;">
+                                    <strong>Rectangle</strong>
+                                    <div style="width:100px; height:60px; background:#4caf50; margin:10px auto; border-radius:4px;"></div>
+                                    <p style="font-size:11px;">P = 2(5+3) = 16<br/>A = 5×3 = 15</p>
+                                </div>
+                                <div style="padding:15px; background:#e3f2fd; border-radius:8px;">
+                                    <strong>Square</strong>
+                                    <div style="width:80px; height:80px; background:#2196f3; margin:10px auto; border-radius:4px;"></div>
+                                    <p style="font-size:11px;">P = 4×4 = 16<br/>A = 4² = 16</p>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    break;
+
+                case 'scenario-trainer':
+                    container.innerHTML = `
+                        <div style="text-align:center; padding:20px;">
+                            <h5>👥 Digital Citizenship</h5>
+                            <div style="background:#f5f5f5; padding:20px; border-radius:10px; margin:15px 0;">
+                                <p style="font-size:14px; margin-bottom:15px;">💭 You see a mean post about a classmate...</p>
+                                <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
+                                    <div style="padding:12px; background:#ffebee; border-radius:6px; border:2px solid #c62828;">
+                                        <div style="font-size:25px;">❌</div>
+                                        <strong>Don't Share</strong>
+                                        <p style="font-size:10px; margin-top:3px;">Could hurt someone</p>
+                                    </div>
+                                    <div style="padding:12px; background:#e8f5e9; border-radius:6px; border:2px solid #2e7d32;">
+                                        <div style="font-size:25px;">✅</div>
+                                        <strong>Report It</strong>
+                                        <p style="font-size:10px; margin-top:3px;">Stand against bullying</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="text-muted">💡Think before you click!</p>
+                        </div>
+                    `;
+                    break;
+
+                case 'safety-tips':
+                    container.innerHTML = `
+                        <div style="text-align:center; padding:20px;">
+                            <h5>🔒 Computer Safety</h5>
+                            <div style="display:grid; grid-template-columns:repeat(2, 1fr); gap:12px; margin:20px 0; text-align:left;">
+                                <div style="padding:12px; background:#e8f5e9; border-left:3px solid #4caf50; border-radius:4px;">
+                                    <div style="font-size:20px;">🔐</div>
+                                    <strong style="font-size:12px;">Strong Passwords</strong>
+                                    <p style="font-size:10px; margin:3px 0 0;">Mix letters, numbers</p>
+                                </div>
+                                <div style="padding:12px; background:#fff3e0; border-left:3px solid #ff9800; border-radius:4px;">
+                                    <div style="font-size:20px;">🚫</div>
+                                    <strong style="font-size:12px;">No Suspicious Links</strong>
+                                    <p style="font-size:10px; margin:3px 0 0;">Don't click unknown</p>
+                                </div>
+                                <div style="padding:12px; background:#e3f2fd; border-left:3px solid #2196f3; border-radius:4px;">
+                                    <div style="font-size:20px;">🛡️</div>
+                                    <strong style="font-size:12px;">Privacy First</strong>
+                                    <p style="font-size:10px; margin:3px 0 0;">Keep info private</p>
+                                </div>
+                                <div style="padding:12px; background:#f3e5f5; border-left:3px solid #9c27b0; border-radius:4px;">
+                                    <div style="font-size:20px;">👨‍👩‍👧</div>
+                                    <strong style="font-size:12px;">Ask Adults</strong>
+                                    <p style="font-size:10px; margin:3px 0 0;">Before downloading</p>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    break;
+
+                case 'gear-simulator':
+                case 'bike-builder':
+                    container.innerHTML = `
+                        <div style="text-align:center; padding:20px;">
+                            <h5>⚙️ Gears & Mechanics</h5>
+                            <div style="display:flex; justify-content:center; align-items:center; gap:25px; margin:25px 0;">
+                                <div>
+                                    <div style="width:70px; height:70px; border:6px solid #ff9800; border-radius:50%;"></div>
+                                    <div style="margin-top:8px; font-size:11px;"><strong>Drive Gear</strong></div>
+                                </div>
+                                <div style="font-size:35px; color:#666;">⟷</div>
+                                <div>
+                                    <div style="width:100px; height:100px; border:6px solid #4caf50; border-radius:50%;"></div>
+                                    <div style="margin-top:8px; font-size:11px;"><strong>Driven Gear</strong></div>
+                                </div>
+                            </div>
+                            <div style="background:#f5f5f5; padding:12px; border-radius:6px;">
+                                <p style="margin:0; font-size:12px;">⚙️ Gears transfer motion & multiply force</p>
+                            </div>
+                        </div>
+                    `;
+                    break;
+
+                // Advanced Science-based interactive types
+                case 'cell-explorer':
+                case 'punnett-square':
+                case 'ph-tester':
+                case 'biome-explorer':
+                case 'evolution-simulator':
+                case 'nuclear-sim':
+                case 'spectrum-explorer':
+                case 'molecule-builder':
+                case 'stoich-calculator':
+                case 'quantum-demo':
+                case 'quantum-explorer':
+                case 'relativity-sim':
+                case 'protein-builder':
+                case 'energy-comparison':
+                case 'material-tester':
+                case 'strength-tester':
+                case 'nano-explorer':
+                case 'supercon-demo':
+                    const scienceIcons = { 'cell-explorer': '🔬', 'food-web': '🌿', 'punnett-square': '🧬', 'ph-tester': '⚗️', 'biome-explorer': '🌍', 'evolution-simulator': '🦕', 'nuclear-sim': '⚛️', 'spectrum-explorer': '🌈', 'molecule-builder': '⚛️', 'stoich-calculator': '🧪', 'quantum-demo': '💫', 'quantum-explorer': '🔬', 'relativity-sim': '🌌', 'protein-builder': '🧬', 'energy-comparison': '⚡', 'material-tester': '🔬', 'strength-tester': '💪', 'nano-explorer': '🔬', 'supercon-demo': '⚛️' };
+                    container.innerHTML = `
+                        <div style="text-align:center; padding:25px;">
+                            <div style="background:linear-gradient(135deg, #a8edea 0%, #fed6e3 100%); padding:35px; border-radius:12px; color:#333; margin:15px 0;">
+                                <div style="font-size:50px; margin-bottom:15px;">${scienceIcons[type] || '🔬'}</div>
+                                <h4 style="margin:10px 0;">${type.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase())}</h4>
+                                <p style="opacity:0.9; font-size:14px; margin-bottom:20px;">Scientific Exploration & Discovery</p>
+                                <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:12px; font-size:12px;">
+                                    <div style="background:rgba(255,255,255,0.7); padding:10px; border-radius:8px;">🔍 Observe</div>
+                                    <div style="background:rgba(255,255,255,0.7); padding:10px; border-radius:8px;">🧪 Experiment</div>
+                                    <div style="background:rgba(255,255,255,0.7); padding:10px; border-radius:8px;">📝 Conclude</div>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    break;
+
+                case 'food-web':
+                case 'energy-transformer':
+                    container.innerHTML = `
+                        <div style="text-align:center; padding:25px;">
+                            <div style="background:linear-gradient(135deg, #d4fc79 0%, #96e6a1 100%); padding:35px; border-radius:12px; color:#2c5f2d; margin:15px 0;">
+                                <div style="font-size:50px; margin-bottom:15px;">${type === 'food-web' ? '🌿' : '⚡'}</div>
+                                <h4 style="margin:10px 0;">${type.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase())}</h4>
+                                <p style="opacity:0.9; font-size:14px; margin-bottom:20px;">Energy Flow & Ecosystems</p>
+                                <div style="font-size:30px; margin:20px 0;">☀️ → 🌱 → 🐰 → 🦅</div>
+                                <p style="font-size:12px; margin:0;">Observe how energy moves through living systems</p>
+                            </div>
+                        </div>
+                    `;
+                    break;
+
+                // Mathematics-based interactive types
+                case 'number-line':
+                case 'ratio-visualizer':
+                case 'percent-calculator':
+                case 'graph-plotter':
+                case 'triangle-builder':
+                case 'system-solver':
+                case 'quadratic-solver':
+                case 'function-machine':
+                case 'poly-calculator':
+                case 'trig-calculator':
+                case 'exp-grapher':
+                case 'log-calculator':
+                case 'calculus-visualizer':
+                case 'limit-visualizer':
+                case 'derivative-app':
+                case 'multivariable-calc':
+                case 'integration-solver':
+                case 'de-solver':
+                    const mathIcons = { 'number-line': '➕', 'ratio-visualizer': '📊', 'percent-calculator': '%', 'graph-plotter': '📈', 'triangle-builder': '📐', 'system-solver': '🔢', 'quadratic-solver': '📐', 'function-machine': 'ƒ(x)', 'poly-calculator': '📊', 'trig-calculator': '📐', 'exp-grapher': '📈', 'log-calculator': '🔢', 'calculus-visualizer': '∫', 'limit-visualizer': 'lim', 'derivative-app': 'd/dx', 'multivariable-calc': '∂', 'integration-solver': '∫', 'de-solver': 'dy/dx' };
+                    container.innerHTML = `
+                        <div style="text-align:center; padding:25px;">
+                            <div style="background:linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding:35px; border-radius:12px; color:white; margin:15px 0;">
+                                <div style="font-size:50px; margin-bottom:15px;">${mathIcons[type] || '📊'}</div>
+                                <h4 style="margin:10px 0;">${type.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase())}</h4>
+                                <p style="opacity:0.9; font-size:14px; margin-bottom:20px;">Interactive Math Tool</p>
+                                <div style="display:grid; grid-template-columns:repeat(3, 1fr);  gap:12px; font-size:12px;">
+                                    <div style="background:rgba(255,255,255,0.2); padding:10px; border-radius:8px;">📊 Visualize</div>
+                                    <div style="background:rgba(255,255,255,0.2); padding:10px; border-radius:8px;">🔢 Calculate</div>
+                                    <div style="background:rgba(255,255,255,0.2); padding:10px; border-radius:8px;">✏️ Practice</div>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    break;
+
+                // Technology & Programming types
+                case 'network-simulator':
+                case 'spreadsheet-sim':
+                case 'chart-creator':
+                case 'code-builder':
+                case 'logic-simulator':
+                case 'gate-builder':
+                case 'web-builder':
+                case 'js-playground':
+                case 'dom-editor':
+                case 'structure-visualizer':
+                case 'oop-demo':
+                case 'api-tester':
+                case 'ml-explorer':
+                case 'nn-builder':
+                case 'dl-demo':
+                case 'cloud-models':
+                case 'blockchain-demo':
+                case 'crypto-tool':
+                    const techIcons = { 'network-simulator': '🌐', 'spreadsheet-sim': '📊', 'chart-creator': '📈', 'code-builder': '💻', 'logic-simulator': '🔧', 'gate-builder': '⚡', 'web-builder': '🌐', 'js-playground': '💻', 'dom-editor': '📝', 'structure-visualizer': '🗂️', 'oop-demo': '📦', 'api-tester': '🔌', 'ml-explorer': '🤖', 'nn-builder': '🧠', 'dl-demo': '🧠', 'cloud-models': '☁️', 'blockchain-demo': '⛓️', 'crypto-tool': '🔐' };
+                    container.innerHTML = `
+                        <div style="text-align:center; padding:25px;">
+                            <div style="background:linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); padding:35px; border-radius:12px; color:white; margin:15px 0;">
+                                <div style="font-size:50px; margin-bottom:15px;">${techIcons[type] || '💻'}</div>
+                                <h4 style="margin:10px 0;">${type.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase())}</h4>
+                                <p style="opacity:0.9; font-size:14px; margin-bottom:20px;">Interactive Coding & Technology</p>
+                                <div style="font-family:monospace; background:rgba(0,0,0,0.3); padding:12px; border-radius:8px; text-align:left; font-size:11px;">
+                                    <div style="color:#4fc3f7;">// Interactive coding environment</div>
+                                    <div style="color:#81c784;">function <span style="color:#ffd54f;">learn</span>() {</div>
+                                    <div style="padding-left:15px; color:#fff;">  console.log(<span style="color:#ffab91;">"Hello World!"</span>);</div>
+                                    <div style="color:#81c784;">}</div>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    break;
+
+                // Engineering & Physics types
+                case 'bridge-builder':
+                case 'lever-identifier':
+                case 'ma-calculator':
+                case 'physics-simulator':
+                case 'wave-simulator':
+                case 'light-ray':
+                case 'circuit-builder':
+                case 'wind-simulator':
+                case 'hydraulic-press':
+                case 'robot-builder':
+                case '3d-printer-sim':
+                case 'cad-editor':
+                case 'flight-simulator':
+                case 'control-demo':
+                case 'feedback-sim':
+                case 'qubit-sim':
+                    const engIcons = { 'bridge-builder': '🌉', 'lever-identifier': '🏗️', 'ma-calculator': '💪', 'physics-simulator': '⚛️', 'wave-simulator': '🌊', 'light-ray': '💡', 'circuit-builder': '⚡', 'wind-simulator': '💨', 'hydraulic-press': '🔧', 'robot-builder': '🤖', '3d-printer-sim': '🖨️', 'cad-editor': '📐', 'flight-simulator': '✈️', 'control-demo': '🎮', 'feedback-sim': '🔄', 'qubit-sim': '💫' };
+                    container.innerHTML = `
+                        <div style="text-align:center; padding:25px;">
+                            <div style="background:linear-gradient(135deg, #fa709a 0%, #fee140 100%); padding:35px; border-radius:12px; color:#333; margin:15px 0;">
+                                <div style="font-size:50px; margin-bottom:15px;">${engIcons[type] || '⚙️'}</div>
+                                <h4 style="margin:10px 0;">${type.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase())}</h4>
+                                <p style="opacity:0.9; font-size:14px; margin-bottom:20px;">Engineering & Design Simulator</p>
+                                <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:12px; font-size:12px;">
+                                    <div style="background:rgba(255,255,255,0.7); padding:10px; border-radius:8px;">🎨 Design</div>
+                                    <div style="background:rgba(255,255,255,0.7); padding:10px; border-radius:8px;">🔧 Build</div>
+                                    <div style="background:rgba(255,255,255,0.7); padding:10px; border-radius:8px;">✅ Test</div>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    break;
+
+                default:
+                    container.innerHTML = `
+                        <div class="interactive-placeholder">
+                            <p>🎯 Interactive learning content</p>
+                            <p class="text-muted">Type: ${type}</p>
+                        </div>
+                    `;
             }
         }
 
         function renderAnimation(container, elements) {
-            container.innerHTML = '<div class="interactive-animation"></div>';
-            const animationDiv = container.querySelector('.interactive-animation');
+            container.innerHTML = '<div class="animation-container"></div>';
+            const animationDiv = container.querySelector('.animation-container');
 
             elements.forEach((element, index) => {
                 const elementDiv = document.createElement('div');
