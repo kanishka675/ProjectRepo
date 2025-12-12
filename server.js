@@ -129,6 +129,12 @@ app.post('/logout', (req, res) => {
   res.redirect('/login.html');
 });
 
+app.get('/', (req, res) => {
+  res.redirect('/login.html');
+});
+
 app.listen(PORT, () => {
   console.log(`🚀 Server running at http://localhost:${PORT}`);
 });
+
+module.exports = app;
